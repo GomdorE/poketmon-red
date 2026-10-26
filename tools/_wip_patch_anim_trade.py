@@ -1,4 +1,5 @@
-root = "X:/joy2is90/pokered-master/pokered-godot/scripts/game/"
+from pathlib import Path
+root = str(Path(__file__).resolve().parents[1] / "scripts" / "game") + "/"
 
 
 def patch(path, pairs):
