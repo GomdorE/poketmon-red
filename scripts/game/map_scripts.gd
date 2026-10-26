@@ -70,7 +70,9 @@ func run_map_script() -> void:
 			# Route1, Route2, Pokecenter, school, nickname house, gym, gates: EnableAutoTextBoxDrawing
 			ow.no_auto_text_box = false
 			await pewter.run_map_script()
-			await mtmoon.run_map_script()
+			# a chapter 4 map with its own script table returns true (no generic trainer table)
+			if await mtmoon.run_map_script():
+				return
 			# a map whose script table is only the trainer engine (most routes)
 			if not ow.map.get("trainer_headers", []).is_empty():
 				await trainer_map_script()
