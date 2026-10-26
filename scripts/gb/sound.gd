@@ -319,6 +319,9 @@ func set_map_music(map_id: String) -> void:
 	map_music_rom_bank = _bank(name)
 
 
+var walk_bike_surf_state := 0   # wWalkBikeSurfState (set by the overworld)
+
+
 ## PlayDefaultMusic (waits for sfx first, no fade).
 func play_default_music() -> void:
 	await wait_for_sfx()
@@ -329,10 +332,12 @@ func play_default_music() -> void:
 ## PlayDefaultMusicFadeOutCurrent.
 func play_default_music_fade_out_current(battle_over: bool = false) -> void:
 	var c := 10
+	var d := 0
 	if battle_over:
 		last_music_sound_id = 0
 		c = 8
-	_play_default_music_common(c)
+		d = 8
+	_play_default_music_common(c, d)
 
 
 ## `ld a, frames; ld [wAudioFadeOutControl], a; ld a, id; ld [wNewSoundID], a; call PlaySound`
@@ -458,7 +463,24 @@ func _home_play_sound(b: int) -> void:
 	_play_sound(b)
 
 
-func _play_default_music_common(c: int) -> void:
+func _play_default_music_common(c: int, d: int = 0) -> void:
+	if walk_bike_surf_state != 0:
+		# biking / surfing: MUSIC_BIKE_RIDING or MUSIC_SURFING (the audio bank only changes
+		# now when the current music is not faded out first)
+		var name := "MUSIC_SURFING" if walk_bike_surf_state == 2 else "MUSIC_BIKE_RIDING"
+		var mb := _id(name)
+		var bank := _bank(name)
+		if d == 0:
+			audio_rom_bank = bank
+		audio_saved_rom_bank = bank
+		if last_music_sound_id == mb:
+			return
+		fade_out_control = c
+		last_music_sound_id = mb
+		new_sound_id = mb
+		_header_bank = bank
+		_home_play_sound(mb)
+		return
 	var b := map_music_sound_id
 	# CompareMapMusicBankWithCurrentBank
 	if map_music_rom_bank == audio_rom_bank:

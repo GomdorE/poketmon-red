@@ -39,7 +39,7 @@ func _show() -> void:
 func _init_facing_list() -> void:
 	saved_facing = ow.player.facing
 	spin_index = SPIN_ORDER.find(ow.player.facing)
-	anim = {"sheet": "spr_red", "facing": ow.player.facing, "frame": 0, "x": 0x40, "y": 0x3C}
+	anim = {"sheet": ow.player_sheet(), "facing": ow.player.facing, "frame": 0, "x": 0x40, "y": 0x3C}
 
 
 ## SpinPlayerSprite: the next direction of the list.

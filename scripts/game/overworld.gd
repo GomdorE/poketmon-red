@@ -96,6 +96,7 @@ func _init(s: GameState) -> void:
 ## loaded and the map-script state is kept).
 func run(reload: bool = true) -> void:
 	S = GB.screen
+	Sound.walk_bike_surf_state = state.walk_bike_surf
 	Text.vars["PLAYER"] = state.player_name
 	Text.vars["RIVAL"] = state.rival_name
 	if reload:
@@ -234,6 +235,7 @@ func _black_out() -> void:
 	await GB.frames(8 * 8)
 	Sound.stop_all_sound()
 	state.money = state.money / 2
+	set_walk_bike_surf(0)   # ResetStatusAndHalveMoneyOnBlackout
 	Battle.heal_party(state)
 	var dest: String = state.last_blackout_map
 	var pos: Vector2i = FLY_WARPS.get(dest, Vector2i(5, 6))
@@ -315,22 +317,29 @@ func _try_wild_encounter() -> void:
 			await _show_overworld_text("_RepelWoreOffText", true)
 			return
 	var wild: Dictionary = GameData.wild["maps"].get(map_id, {})
-	if wild.is_empty() or not wild.has("grass"):
-		return
 	# the bottom-right 8x8 tile of the half-block the player stands on
 	var gx := BORDER + player.x * 2 + 1
 	var gy := BORDER + player.y * 2 + 1
 	var t: int = grid_ids[gy * grid_w + gx]
 	var grass: int = int(tileset.get("grass_tile", -1))
-	var rate: int = int(wild.get("rate", 0))
-	if t != grass:
-		# indoor maps (caves) allow encounters anywhere, except the forest tileset
-		if not map["connections"].is_empty() or map["tileset"] == "FOREST":
+	var rate := 0
+	if t == grass:
+		rate = int(wild.get("rate", 0))
+	elif t == 0x14:
+		rate = int(wild.get("water_rate", 0))
+	else:
+		# even off the grass, an indoor map (not the forest tileset) can have encounters
+		var d := TownMap.data()
+		if int(d["map_ids"].get(map_id, 0)) < int(d["first_indoor_map"]) or map["tileset"] == "FOREST":
 			return
+		rate = int(wild.get("rate", 0))
 	if rng.randi_range(0, 255) >= rate:
 		return
 	var r := rng.randi_range(0, 255)
-	var slots: Array = wild["grass"]
+	# the bottom-left tile decides grass or water mons (a "left shore" half-block loads grass)
+	var slots: Array = wild.get("water", []) if _tile_id_under(player.x, player.y) == 0x14 else wild.get("grass", [])
+	if slots.is_empty():
+		return
 	var chances: Array = GameData.wild["slot_chances"]
 	var slot := 0
 	for i in chances.size():
@@ -387,6 +396,14 @@ func _handle_direction(held: int) -> void:
 	player.check_180 = false
 	player.facing = dir
 	player.moving_dir = dir
+	if state.walk_bike_surf == 2:
+		if _collision_check_on_water(player.x + dx, player.y + dy):
+			return
+		player.step_dx = dx
+		player.step_dy = dy
+		player.walk_counter = 8
+		_advance_player()
+		return
 	if not player.jumping and sim_queue.is_empty() and not _sprite_blocks(player.x + dx, player.y + dy):
 		_handle_ledges(held)
 	if _collision_on_land(player.x + dx, player.y + dy):
@@ -1024,7 +1041,7 @@ func _draw_player() -> void:
 		draw_sprite_frame(S, 0, str(a.sheet), afr[0], int(a.x), int(a.y), afr[1])
 		return
 	var fr := _frame_for(player.facing, player.anim if player.walk_counter > 0 else 0, 6)
-	draw_sprite_frame(S, 0, "spr_red", fr[0], 64, player.jump_y if player.jumping else 60, fr[1])
+	draw_sprite_frame(S, 0, player_sheet(), fr[0], 64, player.jump_y if player.jumping else 60, fr[1])
 	if player.jumping:
 		_draw_ledge_shadow()
 
@@ -1464,6 +1481,56 @@ func _start_menu() -> void:
 	await GB.frame
 
 
+## LoadPlayerSpriteGraphics: Red, Red on the bicycle, or the Seel while surfing.
+func player_sheet() -> String:
+	match state.walk_bike_surf:
+		1: return "spr_red_bike"
+		2: return "spr_seel"
+	return "spr_red"
+
+
+func set_walk_bike_surf(v: int) -> void:
+	state.walk_bike_surf = v
+	Sound.walk_bike_surf_state = v
+
+
+## CollisionCheckOnWater: water ($14), the coast tiles $32 / $48 keep surfing; a passable
+## land tile ends it (the player walks ashore); anything else collides.
+func _collision_check_on_water(x: int, y: int) -> bool:
+	if sim_queue.size() > 0:
+		return false
+	if _leads_to_missing_map(x, y):
+		return _water_collision()
+	var front := _tile_id_under(x, y)
+	if not _sprite_blocks(x, y):
+		if _tile_pair_collision(_tile_id_under(player.x, player.y), front, TILE_PAIR_COLLISIONS_WATER):
+			return _water_collision()
+		if front == 0x14 or front == 0x48:
+			return false
+		if front == 0x32:
+			if map["tileset"] != "SHIP_PORT":
+				return false
+			_stop_surfing()
+			return false
+	# .checkIfNextTileIsPassable (a sprite in the way also lands here, as in the original)
+	if front in tileset["collision"]:
+		_stop_surfing()
+		return false
+	return _water_collision()
+
+
+func _water_collision() -> bool:
+	if not Sound.channel5_is("SFX_COLLISION"):
+		Sound.play_sfx("SFX_COLLISION")
+	return true
+
+
+## .stopSurfing: walking again, Red's sprite, the default music.
+func _stop_surfing() -> void:
+	set_walk_bike_surf(0)
+	Sound.play_default_music()
+
+
 ## CheckIfInOutsideMap: the OVERWORLD and PLATEAU tilesets.
 func is_outside_map() -> bool:
 	return map["tileset"] in ["OVERWORLD", "PLATEAU"]
@@ -1474,6 +1541,7 @@ func is_outside_map() -> bool:
 func _handle_fly_warp() -> void:
 	_render()
 	await GB.delay3()
+	set_walk_bike_surf(0)   # HandleFlyWarpOrDungeonWarp: wWalkBikeSurfState = 0
 	var anims := PlayerAnims.new(self)
 	var escape := escape_warp
 	await anims.leave_map(escape)

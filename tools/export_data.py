@@ -832,8 +832,17 @@ def export_wild() -> None:
         grass = re.search(r"def_grass_wildmons\s+(\d+)(.*?)end_grass_wildmons", txt, re.S)
         rate = int(grass.group(1))
         mons = [[int(a), b] for a, b in re.findall(r"db\s+(\d+),\s*([A-Z0-9_]+)", grass.group(2))]
+        entry = {}
         if rate > 0 and mons:
-            out[const] = {"rate": rate, "grass": mons}
+            entry.update({"rate": rate, "grass": mons})
+        water = re.search(r"def_water_wildmons\s+(\d+)(.*?)end_water_wildmons", txt, re.S)
+        if water:
+            wrate = int(water.group(1))
+            wmons = [[int(a), b] for a, b in re.findall(r"db\s+(\d+),\s*([A-Z0-9_]+)", water.group(2))]
+            if wrate > 0 and wmons:
+                entry.update({"water_rate": wrate, "water": wmons})
+        if entry:
+            out[const] = entry
     chances = []
     total = 0
     for m in re.finditer(r"wild_chance\s+(\d+)", (MASTER / "data" / "wild" / "probabilities.asm").read_text(encoding="utf-8")):

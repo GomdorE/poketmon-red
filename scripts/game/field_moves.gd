@@ -110,6 +110,11 @@ static func use(state: GameState, ow, idx: int, move: String) -> String:
 		"SURF":
 			if not badges & (1 << SOUL):
 				return await _new_badge_required()
+			# IsSurfingAllowed (the Cycling Road and Seafoam's current: later chapters), UseItem SURFBOARD
+			if not await use_surfboard(state, ow):
+				return "loop"
+			await _white_out_delay3()
+			return "close"
 		"STRENGTH":
 			if not badges & (1 << RAINBOW):
 				return await _new_badge_required()
@@ -226,6 +231,42 @@ static func _draw_cut_oam(S: GBScreen, spr: Array) -> void:
 	for i in 4:
 		var e: Dictionary = spr[i]
 		S.set_sprite(36 + i, int(e.x), int(e.y), int(e.v), 1, bool(e.xf), bool(e.yf))
+
+
+# data/tilesets/water_tilesets.asm
+const WATER_TILESETS := ["OVERWORLD", "FOREST", "DOJO", "GYM", "SHIP", "SHIP_PORT", "CAVERN", "FACILITY", "PLATEAU"]
+
+
+## ItemUseSurfboard: onto the water in front (one simulated step, the surf music,
+## "<PLAYER> got on <MON>!"), or ashore when already surfing.
+static func use_surfboard(state: GameState, ow) -> bool:
+	var d: Vector2i = ow._facing_delta()
+	var front: int = ow._tile_id_under(ow.player.x + d.x, ow.player.y + d.y)
+	var standing: int = ow._tile_id_under(ow.player.x, ow.player.y)
+	var dir: int = {Overworld.FACE_UP: GB.UP, Overworld.FACE_DOWN: GB.DOWN, Overworld.FACE_LEFT: GB.LEFT}.get(ow.player.facing, GB.RIGHT)
+	if state.walk_bike_surf == 2:
+		# .tryToStopSurfing
+		if ow._sprite_blocks(ow.player.x + d.x, ow.player.y + d.y) \
+				or ow._tile_pair_collision(standing, front, Overworld.TILE_PAIR_COLLISIONS_WATER) \
+				or not front in ow.tileset["collision"]:
+			await Text.print_text("_SurfingNoPlaceToGetOffText")
+			return false
+		ow.simulate([dir])
+		ow.set_walk_bike_surf(0)
+		ow.joy_ignore = 0xFF
+		await Sound.play_default_music()
+		return true
+	# IsNextTileShoreOrWater
+	var ts: String = ow.map["tileset"]
+	var water := ts in WATER_TILESETS and (front == 0x14 or (ts != "SHIP_PORT" and (front == 0x48 or front == 0x32)))
+	if not water or ow._tile_pair_collision(standing, front, Overworld.TILE_PAIR_COLLISIONS_WATER):
+		await Text.print_text("_NoSurfingHereText")
+		return false
+	ow.simulate([dir])
+	ow.set_walk_bike_surf(2)
+	await Sound.play_default_music()
+	await Text.print_text("_SurfingGotOnText")
+	return true
 
 
 ## ItemUseEscapeRope (Dig uses it as a pseudo item: nothing is removed and the map view
