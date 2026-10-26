@@ -95,6 +95,7 @@ func _magikarp_salesman() -> void:
 		return
 	var mon := PartyMon.create("MAGIKARP", 5)
 	state.pokedex_owned["MAGIKARP"] = true
+	state.pokedex_seen["MAGIKARP"] = true
 	Text.ram["wNameBuffer"] = GameData.mon_name("MAGIKARP")
 	await ow.print_text("_GotMonText")
 	await Sound.text_sound("sound_get_item_1")
