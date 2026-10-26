@@ -1,0 +1,1121 @@
+{
+ "MASTER_BALL": {
+  "id": 1,
+  "name_en": "MASTER BALL",
+  "name_ko": "마스터볼",
+  "price": 0,
+  "key": false
+ },
+ "ULTRA_BALL": {
+  "id": 2,
+  "name_en": "ULTRA BALL",
+  "name_ko": "하이퍼볼",
+  "price": 1200,
+  "key": false
+ },
+ "GREAT_BALL": {
+  "id": 3,
+  "name_en": "GREAT BALL",
+  "name_ko": "슈퍼볼",
+  "price": 600,
+  "key": false
+ },
+ "POKE_BALL": {
+  "id": 4,
+  "name_en": "POKé BALL",
+  "name_ko": "몬스터볼",
+  "price": 200,
+  "key": false
+ },
+ "TOWN_MAP": {
+  "id": 5,
+  "name_en": "TOWN MAP",
+  "name_ko": "타운맵",
+  "price": 0,
+  "key": true
+ },
+ "BICYCLE": {
+  "id": 6,
+  "name_en": "BICYCLE",
+  "name_ko": "자전거",
+  "price": 0,
+  "key": true
+ },
+ "SURFBOARD": {
+  "id": 7,
+  "name_en": "?????",
+  "name_ko": "?????",
+  "price": 0,
+  "key": true
+ },
+ "SAFARI_BALL": {
+  "id": 8,
+  "name_en": "SAFARI BALL",
+  "name_ko": "사파리볼",
+  "price": 1000,
+  "key": true
+ },
+ "POKEDEX": {
+  "id": 9,
+  "name_en": "POKéDEX",
+  "name_ko": "포켓몬도감",
+  "price": 0,
+  "key": true
+ },
+ "MOON_STONE": {
+  "id": 10,
+  "name_en": "MOON STONE",
+  "name_ko": "달의돌",
+  "price": 0,
+  "key": false
+ },
+ "ANTIDOTE": {
+  "id": 11,
+  "name_en": "ANTIDOTE",
+  "name_ko": "해독제",
+  "price": 100,
+  "key": false
+ },
+ "BURN_HEAL": {
+  "id": 12,
+  "name_en": "BURN HEAL",
+  "name_ko": "화상치료제",
+  "price": 250,
+  "key": false
+ },
+ "ICE_HEAL": {
+  "id": 13,
+  "name_en": "ICE HEAL",
+  "name_ko": "얼음상태치료제",
+  "price": 250,
+  "key": false
+ },
+ "AWAKENING": {
+  "id": 14,
+  "name_en": "AWAKENING",
+  "name_ko": "잠깨는약",
+  "price": 200,
+  "key": false
+ },
+ "PARLYZ_HEAL": {
+  "id": 15,
+  "name_en": "PARLYZ HEAL",
+  "name_ko": "마비치료제",
+  "price": 200,
+  "key": false
+ },
+ "FULL_RESTORE": {
+  "id": 16,
+  "name_en": "FULL RESTORE",
+  "name_ko": "회복약",
+  "price": 3000,
+  "key": false
+ },
+ "MAX_POTION": {
+  "id": 17,
+  "name_en": "MAX POTION",
+  "name_ko": "풀회복약",
+  "price": 2500,
+  "key": false
+ },
+ "HYPER_POTION": {
+  "id": 18,
+  "name_en": "HYPER POTION",
+  "name_ko": "고급상처약",
+  "price": 1500,
+  "key": false
+ },
+ "SUPER_POTION": {
+  "id": 19,
+  "name_en": "SUPER POTION",
+  "name_ko": "좋은상처약",
+  "price": 700,
+  "key": false
+ },
+ "POTION": {
+  "id": 20,
+  "name_en": "POTION",
+  "name_ko": "상처약",
+  "price": 300,
+  "key": false
+ },
+ "BOULDERBADGE": {
+  "id": 21,
+  "name_en": "BOULDERBADGE",
+  "name_ko": "회색배지",
+  "price": 0,
+  "key": true
+ },
+ "CASCADEBADGE": {
+  "id": 22,
+  "name_en": "CASCADEBADGE",
+  "name_ko": "블루배지",
+  "price": 0,
+  "key": true
+ },
+ "THUNDERBADGE": {
+  "id": 23,
+  "name_en": "THUNDERBADGE",
+  "name_ko": "오렌지배지",
+  "price": 0,
+  "key": true
+ },
+ "RAINBOWBADGE": {
+  "id": 24,
+  "name_en": "RAINBOWBADGE",
+  "name_ko": "무지개배지",
+  "price": 0,
+  "key": true
+ },
+ "SOULBADGE": {
+  "id": 25,
+  "name_en": "SOULBADGE",
+  "name_ko": "핑크배지",
+  "price": 0,
+  "key": true
+ },
+ "MARSHBADGE": {
+  "id": 26,
+  "name_en": "MARSHBADGE",
+  "name_ko": "골드배지",
+  "price": 0,
+  "key": true
+ },
+ "VOLCANOBADGE": {
+  "id": 27,
+  "name_en": "VOLCANOBADGE",
+  "name_ko": "크림슨배지",
+  "price": 0,
+  "key": true
+ },
+ "EARTHBADGE": {
+  "id": 28,
+  "name_en": "EARTHBADGE",
+  "name_ko": "그린배지",
+  "price": 0,
+  "key": true
+ },
+ "ESCAPE_ROPE": {
+  "id": 29,
+  "name_en": "ESCAPE ROPE",
+  "name_ko": "동굴탈출로프",
+  "price": 550,
+  "key": false
+ },
+ "REPEL": {
+  "id": 30,
+  "name_en": "REPEL",
+  "name_ko": "벌레회피스프레이",
+  "price": 350,
+  "key": false
+ },
+ "OLD_AMBER": {
+  "id": 31,
+  "name_en": "OLD AMBER",
+  "name_ko": "비밀의호박",
+  "price": 0,
+  "key": true
+ },
+ "FIRE_STONE": {
+  "id": 32,
+  "name_en": "FIRE STONE",
+  "name_ko": "불꽃의돌",
+  "price": 2100,
+  "key": false
+ },
+ "THUNDER_STONE": {
+  "id": 33,
+  "name_en": "THUNDERSTONE",
+  "name_ko": "천둥의돌",
+  "price": 2100,
+  "key": false
+ },
+ "WATER_STONE": {
+  "id": 34,
+  "name_en": "WATER STONE",
+  "name_ko": "물의돌",
+  "price": 2100,
+  "key": false
+ },
+ "HP_UP": {
+  "id": 35,
+  "name_en": "HP UP",
+  "name_ko": "맥스업",
+  "price": 9800,
+  "key": false
+ },
+ "PROTEIN": {
+  "id": 36,
+  "name_en": "PROTEIN",
+  "name_ko": "타우린",
+  "price": 9800,
+  "key": false
+ },
+ "IRON": {
+  "id": 37,
+  "name_en": "IRON",
+  "name_ko": "사포닌",
+  "price": 9800,
+  "key": false
+ },
+ "CARBOS": {
+  "id": 38,
+  "name_en": "CARBOS",
+  "name_ko": "알칼로이드",
+  "price": 9800,
+  "key": false
+ },
+ "CALCIUM": {
+  "id": 39,
+  "name_en": "CALCIUM",
+  "name_ko": "리보플라빈",
+  "price": 9800,
+  "key": false
+ },
+ "RARE_CANDY": {
+  "id": 40,
+  "name_en": "RARE CANDY",
+  "name_ko": "이상한사탕",
+  "price": 4800,
+  "key": false
+ },
+ "DOME_FOSSIL": {
+  "id": 41,
+  "name_en": "DOME FOSSIL",
+  "name_ko": "껍질화석",
+  "price": 0,
+  "key": true
+ },
+ "HELIX_FOSSIL": {
+  "id": 42,
+  "name_en": "HELIX FOSSIL",
+  "name_ko": "조개화석",
+  "price": 0,
+  "key": true
+ },
+ "SECRET_KEY": {
+  "id": 43,
+  "name_en": "SECRET KEY",
+  "name_ko": "비밀의열쇠",
+  "price": 0,
+  "key": true
+ },
+ "ITEM_2C": {
+  "id": 44,
+  "name_en": "?????",
+  "name_ko": "?????",
+  "price": 0,
+  "key": true
+ },
+ "BIKE_VOUCHER": {
+  "id": 45,
+  "name_en": "BIKE VOUCHER",
+  "name_ko": "자전거교환권",
+  "price": 0,
+  "key": true
+ },
+ "X_ACCURACY": {
+  "id": 46,
+  "name_en": "X ACCURACY",
+  "name_ko": "잘맞히기",
+  "price": 950,
+  "key": false
+ },
+ "LEAF_STONE": {
+  "id": 47,
+  "name_en": "LEAF STONE",
+  "name_ko": "리프의돌",
+  "price": 2100,
+  "key": false
+ },
+ "CARD_KEY": {
+  "id": 48,
+  "name_en": "CARD KEY",
+  "name_ko": "카드키",
+  "price": 0,
+  "key": true
+ },
+ "NUGGET": {
+  "id": 49,
+  "name_en": "NUGGET",
+  "name_ko": "금구슬",
+  "price": 10000,
+  "key": false
+ },
+ "ITEM_32": {
+  "id": 50,
+  "name_en": "PP UP",
+  "name_ko": "포인트업",
+  "price": 9800,
+  "key": false
+ },
+ "POKE_DOLL": {
+  "id": 51,
+  "name_en": "POKé DOLL",
+  "name_ko": "삐삐인형",
+  "price": 1000,
+  "key": false
+ },
+ "FULL_HEAL": {
+  "id": 52,
+  "name_en": "FULL HEAL",
+  "name_ko": "만병통치제",
+  "price": 600,
+  "key": false
+ },
+ "REVIVE": {
+  "id": 53,
+  "name_en": "REVIVE",
+  "name_ko": "기력의조각",
+  "price": 1500,
+  "key": false
+ },
+ "MAX_REVIVE": {
+  "id": 54,
+  "name_en": "MAX REVIVE",
+  "name_ko": "기력의덩어리",
+  "price": 4000,
+  "key": false
+ },
+ "GUARD_SPEC": {
+  "id": 55,
+  "name_en": "GUARD SPEC.",
+  "name_ko": "이펙트가드",
+  "price": 700,
+  "key": false
+ },
+ "SUPER_REPEL": {
+  "id": 56,
+  "name_en": "SUPER REPEL",
+  "name_ko": "실버스프레이",
+  "price": 500,
+  "key": false
+ },
+ "MAX_REPEL": {
+  "id": 57,
+  "name_en": "MAX REPEL",
+  "name_ko": "골드스프레이",
+  "price": 700,
+  "key": false
+ },
+ "DIRE_HIT": {
+  "id": 58,
+  "name_en": "DIRE HIT",
+  "name_ko": "크리티컬커터",
+  "price": 650,
+  "key": false
+ },
+ "COIN": {
+  "id": 59,
+  "name_en": "COIN",
+  "name_ko": "코인",
+  "price": 10,
+  "key": false
+ },
+ "FRESH_WATER": {
+  "id": 60,
+  "name_en": "FRESH WATER",
+  "name_ko": "맛있는물",
+  "price": 200,
+  "key": false
+ },
+ "SODA_POP": {
+  "id": 61,
+  "name_en": "SODA POP",
+  "name_ko": "미네랄사이다",
+  "price": 300,
+  "key": false
+ },
+ "LEMONADE": {
+  "id": 62,
+  "name_en": "LEMONADE",
+  "name_ko": "후르츠밀크",
+  "price": 350,
+  "key": false
+ },
+ "S_S_TICKET": {
+  "id": 63,
+  "name_en": "S.S.TICKET",
+  "name_ko": "승선티켓",
+  "price": 0,
+  "key": true
+ },
+ "GOLD_TEETH": {
+  "id": 64,
+  "name_en": "GOLD TEETH",
+  "name_ko": "금틀니",
+  "price": 0,
+  "key": true
+ },
+ "X_ATTACK": {
+  "id": 65,
+  "name_en": "X ATTACK",
+  "name_ko": "플러스파워",
+  "price": 500,
+  "key": false
+ },
+ "X_DEFEND": {
+  "id": 66,
+  "name_en": "X DEFEND",
+  "name_ko": "디펜드업",
+  "price": 550,
+  "key": false
+ },
+ "X_SPEED": {
+  "id": 67,
+  "name_en": "X SPEED",
+  "name_ko": "스피드업",
+  "price": 350,
+  "key": false
+ },
+ "X_SPECIAL": {
+  "id": 68,
+  "name_en": "X SPECIAL",
+  "name_ko": "스페셜업",
+  "price": 350,
+  "key": false
+ },
+ "COIN_CASE": {
+  "id": 69,
+  "name_en": "COIN CASE",
+  "name_ko": "동전케이스",
+  "price": 0,
+  "key": true
+ },
+ "OAKS_PARCEL": {
+  "id": 70,
+  "name_en": "OAK's PARCEL",
+  "name_ko": "오박사의소포",
+  "price": 0,
+  "key": true
+ },
+ "ITEMFINDER": {
+  "id": 71,
+  "name_en": "ITEMFINDER",
+  "name_ko": "다우징머신",
+  "price": 0,
+  "key": true
+ },
+ "SILPH_SCOPE": {
+  "id": 72,
+  "name_en": "SILPH SCOPE",
+  "name_ko": "실프스코프",
+  "price": 0,
+  "key": true
+ },
+ "POKE_FLUTE": {
+  "id": 73,
+  "name_en": "POKé FLUTE",
+  "name_ko": "포켓몬피리",
+  "price": 0,
+  "key": true
+ },
+ "LIFT_KEY": {
+  "id": 74,
+  "name_en": "LIFT KEY",
+  "name_ko": "엘리베이터키",
+  "price": 0,
+  "key": true
+ },
+ "EXP_ALL": {
+  "id": 75,
+  "name_en": "EXP.ALL",
+  "name_ko": "학습장치",
+  "price": 0,
+  "key": false
+ },
+ "OLD_ROD": {
+  "id": 76,
+  "name_en": "OLD ROD",
+  "name_ko": "낡은낚싯대",
+  "price": 0,
+  "key": true
+ },
+ "GOOD_ROD": {
+  "id": 77,
+  "name_en": "GOOD ROD",
+  "name_ko": "좋은낚싯대",
+  "price": 0,
+  "key": true
+ },
+ "SUPER_ROD": {
+  "id": 78,
+  "name_en": "SUPER ROD",
+  "name_ko": "대단한낚싯대",
+  "price": 0,
+  "key": true
+ },
+ "PP_UP": {
+  "id": 79,
+  "name_en": "PP UP",
+  "name_ko": "포인트업",
+  "price": 0,
+  "key": false
+ },
+ "ETHER": {
+  "id": 80,
+  "name_en": "ETHER",
+  "name_ko": "피피에이드",
+  "price": 0,
+  "key": false
+ },
+ "MAX_ETHER": {
+  "id": 81,
+  "name_en": "MAX ETHER",
+  "name_ko": "피피에이더",
+  "price": 0,
+  "key": false
+ },
+ "ELIXER": {
+  "id": 82,
+  "name_en": "ELIXER",
+  "name_ko": "피피회복",
+  "price": 0,
+  "key": false
+ },
+ "MAX_ELIXER": {
+  "id": 83,
+  "name_en": "MAX ELIXER",
+  "name_ko": "피피맥스",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_B2F": {
+  "id": 84,
+  "name_en": "B2F",
+  "name_ko": "지하2층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_B1F": {
+  "id": 85,
+  "name_en": "B1F",
+  "name_ko": "지하1층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_1F": {
+  "id": 86,
+  "name_en": "1F",
+  "name_ko": "1층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_2F": {
+  "id": 87,
+  "name_en": "2F",
+  "name_ko": "2층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_3F": {
+  "id": 88,
+  "name_en": "3F",
+  "name_ko": "3층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_4F": {
+  "id": 89,
+  "name_en": "4F",
+  "name_ko": "4층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_5F": {
+  "id": 90,
+  "name_en": "5F",
+  "name_ko": "5층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_6F": {
+  "id": 91,
+  "name_en": "6F",
+  "name_ko": "6층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_7F": {
+  "id": 92,
+  "name_en": "7F",
+  "name_ko": "7층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_8F": {
+  "id": 93,
+  "name_en": "8F",
+  "name_ko": "8층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_9F": {
+  "id": 94,
+  "name_en": "9F",
+  "name_ko": "9층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_10F": {
+  "id": 95,
+  "name_en": "10F",
+  "name_ko": "10층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_11F": {
+  "id": 96,
+  "name_en": "11F",
+  "name_ko": "11층",
+  "price": 0,
+  "key": false
+ },
+ "FLOOR_B4F": {
+  "id": 97,
+  "name_en": "B4F",
+  "name_ko": "지하4층",
+  "price": 0,
+  "key": false
+ },
+ "HM01": {
+  "id": 196,
+  "name_en": "HM01",
+  "name_ko": "HM01",
+  "price": 0,
+  "key": true,
+  "move": "CUT"
+ },
+ "HM02": {
+  "id": 197,
+  "name_en": "HM02",
+  "name_ko": "HM02",
+  "price": 0,
+  "key": true,
+  "move": "FLY"
+ },
+ "HM03": {
+  "id": 198,
+  "name_en": "HM03",
+  "name_ko": "HM03",
+  "price": 0,
+  "key": true,
+  "move": "SURF"
+ },
+ "HM04": {
+  "id": 199,
+  "name_en": "HM04",
+  "name_ko": "HM04",
+  "price": 0,
+  "key": true,
+  "move": "STRENGTH"
+ },
+ "HM05": {
+  "id": 200,
+  "name_en": "HM05",
+  "name_ko": "HM05",
+  "price": 0,
+  "key": true,
+  "move": "FLASH"
+ },
+ "TM01": {
+  "id": 201,
+  "name_en": "TM01",
+  "name_ko": "TM01",
+  "price": 3000,
+  "key": false,
+  "move": "MEGA_PUNCH"
+ },
+ "TM02": {
+  "id": 202,
+  "name_en": "TM02",
+  "name_ko": "TM02",
+  "price": 2000,
+  "key": false,
+  "move": "RAZOR_WIND"
+ },
+ "TM03": {
+  "id": 203,
+  "name_en": "TM03",
+  "name_ko": "TM03",
+  "price": 2000,
+  "key": false,
+  "move": "SWORDS_DANCE"
+ },
+ "TM04": {
+  "id": 204,
+  "name_en": "TM04",
+  "name_ko": "TM04",
+  "price": 1000,
+  "key": false,
+  "move": "WHIRLWIND"
+ },
+ "TM05": {
+  "id": 205,
+  "name_en": "TM05",
+  "name_ko": "TM05",
+  "price": 3000,
+  "key": false,
+  "move": "MEGA_KICK"
+ },
+ "TM06": {
+  "id": 206,
+  "name_en": "TM06",
+  "name_ko": "TM06",
+  "price": 4000,
+  "key": false,
+  "move": "TOXIC"
+ },
+ "TM07": {
+  "id": 207,
+  "name_en": "TM07",
+  "name_ko": "TM07",
+  "price": 2000,
+  "key": false,
+  "move": "HORN_DRILL"
+ },
+ "TM08": {
+  "id": 208,
+  "name_en": "TM08",
+  "name_ko": "TM08",
+  "price": 4000,
+  "key": false,
+  "move": "BODY_SLAM"
+ },
+ "TM09": {
+  "id": 209,
+  "name_en": "TM09",
+  "name_ko": "TM09",
+  "price": 3000,
+  "key": false,
+  "move": "TAKE_DOWN"
+ },
+ "TM10": {
+  "id": 210,
+  "name_en": "TM10",
+  "name_ko": "TM10",
+  "price": 4000,
+  "key": false,
+  "move": "DOUBLE_EDGE"
+ },
+ "TM11": {
+  "id": 211,
+  "name_en": "TM11",
+  "name_ko": "TM11",
+  "price": 2000,
+  "key": false,
+  "move": "BUBBLEBEAM"
+ },
+ "TM12": {
+  "id": 212,
+  "name_en": "TM12",
+  "name_ko": "TM12",
+  "price": 1000,
+  "key": false,
+  "move": "WATER_GUN"
+ },
+ "TM13": {
+  "id": 213,
+  "name_en": "TM13",
+  "name_ko": "TM13",
+  "price": 4000,
+  "key": false,
+  "move": "ICE_BEAM"
+ },
+ "TM14": {
+  "id": 214,
+  "name_en": "TM14",
+  "name_ko": "TM14",
+  "price": 5000,
+  "key": false,
+  "move": "BLIZZARD"
+ },
+ "TM15": {
+  "id": 215,
+  "name_en": "TM15",
+  "name_ko": "TM15",
+  "price": 5000,
+  "key": false,
+  "move": "HYPER_BEAM"
+ },
+ "TM16": {
+  "id": 216,
+  "name_en": "TM16",
+  "name_ko": "TM16",
+  "price": 5000,
+  "key": false,
+  "move": "PAY_DAY"
+ },
+ "TM17": {
+  "id": 217,
+  "name_en": "TM17",
+  "name_ko": "TM17",
+  "price": 3000,
+  "key": false,
+  "move": "SUBMISSION"
+ },
+ "TM18": {
+  "id": 218,
+  "name_en": "TM18",
+  "name_ko": "TM18",
+  "price": 2000,
+  "key": false,
+  "move": "COUNTER"
+ },
+ "TM19": {
+  "id": 219,
+  "name_en": "TM19",
+  "name_ko": "TM19",
+  "price": 3000,
+  "key": false,
+  "move": "SEISMIC_TOSS"
+ },
+ "TM20": {
+  "id": 220,
+  "name_en": "TM20",
+  "name_ko": "TM20",
+  "price": 2000,
+  "key": false,
+  "move": "RAGE"
+ },
+ "TM21": {
+  "id": 221,
+  "name_en": "TM21",
+  "name_ko": "TM21",
+  "price": 5000,
+  "key": false,
+  "move": "MEGA_DRAIN"
+ },
+ "TM22": {
+  "id": 222,
+  "name_en": "TM22",
+  "name_ko": "TM22",
+  "price": 5000,
+  "key": false,
+  "move": "SOLARBEAM"
+ },
+ "TM23": {
+  "id": 223,
+  "name_en": "TM23",
+  "name_ko": "TM23",
+  "price": 5000,
+  "key": false,
+  "move": "DRAGON_RAGE"
+ },
+ "TM24": {
+  "id": 224,
+  "name_en": "TM24",
+  "name_ko": "TM24",
+  "price": 2000,
+  "key": false,
+  "move": "THUNDERBOLT"
+ },
+ "TM25": {
+  "id": 225,
+  "name_en": "TM25",
+  "name_ko": "TM25",
+  "price": 5000,
+  "key": false,
+  "move": "THUNDER"
+ },
+ "TM26": {
+  "id": 226,
+  "name_en": "TM26",
+  "name_ko": "TM26",
+  "price": 4000,
+  "key": false,
+  "move": "EARTHQUAKE"
+ },
+ "TM27": {
+  "id": 227,
+  "name_en": "TM27",
+  "name_ko": "TM27",
+  "price": 5000,
+  "key": false,
+  "move": "FISSURE"
+ },
+ "TM28": {
+  "id": 228,
+  "name_en": "TM28",
+  "name_ko": "TM28",
+  "price": 2000,
+  "key": false,
+  "move": "DIG"
+ },
+ "TM29": {
+  "id": 229,
+  "name_en": "TM29",
+  "name_ko": "TM29",
+  "price": 4000,
+  "key": false,
+  "move": "PSYCHIC_M"
+ },
+ "TM30": {
+  "id": 230,
+  "name_en": "TM30",
+  "name_ko": "TM30",
+  "price": 1000,
+  "key": false,
+  "move": "TELEPORT"
+ },
+ "TM31": {
+  "id": 231,
+  "name_en": "TM31",
+  "name_ko": "TM31",
+  "price": 2000,
+  "key": false,
+  "move": "MIMIC"
+ },
+ "TM32": {
+  "id": 232,
+  "name_en": "TM32",
+  "name_ko": "TM32",
+  "price": 1000,
+  "key": false,
+  "move": "DOUBLE_TEAM"
+ },
+ "TM33": {
+  "id": 233,
+  "name_en": "TM33",
+  "name_ko": "TM33",
+  "price": 1000,
+  "key": false,
+  "move": "REFLECT"
+ },
+ "TM34": {
+  "id": 234,
+  "name_en": "TM34",
+  "name_ko": "TM34",
+  "price": 2000,
+  "key": false,
+  "move": "BIDE"
+ },
+ "TM35": {
+  "id": 235,
+  "name_en": "TM35",
+  "name_ko": "TM35",
+  "price": 4000,
+  "key": false,
+  "move": "METRONOME"
+ },
+ "TM36": {
+  "id": 236,
+  "name_en": "TM36",
+  "name_ko": "TM36",
+  "price": 2000,
+  "key": false,
+  "move": "SELFDESTRUCT"
+ },
+ "TM37": {
+  "id": 237,
+  "name_en": "TM37",
+  "name_ko": "TM37",
+  "price": 2000,
+  "key": false,
+  "move": "EGG_BOMB"
+ },
+ "TM38": {
+  "id": 238,
+  "name_en": "TM38",
+  "name_ko": "TM38",
+  "price": 5000,
+  "key": false,
+  "move": "FIRE_BLAST"
+ },
+ "TM39": {
+  "id": 239,
+  "name_en": "TM39",
+  "name_ko": "TM39",
+  "price": 2000,
+  "key": false,
+  "move": "SWIFT"
+ },
+ "TM40": {
+  "id": 240,
+  "name_en": "TM40",
+  "name_ko": "TM40",
+  "price": 4000,
+  "key": false,
+  "move": "SKULL_BASH"
+ },
+ "TM41": {
+  "id": 241,
+  "name_en": "TM41",
+  "name_ko": "TM41",
+  "price": 2000,
+  "key": false,
+  "move": "SOFTBOILED"
+ },
+ "TM42": {
+  "id": 242,
+  "name_en": "TM42",
+  "name_ko": "TM42",
+  "price": 2000,
+  "key": false,
+  "move": "DREAM_EATER"
+ },
+ "TM43": {
+  "id": 243,
+  "name_en": "TM43",
+  "name_ko": "TM43",
+  "price": 5000,
+  "key": false,
+  "move": "SKY_ATTACK"
+ },
+ "TM44": {
+  "id": 244,
+  "name_en": "TM44",
+  "name_ko": "TM44",
+  "price": 2000,
+  "key": false,
+  "move": "REST"
+ },
+ "TM45": {
+  "id": 245,
+  "name_en": "TM45",
+  "name_ko": "TM45",
+  "price": 2000,
+  "key": false,
+  "move": "THUNDER_WAVE"
+ },
+ "TM46": {
+  "id": 246,
+  "name_en": "TM46",
+  "name_ko": "TM46",
+  "price": 4000,
+  "key": false,
+  "move": "PSYWAVE"
+ },
+ "TM47": {
+  "id": 247,
+  "name_en": "TM47",
+  "name_ko": "TM47",
+  "price": 3000,
+  "key": false,
+  "move": "EXPLOSION"
+ },
+ "TM48": {
+  "id": 248,
+  "name_en": "TM48",
+  "name_ko": "TM48",
+  "price": 4000,
+  "key": false,
+  "move": "ROCK_SLIDE"
+ },
+ "TM49": {
+  "id": 249,
+  "name_en": "TM49",
+  "name_ko": "TM49",
+  "price": 4000,
+  "key": false,
+  "move": "TRI_ATTACK"
+ },
+ "TM50": {
+  "id": 250,
+  "name_en": "TM50",
+  "name_ko": "TM50",
+  "price": 2000,
+  "key": false,
+  "move": "SUBSTITUTE"
+ }
+}

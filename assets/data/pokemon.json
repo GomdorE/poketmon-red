@@ -1,0 +1,12007 @@
+{
+ "RHYDON": {
+  "internal_id": 1,
+  "dex": 112,
+  "name_en": "RHYDON",
+  "name_ko": "코뿌리",
+  "pic": "mon_rhydon",
+  "back": "monb_rhydon",
+  "dex_entry": {
+   "species": "DRILL",
+   "height_ft": 6,
+   "height_in": 3,
+   "weight": 2650,
+   "text": "_RhydonDexEntry"
+  },
+  "learnset": [
+   [
+    30,
+    "STOMP"
+   ],
+   [
+    35,
+    "TAIL_WHIP"
+   ],
+   [
+    40,
+    "FURY_ATTACK"
+   ],
+   [
+    48,
+    "HORN_DRILL"
+   ],
+   [
+    55,
+    "LEER"
+   ],
+   [
+    64,
+    "TAKE_DOWN"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "PAY_DAY",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 105,
+  "atk": 130,
+  "def": 120,
+  "spd": 40,
+  "spc": 45,
+  "types": [
+   "GROUND",
+   "ROCK"
+  ],
+  "catch_rate": 60,
+  "base_exp": 204,
+  "moves": [
+   "HORN_ATTACK",
+   "STOMP",
+   "TAIL_WHIP",
+   "FURY_ATTACK"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "KANGASKHAN": {
+  "internal_id": 2,
+  "dex": 115,
+  "name_en": "KANGASKHAN",
+  "name_ko": "캥카",
+  "pic": "mon_kangaskhan",
+  "back": "monb_kangaskhan",
+  "dex_entry": {
+   "species": "PARENT",
+   "height_ft": 7,
+   "height_in": 3,
+   "weight": 1760,
+   "text": "_KangaskhanDexEntry"
+  },
+  "learnset": [
+   [
+    26,
+    "BITE"
+   ],
+   [
+    31,
+    "TAIL_WHIP"
+   ],
+   [
+    36,
+    "MEGA_PUNCH"
+   ],
+   [
+    41,
+    "LEER"
+   ],
+   [
+    46,
+    "DIZZY_PUNCH"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "EARTHQUAKE",
+   "FISSURE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 105,
+  "atk": 95,
+  "def": 80,
+  "spd": 90,
+  "spc": 40,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 45,
+  "base_exp": 175,
+  "moves": [
+   "COMET_PUNCH",
+   "RAGE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "NIDORAN_M": {
+  "internal_id": 3,
+  "dex": 32,
+  "name_en": "NIDORAN♂",
+  "name_ko": "니드런♂",
+  "pic": "mon_nidoranm",
+  "back": "monb_nidoranm",
+  "dex_entry": {
+   "species": "POISON PIN",
+   "height_ft": 1,
+   "height_in": 8,
+   "weight": 200,
+   "text": "_NidoranMDexEntry"
+  },
+  "learnset": [
+   [
+    8,
+    "HORN_ATTACK"
+   ],
+   [
+    14,
+    "POISON_STING"
+   ],
+   [
+    21,
+    "FOCUS_ENERGY"
+   ],
+   [
+    29,
+    "FURY_ATTACK"
+   ],
+   [
+    36,
+    "HORN_DRILL"
+   ],
+   [
+    43,
+    "DOUBLE_KICK"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 16,
+    "species": "NIDORINO"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BLIZZARD",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 46,
+  "atk": 57,
+  "def": 40,
+  "spd": 50,
+  "spc": 40,
+  "types": [
+   "POISON",
+   "POISON"
+  ],
+  "catch_rate": 235,
+  "base_exp": 60,
+  "moves": [
+   "LEER",
+   "TACKLE"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "CLEFAIRY": {
+  "internal_id": 4,
+  "dex": 35,
+  "name_en": "CLEFAIRY",
+  "name_ko": "삐삐",
+  "pic": "mon_clefairy",
+  "back": "monb_clefairy",
+  "dex_entry": {
+   "species": "FAIRY",
+   "height_ft": 2,
+   "height_in": 0,
+   "weight": 170,
+   "text": "_ClefairyDexEntry"
+  },
+  "learnset": [
+   [
+    13,
+    "SING"
+   ],
+   [
+    18,
+    "DOUBLESLAP"
+   ],
+   [
+    24,
+    "MINIMIZE"
+   ],
+   [
+    31,
+    "METRONOME"
+   ],
+   [
+    39,
+    "DEFENSE_CURL"
+   ],
+   [
+    48,
+    "LIGHT_SCREEN"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "MOON_STONE",
+    "species": "CLEFABLE"
+   }
+  ],
+  "icon": "ICON_FAIRY",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "SOLARBEAM",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "STRENGTH",
+   "FLASH"
+  ],
+  "hp": 70,
+  "atk": 45,
+  "def": 48,
+  "spd": 35,
+  "spc": 60,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 150,
+  "base_exp": 68,
+  "moves": [
+   "POUND",
+   "GROWL"
+  ],
+  "growth": "GROWTH_FAST"
+ },
+ "SPEAROW": {
+  "internal_id": 5,
+  "dex": 21,
+  "name_en": "SPEAROW",
+  "name_ko": "깨비참",
+  "pic": "mon_spearow",
+  "back": "monb_spearow",
+  "dex_entry": {
+   "species": "TINY BIRD",
+   "height_ft": 1,
+   "height_in": 0,
+   "weight": 40,
+   "text": "_SpearowDexEntry"
+  },
+  "learnset": [
+   [
+    9,
+    "LEER"
+   ],
+   [
+    15,
+    "FURY_ATTACK"
+   ],
+   [
+    22,
+    "MIRROR_MOVE"
+   ],
+   [
+    29,
+    "DRILL_PECK"
+   ],
+   [
+    36,
+    "AGILITY"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 20,
+    "species": "FEAROW"
+   }
+  ],
+  "icon": "ICON_BIRD",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKY_ATTACK",
+   "REST",
+   "SUBSTITUTE",
+   "FLY"
+  ],
+  "hp": 40,
+  "atk": 60,
+  "def": 30,
+  "spd": 70,
+  "spc": 31,
+  "types": [
+   "NORMAL",
+   "FLYING"
+  ],
+  "catch_rate": 255,
+  "base_exp": 58,
+  "moves": [
+   "PECK",
+   "GROWL"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "VOLTORB": {
+  "internal_id": 6,
+  "dex": 100,
+  "name_en": "VOLTORB",
+  "name_ko": "찌리리공",
+  "pic": "mon_voltorb",
+  "back": "monb_voltorb",
+  "dex_entry": {
+   "species": "BALL",
+   "height_ft": 1,
+   "height_in": 8,
+   "weight": 230,
+   "text": "_VoltorbDexEntry"
+  },
+  "learnset": [
+   [
+    17,
+    "SONICBOOM"
+   ],
+   [
+    22,
+    "SELFDESTRUCT"
+   ],
+   [
+    29,
+    "LIGHT_SCREEN"
+   ],
+   [
+    36,
+    "SWIFT"
+   ],
+   [
+    43,
+    "EXPLOSION"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 30,
+    "species": "ELECTRODE"
+   }
+  ],
+  "icon": "ICON_BALL",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SELFDESTRUCT",
+   "SWIFT",
+   "REST",
+   "THUNDER_WAVE",
+   "EXPLOSION",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 40,
+  "atk": 30,
+  "def": 50,
+  "spd": 100,
+  "spc": 55,
+  "types": [
+   "ELECTRIC",
+   "ELECTRIC"
+  ],
+  "catch_rate": 190,
+  "base_exp": 103,
+  "moves": [
+   "TACKLE",
+   "SCREECH"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "NIDOKING": {
+  "internal_id": 7,
+  "dex": 34,
+  "name_en": "NIDOKING",
+  "name_ko": "니드킹",
+  "pic": "mon_nidoking",
+  "back": "monb_nidoking",
+  "dex_entry": {
+   "species": "DRILL",
+   "height_ft": 4,
+   "height_in": 7,
+   "weight": 1370,
+   "text": "_NidokingDexEntry"
+  },
+  "learnset": [
+   [
+    8,
+    "HORN_ATTACK"
+   ],
+   [
+    14,
+    "POISON_STING"
+   ],
+   [
+    23,
+    "THRASH"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "PAY_DAY",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "EARTHQUAKE",
+   "FISSURE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 81,
+  "atk": 92,
+  "def": 77,
+  "spd": 85,
+  "spc": 75,
+  "types": [
+   "POISON",
+   "GROUND"
+  ],
+  "catch_rate": 45,
+  "base_exp": 195,
+  "moves": [
+   "TACKLE",
+   "HORN_ATTACK",
+   "POISON_STING",
+   "THRASH"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "SLOWBRO": {
+  "internal_id": 8,
+  "dex": 80,
+  "name_en": "SLOWBRO",
+  "name_ko": "야도란",
+  "pic": "mon_slowbro",
+  "back": "monb_slowbro",
+  "dex_entry": {
+   "species": "HERMITCRAB",
+   "height_ft": 5,
+   "height_in": 3,
+   "weight": 1730,
+   "text": "_SlowbroDexEntry"
+  },
+  "learnset": [
+   [
+    18,
+    "DISABLE"
+   ],
+   [
+    22,
+    "HEADBUTT"
+   ],
+   [
+    27,
+    "GROWL"
+   ],
+   [
+    33,
+    "WATER_GUN"
+   ],
+   [
+    37,
+    "WITHDRAW"
+   ],
+   [
+    44,
+    "AMNESIA"
+   ],
+   [
+    55,
+    "PSYCHIC_M"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "PAY_DAY",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH",
+   "FLASH"
+  ],
+  "hp": 95,
+  "atk": 75,
+  "def": 110,
+  "spd": 30,
+  "spc": 80,
+  "types": [
+   "WATER",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 75,
+  "base_exp": 164,
+  "moves": [
+   "CONFUSION",
+   "DISABLE",
+   "HEADBUTT"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "IVYSAUR": {
+  "internal_id": 9,
+  "dex": 2,
+  "name_en": "IVYSAUR",
+  "name_ko": "이상해풀",
+  "pic": "mon_ivysaur",
+  "back": "monb_ivysaur",
+  "dex_entry": {
+   "species": "SEED",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 290,
+   "text": "_IvysaurDexEntry"
+  },
+  "learnset": [
+   [
+    7,
+    "LEECH_SEED"
+   ],
+   [
+    13,
+    "VINE_WHIP"
+   ],
+   [
+    22,
+    "POISONPOWDER"
+   ],
+   [
+    30,
+    "RAZOR_LEAF"
+   ],
+   [
+    38,
+    "GROWTH"
+   ],
+   [
+    46,
+    "SLEEP_POWDER"
+   ],
+   [
+    54,
+    "SOLARBEAM"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 32,
+    "species": "VENUSAUR"
+   }
+  ],
+  "icon": "ICON_GRASS",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 60,
+  "atk": 62,
+  "def": 63,
+  "spd": 60,
+  "spc": 80,
+  "types": [
+   "GRASS",
+   "POISON"
+  ],
+  "catch_rate": 45,
+  "base_exp": 141,
+  "moves": [
+   "TACKLE",
+   "GROWL",
+   "LEECH_SEED"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "EXEGGUTOR": {
+  "internal_id": 10,
+  "dex": 103,
+  "name_en": "EXEGGUTOR",
+  "name_ko": "나시",
+  "pic": "mon_exeggutor",
+  "back": "monb_exeggutor",
+  "dex_entry": {
+   "species": "COCONUT",
+   "height_ft": 6,
+   "height_in": 7,
+   "weight": 2650,
+   "text": "_ExeggutorDexEntry"
+  },
+  "learnset": [
+   [
+    28,
+    "STOMP"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_GRASS",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SELFDESTRUCT",
+   "EGG_BOMB",
+   "REST",
+   "PSYWAVE",
+   "EXPLOSION",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 95,
+  "atk": 95,
+  "def": 85,
+  "spd": 55,
+  "spc": 125,
+  "types": [
+   "GRASS",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 45,
+  "base_exp": 212,
+  "moves": [
+   "BARRAGE",
+   "HYPNOSIS"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "LICKITUNG": {
+  "internal_id": 11,
+  "dex": 108,
+  "name_en": "LICKITUNG",
+  "name_ko": "내루미",
+  "pic": "mon_lickitung",
+  "back": "monb_lickitung",
+  "dex_entry": {
+   "species": "LICKING",
+   "height_ft": 3,
+   "height_in": 11,
+   "weight": 1440,
+   "text": "_LickitungDexEntry"
+  },
+  "learnset": [
+   [
+    7,
+    "STOMP"
+   ],
+   [
+    15,
+    "DISABLE"
+   ],
+   [
+    23,
+    "DEFENSE_CURL"
+   ],
+   [
+    31,
+    "SLAM"
+   ],
+   [
+    39,
+    "SCREECH"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "SWORDS_DANCE",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "EARTHQUAKE",
+   "FISSURE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "CUT",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 90,
+  "atk": 55,
+  "def": 75,
+  "spd": 30,
+  "spc": 60,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 45,
+  "base_exp": 127,
+  "moves": [
+   "WRAP",
+   "SUPERSONIC"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "EXEGGCUTE": {
+  "internal_id": 12,
+  "dex": 102,
+  "name_en": "EXEGGCUTE",
+  "name_ko": "아라리",
+  "pic": "mon_exeggcute",
+  "back": "monb_exeggcute",
+  "dex_entry": {
+   "species": "EGG",
+   "height_ft": 1,
+   "height_in": 4,
+   "weight": 60,
+   "text": "_ExeggcuteDexEntry"
+  },
+  "learnset": [
+   [
+    25,
+    "REFLECT"
+   ],
+   [
+    28,
+    "LEECH_SEED"
+   ],
+   [
+    32,
+    "STUN_SPORE"
+   ],
+   [
+    37,
+    "POISONPOWDER"
+   ],
+   [
+    42,
+    "SOLARBEAM"
+   ],
+   [
+    48,
+    "SLEEP_POWDER"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "LEAF_STONE",
+    "species": "EXEGGUTOR"
+   }
+  ],
+  "icon": "ICON_GRASS",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SELFDESTRUCT",
+   "EGG_BOMB",
+   "REST",
+   "PSYWAVE",
+   "EXPLOSION",
+   "SUBSTITUTE"
+  ],
+  "hp": 60,
+  "atk": 40,
+  "def": 80,
+  "spd": 40,
+  "spc": 60,
+  "types": [
+   "GRASS",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 90,
+  "base_exp": 98,
+  "moves": [
+   "BARRAGE",
+   "HYPNOSIS"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "GRIMER": {
+  "internal_id": 13,
+  "dex": 88,
+  "name_en": "GRIMER",
+  "name_ko": "질퍽이",
+  "pic": "mon_grimer",
+  "back": "monb_grimer",
+  "dex_entry": {
+   "species": "SLUDGE",
+   "height_ft": 2,
+   "height_in": 11,
+   "weight": 660,
+   "text": "_GrimerDexEntry"
+  },
+  "learnset": [
+   [
+    30,
+    "POISON_GAS"
+   ],
+   [
+    33,
+    "MINIMIZE"
+   ],
+   [
+    37,
+    "SLUDGE"
+   ],
+   [
+    42,
+    "HARDEN"
+   ],
+   [
+    48,
+    "SCREECH"
+   ],
+   [
+    55,
+    "ACID_ARMOR"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 38,
+    "species": "MUK"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SELFDESTRUCT",
+   "FIRE_BLAST",
+   "REST",
+   "EXPLOSION",
+   "SUBSTITUTE"
+  ],
+  "hp": 80,
+  "atk": 80,
+  "def": 50,
+  "spd": 25,
+  "spc": 40,
+  "types": [
+   "POISON",
+   "POISON"
+  ],
+  "catch_rate": 190,
+  "base_exp": 90,
+  "moves": [
+   "POUND",
+   "DISABLE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "GENGAR": {
+  "internal_id": 14,
+  "dex": 94,
+  "name_en": "GENGAR",
+  "name_ko": "팬텀",
+  "pic": "mon_gengar",
+  "back": "monb_gengar",
+  "dex_entry": {
+   "species": "SHADOW",
+   "height_ft": 4,
+   "height_in": 11,
+   "weight": 890,
+   "text": "_GengarDexEntry"
+  },
+  "learnset": [
+   [
+    29,
+    "HYPNOSIS"
+   ],
+   [
+    38,
+    "DREAM_EATER"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "MEGA_DRAIN",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "SELFDESTRUCT",
+   "SKULL_BASH",
+   "DREAM_EATER",
+   "REST",
+   "PSYWAVE",
+   "EXPLOSION",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 60,
+  "atk": 65,
+  "def": 60,
+  "spd": 110,
+  "spc": 130,
+  "types": [
+   "GHOST",
+   "POISON"
+  ],
+  "catch_rate": 45,
+  "base_exp": 190,
+  "moves": [
+   "LICK",
+   "CONFUSE_RAY",
+   "NIGHT_SHADE"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "NIDORAN_F": {
+  "internal_id": 15,
+  "dex": 29,
+  "name_en": "NIDORAN♀",
+  "name_ko": "니드런♀",
+  "pic": "mon_nidoranf",
+  "back": "monb_nidoranf",
+  "dex_entry": {
+   "species": "POISON PIN",
+   "height_ft": 1,
+   "height_in": 4,
+   "weight": 150,
+   "text": "_NidoranFDexEntry"
+  },
+  "learnset": [
+   [
+    8,
+    "SCRATCH"
+   ],
+   [
+    14,
+    "POISON_STING"
+   ],
+   [
+    21,
+    "TAIL_WHIP"
+   ],
+   [
+    29,
+    "BITE"
+   ],
+   [
+    36,
+    "FURY_SWIPES"
+   ],
+   [
+    43,
+    "DOUBLE_KICK"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 16,
+    "species": "NIDORINA"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BLIZZARD",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 55,
+  "atk": 47,
+  "def": 52,
+  "spd": 41,
+  "spc": 40,
+  "types": [
+   "POISON",
+   "POISON"
+  ],
+  "catch_rate": 235,
+  "base_exp": 59,
+  "moves": [
+   "GROWL",
+   "TACKLE"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "NIDOQUEEN": {
+  "internal_id": 16,
+  "dex": 31,
+  "name_en": "NIDOQUEEN",
+  "name_ko": "니드퀸",
+  "pic": "mon_nidoqueen",
+  "back": "monb_nidoqueen",
+  "dex_entry": {
+   "species": "DRILL",
+   "height_ft": 4,
+   "height_in": 3,
+   "weight": 1320,
+   "text": "_NidoqueenDexEntry"
+  },
+  "learnset": [
+   [
+    8,
+    "SCRATCH"
+   ],
+   [
+    14,
+    "POISON_STING"
+   ],
+   [
+    23,
+    "BODY_SLAM"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "PAY_DAY",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "EARTHQUAKE",
+   "FISSURE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 90,
+  "atk": 82,
+  "def": 87,
+  "spd": 76,
+  "spc": 75,
+  "types": [
+   "POISON",
+   "GROUND"
+  ],
+  "catch_rate": 45,
+  "base_exp": 194,
+  "moves": [
+   "TACKLE",
+   "SCRATCH",
+   "TAIL_WHIP",
+   "BODY_SLAM"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "CUBONE": {
+  "internal_id": 17,
+  "dex": 104,
+  "name_en": "CUBONE",
+  "name_ko": "탕구리",
+  "pic": "mon_cubone",
+  "back": "monb_cubone",
+  "dex_entry": {
+   "species": "LONELY",
+   "height_ft": 1,
+   "height_in": 4,
+   "weight": 140,
+   "text": "_CuboneDexEntry"
+  },
+  "learnset": [
+   [
+    25,
+    "LEER"
+   ],
+   [
+    31,
+    "FOCUS_ENERGY"
+   ],
+   [
+    38,
+    "THRASH"
+   ],
+   [
+    43,
+    "BONEMERANG"
+   ],
+   [
+    46,
+    "RAGE"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 28,
+    "species": "MAROWAK"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 50,
+  "atk": 50,
+  "def": 95,
+  "spd": 35,
+  "spc": 40,
+  "types": [
+   "GROUND",
+   "GROUND"
+  ],
+  "catch_rate": 190,
+  "base_exp": 87,
+  "moves": [
+   "BONE_CLUB",
+   "GROWL"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "RHYHORN": {
+  "internal_id": 18,
+  "dex": 111,
+  "name_en": "RHYHORN",
+  "name_ko": "뿔카노",
+  "pic": "mon_rhyhorn",
+  "back": "monb_rhyhorn",
+  "dex_entry": {
+   "species": "SPIKES",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 2540,
+   "text": "_RhyhornDexEntry"
+  },
+  "learnset": [
+   [
+    30,
+    "STOMP"
+   ],
+   [
+    35,
+    "TAIL_WHIP"
+   ],
+   [
+    40,
+    "FURY_ATTACK"
+   ],
+   [
+    45,
+    "HORN_DRILL"
+   ],
+   [
+    50,
+    "LEER"
+   ],
+   [
+    55,
+    "TAKE_DOWN"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 42,
+    "species": "RHYDON"
+   }
+  ],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 80,
+  "atk": 85,
+  "def": 95,
+  "spd": 25,
+  "spc": 30,
+  "types": [
+   "GROUND",
+   "ROCK"
+  ],
+  "catch_rate": 120,
+  "base_exp": 135,
+  "moves": [
+   "HORN_ATTACK"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "LAPRAS": {
+  "internal_id": 19,
+  "dex": 131,
+  "name_en": "LAPRAS",
+  "name_ko": "라프라스",
+  "pic": "mon_lapras",
+  "back": "monb_lapras",
+  "dex_entry": {
+   "species": "TRANSPORT",
+   "height_ft": 8,
+   "height_in": 2,
+   "weight": 4850,
+   "text": "_LaprasDexEntry"
+  },
+  "learnset": [
+   [
+    16,
+    "SING"
+   ],
+   [
+    20,
+    "MIST"
+   ],
+   [
+    25,
+    "BODY_SLAM"
+   ],
+   [
+    31,
+    "CONFUSE_RAY"
+   ],
+   [
+    38,
+    "ICE_BEAM"
+   ],
+   [
+    46,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "SOLARBEAM",
+   "DRAGON_RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "PSYWAVE",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 130,
+  "atk": 85,
+  "def": 80,
+  "spd": 60,
+  "spc": 95,
+  "types": [
+   "WATER",
+   "ICE"
+  ],
+  "catch_rate": 45,
+  "base_exp": 219,
+  "moves": [
+   "WATER_GUN",
+   "GROWL"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "ARCANINE": {
+  "internal_id": 20,
+  "dex": 59,
+  "name_en": "ARCANINE",
+  "name_ko": "윈디",
+  "pic": "mon_arcanine",
+  "back": "monb_arcanine",
+  "dex_entry": {
+   "species": "LEGENDARY",
+   "height_ft": 6,
+   "height_in": 3,
+   "weight": 3420,
+   "text": "_ArcanineDexEntry"
+  },
+  "learnset": [],
+  "evolutions": [],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "DRAGON_RAGE",
+   "DIG",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 90,
+  "atk": 110,
+  "def": 80,
+  "spd": 95,
+  "spc": 80,
+  "types": [
+   "FIRE",
+   "FIRE"
+  ],
+  "catch_rate": 75,
+  "base_exp": 213,
+  "moves": [
+   "ROAR",
+   "EMBER",
+   "LEER",
+   "TAKE_DOWN"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "MEW": {
+  "internal_id": 21,
+  "dex": 151,
+  "name_en": "MEW",
+  "name_ko": "뮤",
+  "pic": "mon_mew",
+  "back": "monb_mew",
+  "dex_entry": {
+   "species": "NEW SPECIE",
+   "height_ft": 1,
+   "height_in": 4,
+   "weight": 90,
+   "text": "_MewDexEntry"
+  },
+  "learnset": [
+   [
+    10,
+    "TRANSFORM"
+   ],
+   [
+    20,
+    "MEGA_PUNCH"
+   ],
+   [
+    30,
+    "METRONOME"
+   ],
+   [
+    40,
+    "PSYCHIC_M"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "RAZOR_WIND",
+   "SWORDS_DANCE",
+   "WHIRLWIND",
+   "MEGA_KICK",
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "PAY_DAY",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "DRAGON_RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "SELFDESTRUCT",
+   "EGG_BOMB",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "SOFTBOILED",
+   "DREAM_EATER",
+   "SKY_ATTACK",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "EXPLOSION",
+   "ROCK_SLIDE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "CUT",
+   "FLY",
+   "SURF",
+   "STRENGTH",
+   "FLASH",
+   "UNUSED"
+  ],
+  "hp": 100,
+  "atk": 100,
+  "def": 100,
+  "spd": 100,
+  "spc": 100,
+  "types": [
+   "PSYCHIC_TYPE",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 45,
+  "base_exp": 64,
+  "moves": [
+   "POUND"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "GYARADOS": {
+  "internal_id": 22,
+  "dex": 130,
+  "name_en": "GYARADOS",
+  "name_ko": "갸라도스",
+  "pic": "mon_gyarados",
+  "back": "monb_gyarados",
+  "dex_entry": {
+   "species": "ATROCIOUS",
+   "height_ft": 21,
+   "height_in": 4,
+   "weight": 5180,
+   "text": "_GyaradosDexEntry"
+  },
+  "learnset": [
+   [
+    20,
+    "BITE"
+   ],
+   [
+    25,
+    "DRAGON_RAGE"
+   ],
+   [
+    32,
+    "LEER"
+   ],
+   [
+    41,
+    "HYDRO_PUMP"
+   ],
+   [
+    52,
+    "HYPER_BEAM"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_SNAKE",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "DRAGON_RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 95,
+  "atk": 125,
+  "def": 79,
+  "spd": 81,
+  "spc": 100,
+  "types": [
+   "WATER",
+   "FLYING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 214,
+  "moves": [
+   "BITE",
+   "DRAGON_RAGE",
+   "LEER",
+   "HYDRO_PUMP"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "SHELLDER": {
+  "internal_id": 23,
+  "dex": 90,
+  "name_en": "SHELLDER",
+  "name_ko": "셀러",
+  "pic": "mon_shellder",
+  "back": "monb_shellder",
+  "dex_entry": {
+   "species": "BIVALVE",
+   "height_ft": 1,
+   "height_in": 0,
+   "weight": 90,
+   "text": "_ShellderDexEntry"
+  },
+  "learnset": [
+   [
+    18,
+    "SUPERSONIC"
+   ],
+   [
+    23,
+    "CLAMP"
+   ],
+   [
+    30,
+    "AURORA_BEAM"
+   ],
+   [
+    39,
+    "LEER"
+   ],
+   [
+    50,
+    "ICE_BEAM"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "WATER_STONE",
+    "species": "CLOYSTER"
+   }
+  ],
+  "icon": "ICON_HELIX",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SELFDESTRUCT",
+   "SWIFT",
+   "REST",
+   "EXPLOSION",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 30,
+  "atk": 65,
+  "def": 100,
+  "spd": 40,
+  "spc": 45,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 190,
+  "base_exp": 97,
+  "moves": [
+   "TACKLE",
+   "WITHDRAW"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "TENTACOOL": {
+  "internal_id": 24,
+  "dex": 72,
+  "name_en": "TENTACOOL",
+  "name_ko": "왕눈해",
+  "pic": "mon_tentacool",
+  "back": "monb_tentacool",
+  "dex_entry": {
+   "species": "JELLYFISH",
+   "height_ft": 2,
+   "height_in": 11,
+   "weight": 1000,
+   "text": "_TentacoolDexEntry"
+  },
+  "learnset": [
+   [
+    7,
+    "SUPERSONIC"
+   ],
+   [
+    13,
+    "WRAP"
+   ],
+   [
+    18,
+    "POISON_STING"
+   ],
+   [
+    22,
+    "WATER_GUN"
+   ],
+   [
+    27,
+    "CONSTRICT"
+   ],
+   [
+    33,
+    "BARRIER"
+   ],
+   [
+    40,
+    "SCREECH"
+   ],
+   [
+    48,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 30,
+    "species": "TENTACRUEL"
+   }
+  ],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "MEGA_DRAIN",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "CUT",
+   "SURF"
+  ],
+  "hp": 40,
+  "atk": 40,
+  "def": 35,
+  "spd": 70,
+  "spc": 100,
+  "types": [
+   "WATER",
+   "POISON"
+  ],
+  "catch_rate": 190,
+  "base_exp": 105,
+  "moves": [
+   "ACID"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "GASTLY": {
+  "internal_id": 25,
+  "dex": 92,
+  "name_en": "GASTLY",
+  "name_ko": "고오스",
+  "pic": "mon_gastly",
+  "back": "monb_gastly",
+  "dex_entry": {
+   "species": "GAS",
+   "height_ft": 4,
+   "height_in": 3,
+   "weight": 2,
+   "text": "_GastlyDexEntry"
+  },
+  "learnset": [
+   [
+    27,
+    "HYPNOSIS"
+   ],
+   [
+    35,
+    "DREAM_EATER"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 25,
+    "species": "HAUNTER"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "RAGE",
+   "MEGA_DRAIN",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SELFDESTRUCT",
+   "DREAM_EATER",
+   "REST",
+   "PSYWAVE",
+   "EXPLOSION",
+   "SUBSTITUTE"
+  ],
+  "hp": 30,
+  "atk": 35,
+  "def": 30,
+  "spd": 80,
+  "spc": 100,
+  "types": [
+   "GHOST",
+   "POISON"
+  ],
+  "catch_rate": 190,
+  "base_exp": 95,
+  "moves": [
+   "LICK",
+   "CONFUSE_RAY",
+   "NIGHT_SHADE"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "SCYTHER": {
+  "internal_id": 26,
+  "dex": 123,
+  "name_en": "SCYTHER",
+  "name_ko": "스라크",
+  "pic": "mon_scyther",
+  "back": "monb_scyther",
+  "dex_entry": {
+   "species": "MANTIS",
+   "height_ft": 4,
+   "height_in": 11,
+   "weight": 1230,
+   "text": "_ScytherDexEntry"
+  },
+  "learnset": [
+   [
+    17,
+    "LEER"
+   ],
+   [
+    20,
+    "FOCUS_ENERGY"
+   ],
+   [
+    24,
+    "DOUBLE_TEAM"
+   ],
+   [
+    29,
+    "SLASH"
+   ],
+   [
+    35,
+    "SWORDS_DANCE"
+   ],
+   [
+    42,
+    "AGILITY"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BUG",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 70,
+  "atk": 110,
+  "def": 80,
+  "spd": 105,
+  "spc": 55,
+  "types": [
+   "BUG",
+   "FLYING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 187,
+  "moves": [
+   "QUICK_ATTACK"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "STARYU": {
+  "internal_id": 27,
+  "dex": 120,
+  "name_en": "STARYU",
+  "name_ko": "별가사리",
+  "pic": "mon_staryu",
+  "back": "monb_staryu",
+  "dex_entry": {
+   "species": "STARSHAPE",
+   "height_ft": 2,
+   "height_in": 7,
+   "weight": 760,
+   "text": "_StaryuDexEntry"
+  },
+  "learnset": [
+   [
+    17,
+    "WATER_GUN"
+   ],
+   [
+    22,
+    "HARDEN"
+   ],
+   [
+    27,
+    "RECOVER"
+   ],
+   [
+    32,
+    "SWIFT"
+   ],
+   [
+    37,
+    "MINIMIZE"
+   ],
+   [
+    42,
+    "LIGHT_SCREEN"
+   ],
+   [
+    47,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "WATER_STONE",
+    "species": "STARMIE"
+   }
+  ],
+  "icon": "ICON_HELIX",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "SURF",
+   "FLASH"
+  ],
+  "hp": 30,
+  "atk": 45,
+  "def": 55,
+  "spd": 85,
+  "spc": 70,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 225,
+  "base_exp": 106,
+  "moves": [
+   "TACKLE"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "BLASTOISE": {
+  "internal_id": 28,
+  "dex": 9,
+  "name_en": "BLASTOISE",
+  "name_ko": "거북왕",
+  "pic": "mon_blastoise",
+  "back": "monb_blastoise",
+  "dex_entry": {
+   "species": "SHELLFISH",
+   "height_ft": 5,
+   "height_in": 3,
+   "weight": 1890,
+   "text": "_BlastoiseDexEntry"
+  },
+  "learnset": [
+   [
+    8,
+    "BUBBLE"
+   ],
+   [
+    15,
+    "WATER_GUN"
+   ],
+   [
+    24,
+    "BITE"
+   ],
+   [
+    31,
+    "WITHDRAW"
+   ],
+   [
+    42,
+    "SKULL_BASH"
+   ],
+   [
+    52,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 79,
+  "atk": 83,
+  "def": 100,
+  "spd": 78,
+  "spc": 85,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 45,
+  "base_exp": 210,
+  "moves": [
+   "TACKLE",
+   "TAIL_WHIP",
+   "BUBBLE",
+   "WATER_GUN"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "PINSIR": {
+  "internal_id": 29,
+  "dex": 127,
+  "name_en": "PINSIR",
+  "name_ko": "쁘사이저",
+  "pic": "mon_pinsir",
+  "back": "monb_pinsir",
+  "dex_entry": {
+   "species": "STAGBEETLE",
+   "height_ft": 4,
+   "height_in": 11,
+   "weight": 1210,
+   "text": "_PinsirDexEntry"
+  },
+  "learnset": [
+   [
+    25,
+    "SEISMIC_TOSS"
+   ],
+   [
+    30,
+    "GUILLOTINE"
+   ],
+   [
+    36,
+    "FOCUS_ENERGY"
+   ],
+   [
+    43,
+    "HARDEN"
+   ],
+   [
+    49,
+    "SLASH"
+   ],
+   [
+    54,
+    "SWORDS_DANCE"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BUG",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "CUT",
+   "STRENGTH"
+  ],
+  "hp": 65,
+  "atk": 125,
+  "def": 100,
+  "spd": 85,
+  "spc": 55,
+  "types": [
+   "BUG",
+   "BUG"
+  ],
+  "catch_rate": 45,
+  "base_exp": 200,
+  "moves": [
+   "VICEGRIP"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "TANGELA": {
+  "internal_id": 30,
+  "dex": 114,
+  "name_en": "TANGELA",
+  "name_ko": "덩쿠리",
+  "pic": "mon_tangela",
+  "back": "monb_tangela",
+  "dex_entry": {
+   "species": "VINE",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 770,
+   "text": "_TangelaDexEntry"
+  },
+  "learnset": [
+   [
+    29,
+    "ABSORB"
+   ],
+   [
+    32,
+    "POISONPOWDER"
+   ],
+   [
+    36,
+    "STUN_SPORE"
+   ],
+   [
+    39,
+    "SLEEP_POWDER"
+   ],
+   [
+    45,
+    "SLAM"
+   ],
+   [
+    49,
+    "GROWTH"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_GRASS",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 65,
+  "atk": 55,
+  "def": 115,
+  "spd": 60,
+  "spc": 100,
+  "types": [
+   "GRASS",
+   "GRASS"
+  ],
+  "catch_rate": 45,
+  "base_exp": 166,
+  "moves": [
+   "CONSTRICT",
+   "BIND"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "GROWLITHE": {
+  "internal_id": 33,
+  "dex": 58,
+  "name_en": "GROWLITHE",
+  "name_ko": "가디",
+  "pic": "mon_growlithe",
+  "back": "monb_growlithe",
+  "dex_entry": {
+   "species": "PUPPY",
+   "height_ft": 2,
+   "height_in": 4,
+   "weight": 420,
+   "text": "_GrowlitheDexEntry"
+  },
+  "learnset": [
+   [
+    18,
+    "EMBER"
+   ],
+   [
+    23,
+    "LEER"
+   ],
+   [
+    30,
+    "TAKE_DOWN"
+   ],
+   [
+    39,
+    "AGILITY"
+   ],
+   [
+    50,
+    "FLAMETHROWER"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "FIRE_STONE",
+    "species": "ARCANINE"
+   }
+  ],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "DRAGON_RAGE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 55,
+  "atk": 70,
+  "def": 45,
+  "spd": 60,
+  "spc": 50,
+  "types": [
+   "FIRE",
+   "FIRE"
+  ],
+  "catch_rate": 190,
+  "base_exp": 91,
+  "moves": [
+   "BITE",
+   "ROAR"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "ONIX": {
+  "internal_id": 34,
+  "dex": 95,
+  "name_en": "ONIX",
+  "name_ko": "롱스톤",
+  "pic": "mon_onix",
+  "back": "monb_onix",
+  "dex_entry": {
+   "species": "ROCK SNAKE",
+   "height_ft": 28,
+   "height_in": 10,
+   "weight": 4630,
+   "text": "_OnixDexEntry"
+  },
+  "learnset": [
+   [
+    15,
+    "BIND"
+   ],
+   [
+    19,
+    "ROCK_THROW"
+   ],
+   [
+    25,
+    "RAGE"
+   ],
+   [
+    33,
+    "SLAM"
+   ],
+   [
+    43,
+    "HARDEN"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_SNAKE",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SELFDESTRUCT",
+   "SKULL_BASH",
+   "REST",
+   "EXPLOSION",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 35,
+  "atk": 45,
+  "def": 160,
+  "spd": 70,
+  "spc": 30,
+  "types": [
+   "ROCK",
+   "GROUND"
+  ],
+  "catch_rate": 45,
+  "base_exp": 108,
+  "moves": [
+   "TACKLE",
+   "SCREECH"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "FEAROW": {
+  "internal_id": 35,
+  "dex": 22,
+  "name_en": "FEAROW",
+  "name_ko": "깨비드릴조",
+  "pic": "mon_fearow",
+  "back": "monb_fearow",
+  "dex_entry": {
+   "species": "BEAK",
+   "height_ft": 3,
+   "height_in": 11,
+   "weight": 840,
+   "text": "_FearowDexEntry"
+  },
+  "learnset": [
+   [
+    9,
+    "LEER"
+   ],
+   [
+    15,
+    "FURY_ATTACK"
+   ],
+   [
+    25,
+    "MIRROR_MOVE"
+   ],
+   [
+    34,
+    "DRILL_PECK"
+   ],
+   [
+    43,
+    "AGILITY"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BIRD",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKY_ATTACK",
+   "REST",
+   "SUBSTITUTE",
+   "FLY"
+  ],
+  "hp": 65,
+  "atk": 90,
+  "def": 65,
+  "spd": 100,
+  "spc": 61,
+  "types": [
+   "NORMAL",
+   "FLYING"
+  ],
+  "catch_rate": 90,
+  "base_exp": 162,
+  "moves": [
+   "PECK",
+   "GROWL",
+   "LEER"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "PIDGEY": {
+  "internal_id": 36,
+  "dex": 16,
+  "name_en": "PIDGEY",
+  "name_ko": "구구",
+  "pic": "mon_pidgey",
+  "back": "monb_pidgey",
+  "dex_entry": {
+   "species": "TINY BIRD",
+   "height_ft": 1,
+   "height_in": 0,
+   "weight": 40,
+   "text": "_PidgeyDexEntry"
+  },
+  "learnset": [
+   [
+    5,
+    "SAND_ATTACK"
+   ],
+   [
+    12,
+    "QUICK_ATTACK"
+   ],
+   [
+    19,
+    "WHIRLWIND"
+   ],
+   [
+    28,
+    "WING_ATTACK"
+   ],
+   [
+    36,
+    "AGILITY"
+   ],
+   [
+    44,
+    "MIRROR_MOVE"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 18,
+    "species": "PIDGEOTTO"
+   }
+  ],
+  "icon": "ICON_BIRD",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKY_ATTACK",
+   "REST",
+   "SUBSTITUTE",
+   "FLY"
+  ],
+  "hp": 40,
+  "atk": 45,
+  "def": 40,
+  "spd": 56,
+  "spc": 35,
+  "types": [
+   "NORMAL",
+   "FLYING"
+  ],
+  "catch_rate": 255,
+  "base_exp": 55,
+  "moves": [
+   "GUST"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "SLOWPOKE": {
+  "internal_id": 37,
+  "dex": 79,
+  "name_en": "SLOWPOKE",
+  "name_ko": "야돈",
+  "pic": "mon_slowpoke",
+  "back": "monb_slowpoke",
+  "dex_entry": {
+   "species": "DOPEY",
+   "height_ft": 3,
+   "height_in": 11,
+   "weight": 790,
+   "text": "_SlowpokeDexEntry"
+  },
+  "learnset": [
+   [
+    18,
+    "DISABLE"
+   ],
+   [
+    22,
+    "HEADBUTT"
+   ],
+   [
+    27,
+    "GROWL"
+   ],
+   [
+    33,
+    "WATER_GUN"
+   ],
+   [
+    40,
+    "AMNESIA"
+   ],
+   [
+    48,
+    "PSYCHIC_M"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 37,
+    "species": "SLOWBRO"
+   }
+  ],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "PAY_DAY",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH",
+   "FLASH"
+  ],
+  "hp": 90,
+  "atk": 65,
+  "def": 65,
+  "spd": 15,
+  "spc": 40,
+  "types": [
+   "WATER",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 190,
+  "base_exp": 99,
+  "moves": [
+   "CONFUSION"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "KADABRA": {
+  "internal_id": 38,
+  "dex": 64,
+  "name_en": "KADABRA",
+  "name_ko": "윤겔라",
+  "pic": "mon_kadabra",
+  "back": "monb_kadabra",
+  "dex_entry": {
+   "species": "PSI",
+   "height_ft": 4,
+   "height_in": 3,
+   "weight": 1250,
+   "text": "_KadabraDexEntry"
+  },
+  "learnset": [
+   [
+    16,
+    "CONFUSION"
+   ],
+   [
+    20,
+    "DISABLE"
+   ],
+   [
+    27,
+    "PSYBEAM"
+   ],
+   [
+    31,
+    "RECOVER"
+   ],
+   [
+    38,
+    "PSYCHIC_M"
+   ],
+   [
+    42,
+    "REFLECT"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "TRADE",
+    "species": "ALAKAZAM"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "DIG",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 40,
+  "atk": 35,
+  "def": 30,
+  "spd": 105,
+  "spc": 120,
+  "types": [
+   "PSYCHIC_TYPE",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 100,
+  "base_exp": 145,
+  "moves": [
+   "TELEPORT",
+   "CONFUSION",
+   "DISABLE"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "GRAVELER": {
+  "internal_id": 39,
+  "dex": 75,
+  "name_en": "GRAVELER",
+  "name_ko": "데구리",
+  "pic": "mon_graveler",
+  "back": "monb_graveler",
+  "dex_entry": {
+   "species": "ROCK",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 2320,
+   "text": "_GravelerDexEntry"
+  },
+  "learnset": [
+   [
+    11,
+    "DEFENSE_CURL"
+   ],
+   [
+    16,
+    "ROCK_THROW"
+   ],
+   [
+    21,
+    "SELFDESTRUCT"
+   ],
+   [
+    29,
+    "HARDEN"
+   ],
+   [
+    36,
+    "EARTHQUAKE"
+   ],
+   [
+    43,
+    "EXPLOSION"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "TRADE",
+    "species": "GOLEM"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "SELFDESTRUCT",
+   "FIRE_BLAST",
+   "REST",
+   "EXPLOSION",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 55,
+  "atk": 95,
+  "def": 115,
+  "spd": 35,
+  "spc": 45,
+  "types": [
+   "ROCK",
+   "GROUND"
+  ],
+  "catch_rate": 120,
+  "base_exp": 134,
+  "moves": [
+   "TACKLE",
+   "DEFENSE_CURL"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "CHANSEY": {
+  "internal_id": 40,
+  "dex": 113,
+  "name_en": "CHANSEY",
+  "name_ko": "럭키",
+  "pic": "mon_chansey",
+  "back": "monb_chansey",
+  "dex_entry": {
+   "species": "EGG",
+   "height_ft": 3,
+   "height_in": 7,
+   "weight": 760,
+   "text": "_ChanseyDexEntry"
+  },
+  "learnset": [
+   [
+    24,
+    "SING"
+   ],
+   [
+    30,
+    "GROWL"
+   ],
+   [
+    38,
+    "MINIMIZE"
+   ],
+   [
+    44,
+    "DEFENSE_CURL"
+   ],
+   [
+    48,
+    "LIGHT_SCREEN"
+   ],
+   [
+    54,
+    "DOUBLE_EDGE"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_FAIRY",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "SOLARBEAM",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "EGG_BOMB",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "SOFTBOILED",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "STRENGTH",
+   "FLASH"
+  ],
+  "hp": 250,
+  "atk": 5,
+  "def": 5,
+  "spd": 50,
+  "spc": 105,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 30,
+  "base_exp": 255,
+  "moves": [
+   "POUND",
+   "DOUBLESLAP"
+  ],
+  "growth": "GROWTH_FAST"
+ },
+ "MACHOKE": {
+  "internal_id": 41,
+  "dex": 67,
+  "name_en": "MACHOKE",
+  "name_ko": "근육몬",
+  "pic": "mon_machoke",
+  "back": "monb_machoke",
+  "dex_entry": {
+   "species": "SUPERPOWER",
+   "height_ft": 4,
+   "height_in": 11,
+   "weight": 1550,
+   "text": "_MachokeDexEntry"
+  },
+  "learnset": [
+   [
+    20,
+    "LOW_KICK"
+   ],
+   [
+    25,
+    "LEER"
+   ],
+   [
+    36,
+    "FOCUS_ENERGY"
+   ],
+   [
+    44,
+    "SEISMIC_TOSS"
+   ],
+   [
+    52,
+    "SUBMISSION"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "TRADE",
+    "species": "MACHAMP"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 80,
+  "atk": 100,
+  "def": 70,
+  "spd": 45,
+  "spc": 50,
+  "types": [
+   "FIGHTING",
+   "FIGHTING"
+  ],
+  "catch_rate": 90,
+  "base_exp": 146,
+  "moves": [
+   "KARATE_CHOP",
+   "LOW_KICK",
+   "LEER"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "MR_MIME": {
+  "internal_id": 42,
+  "dex": 122,
+  "name_en": "MR.MIME",
+  "name_ko": "마임맨",
+  "pic": "mon_mr.mime",
+  "back": "monb_mr.mime",
+  "dex_entry": {
+   "species": "BARRIER",
+   "height_ft": 4,
+   "height_in": 3,
+   "weight": 1200,
+   "text": "_MrMimeDexEntry"
+  },
+  "learnset": [
+   [
+    15,
+    "CONFUSION"
+   ],
+   [
+    23,
+    "LIGHT_SCREEN"
+   ],
+   [
+    31,
+    "DOUBLESLAP"
+   ],
+   [
+    39,
+    "MEDITATE"
+   ],
+   [
+    47,
+    "SUBSTITUTE"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "SOLARBEAM",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 40,
+  "atk": 45,
+  "def": 65,
+  "spd": 90,
+  "spc": 100,
+  "types": [
+   "PSYCHIC_TYPE",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 45,
+  "base_exp": 136,
+  "moves": [
+   "CONFUSION",
+   "BARRIER"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "HITMONLEE": {
+  "internal_id": 43,
+  "dex": 106,
+  "name_en": "HITMONLEE",
+  "name_ko": "시라소몬",
+  "pic": "mon_hitmonlee",
+  "back": "monb_hitmonlee",
+  "dex_entry": {
+   "species": "KICKING",
+   "height_ft": 4,
+   "height_in": 11,
+   "weight": 1100,
+   "text": "_HitmonleeDexEntry"
+  },
+  "learnset": [
+   [
+    33,
+    "ROLLING_KICK"
+   ],
+   [
+    38,
+    "JUMP_KICK"
+   ],
+   [
+    43,
+    "FOCUS_ENERGY"
+   ],
+   [
+    48,
+    "HI_JUMP_KICK"
+   ],
+   [
+    53,
+    "MEGA_KICK"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 50,
+  "atk": 120,
+  "def": 53,
+  "spd": 87,
+  "spc": 35,
+  "types": [
+   "FIGHTING",
+   "FIGHTING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 139,
+  "moves": [
+   "DOUBLE_KICK",
+   "MEDITATE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "HITMONCHAN": {
+  "internal_id": 44,
+  "dex": 107,
+  "name_en": "HITMONCHAN",
+  "name_ko": "홍수몬",
+  "pic": "mon_hitmonchan",
+  "back": "monb_hitmonchan",
+  "dex_entry": {
+   "species": "PUNCHING",
+   "height_ft": 4,
+   "height_in": 7,
+   "weight": 1110,
+   "text": "_HitmonchanDexEntry"
+  },
+  "learnset": [
+   [
+    33,
+    "FIRE_PUNCH"
+   ],
+   [
+    38,
+    "ICE_PUNCH"
+   ],
+   [
+    43,
+    "THUNDERPUNCH"
+   ],
+   [
+    48,
+    "MEGA_PUNCH"
+   ],
+   [
+    53,
+    "COUNTER"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 50,
+  "atk": 105,
+  "def": 79,
+  "spd": 76,
+  "spc": 35,
+  "types": [
+   "FIGHTING",
+   "FIGHTING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 140,
+  "moves": [
+   "COMET_PUNCH",
+   "AGILITY"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "ARBOK": {
+  "internal_id": 45,
+  "dex": 24,
+  "name_en": "ARBOK",
+  "name_ko": "아보크",
+  "pic": "mon_arbok",
+  "back": "monb_arbok",
+  "dex_entry": {
+   "species": "COBRA",
+   "height_ft": 11,
+   "height_in": 6,
+   "weight": 1430,
+   "text": "_ArbokDexEntry"
+  },
+  "learnset": [
+   [
+    10,
+    "POISON_STING"
+   ],
+   [
+    17,
+    "BITE"
+   ],
+   [
+    27,
+    "GLARE"
+   ],
+   [
+    36,
+    "SCREECH"
+   ],
+   [
+    47,
+    "ACID"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_SNAKE",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 60,
+  "atk": 85,
+  "def": 69,
+  "spd": 80,
+  "spc": 65,
+  "types": [
+   "POISON",
+   "POISON"
+  ],
+  "catch_rate": 90,
+  "base_exp": 147,
+  "moves": [
+   "WRAP",
+   "LEER",
+   "POISON_STING"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "PARASECT": {
+  "internal_id": 46,
+  "dex": 47,
+  "name_en": "PARASECT",
+  "name_ko": "파라섹트",
+  "pic": "mon_parasect",
+  "back": "monb_parasect",
+  "dex_entry": {
+   "species": "MUSHROOM",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 650,
+   "text": "_ParasectDexEntry"
+  },
+  "learnset": [
+   [
+    13,
+    "STUN_SPORE"
+   ],
+   [
+    20,
+    "LEECH_LIFE"
+   ],
+   [
+    30,
+    "SPORE"
+   ],
+   [
+    39,
+    "SLASH"
+   ],
+   [
+    48,
+    "GROWTH"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BUG",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 60,
+  "atk": 95,
+  "def": 80,
+  "spd": 30,
+  "spc": 80,
+  "types": [
+   "BUG",
+   "GRASS"
+  ],
+  "catch_rate": 75,
+  "base_exp": 128,
+  "moves": [
+   "SCRATCH",
+   "STUN_SPORE",
+   "LEECH_LIFE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "PSYDUCK": {
+  "internal_id": 47,
+  "dex": 54,
+  "name_en": "PSYDUCK",
+  "name_ko": "고라파덕",
+  "pic": "mon_psyduck",
+  "back": "monb_psyduck",
+  "dex_entry": {
+   "species": "DUCK",
+   "height_ft": 2,
+   "height_in": 7,
+   "weight": 430,
+   "text": "_PsyduckDexEntry"
+  },
+  "learnset": [
+   [
+    28,
+    "TAIL_WHIP"
+   ],
+   [
+    31,
+    "DISABLE"
+   ],
+   [
+    36,
+    "CONFUSION"
+   ],
+   [
+    43,
+    "FURY_SWIPES"
+   ],
+   [
+    52,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 33,
+    "species": "GOLDUCK"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "PAY_DAY",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 50,
+  "atk": 52,
+  "def": 48,
+  "spd": 55,
+  "spc": 50,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 190,
+  "base_exp": 80,
+  "moves": [
+   "SCRATCH"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "DROWZEE": {
+  "internal_id": 48,
+  "dex": 96,
+  "name_en": "DROWZEE",
+  "name_ko": "슬리프",
+  "pic": "mon_drowzee",
+  "back": "monb_drowzee",
+  "dex_entry": {
+   "species": "HYPNOSIS",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 710,
+   "text": "_DrowzeeDexEntry"
+  },
+  "learnset": [
+   [
+    12,
+    "DISABLE"
+   ],
+   [
+    17,
+    "CONFUSION"
+   ],
+   [
+    24,
+    "HEADBUTT"
+   ],
+   [
+    29,
+    "POISON_GAS"
+   ],
+   [
+    32,
+    "PSYCHIC_M"
+   ],
+   [
+    37,
+    "MEDITATE"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 26,
+    "species": "HYPNO"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "SKULL_BASH",
+   "DREAM_EATER",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 60,
+  "atk": 48,
+  "def": 45,
+  "spd": 42,
+  "spc": 90,
+  "types": [
+   "PSYCHIC_TYPE",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 190,
+  "base_exp": 102,
+  "moves": [
+   "POUND",
+   "HYPNOSIS"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "GOLEM": {
+  "internal_id": 49,
+  "dex": 76,
+  "name_en": "GOLEM",
+  "name_ko": "딱구리",
+  "pic": "mon_golem",
+  "back": "monb_golem",
+  "dex_entry": {
+   "species": "MEGATON",
+   "height_ft": 4,
+   "height_in": 7,
+   "weight": 6620,
+   "text": "_GolemDexEntry"
+  },
+  "learnset": [
+   [
+    11,
+    "DEFENSE_CURL"
+   ],
+   [
+    16,
+    "ROCK_THROW"
+   ],
+   [
+    21,
+    "SELFDESTRUCT"
+   ],
+   [
+    29,
+    "HARDEN"
+   ],
+   [
+    36,
+    "EARTHQUAKE"
+   ],
+   [
+    43,
+    "EXPLOSION"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "SELFDESTRUCT",
+   "FIRE_BLAST",
+   "REST",
+   "EXPLOSION",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 80,
+  "atk": 110,
+  "def": 130,
+  "spd": 45,
+  "spc": 55,
+  "types": [
+   "ROCK",
+   "GROUND"
+  ],
+  "catch_rate": 45,
+  "base_exp": 177,
+  "moves": [
+   "TACKLE",
+   "DEFENSE_CURL"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "MAGMAR": {
+  "internal_id": 51,
+  "dex": 126,
+  "name_en": "MAGMAR",
+  "name_ko": "마그마",
+  "pic": "mon_magmar",
+  "back": "monb_magmar",
+  "dex_entry": {
+   "species": "SPITFIRE",
+   "height_ft": 4,
+   "height_in": 3,
+   "weight": 980,
+   "text": "_MagmarDexEntry"
+  },
+  "learnset": [
+   [
+    36,
+    "LEER"
+   ],
+   [
+    39,
+    "CONFUSE_RAY"
+   ],
+   [
+    43,
+    "FIRE_PUNCH"
+   ],
+   [
+    48,
+    "SMOKESCREEN"
+   ],
+   [
+    52,
+    "SMOG"
+   ],
+   [
+    55,
+    "FLAMETHROWER"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "PSYWAVE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 65,
+  "atk": 95,
+  "def": 57,
+  "spd": 93,
+  "spc": 85,
+  "types": [
+   "FIRE",
+   "FIRE"
+  ],
+  "catch_rate": 45,
+  "base_exp": 167,
+  "moves": [
+   "EMBER"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "ELECTABUZZ": {
+  "internal_id": 53,
+  "dex": 125,
+  "name_en": "ELECTABUZZ",
+  "name_ko": "에레브",
+  "pic": "mon_electabuzz",
+  "back": "monb_electabuzz",
+  "dex_entry": {
+   "species": "ELECTRIC",
+   "height_ft": 3,
+   "height_in": 7,
+   "weight": 660,
+   "text": "_ElectabuzzDexEntry"
+  },
+  "learnset": [
+   [
+    34,
+    "THUNDERSHOCK"
+   ],
+   [
+    37,
+    "SCREECH"
+   ],
+   [
+    42,
+    "THUNDERPUNCH"
+   ],
+   [
+    49,
+    "LIGHT_SCREEN"
+   ],
+   [
+    54,
+    "THUNDER"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "SUBSTITUTE",
+   "STRENGTH",
+   "FLASH"
+  ],
+  "hp": 65,
+  "atk": 83,
+  "def": 57,
+  "spd": 105,
+  "spc": 85,
+  "types": [
+   "ELECTRIC",
+   "ELECTRIC"
+  ],
+  "catch_rate": 45,
+  "base_exp": 156,
+  "moves": [
+   "QUICK_ATTACK",
+   "LEER"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "MAGNETON": {
+  "internal_id": 54,
+  "dex": 82,
+  "name_en": "MAGNETON",
+  "name_ko": "레어코일",
+  "pic": "mon_magneton",
+  "back": "monb_magneton",
+  "dex_entry": {
+   "species": "MAGNET",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 1320,
+   "text": "_MagnetonDexEntry"
+  },
+  "learnset": [
+   [
+    21,
+    "SONICBOOM"
+   ],
+   [
+    25,
+    "THUNDERSHOCK"
+   ],
+   [
+    29,
+    "SUPERSONIC"
+   ],
+   [
+    38,
+    "THUNDER_WAVE"
+   ],
+   [
+    46,
+    "SWIFT"
+   ],
+   [
+    54,
+    "SCREECH"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BALL",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "REST",
+   "THUNDER_WAVE",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 50,
+  "atk": 60,
+  "def": 95,
+  "spd": 70,
+  "spc": 120,
+  "types": [
+   "ELECTRIC",
+   "ELECTRIC"
+  ],
+  "catch_rate": 60,
+  "base_exp": 161,
+  "moves": [
+   "TACKLE",
+   "SONICBOOM",
+   "THUNDERSHOCK"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "KOFFING": {
+  "internal_id": 55,
+  "dex": 109,
+  "name_en": "KOFFING",
+  "name_ko": "또가스",
+  "pic": "mon_koffing",
+  "back": "monb_koffing",
+  "dex_entry": {
+   "species": "POISON GAS",
+   "height_ft": 2,
+   "height_in": 0,
+   "weight": 20,
+   "text": "_KoffingDexEntry"
+  },
+  "learnset": [
+   [
+    32,
+    "SLUDGE"
+   ],
+   [
+    37,
+    "SMOKESCREEN"
+   ],
+   [
+    40,
+    "SELFDESTRUCT"
+   ],
+   [
+    45,
+    "HAZE"
+   ],
+   [
+    48,
+    "EXPLOSION"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 35,
+    "species": "WEEZING"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SELFDESTRUCT",
+   "FIRE_BLAST",
+   "REST",
+   "EXPLOSION",
+   "SUBSTITUTE"
+  ],
+  "hp": 40,
+  "atk": 65,
+  "def": 95,
+  "spd": 35,
+  "spc": 60,
+  "types": [
+   "POISON",
+   "POISON"
+  ],
+  "catch_rate": 190,
+  "base_exp": 114,
+  "moves": [
+   "TACKLE",
+   "SMOG"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "MANKEY": {
+  "internal_id": 57,
+  "dex": 56,
+  "name_en": "MANKEY",
+  "name_ko": "망키",
+  "pic": "mon_mankey",
+  "back": "monb_mankey",
+  "dex_entry": {
+   "species": "PIG MONKEY",
+   "height_ft": 1,
+   "height_in": 8,
+   "weight": 620,
+   "text": "_MankeyDexEntry"
+  },
+  "learnset": [
+   [
+    15,
+    "KARATE_CHOP"
+   ],
+   [
+    21,
+    "FURY_SWIPES"
+   ],
+   [
+    27,
+    "FOCUS_ENERGY"
+   ],
+   [
+    33,
+    "SEISMIC_TOSS"
+   ],
+   [
+    39,
+    "THRASH"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 28,
+    "species": "PRIMEAPE"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "PAY_DAY",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 40,
+  "atk": 80,
+  "def": 35,
+  "spd": 70,
+  "spc": 35,
+  "types": [
+   "FIGHTING",
+   "FIGHTING"
+  ],
+  "catch_rate": 190,
+  "base_exp": 74,
+  "moves": [
+   "SCRATCH",
+   "LEER"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "SEEL": {
+  "internal_id": 58,
+  "dex": 86,
+  "name_en": "SEEL",
+  "name_ko": "쥬쥬",
+  "pic": "mon_seel",
+  "back": "monb_seel",
+  "dex_entry": {
+   "species": "SEA LION",
+   "height_ft": 3,
+   "height_in": 7,
+   "weight": 1980,
+   "text": "_SeelDexEntry"
+  },
+  "learnset": [
+   [
+    30,
+    "GROWL"
+   ],
+   [
+    35,
+    "AURORA_BEAM"
+   ],
+   [
+    40,
+    "REST"
+   ],
+   [
+    45,
+    "TAKE_DOWN"
+   ],
+   [
+    50,
+    "ICE_BEAM"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 34,
+    "species": "DEWGONG"
+   }
+  ],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "PAY_DAY",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 65,
+  "atk": 45,
+  "def": 55,
+  "spd": 45,
+  "spc": 70,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 190,
+  "base_exp": 100,
+  "moves": [
+   "HEADBUTT"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "DIGLETT": {
+  "internal_id": 59,
+  "dex": 50,
+  "name_en": "DIGLETT",
+  "name_ko": "디그다",
+  "pic": "mon_diglett",
+  "back": "monb_diglett",
+  "dex_entry": {
+   "species": "MOLE",
+   "height_ft": 0,
+   "height_in": 8,
+   "weight": 20,
+   "text": "_DiglettDexEntry"
+  },
+  "learnset": [
+   [
+    15,
+    "GROWL"
+   ],
+   [
+    19,
+    "DIG"
+   ],
+   [
+    24,
+    "SAND_ATTACK"
+   ],
+   [
+    31,
+    "SLASH"
+   ],
+   [
+    40,
+    "EARTHQUAKE"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 26,
+    "species": "DUGTRIO"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE"
+  ],
+  "hp": 10,
+  "atk": 55,
+  "def": 25,
+  "spd": 95,
+  "spc": 45,
+  "types": [
+   "GROUND",
+   "GROUND"
+  ],
+  "catch_rate": 255,
+  "base_exp": 81,
+  "moves": [
+   "SCRATCH"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "TAUROS": {
+  "internal_id": 60,
+  "dex": 128,
+  "name_en": "TAUROS",
+  "name_ko": "켄타로스",
+  "pic": "mon_tauros",
+  "back": "monb_tauros",
+  "dex_entry": {
+   "species": "WILD BULL",
+   "height_ft": 4,
+   "height_in": 7,
+   "weight": 1950,
+   "text": "_TaurosDexEntry"
+  },
+  "learnset": [
+   [
+    21,
+    "STOMP"
+   ],
+   [
+    28,
+    "TAIL_WHIP"
+   ],
+   [
+    35,
+    "LEER"
+   ],
+   [
+    44,
+    "RAGE"
+   ],
+   [
+    51,
+    "TAKE_DOWN"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "EARTHQUAKE",
+   "FISSURE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 75,
+  "atk": 100,
+  "def": 95,
+  "spd": 110,
+  "spc": 70,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 45,
+  "base_exp": 211,
+  "moves": [
+   "TACKLE"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "FARFETCHD": {
+  "internal_id": 64,
+  "dex": 83,
+  "name_en": "FARFETCH'D",
+  "name_ko": "파오리",
+  "pic": "mon_farfetchd",
+  "back": "monb_farfetchd",
+  "dex_entry": {
+   "species": "WILD DUCK",
+   "height_ft": 2,
+   "height_in": 7,
+   "weight": 330,
+   "text": "_FarfetchdDexEntry"
+  },
+  "learnset": [
+   [
+    7,
+    "LEER"
+   ],
+   [
+    15,
+    "FURY_ATTACK"
+   ],
+   [
+    23,
+    "SWORDS_DANCE"
+   ],
+   [
+    31,
+    "AGILITY"
+   ],
+   [
+    39,
+    "SLASH"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BIRD",
+  "tmhm": [
+   "RAZOR_WIND",
+   "SWORDS_DANCE",
+   "WHIRLWIND",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "CUT",
+   "FLY"
+  ],
+  "hp": 52,
+  "atk": 65,
+  "def": 55,
+  "spd": 60,
+  "spc": 58,
+  "types": [
+   "NORMAL",
+   "FLYING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 94,
+  "moves": [
+   "PECK",
+   "SAND_ATTACK"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "VENONAT": {
+  "internal_id": 65,
+  "dex": 48,
+  "name_en": "VENONAT",
+  "name_ko": "콘팡",
+  "pic": "mon_venonat",
+  "back": "monb_venonat",
+  "dex_entry": {
+   "species": "INSECT",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 660,
+   "text": "_VenonatDexEntry"
+  },
+  "learnset": [
+   [
+    24,
+    "POISONPOWDER"
+   ],
+   [
+    27,
+    "LEECH_LIFE"
+   ],
+   [
+    30,
+    "STUN_SPORE"
+   ],
+   [
+    35,
+    "PSYBEAM"
+   ],
+   [
+    38,
+    "SLEEP_POWDER"
+   ],
+   [
+    43,
+    "PSYCHIC_M"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 31,
+    "species": "VENOMOTH"
+   }
+  ],
+  "icon": "ICON_BUG",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "PSYCHIC_M",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "REST",
+   "PSYWAVE",
+   "SUBSTITUTE"
+  ],
+  "hp": 60,
+  "atk": 55,
+  "def": 50,
+  "spd": 45,
+  "spc": 40,
+  "types": [
+   "BUG",
+   "POISON"
+  ],
+  "catch_rate": 190,
+  "base_exp": 75,
+  "moves": [
+   "TACKLE",
+   "DISABLE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "DRAGONITE": {
+  "internal_id": 66,
+  "dex": 149,
+  "name_en": "DRAGONITE",
+  "name_ko": "망나뇽",
+  "pic": "mon_dragonite",
+  "back": "monb_dragonite",
+  "dex_entry": {
+   "species": "DRAGON",
+   "height_ft": 7,
+   "height_in": 3,
+   "weight": 4630,
+   "text": "_DragoniteDexEntry"
+  },
+  "learnset": [
+   [
+    10,
+    "THUNDER_WAVE"
+   ],
+   [
+    20,
+    "AGILITY"
+   ],
+   [
+    35,
+    "SLAM"
+   ],
+   [
+    45,
+    "DRAGON_RAGE"
+   ],
+   [
+    60,
+    "HYPER_BEAM"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_SNAKE",
+  "tmhm": [
+   "RAZOR_WIND",
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "DRAGON_RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 91,
+  "atk": 134,
+  "def": 95,
+  "spd": 80,
+  "spc": 100,
+  "types": [
+   "DRAGON",
+   "FLYING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 218,
+  "moves": [
+   "WRAP",
+   "LEER",
+   "THUNDER_WAVE",
+   "AGILITY"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "DODUO": {
+  "internal_id": 70,
+  "dex": 84,
+  "name_en": "DODUO",
+  "name_ko": "두두",
+  "pic": "mon_doduo",
+  "back": "monb_doduo",
+  "dex_entry": {
+   "species": "TWIN BIRD",
+   "height_ft": 4,
+   "height_in": 7,
+   "weight": 860,
+   "text": "_DoduoDexEntry"
+  },
+  "learnset": [
+   [
+    20,
+    "GROWL"
+   ],
+   [
+    24,
+    "FURY_ATTACK"
+   ],
+   [
+    30,
+    "DRILL_PECK"
+   ],
+   [
+    36,
+    "RAGE"
+   ],
+   [
+    40,
+    "TRI_ATTACK"
+   ],
+   [
+    44,
+    "AGILITY"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 31,
+    "species": "DODRIO"
+   }
+  ],
+  "icon": "ICON_BIRD",
+  "tmhm": [
+   "WHIRLWIND",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "SKY_ATTACK",
+   "REST",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "FLY"
+  ],
+  "hp": 35,
+  "atk": 85,
+  "def": 45,
+  "spd": 75,
+  "spc": 35,
+  "types": [
+   "NORMAL",
+   "FLYING"
+  ],
+  "catch_rate": 190,
+  "base_exp": 96,
+  "moves": [
+   "PECK"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "POLIWAG": {
+  "internal_id": 71,
+  "dex": 60,
+  "name_en": "POLIWAG",
+  "name_ko": "발챙이",
+  "pic": "mon_poliwag",
+  "back": "monb_poliwag",
+  "dex_entry": {
+   "species": "TADPOLE",
+   "height_ft": 2,
+   "height_in": 0,
+   "weight": 270,
+   "text": "_PoliwagDexEntry"
+  },
+  "learnset": [
+   [
+    16,
+    "HYPNOSIS"
+   ],
+   [
+    19,
+    "WATER_GUN"
+   ],
+   [
+    25,
+    "DOUBLESLAP"
+   ],
+   [
+    31,
+    "BODY_SLAM"
+   ],
+   [
+    38,
+    "AMNESIA"
+   ],
+   [
+    45,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 25,
+    "species": "POLIWHIRL"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "PSYCHIC_M",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "PSYWAVE",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 40,
+  "atk": 50,
+  "def": 40,
+  "spd": 90,
+  "spc": 40,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 255,
+  "base_exp": 77,
+  "moves": [
+   "BUBBLE"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "JYNX": {
+  "internal_id": 72,
+  "dex": 124,
+  "name_en": "JYNX",
+  "name_ko": "루주라",
+  "pic": "mon_jynx",
+  "back": "monb_jynx",
+  "dex_entry": {
+   "species": "HUMANSHAPE",
+   "height_ft": 4,
+   "height_in": 7,
+   "weight": 900,
+   "text": "_JynxDexEntry"
+  },
+  "learnset": [
+   [
+    18,
+    "LICK"
+   ],
+   [
+    23,
+    "DOUBLESLAP"
+   ],
+   [
+    31,
+    "ICE_PUNCH"
+   ],
+   [
+    39,
+    "BODY_SLAM"
+   ],
+   [
+    47,
+    "THRASH"
+   ],
+   [
+    58,
+    "BLIZZARD"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "SKULL_BASH",
+   "REST",
+   "PSYWAVE",
+   "SUBSTITUTE"
+  ],
+  "hp": 65,
+  "atk": 50,
+  "def": 35,
+  "spd": 95,
+  "spc": 95,
+  "types": [
+   "ICE",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 45,
+  "base_exp": 137,
+  "moves": [
+   "POUND",
+   "LOVELY_KISS"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "MOLTRES": {
+  "internal_id": 73,
+  "dex": 146,
+  "name_en": "MOLTRES",
+  "name_ko": "파이어",
+  "pic": "mon_moltres",
+  "back": "monb_moltres",
+  "dex_entry": {
+   "species": "FLAME",
+   "height_ft": 6,
+   "height_in": 7,
+   "weight": 1320,
+   "text": "_MoltresDexEntry"
+  },
+  "learnset": [
+   [
+    51,
+    "LEER"
+   ],
+   [
+    55,
+    "AGILITY"
+   ],
+   [
+    60,
+    "SKY_ATTACK"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BIRD",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKY_ATTACK",
+   "REST",
+   "SUBSTITUTE",
+   "FLY"
+  ],
+  "hp": 90,
+  "atk": 100,
+  "def": 90,
+  "spd": 90,
+  "spc": 125,
+  "types": [
+   "FIRE",
+   "FLYING"
+  ],
+  "catch_rate": 3,
+  "base_exp": 217,
+  "moves": [
+   "PECK",
+   "FIRE_SPIN"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "ARTICUNO": {
+  "internal_id": 74,
+  "dex": 144,
+  "name_en": "ARTICUNO",
+  "name_ko": "프리져",
+  "pic": "mon_articuno",
+  "back": "monb_articuno",
+  "dex_entry": {
+   "species": "FREEZE",
+   "height_ft": 5,
+   "height_in": 7,
+   "weight": 1220,
+   "text": "_ArticunoDexEntry"
+  },
+  "learnset": [
+   [
+    51,
+    "BLIZZARD"
+   ],
+   [
+    55,
+    "AGILITY"
+   ],
+   [
+    60,
+    "MIST"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BIRD",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKY_ATTACK",
+   "REST",
+   "SUBSTITUTE",
+   "FLY"
+  ],
+  "hp": 90,
+  "atk": 85,
+  "def": 100,
+  "spd": 85,
+  "spc": 125,
+  "types": [
+   "ICE",
+   "FLYING"
+  ],
+  "catch_rate": 3,
+  "base_exp": 215,
+  "moves": [
+   "PECK",
+   "ICE_BEAM"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "ZAPDOS": {
+  "internal_id": 75,
+  "dex": 145,
+  "name_en": "ZAPDOS",
+  "name_ko": "썬더",
+  "pic": "mon_zapdos",
+  "back": "monb_zapdos",
+  "dex_entry": {
+   "species": "ELECTRIC",
+   "height_ft": 5,
+   "height_in": 3,
+   "weight": 1160,
+   "text": "_ZapdosDexEntry"
+  },
+  "learnset": [
+   [
+    51,
+    "THUNDER"
+   ],
+   [
+    55,
+    "AGILITY"
+   ],
+   [
+    60,
+    "LIGHT_SCREEN"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BIRD",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKY_ATTACK",
+   "REST",
+   "THUNDER_WAVE",
+   "SUBSTITUTE",
+   "FLY",
+   "FLASH"
+  ],
+  "hp": 90,
+  "atk": 90,
+  "def": 85,
+  "spd": 100,
+  "spc": 125,
+  "types": [
+   "ELECTRIC",
+   "FLYING"
+  ],
+  "catch_rate": 3,
+  "base_exp": 216,
+  "moves": [
+   "THUNDERSHOCK",
+   "DRILL_PECK"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "DITTO": {
+  "internal_id": 76,
+  "dex": 132,
+  "name_en": "DITTO",
+  "name_ko": "메타몽",
+  "pic": "mon_ditto",
+  "back": "monb_ditto",
+  "dex_entry": {
+   "species": "TRANSFORM",
+   "height_ft": 1,
+   "height_in": 0,
+   "weight": 90,
+   "text": "_DittoDexEntry"
+  },
+  "learnset": [],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [],
+  "hp": 48,
+  "atk": 48,
+  "def": 48,
+  "spd": 48,
+  "spc": 48,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 35,
+  "base_exp": 61,
+  "moves": [
+   "TRANSFORM"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "MEOWTH": {
+  "internal_id": 77,
+  "dex": 52,
+  "name_en": "MEOWTH",
+  "name_ko": "나옹",
+  "pic": "mon_meowth",
+  "back": "monb_meowth",
+  "dex_entry": {
+   "species": "SCRATCHCAT",
+   "height_ft": 1,
+   "height_in": 4,
+   "weight": 90,
+   "text": "_MeowthDexEntry"
+  },
+  "learnset": [
+   [
+    12,
+    "BITE"
+   ],
+   [
+    17,
+    "PAY_DAY"
+   ],
+   [
+    24,
+    "SCREECH"
+   ],
+   [
+    33,
+    "FURY_SWIPES"
+   ],
+   [
+    44,
+    "SLASH"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 28,
+    "species": "PERSIAN"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "PAY_DAY",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 40,
+  "atk": 45,
+  "def": 35,
+  "spd": 90,
+  "spc": 40,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 255,
+  "base_exp": 69,
+  "moves": [
+   "SCRATCH",
+   "GROWL"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "KRABBY": {
+  "internal_id": 78,
+  "dex": 98,
+  "name_en": "KRABBY",
+  "name_ko": "크랩",
+  "pic": "mon_krabby",
+  "back": "monb_krabby",
+  "dex_entry": {
+   "species": "RIVER CRAB",
+   "height_ft": 1,
+   "height_in": 4,
+   "weight": 140,
+   "text": "_KrabbyDexEntry"
+  },
+  "learnset": [
+   [
+    20,
+    "VICEGRIP"
+   ],
+   [
+    25,
+    "GUILLOTINE"
+   ],
+   [
+    30,
+    "STOMP"
+   ],
+   [
+    35,
+    "CRABHAMMER"
+   ],
+   [
+    40,
+    "HARDEN"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 28,
+    "species": "KINGLER"
+   }
+  ],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "CUT",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 30,
+  "atk": 105,
+  "def": 90,
+  "spd": 50,
+  "spc": 25,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 225,
+  "base_exp": 115,
+  "moves": [
+   "BUBBLE",
+   "LEER"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "VULPIX": {
+  "internal_id": 82,
+  "dex": 37,
+  "name_en": "VULPIX",
+  "name_ko": "식스테일",
+  "pic": "mon_vulpix",
+  "back": "monb_vulpix",
+  "dex_entry": {
+   "species": "FOX",
+   "height_ft": 2,
+   "height_in": 0,
+   "weight": 220,
+   "text": "_VulpixDexEntry"
+  },
+  "learnset": [
+   [
+    16,
+    "QUICK_ATTACK"
+   ],
+   [
+    21,
+    "ROAR"
+   ],
+   [
+    28,
+    "CONFUSE_RAY"
+   ],
+   [
+    35,
+    "FLAMETHROWER"
+   ],
+   [
+    42,
+    "FIRE_SPIN"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "FIRE_STONE",
+    "species": "NINETALES"
+   }
+  ],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 38,
+  "atk": 41,
+  "def": 40,
+  "spd": 65,
+  "spc": 65,
+  "types": [
+   "FIRE",
+   "FIRE"
+  ],
+  "catch_rate": 190,
+  "base_exp": 63,
+  "moves": [
+   "EMBER",
+   "TAIL_WHIP"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "NINETALES": {
+  "internal_id": 83,
+  "dex": 38,
+  "name_en": "NINETALES",
+  "name_ko": "나인테일",
+  "pic": "mon_ninetales",
+  "back": "monb_ninetales",
+  "dex_entry": {
+   "species": "FOX",
+   "height_ft": 3,
+   "height_in": 7,
+   "weight": 440,
+   "text": "_NinetalesDexEntry"
+  },
+  "learnset": [],
+  "evolutions": [],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 73,
+  "atk": 76,
+  "def": 75,
+  "spd": 100,
+  "spc": 100,
+  "types": [
+   "FIRE",
+   "FIRE"
+  ],
+  "catch_rate": 75,
+  "base_exp": 178,
+  "moves": [
+   "EMBER",
+   "TAIL_WHIP",
+   "QUICK_ATTACK",
+   "ROAR"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "PIKACHU": {
+  "internal_id": 84,
+  "dex": 25,
+  "name_en": "PIKACHU",
+  "name_ko": "피카츄",
+  "pic": "mon_pikachu",
+  "back": "monb_pikachu",
+  "dex_entry": {
+   "species": "MOUSE",
+   "height_ft": 1,
+   "height_in": 4,
+   "weight": 130,
+   "text": "_PikachuDexEntry"
+  },
+  "learnset": [
+   [
+    9,
+    "THUNDER_WAVE"
+   ],
+   [
+    16,
+    "QUICK_ATTACK"
+   ],
+   [
+    26,
+    "SWIFT"
+   ],
+   [
+    33,
+    "AGILITY"
+   ],
+   [
+    43,
+    "THUNDER"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "THUNDER_STONE",
+    "species": "RAICHU"
+   }
+  ],
+  "icon": "ICON_FAIRY",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "PAY_DAY",
+   "SUBMISSION",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 35,
+  "atk": 55,
+  "def": 30,
+  "spd": 90,
+  "spc": 50,
+  "types": [
+   "ELECTRIC",
+   "ELECTRIC"
+  ],
+  "catch_rate": 190,
+  "base_exp": 82,
+  "moves": [
+   "THUNDERSHOCK",
+   "GROWL"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "RAICHU": {
+  "internal_id": 85,
+  "dex": 26,
+  "name_en": "RAICHU",
+  "name_ko": "라이츄",
+  "pic": "mon_raichu",
+  "back": "monb_raichu",
+  "dex_entry": {
+   "species": "MOUSE",
+   "height_ft": 2,
+   "height_in": 7,
+   "weight": 660,
+   "text": "_RaichuDexEntry"
+  },
+  "learnset": [],
+  "evolutions": [],
+  "icon": "ICON_FAIRY",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "PAY_DAY",
+   "SUBMISSION",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 60,
+  "atk": 90,
+  "def": 55,
+  "spd": 100,
+  "spc": 90,
+  "types": [
+   "ELECTRIC",
+   "ELECTRIC"
+  ],
+  "catch_rate": 75,
+  "base_exp": 122,
+  "moves": [
+   "THUNDERSHOCK",
+   "GROWL",
+   "THUNDER_WAVE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "DRATINI": {
+  "internal_id": 88,
+  "dex": 147,
+  "name_en": "DRATINI",
+  "name_ko": "미뇽",
+  "pic": "mon_dratini",
+  "back": "monb_dratini",
+  "dex_entry": {
+   "species": "DRAGON",
+   "height_ft": 5,
+   "height_in": 11,
+   "weight": 70,
+   "text": "_DratiniDexEntry"
+  },
+  "learnset": [
+   [
+    10,
+    "THUNDER_WAVE"
+   ],
+   [
+    20,
+    "AGILITY"
+   ],
+   [
+    30,
+    "SLAM"
+   ],
+   [
+    40,
+    "DRAGON_RAGE"
+   ],
+   [
+    50,
+    "HYPER_BEAM"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 30,
+    "species": "DRAGONAIR"
+   }
+  ],
+  "icon": "ICON_SNAKE",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "DRAGON_RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 41,
+  "atk": 64,
+  "def": 45,
+  "spd": 50,
+  "spc": 50,
+  "types": [
+   "DRAGON",
+   "DRAGON"
+  ],
+  "catch_rate": 45,
+  "base_exp": 67,
+  "moves": [
+   "WRAP",
+   "LEER"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "DRAGONAIR": {
+  "internal_id": 89,
+  "dex": 148,
+  "name_en": "DRAGONAIR",
+  "name_ko": "신뇽",
+  "pic": "mon_dragonair",
+  "back": "monb_dragonair",
+  "dex_entry": {
+   "species": "DRAGON",
+   "height_ft": 13,
+   "height_in": 1,
+   "weight": 360,
+   "text": "_DragonairDexEntry"
+  },
+  "learnset": [
+   [
+    10,
+    "THUNDER_WAVE"
+   ],
+   [
+    20,
+    "AGILITY"
+   ],
+   [
+    35,
+    "SLAM"
+   ],
+   [
+    45,
+    "DRAGON_RAGE"
+   ],
+   [
+    55,
+    "HYPER_BEAM"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 55,
+    "species": "DRAGONITE"
+   }
+  ],
+  "icon": "ICON_SNAKE",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "DRAGON_RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 61,
+  "atk": 84,
+  "def": 65,
+  "spd": 70,
+  "spc": 70,
+  "types": [
+   "DRAGON",
+   "DRAGON"
+  ],
+  "catch_rate": 45,
+  "base_exp": 144,
+  "moves": [
+   "WRAP",
+   "LEER",
+   "THUNDER_WAVE"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "KABUTO": {
+  "internal_id": 90,
+  "dex": 140,
+  "name_en": "KABUTO",
+  "name_ko": "투구",
+  "pic": "mon_kabuto",
+  "back": "monb_kabuto",
+  "dex_entry": {
+   "species": "SHELLFISH",
+   "height_ft": 1,
+   "height_in": 8,
+   "weight": 250,
+   "text": "_KabutoDexEntry"
+  },
+  "learnset": [
+   [
+    34,
+    "ABSORB"
+   ],
+   [
+    39,
+    "SLASH"
+   ],
+   [
+    44,
+    "LEER"
+   ],
+   [
+    49,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 40,
+    "species": "KABUTOPS"
+   }
+  ],
+  "icon": "ICON_HELIX",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 30,
+  "atk": 80,
+  "def": 90,
+  "spd": 55,
+  "spc": 45,
+  "types": [
+   "ROCK",
+   "WATER"
+  ],
+  "catch_rate": 45,
+  "base_exp": 119,
+  "moves": [
+   "SCRATCH",
+   "HARDEN"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "KABUTOPS": {
+  "internal_id": 91,
+  "dex": 141,
+  "name_en": "KABUTOPS",
+  "name_ko": "투구푸스",
+  "pic": "mon_kabutops",
+  "back": "monb_kabutops",
+  "dex_entry": {
+   "species": "SHELLFISH",
+   "height_ft": 4,
+   "height_in": 3,
+   "weight": 890,
+   "text": "_KabutopsDexEntry"
+  },
+  "learnset": [
+   [
+    34,
+    "ABSORB"
+   ],
+   [
+    39,
+    "SLASH"
+   ],
+   [
+    46,
+    "LEER"
+   ],
+   [
+    53,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_HELIX",
+  "tmhm": [
+   "RAZOR_WIND",
+   "SWORDS_DANCE",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 60,
+  "atk": 115,
+  "def": 105,
+  "spd": 80,
+  "spc": 70,
+  "types": [
+   "ROCK",
+   "WATER"
+  ],
+  "catch_rate": 45,
+  "base_exp": 201,
+  "moves": [
+   "SCRATCH",
+   "HARDEN",
+   "ABSORB"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "HORSEA": {
+  "internal_id": 92,
+  "dex": 116,
+  "name_en": "HORSEA",
+  "name_ko": "쏘드라",
+  "pic": "mon_horsea",
+  "back": "monb_horsea",
+  "dex_entry": {
+   "species": "DRAGON",
+   "height_ft": 1,
+   "height_in": 4,
+   "weight": 180,
+   "text": "_HorseaDexEntry"
+  },
+  "learnset": [
+   [
+    19,
+    "SMOKESCREEN"
+   ],
+   [
+    24,
+    "LEER"
+   ],
+   [
+    30,
+    "WATER_GUN"
+   ],
+   [
+    37,
+    "AGILITY"
+   ],
+   [
+    45,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 32,
+    "species": "SEADRA"
+   }
+  ],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 30,
+  "atk": 40,
+  "def": 70,
+  "spd": 60,
+  "spc": 70,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 225,
+  "base_exp": 83,
+  "moves": [
+   "BUBBLE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "SEADRA": {
+  "internal_id": 93,
+  "dex": 117,
+  "name_en": "SEADRA",
+  "name_ko": "시드라",
+  "pic": "mon_seadra",
+  "back": "monb_seadra",
+  "dex_entry": {
+   "species": "DRAGON",
+   "height_ft": 3,
+   "height_in": 11,
+   "weight": 550,
+   "text": "_SeadraDexEntry"
+  },
+  "learnset": [
+   [
+    19,
+    "SMOKESCREEN"
+   ],
+   [
+    24,
+    "LEER"
+   ],
+   [
+    30,
+    "WATER_GUN"
+   ],
+   [
+    41,
+    "AGILITY"
+   ],
+   [
+    52,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 55,
+  "atk": 65,
+  "def": 95,
+  "spd": 85,
+  "spc": 95,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 75,
+  "base_exp": 155,
+  "moves": [
+   "BUBBLE",
+   "SMOKESCREEN"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "SANDSHREW": {
+  "internal_id": 96,
+  "dex": 27,
+  "name_en": "SANDSHREW",
+  "name_ko": "모래두지",
+  "pic": "mon_sandshrew",
+  "back": "monb_sandshrew",
+  "dex_entry": {
+   "species": "MOUSE",
+   "height_ft": 2,
+   "height_in": 0,
+   "weight": 260,
+   "text": "_SandshrewDexEntry"
+  },
+  "learnset": [
+   [
+    10,
+    "SAND_ATTACK"
+   ],
+   [
+    17,
+    "SLASH"
+   ],
+   [
+    24,
+    "POISON_STING"
+   ],
+   [
+    31,
+    "SWIFT"
+   ],
+   [
+    38,
+    "FURY_SWIPES"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 22,
+    "species": "SANDSLASH"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "SUBMISSION",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "CUT",
+   "STRENGTH"
+  ],
+  "hp": 50,
+  "atk": 75,
+  "def": 85,
+  "spd": 40,
+  "spc": 30,
+  "types": [
+   "GROUND",
+   "GROUND"
+  ],
+  "catch_rate": 255,
+  "base_exp": 93,
+  "moves": [
+   "SCRATCH"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "SANDSLASH": {
+  "internal_id": 97,
+  "dex": 28,
+  "name_en": "SANDSLASH",
+  "name_ko": "고지",
+  "pic": "mon_sandslash",
+  "back": "monb_sandslash",
+  "dex_entry": {
+   "species": "MOUSE",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 650,
+   "text": "_SandslashDexEntry"
+  },
+  "learnset": [
+   [
+    10,
+    "SAND_ATTACK"
+   ],
+   [
+    17,
+    "SLASH"
+   ],
+   [
+    27,
+    "POISON_STING"
+   ],
+   [
+    36,
+    "SWIFT"
+   ],
+   [
+    47,
+    "FURY_SWIPES"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "CUT",
+   "STRENGTH"
+  ],
+  "hp": 75,
+  "atk": 100,
+  "def": 110,
+  "spd": 65,
+  "spc": 55,
+  "types": [
+   "GROUND",
+   "GROUND"
+  ],
+  "catch_rate": 90,
+  "base_exp": 163,
+  "moves": [
+   "SCRATCH",
+   "SAND_ATTACK"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "OMANYTE": {
+  "internal_id": 98,
+  "dex": 138,
+  "name_en": "OMANYTE",
+  "name_ko": "암나이트",
+  "pic": "mon_omanyte",
+  "back": "monb_omanyte",
+  "dex_entry": {
+   "species": "SPIRAL",
+   "height_ft": 1,
+   "height_in": 4,
+   "weight": 170,
+   "text": "_OmanyteDexEntry"
+  },
+  "learnset": [
+   [
+    34,
+    "HORN_ATTACK"
+   ],
+   [
+    39,
+    "LEER"
+   ],
+   [
+    46,
+    "SPIKE_CANNON"
+   ],
+   [
+    53,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 40,
+    "species": "OMASTAR"
+   }
+  ],
+  "icon": "ICON_HELIX",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 35,
+  "atk": 40,
+  "def": 100,
+  "spd": 35,
+  "spc": 90,
+  "types": [
+   "ROCK",
+   "WATER"
+  ],
+  "catch_rate": 45,
+  "base_exp": 120,
+  "moves": [
+   "WATER_GUN",
+   "WITHDRAW"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "OMASTAR": {
+  "internal_id": 99,
+  "dex": 139,
+  "name_en": "OMASTAR",
+  "name_ko": "암스타",
+  "pic": "mon_omastar",
+  "back": "monb_omastar",
+  "dex_entry": {
+   "species": "SPIRAL",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 770,
+   "text": "_OmastarDexEntry"
+  },
+  "learnset": [
+   [
+    34,
+    "HORN_ATTACK"
+   ],
+   [
+    39,
+    "LEER"
+   ],
+   [
+    44,
+    "SPIKE_CANNON"
+   ],
+   [
+    49,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_HELIX",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 70,
+  "atk": 60,
+  "def": 125,
+  "spd": 55,
+  "spc": 115,
+  "types": [
+   "ROCK",
+   "WATER"
+  ],
+  "catch_rate": 45,
+  "base_exp": 199,
+  "moves": [
+   "WATER_GUN",
+   "WITHDRAW",
+   "HORN_ATTACK"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "JIGGLYPUFF": {
+  "internal_id": 100,
+  "dex": 39,
+  "name_en": "JIGGLYPUFF",
+  "name_ko": "푸린",
+  "pic": "mon_jigglypuff",
+  "back": "monb_jigglypuff",
+  "dex_entry": {
+   "species": "BALLOON",
+   "height_ft": 1,
+   "height_in": 8,
+   "weight": 120,
+   "text": "_JigglypuffDexEntry"
+  },
+  "learnset": [
+   [
+    9,
+    "POUND"
+   ],
+   [
+    14,
+    "DISABLE"
+   ],
+   [
+    19,
+    "DEFENSE_CURL"
+   ],
+   [
+    24,
+    "DOUBLESLAP"
+   ],
+   [
+    29,
+    "REST"
+   ],
+   [
+    34,
+    "BODY_SLAM"
+   ],
+   [
+    39,
+    "DOUBLE_EDGE"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "MOON_STONE",
+    "species": "WIGGLYTUFF"
+   }
+  ],
+  "icon": "ICON_FAIRY",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "SOLARBEAM",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "STRENGTH",
+   "FLASH"
+  ],
+  "hp": 115,
+  "atk": 45,
+  "def": 20,
+  "spd": 20,
+  "spc": 25,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 170,
+  "base_exp": 76,
+  "moves": [
+   "SING"
+  ],
+  "growth": "GROWTH_FAST"
+ },
+ "WIGGLYTUFF": {
+  "internal_id": 101,
+  "dex": 40,
+  "name_en": "WIGGLYTUFF",
+  "name_ko": "푸크린",
+  "pic": "mon_wigglytuff",
+  "back": "monb_wigglytuff",
+  "dex_entry": {
+   "species": "BALLOON",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 260,
+   "text": "_WigglytuffDexEntry"
+  },
+  "learnset": [],
+  "evolutions": [],
+  "icon": "ICON_FAIRY",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "SOLARBEAM",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "STRENGTH",
+   "FLASH"
+  ],
+  "hp": 140,
+  "atk": 70,
+  "def": 45,
+  "spd": 45,
+  "spc": 50,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 50,
+  "base_exp": 109,
+  "moves": [
+   "SING",
+   "DISABLE",
+   "DEFENSE_CURL",
+   "DOUBLESLAP"
+  ],
+  "growth": "GROWTH_FAST"
+ },
+ "EEVEE": {
+  "internal_id": 102,
+  "dex": 133,
+  "name_en": "EEVEE",
+  "name_ko": "이브이",
+  "pic": "mon_eevee",
+  "back": "monb_eevee",
+  "dex_entry": {
+   "species": "EVOLUTION",
+   "height_ft": 1,
+   "height_in": 0,
+   "weight": 140,
+   "text": "_EeveeDexEntry"
+  },
+  "learnset": [
+   [
+    27,
+    "QUICK_ATTACK"
+   ],
+   [
+    31,
+    "TAIL_WHIP"
+   ],
+   [
+    37,
+    "BITE"
+   ],
+   [
+    45,
+    "TAKE_DOWN"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "FIRE_STONE",
+    "species": "FLAREON"
+   },
+   {
+    "method": "ITEM",
+    "item": "THUNDER_STONE",
+    "species": "JOLTEON"
+   },
+   {
+    "method": "ITEM",
+    "item": "WATER_STONE",
+    "species": "VAPOREON"
+   }
+  ],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 55,
+  "atk": 55,
+  "def": 50,
+  "spd": 55,
+  "spc": 65,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 45,
+  "base_exp": 92,
+  "moves": [
+   "TACKLE",
+   "SAND_ATTACK"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "FLAREON": {
+  "internal_id": 103,
+  "dex": 136,
+  "name_en": "FLAREON",
+  "name_ko": "부스터",
+  "pic": "mon_flareon",
+  "back": "monb_flareon",
+  "dex_entry": {
+   "species": "FLAME",
+   "height_ft": 2,
+   "height_in": 11,
+   "weight": 550,
+   "text": "_FlareonDexEntry"
+  },
+  "learnset": [
+   [
+    27,
+    "QUICK_ATTACK"
+   ],
+   [
+    31,
+    "EMBER"
+   ],
+   [
+    37,
+    "TAIL_WHIP"
+   ],
+   [
+    40,
+    "BITE"
+   ],
+   [
+    42,
+    "LEER"
+   ],
+   [
+    44,
+    "FIRE_SPIN"
+   ],
+   [
+    48,
+    "RAGE"
+   ],
+   [
+    54,
+    "FLAMETHROWER"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 65,
+  "atk": 130,
+  "def": 60,
+  "spd": 65,
+  "spc": 110,
+  "types": [
+   "FIRE",
+   "FIRE"
+  ],
+  "catch_rate": 45,
+  "base_exp": 198,
+  "moves": [
+   "TACKLE",
+   "SAND_ATTACK",
+   "QUICK_ATTACK",
+   "EMBER"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "JOLTEON": {
+  "internal_id": 104,
+  "dex": 135,
+  "name_en": "JOLTEON",
+  "name_ko": "쥬피썬더",
+  "pic": "mon_jolteon",
+  "back": "monb_jolteon",
+  "dex_entry": {
+   "species": "LIGHTNING",
+   "height_ft": 2,
+   "height_in": 7,
+   "weight": 540,
+   "text": "_JolteonDexEntry"
+  },
+  "learnset": [
+   [
+    27,
+    "QUICK_ATTACK"
+   ],
+   [
+    31,
+    "THUNDERSHOCK"
+   ],
+   [
+    37,
+    "TAIL_WHIP"
+   ],
+   [
+    40,
+    "THUNDER_WAVE"
+   ],
+   [
+    42,
+    "DOUBLE_KICK"
+   ],
+   [
+    44,
+    "AGILITY"
+   ],
+   [
+    48,
+    "PIN_MISSILE"
+   ],
+   [
+    54,
+    "THUNDER"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 65,
+  "atk": 65,
+  "def": 60,
+  "spd": 130,
+  "spc": 110,
+  "types": [
+   "ELECTRIC",
+   "ELECTRIC"
+  ],
+  "catch_rate": 45,
+  "base_exp": 197,
+  "moves": [
+   "TACKLE",
+   "SAND_ATTACK",
+   "QUICK_ATTACK",
+   "THUNDERSHOCK"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "VAPOREON": {
+  "internal_id": 105,
+  "dex": 134,
+  "name_en": "VAPOREON",
+  "name_ko": "샤미드",
+  "pic": "mon_vaporeon",
+  "back": "monb_vaporeon",
+  "dex_entry": {
+   "species": "BUBBLE JET",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 640,
+   "text": "_VaporeonDexEntry"
+  },
+  "learnset": [
+   [
+    27,
+    "QUICK_ATTACK"
+   ],
+   [
+    31,
+    "WATER_GUN"
+   ],
+   [
+    37,
+    "TAIL_WHIP"
+   ],
+   [
+    40,
+    "BITE"
+   ],
+   [
+    42,
+    "ACID_ARMOR"
+   ],
+   [
+    44,
+    "HAZE"
+   ],
+   [
+    48,
+    "MIST"
+   ],
+   [
+    54,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 130,
+  "atk": 65,
+  "def": 60,
+  "spd": 65,
+  "spc": 110,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 45,
+  "base_exp": 196,
+  "moves": [
+   "TACKLE",
+   "SAND_ATTACK",
+   "QUICK_ATTACK",
+   "WATER_GUN"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "MACHOP": {
+  "internal_id": 106,
+  "dex": 66,
+  "name_en": "MACHOP",
+  "name_ko": "알통몬",
+  "pic": "mon_machop",
+  "back": "monb_machop",
+  "dex_entry": {
+   "species": "SUPERPOWER",
+   "height_ft": 2,
+   "height_in": 7,
+   "weight": 430,
+   "text": "_MachopDexEntry"
+  },
+  "learnset": [
+   [
+    20,
+    "LOW_KICK"
+   ],
+   [
+    25,
+    "LEER"
+   ],
+   [
+    32,
+    "FOCUS_ENERGY"
+   ],
+   [
+    39,
+    "SEISMIC_TOSS"
+   ],
+   [
+    46,
+    "SUBMISSION"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 28,
+    "species": "MACHOKE"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 70,
+  "atk": 80,
+  "def": 50,
+  "spd": 35,
+  "spc": 35,
+  "types": [
+   "FIGHTING",
+   "FIGHTING"
+  ],
+  "catch_rate": 180,
+  "base_exp": 88,
+  "moves": [
+   "KARATE_CHOP"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "ZUBAT": {
+  "internal_id": 107,
+  "dex": 41,
+  "name_en": "ZUBAT",
+  "name_ko": "주뱃",
+  "pic": "mon_zubat",
+  "back": "monb_zubat",
+  "dex_entry": {
+   "species": "BAT",
+   "height_ft": 2,
+   "height_in": 7,
+   "weight": 170,
+   "text": "_ZubatDexEntry"
+  },
+  "learnset": [
+   [
+    10,
+    "SUPERSONIC"
+   ],
+   [
+    15,
+    "BITE"
+   ],
+   [
+    21,
+    "CONFUSE_RAY"
+   ],
+   [
+    28,
+    "WING_ATTACK"
+   ],
+   [
+    36,
+    "HAZE"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 22,
+    "species": "GOLBAT"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MEGA_DRAIN",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 40,
+  "atk": 45,
+  "def": 35,
+  "spd": 55,
+  "spc": 40,
+  "types": [
+   "POISON",
+   "FLYING"
+  ],
+  "catch_rate": 255,
+  "base_exp": 54,
+  "moves": [
+   "LEECH_LIFE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "EKANS": {
+  "internal_id": 108,
+  "dex": 23,
+  "name_en": "EKANS",
+  "name_ko": "아보",
+  "pic": "mon_ekans",
+  "back": "monb_ekans",
+  "dex_entry": {
+   "species": "SNAKE",
+   "height_ft": 6,
+   "height_in": 7,
+   "weight": 150,
+   "text": "_EkansDexEntry"
+  },
+  "learnset": [
+   [
+    10,
+    "POISON_STING"
+   ],
+   [
+    17,
+    "BITE"
+   ],
+   [
+    24,
+    "GLARE"
+   ],
+   [
+    31,
+    "SCREECH"
+   ],
+   [
+    38,
+    "ACID"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 22,
+    "species": "ARBOK"
+   }
+  ],
+  "icon": "ICON_SNAKE",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MEGA_DRAIN",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 35,
+  "atk": 60,
+  "def": 44,
+  "spd": 55,
+  "spc": 40,
+  "types": [
+   "POISON",
+   "POISON"
+  ],
+  "catch_rate": 255,
+  "base_exp": 62,
+  "moves": [
+   "WRAP",
+   "LEER"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "PARAS": {
+  "internal_id": 109,
+  "dex": 46,
+  "name_en": "PARAS",
+  "name_ko": "파라스",
+  "pic": "mon_paras",
+  "back": "monb_paras",
+  "dex_entry": {
+   "species": "MUSHROOM",
+   "height_ft": 1,
+   "height_in": 0,
+   "weight": 120,
+   "text": "_ParasDexEntry"
+  },
+  "learnset": [
+   [
+    13,
+    "STUN_SPORE"
+   ],
+   [
+    20,
+    "LEECH_LIFE"
+   ],
+   [
+    27,
+    "SPORE"
+   ],
+   [
+    34,
+    "SLASH"
+   ],
+   [
+    41,
+    "GROWTH"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 24,
+    "species": "PARASECT"
+   }
+  ],
+  "icon": "ICON_BUG",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 35,
+  "atk": 70,
+  "def": 55,
+  "spd": 25,
+  "spc": 55,
+  "types": [
+   "BUG",
+   "GRASS"
+  ],
+  "catch_rate": 190,
+  "base_exp": 70,
+  "moves": [
+   "SCRATCH"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "POLIWHIRL": {
+  "internal_id": 110,
+  "dex": 61,
+  "name_en": "POLIWHIRL",
+  "name_ko": "슈륙챙이",
+  "pic": "mon_poliwhirl",
+  "back": "monb_poliwhirl",
+  "dex_entry": {
+   "species": "TADPOLE",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 440,
+   "text": "_PoliwhirlDexEntry"
+  },
+  "learnset": [
+   [
+    16,
+    "HYPNOSIS"
+   ],
+   [
+    19,
+    "WATER_GUN"
+   ],
+   [
+    26,
+    "DOUBLESLAP"
+   ],
+   [
+    33,
+    "BODY_SLAM"
+   ],
+   [
+    41,
+    "AMNESIA"
+   ],
+   [
+    49,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "WATER_STONE",
+    "species": "POLIWRATH"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "PSYCHIC_M",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "SKULL_BASH",
+   "REST",
+   "PSYWAVE",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 65,
+  "atk": 65,
+  "def": 65,
+  "spd": 90,
+  "spc": 50,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 120,
+  "base_exp": 131,
+  "moves": [
+   "BUBBLE",
+   "HYPNOSIS",
+   "WATER_GUN"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "POLIWRATH": {
+  "internal_id": 111,
+  "dex": 62,
+  "name_en": "POLIWRATH",
+  "name_ko": "강챙이",
+  "pic": "mon_poliwrath",
+  "back": "monb_poliwrath",
+  "dex_entry": {
+   "species": "TADPOLE",
+   "height_ft": 4,
+   "height_in": 3,
+   "weight": 1190,
+   "text": "_PoliwrathDexEntry"
+  },
+  "learnset": [
+   [
+    16,
+    "HYPNOSIS"
+   ],
+   [
+    19,
+    "WATER_GUN"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "PSYCHIC_M",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "SKULL_BASH",
+   "REST",
+   "PSYWAVE",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 90,
+  "atk": 85,
+  "def": 95,
+  "spd": 70,
+  "spc": 70,
+  "types": [
+   "WATER",
+   "FIGHTING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 185,
+  "moves": [
+   "HYPNOSIS",
+   "WATER_GUN",
+   "DOUBLESLAP",
+   "BODY_SLAM"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "WEEDLE": {
+  "internal_id": 112,
+  "dex": 13,
+  "name_en": "WEEDLE",
+  "name_ko": "뿔충이",
+  "pic": "mon_weedle",
+  "back": "monb_weedle",
+  "dex_entry": {
+   "species": "HAIRY BUG",
+   "height_ft": 1,
+   "height_in": 0,
+   "weight": 70,
+   "text": "_WeedleDexEntry"
+  },
+  "learnset": [],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 7,
+    "species": "KAKUNA"
+   }
+  ],
+  "icon": "ICON_BUG",
+  "tmhm": [],
+  "hp": 40,
+  "atk": 35,
+  "def": 30,
+  "spd": 50,
+  "spc": 20,
+  "types": [
+   "BUG",
+   "POISON"
+  ],
+  "catch_rate": 255,
+  "base_exp": 52,
+  "moves": [
+   "POISON_STING",
+   "STRING_SHOT"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "KAKUNA": {
+  "internal_id": 113,
+  "dex": 14,
+  "name_en": "KAKUNA",
+  "name_ko": "딱충이",
+  "pic": "mon_kakuna",
+  "back": "monb_kakuna",
+  "dex_entry": {
+   "species": "COCOON",
+   "height_ft": 2,
+   "height_in": 0,
+   "weight": 220,
+   "text": "_KakunaDexEntry"
+  },
+  "learnset": [],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 10,
+    "species": "BEEDRILL"
+   }
+  ],
+  "icon": "ICON_BUG",
+  "tmhm": [],
+  "hp": 45,
+  "atk": 25,
+  "def": 50,
+  "spd": 35,
+  "spc": 25,
+  "types": [
+   "BUG",
+   "POISON"
+  ],
+  "catch_rate": 120,
+  "base_exp": 71,
+  "moves": [
+   "HARDEN"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "BEEDRILL": {
+  "internal_id": 114,
+  "dex": 15,
+  "name_en": "BEEDRILL",
+  "name_ko": "독침붕",
+  "pic": "mon_beedrill",
+  "back": "monb_beedrill",
+  "dex_entry": {
+   "species": "POISON BEE",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 650,
+   "text": "_BeedrillDexEntry"
+  },
+  "learnset": [
+   [
+    12,
+    "FURY_ATTACK"
+   ],
+   [
+    16,
+    "FOCUS_ENERGY"
+   ],
+   [
+    20,
+    "TWINEEDLE"
+   ],
+   [
+    25,
+    "RAGE"
+   ],
+   [
+    30,
+    "PIN_MISSILE"
+   ],
+   [
+    35,
+    "AGILITY"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BUG",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 65,
+  "atk": 80,
+  "def": 40,
+  "spd": 75,
+  "spc": 45,
+  "types": [
+   "BUG",
+   "POISON"
+  ],
+  "catch_rate": 45,
+  "base_exp": 159,
+  "moves": [
+   "FURY_ATTACK"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "DODRIO": {
+  "internal_id": 116,
+  "dex": 85,
+  "name_en": "DODRIO",
+  "name_ko": "두트리오",
+  "pic": "mon_dodrio",
+  "back": "monb_dodrio",
+  "dex_entry": {
+   "species": "TRIPLEBIRD",
+   "height_ft": 5,
+   "height_in": 11,
+   "weight": 1880,
+   "text": "_DodrioDexEntry"
+  },
+  "learnset": [
+   [
+    20,
+    "GROWL"
+   ],
+   [
+    24,
+    "FURY_ATTACK"
+   ],
+   [
+    30,
+    "DRILL_PECK"
+   ],
+   [
+    39,
+    "RAGE"
+   ],
+   [
+    45,
+    "TRI_ATTACK"
+   ],
+   [
+    51,
+    "AGILITY"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BIRD",
+  "tmhm": [
+   "WHIRLWIND",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "SKY_ATTACK",
+   "REST",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "FLY"
+  ],
+  "hp": 60,
+  "atk": 110,
+  "def": 70,
+  "spd": 100,
+  "spc": 60,
+  "types": [
+   "NORMAL",
+   "FLYING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 158,
+  "moves": [
+   "PECK",
+   "GROWL",
+   "FURY_ATTACK"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "PRIMEAPE": {
+  "internal_id": 117,
+  "dex": 57,
+  "name_en": "PRIMEAPE",
+  "name_ko": "성원숭",
+  "pic": "mon_primeape",
+  "back": "monb_primeape",
+  "dex_entry": {
+   "species": "PIG MONKEY",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 710,
+   "text": "_PrimeapeDexEntry"
+  },
+  "learnset": [
+   [
+    15,
+    "KARATE_CHOP"
+   ],
+   [
+    21,
+    "FURY_SWIPES"
+   ],
+   [
+    27,
+    "FOCUS_ENERGY"
+   ],
+   [
+    37,
+    "SEISMIC_TOSS"
+   ],
+   [
+    46,
+    "THRASH"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "PAY_DAY",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 65,
+  "atk": 105,
+  "def": 60,
+  "spd": 95,
+  "spc": 60,
+  "types": [
+   "FIGHTING",
+   "FIGHTING"
+  ],
+  "catch_rate": 75,
+  "base_exp": 149,
+  "moves": [
+   "SCRATCH",
+   "LEER",
+   "KARATE_CHOP",
+   "FURY_SWIPES"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "DUGTRIO": {
+  "internal_id": 118,
+  "dex": 51,
+  "name_en": "DUGTRIO",
+  "name_ko": "닥트리오",
+  "pic": "mon_dugtrio",
+  "back": "monb_dugtrio",
+  "dex_entry": {
+   "species": "MOLE",
+   "height_ft": 2,
+   "height_in": 4,
+   "weight": 730,
+   "text": "_DugtrioDexEntry"
+  },
+  "learnset": [
+   [
+    15,
+    "GROWL"
+   ],
+   [
+    19,
+    "DIG"
+   ],
+   [
+    24,
+    "SAND_ATTACK"
+   ],
+   [
+    35,
+    "SLASH"
+   ],
+   [
+    47,
+    "EARTHQUAKE"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE"
+  ],
+  "hp": 35,
+  "atk": 80,
+  "def": 50,
+  "spd": 120,
+  "spc": 70,
+  "types": [
+   "GROUND",
+   "GROUND"
+  ],
+  "catch_rate": 50,
+  "base_exp": 153,
+  "moves": [
+   "SCRATCH",
+   "GROWL",
+   "DIG"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "VENOMOTH": {
+  "internal_id": 119,
+  "dex": 49,
+  "name_en": "VENOMOTH",
+  "name_ko": "도나리",
+  "pic": "mon_venomoth",
+  "back": "monb_venomoth",
+  "dex_entry": {
+   "species": "POISONMOTH",
+   "height_ft": 4,
+   "height_in": 11,
+   "weight": 280,
+   "text": "_VenomothDexEntry"
+  },
+  "learnset": [
+   [
+    24,
+    "POISONPOWDER"
+   ],
+   [
+    27,
+    "LEECH_LIFE"
+   ],
+   [
+    30,
+    "STUN_SPORE"
+   ],
+   [
+    38,
+    "PSYBEAM"
+   ],
+   [
+    43,
+    "SLEEP_POWDER"
+   ],
+   [
+    50,
+    "PSYCHIC_M"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BUG",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "REST",
+   "PSYWAVE",
+   "SUBSTITUTE"
+  ],
+  "hp": 70,
+  "atk": 65,
+  "def": 60,
+  "spd": 90,
+  "spc": 90,
+  "types": [
+   "BUG",
+   "POISON"
+  ],
+  "catch_rate": 75,
+  "base_exp": 138,
+  "moves": [
+   "TACKLE",
+   "DISABLE",
+   "POISONPOWDER",
+   "LEECH_LIFE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "DEWGONG": {
+  "internal_id": 120,
+  "dex": 87,
+  "name_en": "DEWGONG",
+  "name_ko": "쥬레곤",
+  "pic": "mon_dewgong",
+  "back": "monb_dewgong",
+  "dex_entry": {
+   "species": "SEA LION",
+   "height_ft": 5,
+   "height_in": 7,
+   "weight": 2650,
+   "text": "_DewgongDexEntry"
+  },
+  "learnset": [
+   [
+    30,
+    "GROWL"
+   ],
+   [
+    35,
+    "AURORA_BEAM"
+   ],
+   [
+    44,
+    "REST"
+   ],
+   [
+    50,
+    "TAKE_DOWN"
+   ],
+   [
+    56,
+    "ICE_BEAM"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "PAY_DAY",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 90,
+  "atk": 70,
+  "def": 80,
+  "spd": 70,
+  "spc": 95,
+  "types": [
+   "WATER",
+   "ICE"
+  ],
+  "catch_rate": 75,
+  "base_exp": 176,
+  "moves": [
+   "HEADBUTT",
+   "GROWL",
+   "AURORA_BEAM"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "CATERPIE": {
+  "internal_id": 123,
+  "dex": 10,
+  "name_en": "CATERPIE",
+  "name_ko": "캐터피",
+  "pic": "mon_caterpie",
+  "back": "monb_caterpie",
+  "dex_entry": {
+   "species": "WORM",
+   "height_ft": 1,
+   "height_in": 0,
+   "weight": 60,
+   "text": "_CaterpieDexEntry"
+  },
+  "learnset": [],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 7,
+    "species": "METAPOD"
+   }
+  ],
+  "icon": "ICON_BUG",
+  "tmhm": [],
+  "hp": 45,
+  "atk": 30,
+  "def": 35,
+  "spd": 45,
+  "spc": 20,
+  "types": [
+   "BUG",
+   "BUG"
+  ],
+  "catch_rate": 255,
+  "base_exp": 53,
+  "moves": [
+   "TACKLE",
+   "STRING_SHOT"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "METAPOD": {
+  "internal_id": 124,
+  "dex": 11,
+  "name_en": "METAPOD",
+  "name_ko": "단데기",
+  "pic": "mon_metapod",
+  "back": "monb_metapod",
+  "dex_entry": {
+   "species": "COCOON",
+   "height_ft": 2,
+   "height_in": 4,
+   "weight": 220,
+   "text": "_MetapodDexEntry"
+  },
+  "learnset": [],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 10,
+    "species": "BUTTERFREE"
+   }
+  ],
+  "icon": "ICON_BUG",
+  "tmhm": [],
+  "hp": 50,
+  "atk": 20,
+  "def": 55,
+  "spd": 30,
+  "spc": 25,
+  "types": [
+   "BUG",
+   "BUG"
+  ],
+  "catch_rate": 120,
+  "base_exp": 72,
+  "moves": [
+   "HARDEN"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "BUTTERFREE": {
+  "internal_id": 125,
+  "dex": 12,
+  "name_en": "BUTTERFREE",
+  "name_ko": "버터플",
+  "pic": "mon_butterfree",
+  "back": "monb_butterfree",
+  "dex_entry": {
+   "species": "BUTTERFLY",
+   "height_ft": 3,
+   "height_in": 7,
+   "weight": 710,
+   "text": "_ButterfreeDexEntry"
+  },
+  "learnset": [
+   [
+    12,
+    "CONFUSION"
+   ],
+   [
+    15,
+    "POISONPOWDER"
+   ],
+   [
+    16,
+    "STUN_SPORE"
+   ],
+   [
+    17,
+    "SLEEP_POWDER"
+   ],
+   [
+    21,
+    "SUPERSONIC"
+   ],
+   [
+    26,
+    "WHIRLWIND"
+   ],
+   [
+    32,
+    "PSYBEAM"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BUG",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "REST",
+   "PSYWAVE",
+   "SUBSTITUTE"
+  ],
+  "hp": 60,
+  "atk": 45,
+  "def": 50,
+  "spd": 70,
+  "spc": 80,
+  "types": [
+   "BUG",
+   "FLYING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 160,
+  "moves": [
+   "CONFUSION"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "MACHAMP": {
+  "internal_id": 126,
+  "dex": 68,
+  "name_en": "MACHAMP",
+  "name_ko": "괴력몬",
+  "pic": "mon_machamp",
+  "back": "monb_machamp",
+  "dex_entry": {
+   "species": "SUPERPOWER",
+   "height_ft": 5,
+   "height_in": 3,
+   "weight": 2870,
+   "text": "_MachampDexEntry"
+  },
+  "learnset": [
+   [
+    20,
+    "LOW_KICK"
+   ],
+   [
+    25,
+    "LEER"
+   ],
+   [
+    36,
+    "FOCUS_ENERGY"
+   ],
+   [
+    44,
+    "SEISMIC_TOSS"
+   ],
+   [
+    52,
+    "SUBMISSION"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 90,
+  "atk": 130,
+  "def": 80,
+  "spd": 55,
+  "spc": 65,
+  "types": [
+   "FIGHTING",
+   "FIGHTING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 193,
+  "moves": [
+   "KARATE_CHOP",
+   "LOW_KICK",
+   "LEER"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "GOLDUCK": {
+  "internal_id": 128,
+  "dex": 55,
+  "name_en": "GOLDUCK",
+  "name_ko": "골덕",
+  "pic": "mon_golduck",
+  "back": "monb_golduck",
+  "dex_entry": {
+   "species": "DUCK",
+   "height_ft": 5,
+   "height_in": 7,
+   "weight": 1690,
+   "text": "_GolduckDexEntry"
+  },
+  "learnset": [
+   [
+    28,
+    "TAIL_WHIP"
+   ],
+   [
+    31,
+    "DISABLE"
+   ],
+   [
+    39,
+    "CONFUSION"
+   ],
+   [
+    48,
+    "FURY_SWIPES"
+   ],
+   [
+    59,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "PAY_DAY",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 80,
+  "atk": 82,
+  "def": 78,
+  "spd": 85,
+  "spc": 80,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 75,
+  "base_exp": 174,
+  "moves": [
+   "SCRATCH",
+   "TAIL_WHIP",
+   "DISABLE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "HYPNO": {
+  "internal_id": 129,
+  "dex": 97,
+  "name_en": "HYPNO",
+  "name_ko": "슬리퍼",
+  "pic": "mon_hypno",
+  "back": "monb_hypno",
+  "dex_entry": {
+   "species": "HYPNOSIS",
+   "height_ft": 5,
+   "height_in": 3,
+   "weight": 1670,
+   "text": "_HypnoDexEntry"
+  },
+  "learnset": [
+   [
+    12,
+    "DISABLE"
+   ],
+   [
+    17,
+    "CONFUSION"
+   ],
+   [
+    24,
+    "HEADBUTT"
+   ],
+   [
+    33,
+    "POISON_GAS"
+   ],
+   [
+    37,
+    "PSYCHIC_M"
+   ],
+   [
+    43,
+    "MEDITATE"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "SKULL_BASH",
+   "DREAM_EATER",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 85,
+  "atk": 73,
+  "def": 70,
+  "spd": 67,
+  "spc": 115,
+  "types": [
+   "PSYCHIC_TYPE",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 75,
+  "base_exp": 165,
+  "moves": [
+   "POUND",
+   "HYPNOSIS",
+   "DISABLE",
+   "CONFUSION"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "GOLBAT": {
+  "internal_id": 130,
+  "dex": 42,
+  "name_en": "GOLBAT",
+  "name_ko": "골뱃",
+  "pic": "mon_golbat",
+  "back": "monb_golbat",
+  "dex_entry": {
+   "species": "BAT",
+   "height_ft": 5,
+   "height_in": 3,
+   "weight": 1210,
+   "text": "_GolbatDexEntry"
+  },
+  "learnset": [
+   [
+    10,
+    "SUPERSONIC"
+   ],
+   [
+    15,
+    "BITE"
+   ],
+   [
+    21,
+    "CONFUSE_RAY"
+   ],
+   [
+    32,
+    "WING_ATTACK"
+   ],
+   [
+    43,
+    "HAZE"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 75,
+  "atk": 80,
+  "def": 70,
+  "spd": 90,
+  "spc": 75,
+  "types": [
+   "POISON",
+   "FLYING"
+  ],
+  "catch_rate": 90,
+  "base_exp": 171,
+  "moves": [
+   "LEECH_LIFE",
+   "SCREECH",
+   "BITE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "MEWTWO": {
+  "internal_id": 131,
+  "dex": 150,
+  "name_en": "MEWTWO",
+  "name_ko": "뮤츠",
+  "pic": "mon_mewtwo",
+  "back": "monb_mewtwo",
+  "dex_entry": {
+   "species": "GENETIC",
+   "height_ft": 6,
+   "height_in": 7,
+   "weight": 2690,
+   "text": "_MewtwoDexEntry"
+  },
+  "learnset": [
+   [
+    63,
+    "BARRIER"
+   ],
+   [
+    66,
+    "PSYCHIC_M"
+   ],
+   [
+    70,
+    "RECOVER"
+   ],
+   [
+    75,
+    "MIST"
+   ],
+   [
+    81,
+    "AMNESIA"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "PAY_DAY",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "SOLARBEAM",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "SELFDESTRUCT",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "STRENGTH",
+   "FLASH"
+  ],
+  "hp": 106,
+  "atk": 110,
+  "def": 90,
+  "spd": 130,
+  "spc": 154,
+  "types": [
+   "PSYCHIC_TYPE",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 3,
+  "base_exp": 220,
+  "moves": [
+   "CONFUSION",
+   "DISABLE",
+   "SWIFT",
+   "PSYCHIC_M"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "SNORLAX": {
+  "internal_id": 132,
+  "dex": 143,
+  "name_en": "SNORLAX",
+  "name_ko": "잠만보",
+  "pic": "mon_snorlax",
+  "back": "monb_snorlax",
+  "dex_entry": {
+   "species": "SLEEPING",
+   "height_ft": 6,
+   "height_in": 11,
+   "weight": 10140,
+   "text": "_SnorlaxDexEntry"
+  },
+  "learnset": [
+   [
+    35,
+    "BODY_SLAM"
+   ],
+   [
+    41,
+    "HARDEN"
+   ],
+   [
+    48,
+    "DOUBLE_EDGE"
+   ],
+   [
+    56,
+    "HYPER_BEAM"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "PAY_DAY",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "SOLARBEAM",
+   "THUNDERBOLT",
+   "THUNDER",
+   "EARTHQUAKE",
+   "FISSURE",
+   "PSYCHIC_M",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "SELFDESTRUCT",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "PSYWAVE",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 160,
+  "atk": 110,
+  "def": 65,
+  "spd": 30,
+  "spc": 65,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 25,
+  "base_exp": 154,
+  "moves": [
+   "HEADBUTT",
+   "AMNESIA",
+   "REST"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "MAGIKARP": {
+  "internal_id": 133,
+  "dex": 129,
+  "name_en": "MAGIKARP",
+  "name_ko": "잉어킹",
+  "pic": "mon_magikarp",
+  "back": "monb_magikarp",
+  "dex_entry": {
+   "species": "FISH",
+   "height_ft": 2,
+   "height_in": 11,
+   "weight": 220,
+   "text": "_MagikarpDexEntry"
+  },
+  "learnset": [
+   [
+    15,
+    "TACKLE"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 20,
+    "species": "GYARADOS"
+   }
+  ],
+  "icon": "ICON_WATER",
+  "tmhm": [],
+  "hp": 20,
+  "atk": 10,
+  "def": 55,
+  "spd": 80,
+  "spc": 20,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 255,
+  "base_exp": 20,
+  "moves": [
+   "SPLASH"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "MUK": {
+  "internal_id": 136,
+  "dex": 89,
+  "name_en": "MUK",
+  "name_ko": "질뻐기",
+  "pic": "mon_muk",
+  "back": "monb_muk",
+  "dex_entry": {
+   "species": "SLUDGE",
+   "height_ft": 3,
+   "height_in": 11,
+   "weight": 660,
+   "text": "_MukDexEntry"
+  },
+  "learnset": [
+   [
+    30,
+    "POISON_GAS"
+   ],
+   [
+    33,
+    "MINIMIZE"
+   ],
+   [
+    37,
+    "SLUDGE"
+   ],
+   [
+    45,
+    "HARDEN"
+   ],
+   [
+    53,
+    "SCREECH"
+   ],
+   [
+    60,
+    "ACID_ARMOR"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SELFDESTRUCT",
+   "FIRE_BLAST",
+   "REST",
+   "EXPLOSION",
+   "SUBSTITUTE"
+  ],
+  "hp": 105,
+  "atk": 105,
+  "def": 75,
+  "spd": 50,
+  "spc": 65,
+  "types": [
+   "POISON",
+   "POISON"
+  ],
+  "catch_rate": 75,
+  "base_exp": 157,
+  "moves": [
+   "POUND",
+   "DISABLE",
+   "POISON_GAS"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "KINGLER": {
+  "internal_id": 138,
+  "dex": 99,
+  "name_en": "KINGLER",
+  "name_ko": "킹크랩",
+  "pic": "mon_kingler",
+  "back": "monb_kingler",
+  "dex_entry": {
+   "species": "PINCER",
+   "height_ft": 4,
+   "height_in": 3,
+   "weight": 1320,
+   "text": "_KinglerDexEntry"
+  },
+  "learnset": [
+   [
+    20,
+    "VICEGRIP"
+   ],
+   [
+    25,
+    "GUILLOTINE"
+   ],
+   [
+    34,
+    "STOMP"
+   ],
+   [
+    42,
+    "CRABHAMMER"
+   ],
+   [
+    49,
+    "HARDEN"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "CUT",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 55,
+  "atk": 130,
+  "def": 115,
+  "spd": 75,
+  "spc": 50,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 60,
+  "base_exp": 206,
+  "moves": [
+   "BUBBLE",
+   "LEER",
+   "VICEGRIP"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "CLOYSTER": {
+  "internal_id": 139,
+  "dex": 91,
+  "name_en": "CLOYSTER",
+  "name_ko": "파르셀",
+  "pic": "mon_cloyster",
+  "back": "monb_cloyster",
+  "dex_entry": {
+   "species": "BIVALVE",
+   "height_ft": 4,
+   "height_in": 11,
+   "weight": 2920,
+   "text": "_CloysterDexEntry"
+  },
+  "learnset": [
+   [
+    50,
+    "SPIKE_CANNON"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_HELIX",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SELFDESTRUCT",
+   "SWIFT",
+   "REST",
+   "EXPLOSION",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 50,
+  "atk": 95,
+  "def": 180,
+  "spd": 70,
+  "spc": 85,
+  "types": [
+   "WATER",
+   "ICE"
+  ],
+  "catch_rate": 60,
+  "base_exp": 203,
+  "moves": [
+   "WITHDRAW",
+   "SUPERSONIC",
+   "CLAMP",
+   "AURORA_BEAM"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "ELECTRODE": {
+  "internal_id": 141,
+  "dex": 101,
+  "name_en": "ELECTRODE",
+  "name_ko": "붐볼",
+  "pic": "mon_electrode",
+  "back": "monb_electrode",
+  "dex_entry": {
+   "species": "BALL",
+   "height_ft": 3,
+   "height_in": 11,
+   "weight": 1470,
+   "text": "_ElectrodeDexEntry"
+  },
+  "learnset": [
+   [
+    17,
+    "SONICBOOM"
+   ],
+   [
+    22,
+    "SELFDESTRUCT"
+   ],
+   [
+    29,
+    "LIGHT_SCREEN"
+   ],
+   [
+    40,
+    "SWIFT"
+   ],
+   [
+    50,
+    "EXPLOSION"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BALL",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "HYPER_BEAM",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SELFDESTRUCT",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "EXPLOSION",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 60,
+  "atk": 50,
+  "def": 70,
+  "spd": 140,
+  "spc": 80,
+  "types": [
+   "ELECTRIC",
+   "ELECTRIC"
+  ],
+  "catch_rate": 60,
+  "base_exp": 150,
+  "moves": [
+   "TACKLE",
+   "SCREECH",
+   "SONICBOOM"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "CLEFABLE": {
+  "internal_id": 142,
+  "dex": 36,
+  "name_en": "CLEFABLE",
+  "name_ko": "픽시",
+  "pic": "mon_clefable",
+  "back": "monb_clefable",
+  "dex_entry": {
+   "species": "FAIRY",
+   "height_ft": 4,
+   "height_in": 3,
+   "weight": 880,
+   "text": "_ClefableDexEntry"
+  },
+  "learnset": [],
+  "evolutions": [],
+  "icon": "ICON_FAIRY",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "SOLARBEAM",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "STRENGTH",
+   "FLASH"
+  ],
+  "hp": 95,
+  "atk": 70,
+  "def": 73,
+  "spd": 60,
+  "spc": 85,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 25,
+  "base_exp": 129,
+  "moves": [
+   "SING",
+   "DOUBLESLAP",
+   "MINIMIZE",
+   "METRONOME"
+  ],
+  "growth": "GROWTH_FAST"
+ },
+ "WEEZING": {
+  "internal_id": 143,
+  "dex": 110,
+  "name_en": "WEEZING",
+  "name_ko": "또도가스",
+  "pic": "mon_weezing",
+  "back": "monb_weezing",
+  "dex_entry": {
+   "species": "POISON GAS",
+   "height_ft": 3,
+   "height_in": 11,
+   "weight": 210,
+   "text": "_WeezingDexEntry"
+  },
+  "learnset": [
+   [
+    32,
+    "SLUDGE"
+   ],
+   [
+    39,
+    "SMOKESCREEN"
+   ],
+   [
+    43,
+    "SELFDESTRUCT"
+   ],
+   [
+    49,
+    "HAZE"
+   ],
+   [
+    53,
+    "EXPLOSION"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "HYPER_BEAM",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SELFDESTRUCT",
+   "FIRE_BLAST",
+   "REST",
+   "EXPLOSION",
+   "SUBSTITUTE"
+  ],
+  "hp": 65,
+  "atk": 90,
+  "def": 120,
+  "spd": 60,
+  "spc": 85,
+  "types": [
+   "POISON",
+   "POISON"
+  ],
+  "catch_rate": 60,
+  "base_exp": 173,
+  "moves": [
+   "TACKLE",
+   "SMOG",
+   "SLUDGE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "PERSIAN": {
+  "internal_id": 144,
+  "dex": 53,
+  "name_en": "PERSIAN",
+  "name_ko": "페르시온",
+  "pic": "mon_persian",
+  "back": "monb_persian",
+  "dex_entry": {
+   "species": "CLASSY CAT",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 710,
+   "text": "_PersianDexEntry"
+  },
+  "learnset": [
+   [
+    12,
+    "BITE"
+   ],
+   [
+    17,
+    "PAY_DAY"
+   ],
+   [
+    24,
+    "SCREECH"
+   ],
+   [
+    37,
+    "FURY_SWIPES"
+   ],
+   [
+    51,
+    "SLASH"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "HYPER_BEAM",
+   "PAY_DAY",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 65,
+  "atk": 70,
+  "def": 60,
+  "spd": 115,
+  "spc": 65,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 90,
+  "base_exp": 148,
+  "moves": [
+   "SCRATCH",
+   "GROWL",
+   "BITE",
+   "SCREECH"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "MAROWAK": {
+  "internal_id": 145,
+  "dex": 105,
+  "name_en": "MAROWAK",
+  "name_ko": "텅구리",
+  "pic": "mon_marowak",
+  "back": "monb_marowak",
+  "dex_entry": {
+   "species": "BONEKEEPER",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 990,
+   "text": "_MarowakDexEntry"
+  },
+  "learnset": [
+   [
+    25,
+    "LEER"
+   ],
+   [
+    33,
+    "FOCUS_ENERGY"
+   ],
+   [
+    41,
+    "THRASH"
+   ],
+   [
+    48,
+    "BONEMERANG"
+   ],
+   [
+    55,
+    "RAGE"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "FIRE_BLAST",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 60,
+  "atk": 80,
+  "def": 110,
+  "spd": 45,
+  "spc": 50,
+  "types": [
+   "GROUND",
+   "GROUND"
+  ],
+  "catch_rate": 75,
+  "base_exp": 124,
+  "moves": [
+   "BONE_CLUB",
+   "GROWL",
+   "LEER",
+   "FOCUS_ENERGY"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "HAUNTER": {
+  "internal_id": 147,
+  "dex": 93,
+  "name_en": "HAUNTER",
+  "name_ko": "고우스트",
+  "pic": "mon_haunter",
+  "back": "monb_haunter",
+  "dex_entry": {
+   "species": "GAS",
+   "height_ft": 5,
+   "height_in": 3,
+   "weight": 2,
+   "text": "_HaunterDexEntry"
+  },
+  "learnset": [
+   [
+    29,
+    "HYPNOSIS"
+   ],
+   [
+    38,
+    "DREAM_EATER"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "TRADE",
+    "species": "GENGAR"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "RAGE",
+   "MEGA_DRAIN",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SELFDESTRUCT",
+   "DREAM_EATER",
+   "REST",
+   "PSYWAVE",
+   "EXPLOSION",
+   "SUBSTITUTE"
+  ],
+  "hp": 45,
+  "atk": 50,
+  "def": 45,
+  "spd": 95,
+  "spc": 115,
+  "types": [
+   "GHOST",
+   "POISON"
+  ],
+  "catch_rate": 90,
+  "base_exp": 126,
+  "moves": [
+   "LICK",
+   "CONFUSE_RAY",
+   "NIGHT_SHADE"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "ABRA": {
+  "internal_id": 148,
+  "dex": 63,
+  "name_en": "ABRA",
+  "name_ko": "캐이시",
+  "pic": "mon_abra",
+  "back": "monb_abra",
+  "dex_entry": {
+   "species": "PSI",
+   "height_ft": 2,
+   "height_in": 11,
+   "weight": 430,
+   "text": "_AbraDexEntry"
+  },
+  "learnset": [],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 16,
+    "species": "KADABRA"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 25,
+  "atk": 20,
+  "def": 15,
+  "spd": 90,
+  "spc": 105,
+  "types": [
+   "PSYCHIC_TYPE",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 200,
+  "base_exp": 73,
+  "moves": [
+   "TELEPORT"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "ALAKAZAM": {
+  "internal_id": 149,
+  "dex": 65,
+  "name_en": "ALAKAZAM",
+  "name_ko": "후딘",
+  "pic": "mon_alakazam",
+  "back": "monb_alakazam",
+  "dex_entry": {
+   "species": "PSI",
+   "height_ft": 4,
+   "height_in": 11,
+   "weight": 1060,
+   "text": "_AlakazamDexEntry"
+  },
+  "learnset": [
+   [
+    16,
+    "CONFUSION"
+   ],
+   [
+    20,
+    "DISABLE"
+   ],
+   [
+    27,
+    "PSYBEAM"
+   ],
+   [
+    31,
+    "RECOVER"
+   ],
+   [
+    38,
+    "PSYCHIC_M"
+   ],
+   [
+    42,
+    "REFLECT"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "DIG",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "METRONOME",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 55,
+  "atk": 50,
+  "def": 45,
+  "spd": 120,
+  "spc": 135,
+  "types": [
+   "PSYCHIC_TYPE",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 50,
+  "base_exp": 186,
+  "moves": [
+   "TELEPORT",
+   "CONFUSION",
+   "DISABLE"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "PIDGEOTTO": {
+  "internal_id": 150,
+  "dex": 17,
+  "name_en": "PIDGEOTTO",
+  "name_ko": "피죤",
+  "pic": "mon_pidgeotto",
+  "back": "monb_pidgeotto",
+  "dex_entry": {
+   "species": "BIRD",
+   "height_ft": 3,
+   "height_in": 7,
+   "weight": 660,
+   "text": "_PidgeottoDexEntry"
+  },
+  "learnset": [
+   [
+    5,
+    "SAND_ATTACK"
+   ],
+   [
+    12,
+    "QUICK_ATTACK"
+   ],
+   [
+    21,
+    "WHIRLWIND"
+   ],
+   [
+    31,
+    "WING_ATTACK"
+   ],
+   [
+    40,
+    "AGILITY"
+   ],
+   [
+    49,
+    "MIRROR_MOVE"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 36,
+    "species": "PIDGEOT"
+   }
+  ],
+  "icon": "ICON_BIRD",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKY_ATTACK",
+   "REST",
+   "SUBSTITUTE",
+   "FLY"
+  ],
+  "hp": 63,
+  "atk": 60,
+  "def": 55,
+  "spd": 71,
+  "spc": 50,
+  "types": [
+   "NORMAL",
+   "FLYING"
+  ],
+  "catch_rate": 120,
+  "base_exp": 113,
+  "moves": [
+   "GUST",
+   "SAND_ATTACK"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "PIDGEOT": {
+  "internal_id": 151,
+  "dex": 18,
+  "name_en": "PIDGEOT",
+  "name_ko": "피죤투",
+  "pic": "mon_pidgeot",
+  "back": "monb_pidgeot",
+  "dex_entry": {
+   "species": "BIRD",
+   "height_ft": 4,
+   "height_in": 11,
+   "weight": 870,
+   "text": "_PidgeotDexEntry"
+  },
+  "learnset": [
+   [
+    5,
+    "SAND_ATTACK"
+   ],
+   [
+    12,
+    "QUICK_ATTACK"
+   ],
+   [
+    21,
+    "WHIRLWIND"
+   ],
+   [
+    31,
+    "WING_ATTACK"
+   ],
+   [
+    44,
+    "AGILITY"
+   ],
+   [
+    54,
+    "MIRROR_MOVE"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BIRD",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKY_ATTACK",
+   "REST",
+   "SUBSTITUTE",
+   "FLY"
+  ],
+  "hp": 83,
+  "atk": 80,
+  "def": 75,
+  "spd": 91,
+  "spc": 70,
+  "types": [
+   "NORMAL",
+   "FLYING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 172,
+  "moves": [
+   "GUST",
+   "SAND_ATTACK",
+   "QUICK_ATTACK"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "STARMIE": {
+  "internal_id": 152,
+  "dex": 121,
+  "name_en": "STARMIE",
+  "name_ko": "아쿠스타",
+  "pic": "mon_starmie",
+  "back": "monb_starmie",
+  "dex_entry": {
+   "species": "MYSTERIOUS",
+   "height_ft": 3,
+   "height_in": 7,
+   "weight": 1760,
+   "text": "_StarmieDexEntry"
+  },
+  "learnset": [],
+  "evolutions": [],
+  "icon": "ICON_HELIX",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "SURF",
+   "FLASH"
+  ],
+  "hp": 60,
+  "atk": 75,
+  "def": 85,
+  "spd": 115,
+  "spc": 100,
+  "types": [
+   "WATER",
+   "PSYCHIC_TYPE"
+  ],
+  "catch_rate": 60,
+  "base_exp": 207,
+  "moves": [
+   "TACKLE",
+   "WATER_GUN",
+   "HARDEN"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "BULBASAUR": {
+  "internal_id": 153,
+  "dex": 1,
+  "name_en": "BULBASAUR",
+  "name_ko": "이상해씨",
+  "pic": "mon_bulbasaur",
+  "back": "monb_bulbasaur",
+  "dex_entry": {
+   "species": "SEED",
+   "height_ft": 2,
+   "height_in": 4,
+   "weight": 150,
+   "text": "_BulbasaurDexEntry"
+  },
+  "learnset": [
+   [
+    7,
+    "LEECH_SEED"
+   ],
+   [
+    13,
+    "VINE_WHIP"
+   ],
+   [
+    20,
+    "POISONPOWDER"
+   ],
+   [
+    27,
+    "RAZOR_LEAF"
+   ],
+   [
+    34,
+    "GROWTH"
+   ],
+   [
+    41,
+    "SLEEP_POWDER"
+   ],
+   [
+    48,
+    "SOLARBEAM"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 16,
+    "species": "IVYSAUR"
+   }
+  ],
+  "icon": "ICON_GRASS",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 45,
+  "atk": 49,
+  "def": 49,
+  "spd": 45,
+  "spc": 65,
+  "types": [
+   "GRASS",
+   "POISON"
+  ],
+  "catch_rate": 45,
+  "base_exp": 64,
+  "moves": [
+   "TACKLE",
+   "GROWL"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "VENUSAUR": {
+  "internal_id": 154,
+  "dex": 3,
+  "name_en": "VENUSAUR",
+  "name_ko": "이상해꽃",
+  "pic": "mon_venusaur",
+  "back": "monb_venusaur",
+  "dex_entry": {
+   "species": "SEED",
+   "height_ft": 6,
+   "height_in": 7,
+   "weight": 2210,
+   "text": "_VenusaurDexEntry"
+  },
+  "learnset": [
+   [
+    7,
+    "LEECH_SEED"
+   ],
+   [
+    13,
+    "VINE_WHIP"
+   ],
+   [
+    22,
+    "POISONPOWDER"
+   ],
+   [
+    30,
+    "RAZOR_LEAF"
+   ],
+   [
+    43,
+    "GROWTH"
+   ],
+   [
+    55,
+    "SLEEP_POWDER"
+   ],
+   [
+    65,
+    "SOLARBEAM"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_GRASS",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 80,
+  "atk": 82,
+  "def": 83,
+  "spd": 80,
+  "spc": 100,
+  "types": [
+   "GRASS",
+   "POISON"
+  ],
+  "catch_rate": 45,
+  "base_exp": 208,
+  "moves": [
+   "TACKLE",
+   "GROWL",
+   "LEECH_SEED",
+   "VINE_WHIP"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "TENTACRUEL": {
+  "internal_id": 155,
+  "dex": 73,
+  "name_en": "TENTACRUEL",
+  "name_ko": "독파리",
+  "pic": "mon_tentacruel",
+  "back": "monb_tentacruel",
+  "dex_entry": {
+   "species": "JELLYFISH",
+   "height_ft": 5,
+   "height_in": 3,
+   "weight": 1210,
+   "text": "_TentacruelDexEntry"
+  },
+  "learnset": [
+   [
+    7,
+    "SUPERSONIC"
+   ],
+   [
+    13,
+    "WRAP"
+   ],
+   [
+    18,
+    "POISON_STING"
+   ],
+   [
+    22,
+    "WATER_GUN"
+   ],
+   [
+    27,
+    "CONSTRICT"
+   ],
+   [
+    35,
+    "BARRIER"
+   ],
+   [
+    43,
+    "SCREECH"
+   ],
+   [
+    50,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "CUT",
+   "SURF"
+  ],
+  "hp": 80,
+  "atk": 70,
+  "def": 65,
+  "spd": 100,
+  "spc": 120,
+  "types": [
+   "WATER",
+   "POISON"
+  ],
+  "catch_rate": 60,
+  "base_exp": 205,
+  "moves": [
+   "ACID",
+   "SUPERSONIC",
+   "WRAP"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "GOLDEEN": {
+  "internal_id": 157,
+  "dex": 118,
+  "name_en": "GOLDEEN",
+  "name_ko": "콘치",
+  "pic": "mon_goldeen",
+  "back": "monb_goldeen",
+  "dex_entry": {
+   "species": "GOLDFISH",
+   "height_ft": 2,
+   "height_in": 0,
+   "weight": 330,
+   "text": "_GoldeenDexEntry"
+  },
+  "learnset": [
+   [
+    19,
+    "SUPERSONIC"
+   ],
+   [
+    24,
+    "HORN_ATTACK"
+   ],
+   [
+    30,
+    "FURY_ATTACK"
+   ],
+   [
+    37,
+    "WATERFALL"
+   ],
+   [
+    45,
+    "HORN_DRILL"
+   ],
+   [
+    54,
+    "AGILITY"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 33,
+    "species": "SEAKING"
+   }
+  ],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 45,
+  "atk": 67,
+  "def": 60,
+  "spd": 63,
+  "spc": 50,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 225,
+  "base_exp": 111,
+  "moves": [
+   "PECK",
+   "TAIL_WHIP"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "SEAKING": {
+  "internal_id": 158,
+  "dex": 119,
+  "name_en": "SEAKING",
+  "name_ko": "왕콘치",
+  "pic": "mon_seaking",
+  "back": "monb_seaking",
+  "dex_entry": {
+   "species": "GOLDFISH",
+   "height_ft": 4,
+   "height_in": 3,
+   "weight": 860,
+   "text": "_SeakingDexEntry"
+  },
+  "learnset": [
+   [
+    19,
+    "SUPERSONIC"
+   ],
+   [
+    24,
+    "HORN_ATTACK"
+   ],
+   [
+    30,
+    "FURY_ATTACK"
+   ],
+   [
+    39,
+    "WATERFALL"
+   ],
+   [
+    48,
+    "HORN_DRILL"
+   ],
+   [
+    54,
+    "AGILITY"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF"
+  ],
+  "hp": 80,
+  "atk": 92,
+  "def": 65,
+  "spd": 68,
+  "spc": 80,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 60,
+  "base_exp": 170,
+  "moves": [
+   "PECK",
+   "TAIL_WHIP",
+   "SUPERSONIC"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "PONYTA": {
+  "internal_id": 163,
+  "dex": 77,
+  "name_en": "PONYTA",
+  "name_ko": "포니타",
+  "pic": "mon_ponyta",
+  "back": "monb_ponyta",
+  "dex_entry": {
+   "species": "FIRE HORSE",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 660,
+   "text": "_PonytaDexEntry"
+  },
+  "learnset": [
+   [
+    30,
+    "TAIL_WHIP"
+   ],
+   [
+    32,
+    "STOMP"
+   ],
+   [
+    35,
+    "GROWL"
+   ],
+   [
+    39,
+    "FIRE_SPIN"
+   ],
+   [
+    43,
+    "TAKE_DOWN"
+   ],
+   [
+    48,
+    "AGILITY"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 40,
+    "species": "RAPIDASH"
+   }
+  ],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 50,
+  "atk": 85,
+  "def": 55,
+  "spd": 90,
+  "spc": 65,
+  "types": [
+   "FIRE",
+   "FIRE"
+  ],
+  "catch_rate": 190,
+  "base_exp": 152,
+  "moves": [
+   "EMBER"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "RAPIDASH": {
+  "internal_id": 164,
+  "dex": 78,
+  "name_en": "RAPIDASH",
+  "name_ko": "날쌩마",
+  "pic": "mon_rapidash",
+  "back": "monb_rapidash",
+  "dex_entry": {
+   "species": "FIRE HORSE",
+   "height_ft": 5,
+   "height_in": 7,
+   "weight": 2090,
+   "text": "_RapidashDexEntry"
+  },
+  "learnset": [
+   [
+    30,
+    "TAIL_WHIP"
+   ],
+   [
+    32,
+    "STOMP"
+   ],
+   [
+    35,
+    "GROWL"
+   ],
+   [
+    39,
+    "FIRE_SPIN"
+   ],
+   [
+    47,
+    "TAKE_DOWN"
+   ],
+   [
+    55,
+    "AGILITY"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 65,
+  "atk": 100,
+  "def": 70,
+  "spd": 105,
+  "spc": 80,
+  "types": [
+   "FIRE",
+   "FIRE"
+  ],
+  "catch_rate": 60,
+  "base_exp": 192,
+  "moves": [
+   "EMBER",
+   "TAIL_WHIP",
+   "STOMP",
+   "GROWL"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "RATTATA": {
+  "internal_id": 165,
+  "dex": 19,
+  "name_en": "RATTATA",
+  "name_ko": "꼬렛",
+  "pic": "mon_rattata",
+  "back": "monb_rattata",
+  "dex_entry": {
+   "species": "RAT",
+   "height_ft": 1,
+   "height_in": 0,
+   "weight": 80,
+   "text": "_RattataDexEntry"
+  },
+  "learnset": [
+   [
+    7,
+    "QUICK_ATTACK"
+   ],
+   [
+    14,
+    "HYPER_FANG"
+   ],
+   [
+    23,
+    "FOCUS_ENERGY"
+   ],
+   [
+    34,
+    "SUPER_FANG"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 20,
+    "species": "RATICATE"
+   }
+  ],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "BLIZZARD",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 30,
+  "atk": 56,
+  "def": 35,
+  "spd": 72,
+  "spc": 25,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 255,
+  "base_exp": 57,
+  "moves": [
+   "TACKLE",
+   "TAIL_WHIP"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "RATICATE": {
+  "internal_id": 166,
+  "dex": 20,
+  "name_en": "RATICATE",
+  "name_ko": "레트라",
+  "pic": "mon_raticate",
+  "back": "monb_raticate",
+  "dex_entry": {
+   "species": "RAT",
+   "height_ft": 2,
+   "height_in": 4,
+   "weight": 410,
+   "text": "_RaticateDexEntry"
+  },
+  "learnset": [
+   [
+    7,
+    "QUICK_ATTACK"
+   ],
+   [
+    14,
+    "HYPER_FANG"
+   ],
+   [
+    27,
+    "FOCUS_ENERGY"
+   ],
+   [
+    41,
+    "SUPER_FANG"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_QUADRUPED",
+  "tmhm": [
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 55,
+  "atk": 81,
+  "def": 60,
+  "spd": 97,
+  "spc": 50,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 90,
+  "base_exp": 116,
+  "moves": [
+   "TACKLE",
+   "TAIL_WHIP",
+   "QUICK_ATTACK"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "NIDORINO": {
+  "internal_id": 167,
+  "dex": 33,
+  "name_en": "NIDORINO",
+  "name_ko": "니드리노",
+  "pic": "mon_nidorino",
+  "back": "monb_nidorino",
+  "dex_entry": {
+   "species": "POISON PIN",
+   "height_ft": 2,
+   "height_in": 11,
+   "weight": 430,
+   "text": "_NidorinoDexEntry"
+  },
+  "learnset": [
+   [
+    8,
+    "HORN_ATTACK"
+   ],
+   [
+    14,
+    "POISON_STING"
+   ],
+   [
+    23,
+    "FOCUS_ENERGY"
+   ],
+   [
+    32,
+    "FURY_ATTACK"
+   ],
+   [
+    41,
+    "HORN_DRILL"
+   ],
+   [
+    50,
+    "DOUBLE_KICK"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "MOON_STONE",
+    "species": "NIDOKING"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 61,
+  "atk": 72,
+  "def": 57,
+  "spd": 65,
+  "spc": 55,
+  "types": [
+   "POISON",
+   "POISON"
+  ],
+  "catch_rate": 120,
+  "base_exp": 118,
+  "moves": [
+   "LEER",
+   "TACKLE",
+   "HORN_ATTACK"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "NIDORINA": {
+  "internal_id": 168,
+  "dex": 30,
+  "name_en": "NIDORINA",
+  "name_ko": "니드리나",
+  "pic": "mon_nidorina",
+  "back": "monb_nidorina",
+  "dex_entry": {
+   "species": "POISON PIN",
+   "height_ft": 2,
+   "height_in": 7,
+   "weight": 440,
+   "text": "_NidorinaDexEntry"
+  },
+  "learnset": [
+   [
+    8,
+    "SCRATCH"
+   ],
+   [
+    14,
+    "POISON_STING"
+   ],
+   [
+    23,
+    "TAIL_WHIP"
+   ],
+   [
+    32,
+    "BITE"
+   ],
+   [
+    41,
+    "FURY_SWIPES"
+   ],
+   [
+    50,
+    "DOUBLE_KICK"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "MOON_STONE",
+    "species": "NIDOQUEEN"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "HORN_DRILL",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE"
+  ],
+  "hp": 70,
+  "atk": 62,
+  "def": 67,
+  "spd": 56,
+  "spc": 55,
+  "types": [
+   "POISON",
+   "POISON"
+  ],
+  "catch_rate": 120,
+  "base_exp": 117,
+  "moves": [
+   "GROWL",
+   "TACKLE",
+   "SCRATCH"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "GEODUDE": {
+  "internal_id": 169,
+  "dex": 74,
+  "name_en": "GEODUDE",
+  "name_ko": "꼬마돌",
+  "pic": "mon_geodude",
+  "back": "monb_geodude",
+  "dex_entry": {
+   "species": "ROCK",
+   "height_ft": 1,
+   "height_in": 4,
+   "weight": 440,
+   "text": "_GeodudeDexEntry"
+  },
+  "learnset": [
+   [
+    11,
+    "DEFENSE_CURL"
+   ],
+   [
+    16,
+    "ROCK_THROW"
+   ],
+   [
+    21,
+    "SELFDESTRUCT"
+   ],
+   [
+    26,
+    "HARDEN"
+   ],
+   [
+    31,
+    "EARTHQUAKE"
+   ],
+   [
+    36,
+    "EXPLOSION"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 25,
+    "species": "GRAVELER"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "BIDE",
+   "METRONOME",
+   "SELFDESTRUCT",
+   "FIRE_BLAST",
+   "REST",
+   "EXPLOSION",
+   "ROCK_SLIDE",
+   "SUBSTITUTE",
+   "STRENGTH"
+  ],
+  "hp": 40,
+  "atk": 80,
+  "def": 100,
+  "spd": 20,
+  "spc": 30,
+  "types": [
+   "ROCK",
+   "GROUND"
+  ],
+  "catch_rate": 255,
+  "base_exp": 86,
+  "moves": [
+   "TACKLE"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "PORYGON": {
+  "internal_id": 170,
+  "dex": 137,
+  "name_en": "PORYGON",
+  "name_ko": "폴리곤",
+  "pic": "mon_porygon",
+  "back": "monb_porygon",
+  "dex_entry": {
+   "species": "VIRTUAL",
+   "height_ft": 2,
+   "height_in": 7,
+   "weight": 800,
+   "text": "_PorygonDexEntry"
+  },
+  "learnset": [
+   [
+    23,
+    "PSYBEAM"
+   ],
+   [
+    28,
+    "RECOVER"
+   ],
+   [
+    35,
+    "AGILITY"
+   ],
+   [
+    42,
+    "TRI_ATTACK"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "HYPER_BEAM",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "PSYCHIC_M",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "THUNDER_WAVE",
+   "PSYWAVE",
+   "TRI_ATTACK",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 65,
+  "atk": 60,
+  "def": 70,
+  "spd": 40,
+  "spc": 75,
+  "types": [
+   "NORMAL",
+   "NORMAL"
+  ],
+  "catch_rate": 45,
+  "base_exp": 130,
+  "moves": [
+   "TACKLE",
+   "SHARPEN",
+   "CONVERSION"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "AERODACTYL": {
+  "internal_id": 171,
+  "dex": 142,
+  "name_en": "AERODACTYL",
+  "name_ko": "프테라",
+  "pic": "mon_aerodactyl",
+  "back": "monb_aerodactyl",
+  "dex_entry": {
+   "species": "FOSSIL",
+   "height_ft": 5,
+   "height_in": 11,
+   "weight": 1300,
+   "text": "_AerodactylDexEntry"
+  },
+  "learnset": [
+   [
+    33,
+    "SUPERSONIC"
+   ],
+   [
+    38,
+    "BITE"
+   ],
+   [
+    45,
+    "TAKE_DOWN"
+   ],
+   [
+    54,
+    "HYPER_BEAM"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_BIRD",
+  "tmhm": [
+   "RAZOR_WIND",
+   "WHIRLWIND",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "DRAGON_RAGE",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKY_ATTACK",
+   "REST",
+   "SUBSTITUTE",
+   "FLY"
+  ],
+  "hp": 80,
+  "atk": 105,
+  "def": 65,
+  "spd": 130,
+  "spc": 60,
+  "types": [
+   "ROCK",
+   "FLYING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 202,
+  "moves": [
+   "WING_ATTACK",
+   "AGILITY"
+  ],
+  "growth": "GROWTH_SLOW"
+ },
+ "MAGNEMITE": {
+  "internal_id": 173,
+  "dex": 81,
+  "name_en": "MAGNEMITE",
+  "name_ko": "코일",
+  "pic": "mon_magnemite",
+  "back": "monb_magnemite",
+  "dex_entry": {
+   "species": "MAGNET",
+   "height_ft": 1,
+   "height_in": 0,
+   "weight": 130,
+   "text": "_MagnemiteDexEntry"
+  },
+  "learnset": [
+   [
+    21,
+    "SONICBOOM"
+   ],
+   [
+    25,
+    "THUNDERSHOCK"
+   ],
+   [
+    29,
+    "SUPERSONIC"
+   ],
+   [
+    35,
+    "THUNDER_WAVE"
+   ],
+   [
+    41,
+    "SWIFT"
+   ],
+   [
+    47,
+    "SCREECH"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 30,
+    "species": "MAGNETON"
+   }
+  ],
+  "icon": "ICON_BALL",
+  "tmhm": [
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "THUNDERBOLT",
+   "THUNDER",
+   "TELEPORT",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SWIFT",
+   "REST",
+   "THUNDER_WAVE",
+   "SUBSTITUTE",
+   "FLASH"
+  ],
+  "hp": 25,
+  "atk": 35,
+  "def": 70,
+  "spd": 45,
+  "spc": 95,
+  "types": [
+   "ELECTRIC",
+   "ELECTRIC"
+  ],
+  "catch_rate": 190,
+  "base_exp": 89,
+  "moves": [
+   "TACKLE"
+  ],
+  "growth": "GROWTH_MEDIUM_FAST"
+ },
+ "CHARMANDER": {
+  "internal_id": 176,
+  "dex": 4,
+  "name_en": "CHARMANDER",
+  "name_ko": "파이리",
+  "pic": "mon_charmander",
+  "back": "monb_charmander",
+  "dex_entry": {
+   "species": "LIZARD",
+   "height_ft": 2,
+   "height_in": 0,
+   "weight": 190,
+   "text": "_CharmanderDexEntry"
+  },
+  "learnset": [
+   [
+    9,
+    "EMBER"
+   ],
+   [
+    15,
+    "LEER"
+   ],
+   [
+    22,
+    "RAGE"
+   ],
+   [
+    30,
+    "SLASH"
+   ],
+   [
+    38,
+    "FLAMETHROWER"
+   ],
+   [
+    46,
+    "FIRE_SPIN"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 16,
+    "species": "CHARMELEON"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "SWORDS_DANCE",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "DRAGON_RAGE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "CUT",
+   "STRENGTH"
+  ],
+  "hp": 39,
+  "atk": 52,
+  "def": 43,
+  "spd": 65,
+  "spc": 50,
+  "types": [
+   "FIRE",
+   "FIRE"
+  ],
+  "catch_rate": 45,
+  "base_exp": 65,
+  "moves": [
+   "SCRATCH",
+   "GROWL"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "SQUIRTLE": {
+  "internal_id": 177,
+  "dex": 7,
+  "name_en": "SQUIRTLE",
+  "name_ko": "꼬부기",
+  "pic": "mon_squirtle",
+  "back": "monb_squirtle",
+  "dex_entry": {
+   "species": "TINYTURTLE",
+   "height_ft": 1,
+   "height_in": 8,
+   "weight": 200,
+   "text": "_SquirtleDexEntry"
+  },
+  "learnset": [
+   [
+    8,
+    "BUBBLE"
+   ],
+   [
+    15,
+    "WATER_GUN"
+   ],
+   [
+    22,
+    "BITE"
+   ],
+   [
+    28,
+    "WITHDRAW"
+   ],
+   [
+    35,
+    "SKULL_BASH"
+   ],
+   [
+    42,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 16,
+    "species": "WARTORTLE"
+   }
+  ],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 44,
+  "atk": 48,
+  "def": 65,
+  "spd": 43,
+  "spc": 50,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 45,
+  "base_exp": 66,
+  "moves": [
+   "TACKLE",
+   "TAIL_WHIP"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "CHARMELEON": {
+  "internal_id": 178,
+  "dex": 5,
+  "name_en": "CHARMELEON",
+  "name_ko": "리자드",
+  "pic": "mon_charmeleon",
+  "back": "monb_charmeleon",
+  "dex_entry": {
+   "species": "FLAME",
+   "height_ft": 3,
+   "height_in": 7,
+   "weight": 420,
+   "text": "_CharmeleonDexEntry"
+  },
+  "learnset": [
+   [
+    9,
+    "EMBER"
+   ],
+   [
+    15,
+    "LEER"
+   ],
+   [
+    24,
+    "RAGE"
+   ],
+   [
+    33,
+    "SLASH"
+   ],
+   [
+    42,
+    "FLAMETHROWER"
+   ],
+   [
+    56,
+    "FIRE_SPIN"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 36,
+    "species": "CHARIZARD"
+   }
+  ],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "SWORDS_DANCE",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "DRAGON_RAGE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "CUT",
+   "STRENGTH"
+  ],
+  "hp": 58,
+  "atk": 64,
+  "def": 58,
+  "spd": 80,
+  "spc": 65,
+  "types": [
+   "FIRE",
+   "FIRE"
+  ],
+  "catch_rate": 45,
+  "base_exp": 142,
+  "moves": [
+   "SCRATCH",
+   "GROWL",
+   "EMBER"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "WARTORTLE": {
+  "internal_id": 179,
+  "dex": 8,
+  "name_en": "WARTORTLE",
+  "name_ko": "어니부기",
+  "pic": "mon_wartortle",
+  "back": "monb_wartortle",
+  "dex_entry": {
+   "species": "TURTLE",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 500,
+   "text": "_WartortleDexEntry"
+  },
+  "learnset": [
+   [
+    8,
+    "BUBBLE"
+   ],
+   [
+    15,
+    "WATER_GUN"
+   ],
+   [
+    24,
+    "BITE"
+   ],
+   [
+    31,
+    "WITHDRAW"
+   ],
+   [
+    39,
+    "SKULL_BASH"
+   ],
+   [
+    47,
+    "HYDRO_PUMP"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 36,
+    "species": "BLASTOISE"
+   }
+  ],
+  "icon": "ICON_WATER",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "BUBBLEBEAM",
+   "WATER_GUN",
+   "ICE_BEAM",
+   "BLIZZARD",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "SURF",
+   "STRENGTH"
+  ],
+  "hp": 59,
+  "atk": 63,
+  "def": 80,
+  "spd": 58,
+  "spc": 65,
+  "types": [
+   "WATER",
+   "WATER"
+  ],
+  "catch_rate": 45,
+  "base_exp": 143,
+  "moves": [
+   "TACKLE",
+   "TAIL_WHIP",
+   "BUBBLE"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "CHARIZARD": {
+  "internal_id": 180,
+  "dex": 6,
+  "name_en": "CHARIZARD",
+  "name_ko": "리자몽",
+  "pic": "mon_charizard",
+  "back": "monb_charizard",
+  "dex_entry": {
+   "species": "FLAME",
+   "height_ft": 5,
+   "height_in": 7,
+   "weight": 2000,
+   "text": "_CharizardDexEntry"
+  },
+  "learnset": [
+   [
+    9,
+    "EMBER"
+   ],
+   [
+    15,
+    "LEER"
+   ],
+   [
+    24,
+    "RAGE"
+   ],
+   [
+    36,
+    "SLASH"
+   ],
+   [
+    46,
+    "FLAMETHROWER"
+   ],
+   [
+    55,
+    "FIRE_SPIN"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_MON",
+  "tmhm": [
+   "MEGA_PUNCH",
+   "SWORDS_DANCE",
+   "MEGA_KICK",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "SUBMISSION",
+   "COUNTER",
+   "SEISMIC_TOSS",
+   "RAGE",
+   "DRAGON_RAGE",
+   "EARTHQUAKE",
+   "FISSURE",
+   "DIG",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "FIRE_BLAST",
+   "SWIFT",
+   "SKULL_BASH",
+   "REST",
+   "SUBSTITUTE",
+   "CUT",
+   "STRENGTH"
+  ],
+  "hp": 78,
+  "atk": 84,
+  "def": 78,
+  "spd": 100,
+  "spc": 85,
+  "types": [
+   "FIRE",
+   "FLYING"
+  ],
+  "catch_rate": 45,
+  "base_exp": 209,
+  "moves": [
+   "SCRATCH",
+   "GROWL",
+   "EMBER",
+   "LEER"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "ODDISH": {
+  "internal_id": 185,
+  "dex": 43,
+  "name_en": "ODDISH",
+  "name_ko": "뚜벅쵸",
+  "pic": "mon_oddish",
+  "back": "monb_oddish",
+  "dex_entry": {
+   "species": "WEED",
+   "height_ft": 1,
+   "height_in": 8,
+   "weight": 120,
+   "text": "_OddishDexEntry"
+  },
+  "learnset": [
+   [
+    15,
+    "POISONPOWDER"
+   ],
+   [
+    17,
+    "STUN_SPORE"
+   ],
+   [
+    19,
+    "SLEEP_POWDER"
+   ],
+   [
+    24,
+    "ACID"
+   ],
+   [
+    33,
+    "PETAL_DANCE"
+   ],
+   [
+    46,
+    "SOLARBEAM"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 21,
+    "species": "GLOOM"
+   }
+  ],
+  "icon": "ICON_GRASS",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 45,
+  "atk": 50,
+  "def": 55,
+  "spd": 30,
+  "spc": 75,
+  "types": [
+   "GRASS",
+   "POISON"
+  ],
+  "catch_rate": 255,
+  "base_exp": 78,
+  "moves": [
+   "ABSORB"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "GLOOM": {
+  "internal_id": 186,
+  "dex": 44,
+  "name_en": "GLOOM",
+  "name_ko": "냄새꼬",
+  "pic": "mon_gloom",
+  "back": "monb_gloom",
+  "dex_entry": {
+   "species": "WEED",
+   "height_ft": 2,
+   "height_in": 7,
+   "weight": 190,
+   "text": "_GloomDexEntry"
+  },
+  "learnset": [
+   [
+    15,
+    "POISONPOWDER"
+   ],
+   [
+    17,
+    "STUN_SPORE"
+   ],
+   [
+    19,
+    "SLEEP_POWDER"
+   ],
+   [
+    28,
+    "ACID"
+   ],
+   [
+    38,
+    "PETAL_DANCE"
+   ],
+   [
+    52,
+    "SOLARBEAM"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "LEAF_STONE",
+    "species": "VILEPLUME"
+   }
+  ],
+  "icon": "ICON_GRASS",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 60,
+  "atk": 65,
+  "def": 70,
+  "spd": 40,
+  "spc": 85,
+  "types": [
+   "GRASS",
+   "POISON"
+  ],
+  "catch_rate": 120,
+  "base_exp": 132,
+  "moves": [
+   "ABSORB",
+   "POISONPOWDER",
+   "STUN_SPORE"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "VILEPLUME": {
+  "internal_id": 187,
+  "dex": 45,
+  "name_en": "VILEPLUME",
+  "name_ko": "라플레시아",
+  "pic": "mon_vileplume",
+  "back": "monb_vileplume",
+  "dex_entry": {
+   "species": "FLOWER",
+   "height_ft": 3,
+   "height_in": 11,
+   "weight": 410,
+   "text": "_VileplumeDexEntry"
+  },
+  "learnset": [
+   [
+    15,
+    "POISONPOWDER"
+   ],
+   [
+    17,
+    "STUN_SPORE"
+   ],
+   [
+    19,
+    "SLEEP_POWDER"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_GRASS",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 75,
+  "atk": 80,
+  "def": 85,
+  "spd": 50,
+  "spc": 100,
+  "types": [
+   "GRASS",
+   "POISON"
+  ],
+  "catch_rate": 45,
+  "base_exp": 184,
+  "moves": [
+   "STUN_SPORE",
+   "SLEEP_POWDER",
+   "ACID",
+   "PETAL_DANCE"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "BELLSPROUT": {
+  "internal_id": 188,
+  "dex": 69,
+  "name_en": "BELLSPROUT",
+  "name_ko": "모다피",
+  "pic": "mon_bellsprout",
+  "back": "monb_bellsprout",
+  "dex_entry": {
+   "species": "FLOWER",
+   "height_ft": 2,
+   "height_in": 4,
+   "weight": 90,
+   "text": "_BellsproutDexEntry"
+  },
+  "learnset": [
+   [
+    13,
+    "WRAP"
+   ],
+   [
+    15,
+    "POISONPOWDER"
+   ],
+   [
+    18,
+    "SLEEP_POWDER"
+   ],
+   [
+    21,
+    "STUN_SPORE"
+   ],
+   [
+    26,
+    "ACID"
+   ],
+   [
+    33,
+    "RAZOR_LEAF"
+   ],
+   [
+    42,
+    "SLAM"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "LEVEL",
+    "level": 21,
+    "species": "WEEPINBELL"
+   }
+  ],
+  "icon": "ICON_GRASS",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 50,
+  "atk": 75,
+  "def": 35,
+  "spd": 40,
+  "spc": 70,
+  "types": [
+   "GRASS",
+   "POISON"
+  ],
+  "catch_rate": 255,
+  "base_exp": 84,
+  "moves": [
+   "VINE_WHIP",
+   "GROWTH"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "WEEPINBELL": {
+  "internal_id": 189,
+  "dex": 70,
+  "name_en": "WEEPINBELL",
+  "name_ko": "우츠동",
+  "pic": "mon_weepinbell",
+  "back": "monb_weepinbell",
+  "dex_entry": {
+   "species": "FLYCATCHER",
+   "height_ft": 3,
+   "height_in": 3,
+   "weight": 140,
+   "text": "_WeepinbellDexEntry"
+  },
+  "learnset": [
+   [
+    13,
+    "WRAP"
+   ],
+   [
+    15,
+    "POISONPOWDER"
+   ],
+   [
+    18,
+    "SLEEP_POWDER"
+   ],
+   [
+    23,
+    "STUN_SPORE"
+   ],
+   [
+    29,
+    "ACID"
+   ],
+   [
+    38,
+    "RAZOR_LEAF"
+   ],
+   [
+    49,
+    "SLAM"
+   ]
+  ],
+  "evolutions": [
+   {
+    "method": "ITEM",
+    "item": "LEAF_STONE",
+    "species": "VICTREEBEL"
+   }
+  ],
+  "icon": "ICON_GRASS",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 65,
+  "atk": 90,
+  "def": 50,
+  "spd": 55,
+  "spc": 85,
+  "types": [
+   "GRASS",
+   "POISON"
+  ],
+  "catch_rate": 120,
+  "base_exp": 151,
+  "moves": [
+   "VINE_WHIP",
+   "GROWTH",
+   "WRAP"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ },
+ "VICTREEBEL": {
+  "internal_id": 190,
+  "dex": 71,
+  "name_en": "VICTREEBEL",
+  "name_ko": "우츠보트",
+  "pic": "mon_victreebel",
+  "back": "monb_victreebel",
+  "dex_entry": {
+   "species": "FLYCATCHER",
+   "height_ft": 5,
+   "height_in": 7,
+   "weight": 340,
+   "text": "_VictreebelDexEntry"
+  },
+  "learnset": [
+   [
+    13,
+    "WRAP"
+   ],
+   [
+    15,
+    "POISONPOWDER"
+   ],
+   [
+    18,
+    "SLEEP_POWDER"
+   ]
+  ],
+  "evolutions": [],
+  "icon": "ICON_GRASS",
+  "tmhm": [
+   "SWORDS_DANCE",
+   "TOXIC",
+   "BODY_SLAM",
+   "TAKE_DOWN",
+   "DOUBLE_EDGE",
+   "HYPER_BEAM",
+   "RAGE",
+   "MEGA_DRAIN",
+   "SOLARBEAM",
+   "MIMIC",
+   "DOUBLE_TEAM",
+   "REFLECT",
+   "BIDE",
+   "REST",
+   "SUBSTITUTE",
+   "CUT"
+  ],
+  "hp": 80,
+  "atk": 105,
+  "def": 65,
+  "spd": 70,
+  "spc": 100,
+  "types": [
+   "GRASS",
+   "POISON"
+  ],
+  "catch_rate": 45,
+  "base_exp": 191,
+  "moves": [
+   "SLEEP_POWDER",
+   "STUN_SPORE",
+   "ACID",
+   "RAZOR_LEAF"
+  ],
+  "growth": "GROWTH_MEDIUM_SLOW"
+ }
+}
