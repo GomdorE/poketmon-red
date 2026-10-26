@@ -72,6 +72,11 @@ var escape_warp := false          # wStatusFlags6 BIT_ESCAPE_WARP (Teleport, Dig
 var fly_destination := ""         # wDestinationMap (Fly)
 var map_pal_offset := 0           # wMapPalOffset (dark caves; Flash sets 0)
 var cut_blocks := {}              # blocks replaced by Cut in the loaded map (wOverworldMap edits)
+var strength_active := false      # wStatusFlags1 BIT_STRENGTH_ACTIVE
+var tried_push_boulder := false   # wMiscFlags BIT_TRIED_PUSH_BOULDER
+var boulder_dust := false         # wMiscFlags BIT_BOULDER_DUST
+var pushed_boulder := false       # wStatusFlags5 BIT_PUSHED_BOULDER (read by the Seafoam scripts)
+var boulder_index := -1           # wBoulderSpriteIndex - 1
 var battle_request := {}
 var do_not_wait_after_text := false
 var no_auto_text_box := false
@@ -135,7 +140,10 @@ func run(reload: bool = true) -> void:
 		if not battle_request.is_empty():
 			running = false
 			break
-		# JoypadOverworld
+		# JoypadOverworld -> RunMapScript: TryPushingBoulder, DoBoulderDustAnimation, the map script
+		_try_pushing_boulder()
+		if boulder_dust:
+			await _do_boulder_dust_animation()
 		await scripts.run_map_script()
 		if not battle_request.is_empty():
 			running = false
@@ -792,6 +800,9 @@ func load_map(id: String, x: int, y: int, facing: int) -> void:
 		for bx in w:
 			_put_block(bx, by, map["blocks"][by * w + bx], tileset)
 	cut_blocks = {}
+	strength_active = false   # ResetUsingStrengthOutOfBattleBit (EnterMap)
+	tried_push_boulder = false
+	boulder_dust = false
 	# MarkTownVisitedAndLoadToggleableObjects: a city map is a fly destination from now on
 	if id in TownMap.CITY_MAPS and not state.town_visited.has(id):
 		state.town_visited.append(id)
@@ -1529,6 +1540,106 @@ func _water_collision() -> bool:
 func _stop_surfing() -> void:
 	set_walk_bike_surf(0)
 	Sound.play_default_music()
+
+
+# BoulderDustAnimationOffsets [x, y] (two blocks away from the player), and the per-step
+# OAM move of MoveBoulderDustFunctionPointerTable: [dx, dy]
+const BOULDER_DUST_OFFSETS := {FACE_DOWN: [8, 52], FACE_UP: [8, -12], FACE_LEFT: [-24, 20], FACE_RIGHT: [40, 20]}
+const BOULDER_DUST_STEP := {FACE_DOWN: [0, -1], FACE_UP: [0, 1], FACE_LEFT: [1, 0], FACE_RIGHT: [-1, 0]}
+
+
+func _reset_boulder_push_flags() -> void:
+	boulder_dust = false
+	tried_push_boulder = false
+
+
+## TryPushingBoulder: with Strength active, a boulder in front moves one block on the
+## second try while the direction is held, unless the tile two steps ahead is blocked,
+## across an elevation edge, stairs, or taken by a sprite.
+func _try_pushing_boulder() -> void:
+	if not strength_active or boulder_dust:
+		return
+	var d := _facing_delta()
+	var tx := player.x + d.x
+	var ty := player.y + d.y
+	boulder_index = -1
+	for n in npcs:
+		if not n.hidden and n.x == tx and n.y == ty:
+			boulder_index = n.index
+			break
+	if boulder_index < 0:
+		_reset_boulder_push_flags()
+		return
+	var b: Dictionary = npcs[boulder_index]
+	if str(b.range) != "BOULDER_MOVEMENT_BYTE_2":
+		_reset_boulder_push_flags()
+		return
+	if not tried_push_boulder:
+		tried_push_boulder = true   # the player must try pushing twice
+		return
+	var held := GB.held & ~joy_ignore
+	if not held & GB.CTRL_PAD:
+		return
+	# CheckForCollisionWhenPushingBoulder
+	var two := _tile_id_under(player.x + 2 * d.x, player.y + 2 * d.y)
+	var blocked: bool = not two in tileset["collision"] \
+			or _tile_pair_collision(_tile_id_under(player.x, player.y), two, TILE_PAIR_COLLISIONS_LAND) \
+			or two == 0x15
+	if not blocked:
+		for n in npcs:
+			if not n.hidden and n.x == b.x + d.x and n.y == b.y + d.y:
+				blocked = true
+	if blocked:
+		_reset_boulder_push_flags()
+		return
+	var need: int = {FACE_UP: GB.UP, FACE_DOWN: GB.DOWN, FACE_LEFT: GB.LEFT}.get(player.facing, GB.RIGHT)
+	if not held & need:
+		return
+	move_sprite(boulder_index, [{FACE_UP: NPC_UP, FACE_DOWN: NPC_DOWN, FACE_LEFT: NPC_LEFT}.get(player.facing, NPC_RIGHT)])
+	Sound.play_sfx("SFX_PUSH_BOULDER")
+	boulder_dust = true
+	if "--trace-scripts" in OS.get_cmdline_user_args():
+		print("BOULDER_PUSH sprite %d from (%d,%d) frame %d" % [boulder_index, b.x, b.y, GB.frame_count])
+
+
+## DoBoulderDustAnimation (once the boulder has moved): AnimateBoulderDust, then
+## SFX_CUT; the boulder keeps BOULDER_MOVEMENT_BYTE_2's still value ($10).
+func _do_boulder_dust_animation() -> void:
+	if boulder_index >= 0 and npc_moving(boulder_index):
+		return
+	# AnimateBoulderDust: four smoke tiles at the boulder's new spot, eight steps
+	S.obp1 = PackedInt32Array([0, 1, 2, 3])
+	var off: Array = BOULDER_DUST_OFFSETS[player.facing]
+	var step: Array = BOULDER_DUST_STEP[player.facing]
+	var spr: Array = []
+	for i in 4:
+		spr.append({"x": 0x40 + int(off[0]) - 8 + (i % 2) * 8, "y": 0x3C + int(off[1]) - 16 + (i / 2) * 8,
+			"xf": false, "prio": false, "pal": 1})
+	var smoke := S.tile("boulder_smoke", 0)
+	for k in 8:
+		for i in 4:
+			var e: Dictionary = spr[i]
+			e.x += int(step[0])
+			e.y += int(step[1])
+			# AdjustOAMBlockYPos: at OAM Y >= 112 the previous entry's attribute byte becomes 160
+			if step[1] != 0 and e.y + 16 >= 112 and i > 0:
+				spr[i - 1].prio = true
+				spr[i - 1].xf = true
+				spr[i - 1].pal = 0
+		for i in 4:
+			var e2: Dictionary = spr[i]
+			S.set_sprite(36 + i, int(e2.x), int(e2.y), smoke, int(e2.pal), bool(e2.xf), false, bool(e2.prio))
+		var p := S.obp1
+		var bb := (p[0] | (p[1] << 2) | (p[2] << 4) | (p[3] << 6)) ^ 0x64
+		S.obp1 = PackedInt32Array([bb & 3, (bb >> 2) & 3, (bb >> 4) & 3, (bb >> 6) & 3])
+		await GB.delay3()
+	for i in 4:
+		S.set_sprite(36 + i, -16, -16, GBScreen.BLANK)
+	S.normal_pals()
+	joy_ignore = 0
+	_reset_boulder_push_flags()
+	pushed_boulder = true
+	Sound.play_sfx("SFX_CUT")
 
 
 ## CheckIfInOutsideMap: the OVERWORLD and PLATEAU tilesets.

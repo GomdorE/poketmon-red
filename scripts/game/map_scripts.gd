@@ -852,7 +852,12 @@ func text(text_id: String, npc_index: int) -> void:
 		"TEXT_ROUTE22_RIVAL1":
 			await ow.print_text("_Route22RivalAfterBattleText1" if state.has_event("EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE") else "_Route22RivalBeforeBattleText1")
 		_:
-			var label := GameData.text_label_for(text_id)
+			# the map's text pointer table first (shared texts such as BoulderText), then the
+			# naming convention (TEXT_VIRIDIANCITY_YOUNGSTER1 -> _ViridianCityYoungster1Text)
+			var label: String = str(ow.map.get("text_pointers", {}).get(text_id, ""))
+			# (a text_asm handler that is not ported here falls back to the naming convention)
+			if label == "" or not GameData.has_text(label) or GameData.text(label).is_empty() 					or str(GameData.text(label)[0][0]) == "text_asm":
+				label = GameData.text_label_for(text_id)
 			await _far(label if label != "" else text_id)
 
 

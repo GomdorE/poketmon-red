@@ -100,6 +100,7 @@ RAW_SHEETS = {
     "font_p": "gfx/font/P.1bpp",
     "ledge_shadow": "gfx/overworld/shadow.1bpp",
     "town_map_up_arrow": "gfx/town_map/up_arrow.1bpp",
+    "boulder_smoke": "gfx/overworld/smoke.2bpp",
     "flower1": "gfx/tilesets/flower/flower1.2bpp",
     "flower2": "gfx/tilesets/flower/flower2.2bpp",
     "flower3": "gfx/tilesets/flower/flower3.2bpp",
@@ -324,6 +325,9 @@ STR_RE = re.compile(r'"((?:[^"\\]|\\.)*)"')
 def parse_text_files(root: Path) -> dict[str, list]:
     files = sorted((root / "data" / "text").glob("*.asm")) + sorted((root / "text").glob("*.asm"))
     files += [root / "data" / "pokemon" / "dex_text.asm"]
+    # shared map texts (BoulderText, MartSignText, ... used from map text pointer tables)
+    if (root / "home" / "overworld_text.asm").exists():
+        files += [root / "home" / "overworld_text.asm"]
     # script-local text labels of the exported maps (text_far + sound_* chains such as
     # PewterGymBrockReceivedBoulderBadgeText); `.local` labels are skipped
     files += [root / "scripts" / f"{n}.asm" for n in MAPS.values() if (root / "scripts" / f"{n}.asm").exists()]
@@ -482,7 +486,7 @@ def parse_objects(name: str) -> dict:
         if m:
             res["bg_events"].append({"x": int(m.group(1)), "y": int(m.group(2)), "text": m.group(3)})
             continue
-        m = re.match(r"object_event\s+(\d+),\s*(\d+),\s*([A-Z0-9_]+),\s*([A-Z_]+),\s*([A-Z_]+),\s*([A-Z0-9_]+)(?:,\s*([A-Z0-9_]+))?(?:,\s*(\d+))?", line)
+        m = re.match(r"object_event\s+(\d+),\s*(\d+),\s*([A-Z0-9_]+),\s*([A-Z0-9_]+),\s*([A-Z0-9_]+),\s*([A-Z0-9_]+)(?:,\s*([A-Z0-9_]+))?(?:,\s*(\d+))?", line)
         if m:
             res["objects"].append({
                 "x": int(m.group(1)), "y": int(m.group(2)), "sprite": m.group(3), "movement": m.group(4),
@@ -577,6 +581,14 @@ def parse_trainer_headers(name: str) -> list:
     return out
 
 
+def parse_text_pointers(name: str) -> dict:
+    """scripts/<Map>.asm `dw_const Label, TEXT_ID`: the text pointer table of a map."""
+    path = MASTER / "scripts" / f"{name}.asm"
+    if not path.exists():
+        return {}
+    return {m.group(2): m.group(1) for m in re.finditer(r"dw_const\s+(\w+),\s*(TEXT_\w+)", path.read_text(encoding="utf-8"))}
+
+
 def export_maps() -> None:
     sizes = parse_map_sizes()
     toggles = parse_toggles()
@@ -592,6 +604,7 @@ def export_maps() -> None:
         obj["toggles"] = [[consts.index(n), on] for n, on in toggles.get(const, []) if n in consts]
         obj["hidden_events"] = hidden.get(const, [])
         obj["trainer_headers"] = parse_trainer_headers(name)
+        obj["text_pointers"] = parse_text_pointers(name)
         out[const] = {
             "name": name, "width": w, "height": h, "tileset": hdr["tileset"], "connections": hdr["connections"],
             "blocks": list(blk), **obj,

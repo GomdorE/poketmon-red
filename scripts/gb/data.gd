@@ -87,6 +87,10 @@ static func _intify(v: Variant) -> Variant:
 
 
 ## Text commands for a label, preferring the Korean fork.
+func has_text(label: String) -> bool:
+	return text_ko.has(label) or text_en.has(label)
+
+
 func text(label: String) -> Array:
 	if lang == "ko" and text_ko.has(label):
 		return text_ko[label]

@@ -118,6 +118,14 @@ static func use(state: GameState, ow, idx: int, move: String) -> String:
 		"STRENGTH":
 			if not badges & (1 << RAINBOW):
 				return await _new_badge_required()
+			# PrintStrengthText: UsedStrengthText (+ the mon's cry), CanMoveBouldersText
+			ow.strength_active = true
+			await Text.print_text("_UsedStrengthText")
+			Sound.play_cry(mon.species)
+			await GB.delay3()
+			await Text.print_text("_CanMoveBouldersText")
+			await _white_out_delay3()
+			return "close"
 	# the moves of later chapters
 	await Text.print_text("_ItemUseNotTimeText")
 	return "loop"
