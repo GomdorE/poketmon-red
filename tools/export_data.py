@@ -99,6 +99,7 @@ RAW_SHEETS = {
     "mon_nest_icon": "gfx/town_map/mon_nest_icon.1bpp",
     "font_p": "gfx/font/P.1bpp",
     "ledge_shadow": "gfx/overworld/shadow.1bpp",
+    "town_map_up_arrow": "gfx/town_map/up_arrow.1bpp",
     "flower1": "gfx/tilesets/flower/flower1.2bpp",
     "flower2": "gfx/tilesets/flower/flower2.2bpp",
     "flower3": "gfx/tilesets/flower/flower3.2bpp",

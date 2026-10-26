@@ -96,6 +96,17 @@ static func use(state: GameState, ow, idx: int, move: String) -> String:
 		"FLY":
 			if not badges & (1 << THUNDER):
 				return await _new_badge_required()
+			if not ow.is_outside_map():
+				await Text.print_text("_CannotFlyHereText")
+				return "loop"
+			# ChooseFlyDestination
+			var dest: String = await TownMap.choose_fly_destination(state, ow)
+			if dest != "":
+				ow.fly_destination = dest
+				ow.fly_warp = true
+				return "close"
+			SGB.run("DEFAULT")
+			return "fresh"
 		"SURF":
 			if not badges & (1 << SOUL):
 				return await _new_badge_required()

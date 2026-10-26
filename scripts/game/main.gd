@@ -207,6 +207,9 @@ func _run() -> void:
 					if m0.moves.size() >= 4:
 						m0.moves.pop_front()
 					m0.moves.append({"move": mv, "pp": GameData.moves[mv]["pp"], "max_pp": GameData.moves[mv]["pp"]})
+			elif arg.begins_with("--visited="):
+				for m in arg.get_slice("=", 1).split(","):
+					state.town_visited.append(m)
 			elif arg.begins_with("--badges="):
 				state.badges = int(arg.get_slice("=", 1))
 			elif arg.begins_with("--repel="):

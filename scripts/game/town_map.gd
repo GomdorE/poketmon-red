@@ -142,6 +142,95 @@ static func show(_state: GameState, ow) -> void:
 	_exit()
 
 
+## The city maps in map-id order (map ids $00-$0A, NUM_CITY_MAPS): the fly destinations.
+const CITY_MAPS := ["PALLET_TOWN", "VIRIDIAN_CITY", "PEWTER_CITY", "CERULEAN_CITY", "LAVENDER_TOWN",
+	"VERMILION_CITY", "CELADON_CITY", "FUCHSIA_CITY", "CINNABAR_ISLAND", "INDIGO_PLATEAU", "SAFFRON_CITY"]
+
+
+## Clear the destination name (hlcoord 3, 0, 15 wide); Korean also restores row 1's map tiles.
+static func _clear_fly_name() -> void:
+	var S: GBScreen = GB.screen
+	Text.clear_area(3, 0, 15, 1)
+	if GameData.lang == "ko":
+		var tiles: Array = data()["tilemap"]
+		for x in range(3, 18):
+			S.set_bg(x, 1, S.tile("town_map", int(tiles[20 + x])))
+
+
+## DrawPlayerOrBirdSprite with the bird (BIRD_BASE_TILE: the bird's first frame) in OAM 32..35.
+static func _draw_bird(map: String) -> void:
+	var S: GBScreen = GB.screen
+	var p := _sprite_pos(entry(map))
+	for k in 4:
+		S.set_sprite(32 + k, p.x + (k % 2) * 8, p.y + (k / 2) * 8, S.tile("spr_bird", k))
+
+
+## LoadTownMap_Fly: "To" + the visited cities (BuildFlyLocationsList) cycled with
+## Up/Down (SFX_TINK), A flies (SFX_HEAL_AILMENT), B cancels. Returns the destination
+## or "" (the screen is whited out either way).
+static func choose_fly_destination(state: GameState, ow) -> String:
+	var S: GBScreen = GB.screen
+	await _load_map()
+	var ko := GameData.lang == "ko"
+	var hy := _header_y()
+	Text.place_string(0, hy, "목적지" if ko else "To")
+	_draw_player(ow.map_id)
+	var list: Array = []          # wFlyLocationsList: map id or "" (NOT_VISITED)
+	for m in CITY_MAPS:
+		list.append(m if state.town_visited.has(m) else "")
+	var i := 0
+	var dest := ""
+	var blank_x := 18
+	while true:
+		Text.put(blank_x, hy, Text.SPACE)
+		_clear_fly_name()
+		var m: String = list[i]
+		_draw_bird(m)
+		Text.place_string(3, hy, location_name(str(entry(m)[2])))
+		for f in 15:
+			await GB.frame
+			_blink()
+		S.set_bg(18, hy, S.tile("town_map_up_arrow", 0))   # '▲' (up_arrow.1bpp over tile $ED)
+		Text.put(19, hy, 0xEE)   # '▼'
+		var keys := 0
+		while keys == 0:
+			await GB.frame
+			_blink()
+			keys = GB.joy5 & (GB.A | GB.B | GB.UP | GB.DOWN)
+		if keys & GB.A:
+			Sound.play_sfx("SFX_HEAL_AILMENT")
+			dest = m
+			break
+		Sound.play_sfx("SFX_TINK")
+		if keys & GB.UP:
+			blank_x = 18
+			# .pressedUp: the next visited city, wrapping to the start of the list
+			while true:
+				i += 1
+				if i >= list.size():
+					i = 0
+					break
+				if list[i] != "":
+					break
+		elif keys & GB.DOWN:
+			blank_x = 19
+			# .pressedDown: the previous visited city, wrapping to the end
+			while true:
+				i -= 1
+				if i < 0:
+					i = list.size()
+				elif list[i] != "":
+					break
+		else:
+			break
+	# .pressedB / after A: GBPalWhiteOutWithDelay3
+	S.white_out()
+	await GB.delay3()
+	Text.clear_screen()
+	S.clear_sprites()
+	return dest
+
+
 ## LoadTownMap_Nest: nest icons on every map where the species appears, "<MON>'s NEST".
 static func show_nest(_state: GameState, species: String) -> void:
 	var S: GBScreen = GB.screen

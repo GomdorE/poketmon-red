@@ -21,6 +21,7 @@ var map_scripts := {}     # map -> current script index
 var badges := 0             # wObtainedBadges (bit 0 = Boulder Badge)
 var beat_gym_flags := 0     # wBeatGymFlags
 var repel_steps := 0        # wRepelRemainingSteps
+var town_visited: Array = []   # wTownVisitedFlag (city map ids, for Fly)
 var player_id := 0        # wPlayerID: random per new game, identifies the save file
 var boxes: Array = []     # sBox1..sBox12: 12 boxes of PartyMon (MONS_PER_BOX = 20 each)
 var current_box := 0      # wCurrentBoxNum
@@ -56,7 +57,7 @@ func to_dict() -> Dictionary:
 		"player_name": player_name, "rival_name": rival_name, "player_id": player_id, "events": events,
 		"starter": starter, "rival_starter": rival_starter, "party": mons, "items": items, "money": money,
 		"cur_map": cur_map, "x": x, "y": y, "facing": facing, "last_map": last_map,
-		"pokedex_seen": pokedex_seen, "pokedex_owned": pokedex_owned, "map_scripts": map_scripts, "badges": badges, "beat_gym_flags": beat_gym_flags, "repel_steps": repel_steps,
+		"pokedex_seen": pokedex_seen, "pokedex_owned": pokedex_owned, "map_scripts": map_scripts, "badges": badges, "beat_gym_flags": beat_gym_flags, "repel_steps": repel_steps, "town_visited": town_visited,
 		"boxes": boxed, "current_box": current_box, "pc_items": pc_items,
 		"last_blackout_map": last_blackout_map, "step_counter": step_counter,
 	}
@@ -85,6 +86,7 @@ func from_dict(d: Dictionary) -> void:
 	badges = int(d.get("badges", 0))
 	beat_gym_flags = int(d.get("beat_gym_flags", 0))
 	repel_steps = int(d.get("repel_steps", 0))
+	town_visited = d.get("town_visited", [])
 	boxes = []
 	for i in 12:
 		boxes.append([])

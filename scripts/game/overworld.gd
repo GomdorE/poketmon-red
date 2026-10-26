@@ -775,6 +775,9 @@ func load_map(id: String, x: int, y: int, facing: int) -> void:
 		for bx in w:
 			_put_block(bx, by, map["blocks"][by * w + bx], tileset)
 	cut_blocks = {}
+	# MarkTownVisitedAndLoadToggleableObjects: a city map is a fly destination from now on
+	if id in TownMap.CITY_MAPS and not state.town_visited.has(id):
+		state.town_visited.append(id)
 	# objects (toggleable ones start hidden when their toggle state is OFF)
 	npcs.clear()
 	var hidden: Array = []

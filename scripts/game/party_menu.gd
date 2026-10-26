@@ -291,6 +291,9 @@ static func start_menu_pokemon(state: GameState, ow) -> bool:
 		if sel < nfm:
 			# .choseOutOfBattleMove
 			var result := await FieldMoves.use(state, ow, idx, str(fm.moves[sel]))
+			if result == "fresh":
+				fresh = true   # jp StartMenu_Pokemon
+				continue
 			if result == "close":
 				# .goBackToMap: RestoreScreenTilesAndReloadTilePatterns + CloseTextDisplay
 				S.clear_sprites()
