@@ -94,14 +94,14 @@ static func show(state: GameState, index: int) -> void:
 		_place_right(10, GameData.type_name(types[0]))
 		if types[1] != types[0]:
 			_place_right(12, GameData.type_name(types[1]))
-		_place_right(14, "%05d" % state.player_id)
-		_place_right(16, state.player_name)
+		_place_right(14, "%05d" % (state.player_id if m.ot_id < 0 else m.ot_id))
+		_place_right(16, state.player_name if m.ot_name == "" else m.ot_name)
 	else:
 		Text.place_string(11, 10, GameData.type_name(types[0]))
 		if types[1] != types[0]:
 			Text.place_string(11, 12, GameData.type_name(types[1]))
-		Text.place_string(12, 16, state.player_name)
-		Text.place_string(12, 14, "%05d" % state.player_id)
+		Text.place_string(12, 16, state.player_name if m.ot_name == "" else m.ot_name)
+		Text.place_string(12, 14, "%05d" % (state.player_id if m.ot_id < 0 else m.ot_id))
 	Text.place_string(9, 1, m.nickname)
 	# PrintStatsBox (STATUS_SCREEN_STATS_BOX)
 	Menu.draw_box(0, 8, 8, 8)

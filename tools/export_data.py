@@ -105,6 +105,8 @@ RAW_SHEETS = {
     "red_fish_back": "gfx/overworld/red_fish_back.2bpp",
     "red_fish_side": "gfx/overworld/red_fish_side.2bpp",
     "fishing_rod": "gfx/overworld/fishing_rod.2bpp",
+    "cable_ball": "gfx/trade/cable_ball.2bpp",
+    "trade_bubble": "gfx/trade/bubble.2bpp",
     "flower1": "gfx/tilesets/flower/flower1.2bpp",
     "flower2": "gfx/tilesets/flower/flower2.2bpp",
     "flower3": "gfx/tilesets/flower/flower3.2bpp",
@@ -284,6 +286,9 @@ def export_graphics() -> None:
         tiles_to_image(decode_tiles(MASTER / f"gfx/sprites/{spr}.2bpp"), 4).save(OUT_GB / f"spr_{spr}.png")
     for key, (gfx, _blk) in TILESET_FILES.items():
         tiles_to_image(decode_tiles(MASTER / f"gfx/tilesets/{gfx}.2bpp")).save(OUT_GB / f"tileset_{gfx}.png")
+    # TradingAnimationGraphics: game_boy.2bpp + link_cable.2bpp, loaded at BG tile $31
+    trade = decode_tiles(MASTER / "gfx/trade/game_boy.2bpp") + decode_tiles(MASTER / "gfx/trade/link_cable.2bpp")
+    tiles_to_image(trade).save(OUT_GB / "trade_gfx.png")
     # water: tile $14 of the overworld tileset rotated by 0..7 pixels (UpdateMovingBgTiles)
     water = decode_tiles(MASTER / "gfx/tilesets/overworld.2bpp")[0x14]
     variants = []
@@ -938,6 +943,30 @@ def export_items() -> None:
     log(f"items: {len(items)} (incl. {len(hms)} HM + {len(tms)} TM)")
 
 
+def export_trades() -> None:
+    """data/events/trades.asm (TradeMons, both languages) and the trade movie tilemaps."""
+    def parse(root: Path, macro: str) -> list:
+        out = []
+        txt = (root / "data" / "events" / "trades.asm").read_text(encoding="utf-8")
+        for m in re.finditer(r'^\s*npctrade\s+([A-Z0-9_]+),\s*([A-Z0-9_]+),\s*(TRADE_DIALOGSET_[A-Z]+),\s*"([^"]*)"', txt, re.M):
+            out.append(list(m.groups()))
+        return out
+    en = parse(MASTER, "npctrade")
+    ko = parse(KOREAN, "npctrade")
+    sets = ["TRADE_DIALOGSET_CASUAL", "TRADE_DIALOGSET_EVOLUTION", "TRADE_DIALOGSET_HAPPY"]
+    trades = []
+    for i, e in enumerate(en):
+        trades.append({"give": e[0], "get": e[1], "dialog": sets.index(e[2]), "nick_en": e[3],
+                       "nick_ko": ko[i][3] if i < len(ko) else e[3]})
+    data = {
+        "trades": trades,
+        "game_boy_tilemap": list((MASTER / "gfx/trade/game_boy.tilemap").read_bytes()),
+        "link_cable_tilemap": list((MASTER / "gfx/trade/link_cable.tilemap").read_bytes()),
+    }
+    (OUT_DATA / "trade.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    log(f"trades: {len(trades)}")
+
+
 def export_marts() -> None:
     by_name = {v: k for k, v in MAPS.items()}
     out = {}
@@ -1065,6 +1094,7 @@ def main() -> None:
     export_wild()
     export_items()
     export_marts()
+    export_trades()
     export_trainers()
     export_town_map()
     log("done")

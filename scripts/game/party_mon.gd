@@ -21,6 +21,8 @@ var stat_exp := {"hp": 0, "atk": 0, "def": 0, "spd": 0, "spc": 0}   # MON_HP_EXP
 var exp := 0
 var status := 0
 var nickname := ""
+var ot_name := ""      # MON_OT name; "" = the player (wPlayerName)
+var ot_id := -1        # MON_OTID; -1 = the player (wPlayerID)
 
 
 static func create(sp: String, lv: int, random_dvs: bool = true) -> PartyMon:
@@ -52,7 +54,8 @@ static func create(sp: String, lv: int, random_dvs: bool = true) -> PartyMon:
 
 func to_dict() -> Dictionary:
 	return {"species": species, "level": level, "dvs": dvs, "hp": hp, "max_hp": max_hp, "stats": stats,
-		"moves": moves, "exp": exp, "status": status, "nickname": nickname, "stat_exp": stat_exp}
+		"moves": moves, "exp": exp, "status": status, "nickname": nickname, "stat_exp": stat_exp,
+		"ot_name": ot_name, "ot_id": ot_id}
 
 
 static func from_dict(d: Dictionary) -> PartyMon:
@@ -69,6 +72,8 @@ static func from_dict(d: Dictionary) -> PartyMon:
 			m.stat_exp[k] = int(d["stat_exp"].get(k, 0))
 	m.recalc_stats()
 	m.hp = clampi(int(d["hp"]), 0, m.max_hp)
+	m.ot_name = str(d.get("ot_name", ""))
+	m.ot_id = int(d.get("ot_id", -1))
 	return m
 
 
