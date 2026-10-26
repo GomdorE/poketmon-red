@@ -176,6 +176,9 @@ TILESET_FILES = {
     "GATE": ("gate", "gate"),
     "FOREST": ("forest", "forest"),
     "MUSEUM": ("gate", "gate"),
+    "CAVERN": ("cavern", "cavern"),
+    "CLUB": ("club", "club"),
+    "INTERIOR": ("interior", "interior"),
 }
 TILESET_COLL_LABEL = {
     "OVERWORLD": "Overworld_Coll",
@@ -190,6 +193,9 @@ TILESET_COLL_LABEL = {
     "GATE": "Gate_Coll",
     "FOREST": "Forest_Coll",
     "MUSEUM": "Museum_Coll",
+    "CAVERN": "Cavern_Coll",
+    "CLUB": "Club_Coll",
+    "INTERIOR": "Interior_Coll",
 }
 TILESET_INDEX = {  # order of the Tilesets table (constants/tileset_constants.asm)
     "OVERWORLD": 0, "REDS_HOUSE_1": 1, "MART": 2, "FOREST": 3, "REDS_HOUSE_2": 4, "DOJO": 5,
@@ -197,10 +203,11 @@ TILESET_INDEX = {  # order of the Tilesets table (constants/tileset_constants.as
     "GATE": 12, "SHIP": 13, "SHIP_PORT": 14, "CEMETERY": 15, "INTERIOR": 16, "CAVERN": 17,
     "LOBBY": 18, "MANSION": 19, "LAB": 20, "CLUB": 21, "FACILITY": 22, "PLATEAU": 23,
 }
-TILESET_GRASS = {"OVERWORLD": 0x52, "FOREST": 0x20}
+TILESET_GRASS = {"OVERWORLD": 0x52, "FOREST": 0x20, "CAVERN": -1, "CLUB": -1, "INTERIOR": -1}
 # tileset_headers.asm counter tiles (talking across a counter)
 TILESET_COUNTER = {"DOJO": [0x3A], "MART": [0x18, 0x19, 0x1E], "POKECENTER": [0x18, 0x19, 0x1E], "GYM": [0x3A],
-                   "FOREST_GATE": [0x17, 0x32], "GATE": [0x17, 0x32], "MUSEUM": [0x17, 0x32]}
+                   "FOREST_GATE": [0x17, 0x32], "GATE": [0x17, 0x32], "MUSEUM": [0x17, 0x32],
+                   "CLUB": [0x07, 0x17], "CAVERN": [], "INTERIOR": []}
 
 MAPS = {
     "PALLET_TOWN": "PalletTown",
@@ -230,6 +237,24 @@ MAPS = {
     "PEWTER_SPEECH_HOUSE": "PewterSpeechHouse",
     "MUSEUM_1F": "Museum1F",
     "MUSEUM_2F": "Museum2F",
+    # chapter 4: Route 3 through Bill's cape
+    "ROUTE_3": "Route3",
+    "MT_MOON_POKECENTER": "MtMoonPokecenter",
+    "MT_MOON_1F": "MtMoon1F",
+    "MT_MOON_B1F": "MtMoonB1F",
+    "MT_MOON_B2F": "MtMoonB2F",
+    "ROUTE_4": "Route4",
+    "CERULEAN_CITY": "CeruleanCity",
+    "CERULEAN_POKECENTER": "CeruleanPokecenter",
+    "CERULEAN_MART": "CeruleanMart",
+    "CERULEAN_GYM": "CeruleanGym",
+    "CERULEAN_TRADE_HOUSE": "CeruleanTradeHouse",
+    "CERULEAN_TRASHED_HOUSE": "CeruleanTrashedHouse",
+    "CERULEAN_BADGE_HOUSE": "CeruleanBadgeHouse",
+    "BIKE_SHOP": "BikeShop",
+    "ROUTE_24": "Route24",
+    "ROUTE_25": "Route25",
+    "BILLS_HOUSE": "BillsHouse",
 }
 
 
@@ -432,11 +457,15 @@ WARP_LABELS = {
     "MART": ".MartWarpTileIDs", "POKECENTER": ".PokecenterWarpTileIDs", "GYM": ".GymWarpTileIDs",
     "FOREST_GATE": ".ForestGateWarpTileIDs", "GATE": ".GateWarpTileIDs", "FOREST": ".ForestWarpTileIDs",
     "MUSEUM": ".MuseumWarpTileIDs",
+    "CAVERN": ".CavernWarpTileIDs",
+    "CLUB": ".ClubWarpTileIDs",
+    "INTERIOR": ".InteriorWarpTileIDs",
 }
 DOOR_LABELS = {"OVERWORLD": ".OverworldDoorTileIDs", "HOUSE": ".HouseDoorTileIDs", "MART": ".MartDoorTileIDs",
                "POKECENTER": ".MartDoorTileIDs", "FOREST": ".ForestDoorTileIDs",
                "FOREST_GATE": ".TilesetMuseumDoorTileIDs", "MUSEUM": ".TilesetMuseumDoorTileIDs",
-               "GATE": ".TilesetMuseumDoorTileIDs"}
+               "GATE": ".TilesetMuseumDoorTileIDs", "CAVERN": "__none__",
+               "CLUB": "__none__", "INTERIOR": "__none__"}
 
 
 def export_tilesets() -> None:
