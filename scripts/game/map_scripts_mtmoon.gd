@@ -31,6 +31,9 @@ func run_map_script() -> bool:
 	match ow.map_id:
 		"MT_MOON_B2F":
 			await _mtmoon_b2f()
+			# MtMoonB2F_Script: no battles inside the fossil area once the super nerd is beaten
+			if state.has_event("EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD"):
+				ow.no_battles = ow.player.x >= 11 and ow.player.x <= 14 and ow.player.y >= 5 and ow.player.y <= 8
 			return true
 		"CERULEAN_CITY", "CERULEAN_GYM", "CERULEAN_BADGE_HOUSE":
 			return await cerulean.run_map_script(entered)

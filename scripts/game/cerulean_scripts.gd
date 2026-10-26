@@ -22,8 +22,6 @@ func run_map_script(entered: bool) -> bool:
 			if entered:
 				Text.ram["wGymCityName"] = "블루시티" if GameData.lang == "ko" else "CERULEAN CITY"
 				Text.ram["wGymLeaderName"] = "이슬" if GameData.lang == "ko" else "MISTY"
-			# Map-local bridge for the original up-facing hidden event.
-			_register_hidden_text("GymStatues", "TEXT_CERULEANGYM_STATUE")
 			await _gym()
 			return true
 		"CERULEAN_BADGE_HOUSE":
@@ -198,23 +196,6 @@ func _misty(npc_index: int) -> void:
 		return
 	await ow.print_text("_CeruleanGymMistyPreBattleText")
 	chapter.event_battle(npc_index, 3, "CeruleanGymMistyReceivedCascadeBadgeText", "", 2)
-
-
-func _register_hidden_text(function_name: String, text_id: String) -> void:
-	if ow.player.facing != Overworld.FACE_UP:
-		# Hidden events check facing before opening a text box. Do not create a
-		# side-facing background event that would flash an empty message box.
-		ow.map.bg_events = ow.map.bg_events.filter(func(b: Dictionary) -> bool: return str(b.text) != text_id)
-		return
-	for e in ow.map.get("hidden_events", []):
-		if e.func != function_name:
-			continue
-		var exists := false
-		for b in ow.map.bg_events:
-			if b.x == e.x and b.y == e.y:
-				exists = true
-		if not exists:
-			ow.map.bg_events.append({"x": e.x, "y": e.y, "text": text_id})
 
 
 func _gym_statue() -> void:

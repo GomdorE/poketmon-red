@@ -84,6 +84,7 @@ static func use(state: GameState, ow, idx: int, move: String) -> String:
 				await Text.print_text("_WarpToLastPokemonCenterText")
 				ow.fly_warp = true
 				ow.escape_warp = true
+				ow.no_battles = false
 				await GB.frames(60)
 				await _white_out_delay3()
 				return "close"
@@ -100,6 +101,7 @@ static func use(state: GameState, ow, idx: int, move: String) -> String:
 				await Text.print_text("_CannotFlyHereText")
 				return "loop"
 			# ChooseFlyDestination
+			ow.no_battles = false
 			var dest: String = await TownMap.choose_fly_destination(state, ow)
 			if dest != "":
 				ow.fly_destination = dest
@@ -321,6 +323,7 @@ static func escape_rope(state: GameState, ow, pseudo: String = "") -> bool:
 		return false
 	ow.fly_warp = true
 	ow.escape_warp = true
+	ow.no_battles = false
 	state.events.erase("EVENT_IN_SAFARI_ZONE")
 	if pseudo != "":
 		return true

@@ -71,6 +71,7 @@ var fly_warp := false             # wStatusFlags6 BIT_FLY_WARP
 var escape_warp := false          # wStatusFlags6 BIT_ESCAPE_WARP (Teleport, Dig, Escape Rope)
 var fly_destination := ""         # wDestinationMap (Fly)
 var map_pal_offset := 0           # wMapPalOffset (dark caves; Flash sets 0)
+var no_battles := false           # wStatusFlags4 BIT_NO_BATTLES (NewBattle does nothing)
 var cut_blocks := {}              # blocks replaced by Cut in the loaded map (wOverworldMap edits)
 var strength_active := false      # wStatusFlags1 BIT_STRENGTH_ACTIVE
 var tried_push_boulder := false   # wMiscFlags BIT_TRIED_PUSH_BOULDER
@@ -308,7 +309,7 @@ func _apply_poison_step() -> bool:
 func _try_wild_encounter() -> void:
 	if not sim_queue.is_empty() or not follow_script.is_empty() or not scripted_npc.is_empty():
 		return
-	if state.encounter_cooldown > 0:
+	if state.encounter_cooldown > 0 or no_battles:
 		return
 	if player.jumping:
 		return

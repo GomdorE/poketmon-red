@@ -38,6 +38,7 @@ const BENCH_GUYS := {
 const GYMS := {
 	"VIRIDIAN_GYM": {"bit": 7, "city_en": "VIRIDIAN CITY", "leader_en": "GIOVANNI", "city_ko": "상록시티", "leader_ko": "비주기"},
 	"PEWTER_GYM": {"bit": 0, "city_en": "PEWTER CITY", "leader_en": "BROCK", "city_ko": "회색시티", "leader_ko": "웅"},
+	"CERULEAN_GYM": {"bit": 1, "city_en": "CERULEAN CITY", "leader_en": "MISTY", "city_ko": "블루시티", "leader_ko": "이슬"},
 }
 
 static var TRACE := "--trace-pc" in OS.get_cmdline_user_args()   # test log
@@ -122,6 +123,10 @@ static func _run(ow, func_name: String, arg: String) -> void:
 				await ow._show_overworld_text("_GymStatueText2" if have else "_GymStatueText1", true)
 		"HiddenItems":
 			await _hidden_item(ow, arg)
+		"BillsHousePC":
+			# BillsHousePC: only facing up; the text script runs with the auto text box
+			if facing == Overworld.FACE_UP:
+				await ow.display_text_id("TEXT_BILLSHOUSE_ACTIVATE_PC", -1)
 		"AerodactylFossil":
 			await _fossil(ow, "mon_fossilaerodactyl", "_AerodactylFossilText")
 		"KabutopsFossil":

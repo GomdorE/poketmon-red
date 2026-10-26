@@ -22,9 +22,6 @@ func run_map_script(entered: bool) -> bool:
 			if entered:
 				_toggle_bill()
 		"BILLS_HOUSE":
-			# Bridge the original hidden BillsHousePC coordinate through the
-			# map-local text dispatcher; no shared engine files are modified.
-			chapter.cerulean._register_hidden_text("BillsHousePC", "TEXT_BILLSHOUSE_ACTIVATE_PC")
 			await _bills_house()
 			return true
 	return false
