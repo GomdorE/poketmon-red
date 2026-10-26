@@ -94,6 +94,9 @@ static func _use(state: GameState, ow, item: String) -> bool:
 		state.repel_steps = int(REPEL_STEPS[item])
 		await _print_item_use_text_and_remove(state, item)
 		return false
+	# UsableItems_CloseMenu: a used Escape Rope closes the start menu
+	if item == "ESCAPE_ROPE":
+		return await FieldMoves.escape_rope(state, ow)
 	if item == "OAKS_PARCEL":
 		await Text.print_text("_ItemUseNotYoursToUseText")
 		return false

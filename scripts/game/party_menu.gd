@@ -260,11 +260,10 @@ static func animate_hp(state: GameState, index: int, old_hp: int, new_hp: int) -
 ## StartMenu_Pokemon: the party menu, then STATS / SWITCH / CANCEL for the chosen mon.
 ## Leaves the screen whited out with no sprites; the caller redraws the overworld
 ## and the start menu, then restores the palettes (RestoreScreenTilesAndReloadTilePatterns + LoadGBPal).
-static func start_menu_pokemon(state: GameState, _ow) -> void:
+static func start_menu_pokemon(state: GameState, ow) -> bool:
 	var S: GBScreen = GB.screen
 	if state.party.is_empty():
-		return
-	var ko := GameData.lang == "ko"
+		return false
 	var fresh := true
 	var idx := -1
 	var need_pick := true
@@ -278,18 +277,26 @@ static func start_menu_pokemon(state: GameState, _ow) -> void:
 		need_pick = true
 		if idx < 0:
 			break
-		# FIELD_MOVE_MON_MENU without field moves: STATS / SWITCH / CANCEL at (13, 12)
+		# FIELD_MOVE_MON_MENU: the mon's field moves above STATS / SWITCH / CANCEL
 		var saved := S.snapshot_bg()
-		Menu.draw_box(11, 11, 7, 5)
-		Text.place_string(13, 12, "상태" if ko else "STATS")
-		Text.place_string(13, 14, "교체" if ko else "SWITCH")
-		Text.place_string(13, 16, "취소" if ko else "CANCEL")
-		var keys := await Menu.handle_input(12, 12, 3, GB.A | GB.B)
+		var fm := FieldMoves.of(state.party[idx])
+		var nfm: int = fm.moves.size()
+		var at := FieldMoves.draw_menu(fm)
+		var keys := await Menu.handle_input(at.x, at.y, nfm + 3, GB.A | GB.B)
 		var sel := Menu.current
 		Menu.erase_cursor()
 		S.restore_bg(saved)
 		if keys & GB.B:
 			continue
+		if sel < nfm:
+			# .choseOutOfBattleMove
+			var result := await FieldMoves.use(state, ow, idx, str(fm.moves[sel]))
+			if result == "close":
+				# .goBackToMap: RestoreScreenTilesAndReloadTilePatterns + CloseTextDisplay
+				S.clear_sprites()
+				return true
+			continue
+		sel -= nfm
 		if sel == 2:
 			break
 		if sel == 1:
@@ -307,3 +314,4 @@ static func start_menu_pokemon(state: GameState, _ow) -> void:
 	S.white_out()
 	await GB.delay3()
 	S.clear_sprites()
+	return false

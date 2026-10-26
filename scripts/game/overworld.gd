@@ -66,6 +66,11 @@ var scripts: MapScripts
 var follow_script := {}            # the Pallet Town "follow Oak" movement script
 var scripted_npc := {}             # DoScriptedNPCMovement state (8 frames per step)
 var running := true
+var player_anim := {}             # PlayerAnims: {sheet, facing, frame, x, y} while a warp animation runs
+var fly_warp := false             # wStatusFlags6 BIT_FLY_WARP
+var escape_warp := false          # wStatusFlags6 BIT_ESCAPE_WARP (Teleport, Dig, Escape Rope)
+var fly_destination := ""         # wDestinationMap (Fly)
+var map_pal_offset := 0           # wMapPalOffset (dark caves; Flash sets 0)
 var battle_request := {}
 var do_not_wait_after_text := false
 var no_auto_text_box := false
@@ -134,6 +139,10 @@ func run(reload: bool = true) -> void:
 			running = false
 		if not running:
 			break
+		# HandleFlyWarpOrDungeonWarp
+		if fly_warp:
+			await _handle_fly_warp()
+			continue
 		var simulating := sim_queue.size() > 0
 		var held := _joypad()
 		var pressed := GB.pressed & ~joy_ignore
@@ -1004,6 +1013,11 @@ func _is_map_tile(v: int) -> bool:
 
 
 func _draw_player() -> void:
+	if not player_anim.is_empty():
+		var a := player_anim
+		var afr := _frame_for(int(a.facing), int(a.frame), S.sheet(str(a.sheet)).rows)
+		draw_sprite_frame(S, 0, str(a.sheet), afr[0], int(a.x), int(a.y), afr[1])
+		return
 	var fr := _frame_for(player.facing, player.anim if player.walk_counter > 0 else 0, 6)
 	draw_sprite_frame(S, 0, "spr_red", fr[0], 64, player.jump_y if player.jumping else 60, fr[1])
 	if player.jumping:
@@ -1421,8 +1435,10 @@ func _start_menu() -> void:
 			if state.party.is_empty():
 				continue
 			S.clear_sprites()
-			await PartyMenu.start_menu_pokemon(state, self)
+			var back_to_map: bool = await PartyMenu.start_menu_pokemon(state, self)
 			_restore_after_screen(saved)
+			if back_to_map:
+				break
 			continue
 		if cur == base + 1:
 			# StartMenu_Item
@@ -1441,6 +1457,31 @@ func _start_menu() -> void:
 	in_text = false
 	_render()
 	await GB.frame
+
+
+## CheckIfInOutsideMap: the OVERWORLD and PLATEAU tilesets.
+func is_outside_map() -> bool:
+	return map["tileset"] in ["OVERWORLD", "PLATEAU"]
+
+
+## HandleFlyWarpOrDungeonWarp: LeaveMapAnim, PrepareForSpecialWarp (Fly: the chosen
+## town; Teleport / Dig / Escape Rope: the last Pokémon Center's town), EnterMapAnim.
+func _handle_fly_warp() -> void:
+	_render()
+	await GB.delay3()
+	var anims := PlayerAnims.new(self)
+	var escape := escape_warp
+	await anims.leave_map(escape)
+	var dest: String = state.last_blackout_map if escape else fly_destination
+	escape_warp = false
+	fly_warp = false
+	var pos: Vector2i = FLY_WARPS.get(dest, Vector2i(5, 6))
+	state.last_map = dest
+	if "--trace-scripts" in OS.get_cmdline_user_args():
+		print("FLY_WARP %s -> %s (escape=%s) frame %d" % [map_id, dest, str(escape), GB.frame_count])
+	load_map(dest, pos.x, pos.y, player.facing)
+	await anims.enter_map(not escape)
+	S.normal_pals()
 
 
 ## LoadScreenTilesFromBuffer2 + ReloadMapData after a full-screen menu.
