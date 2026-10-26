@@ -200,6 +200,15 @@ func _run() -> void:
 			elif arg.begins_with("--event="):
 				for e in arg.get_slice("=", 1).split(","):
 					state.set_event(e)
+			elif arg.begins_with("--teach="):
+				# test: moves added to the first party mon (the oldest one is dropped at four)
+				for mv in arg.get_slice("=", 1).split(","):
+					var m0: PartyMon = state.party[0]
+					if m0.moves.size() >= 4:
+						m0.moves.pop_front()
+					m0.moves.append({"move": mv, "pp": GameData.moves[mv]["pp"], "max_pp": GameData.moves[mv]["pp"]})
+			elif arg.begins_with("--badges="):
+				state.badges = int(arg.get_slice("=", 1))
 			elif arg.begins_with("--repel="):
 				state.repel_steps = int(arg.get_slice("=", 1))
 			elif arg.begins_with("--script="):

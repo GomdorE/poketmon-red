@@ -92,6 +92,7 @@ static func use(state: GameState, ow, idx: int, move: String) -> String:
 		"CUT":
 			if not badges & (1 << CASCADE):
 				return await _new_badge_required()
+			return "close" if await used_cut(ow) else "loop"
 		"FLY":
 			if not badges & (1 << THUNDER):
 				return await _new_badge_required()
@@ -104,6 +105,116 @@ static func use(state: GameState, ow, idx: int, move: String) -> String:
 	# the moves of later chapters
 	await Text.print_text("_ItemUseNotTimeText")
 	return "loop"
+
+
+# data/tilesets/cut_tree_blocks.asm: block with the tree -> block after the cut
+const CUT_TREE_BLOCK_SWAPS := {0x32: 0x6D, 0x33: 0x6C, 0x34: 0x6F, 0x35: 0x4C, 0x60: 0x6E, 0x0B: 0x0A,
+	0x3C: 0x35, 0x3F: 0x35, 0x3D: 0x36}
+# CutAnimationOffsets [x, y] from the player's sprite, by facing
+const CUT_OFFSETS := {Overworld.FACE_DOWN: [8, 36], Overworld.FACE_UP: [8, 4], Overworld.FACE_LEFT: [-8, 20], Overworld.FACE_RIGHT: [24, 20]}
+
+
+static func _byte_pal(b: int) -> PackedInt32Array:
+	return PackedInt32Array([b & 3, (b >> 2) & 3, (b >> 4) & 3, (b >> 6) & 3])
+
+
+## UsedCut (engine/overworld/cut.asm + cut2.asm AnimCut): a cuttable tree ($3D) or grass
+## ($52) on the overworld tileset, the gym tree ($50) on the gym tileset. The text, the
+## OAM animation (tree halves split / leaves scatter, OBP1 flickering), the block swap
+## (in the loaded map only: trees grow back when the map is reloaded) and SFX_CUT.
+static func used_cut(ow) -> bool:
+	var S: GBScreen = GB.screen
+	var d: Vector2i = ow._facing_delta()
+	var front: int = ow._tile_id_under(ow.player.x + d.x, ow.player.y + d.y)
+	var ts: String = ow.map["tileset"]
+	var can := (ts == "OVERWORLD" and (front == 0x3D or front == 0x52)) or (ts == "GYM" and front == 0x50)
+	if not can:
+		await Text.print_text("_NothingToCutText")
+		return false
+	var grass := front == 0x52
+	Text.no_delay = true
+	S.white_out()
+	await GB.delay3()
+	# RestoreScreenTilesAndReloadTilePatterns (RunDefaultPaletteCommand), LoadGBPal, the map view
+	S.clear_sprites()
+	ow._render()
+	SGB.run("DEFAULT")
+	await GB.delay3()
+	S.normal_pals()
+	await GB.delay3()
+	await Text.print_text("_UsedCutText")
+	Text.no_delay = false
+	ow._render()
+	# InitCutAnimOAM + WriteCutOrBoulderDustAnimationOAMBlock (OAM 36-39)
+	S.obp1 = _byte_pal(0xE4)
+	var off: Array = CUT_OFFSETS[ow.player.facing]
+	var x: int = 0x40 + int(off[0]) - 8
+	var y: int = 0x3C + int(off[1]) - 16
+	var spr: Array = []
+	if grass:
+		var leaf := S.tile("move_anim_1", 6)
+		var flips := [[true, false], [false, true], [true, false], [false, true]]
+		for i in 4:
+			spr.append({"x": x + (i % 2) * 8, "y": y + (i / 2) * 8, "v": leaf, "xf": flips[i][0], "yf": flips[i][1]})
+	else:
+		var tiles := [0x2D, 0x2E, 0x3D, 0x3E]
+		for i in 4:
+			spr.append({"x": x + (i % 2) * 8, "y": y + (i / 2) * 8, "v": S.tile(ow.ts_sheet, tiles[i]), "xf": false, "yf": false})
+	# ReplaceTreeTileBlock + RedrawMapView
+	var bx: int = (ow.player.x + d.x) >> 1
+	var by: int = (ow.player.y + d.y) >> 1
+	var w: int = ow.map["width"]
+	var block: int = ow.map["blocks"][by * w + bx]
+	if ow.cut_blocks.has(Vector2i(bx, by)):
+		block = ow.cut_blocks[Vector2i(bx, by)]
+	if CUT_TREE_BLOCK_SWAPS.has(block):
+		var nb: int = CUT_TREE_BLOCK_SWAPS[block]
+		ow.cut_blocks[Vector2i(bx, by)] = nb
+		ow._put_block(bx, by, nb, ow.tileset)
+	ow._render()
+	_draw_cut_oam(S, spr)
+	# AnimCut
+	if grass:
+		for k in 2:
+			for half in 2:
+				for f in 8:
+					var dx := [1, 2, -2, -1]
+					for i in 4:
+						spr[i].x += dx[i]
+					S.obp1 = _byte_pal(_pal_byte(S.obp1) ^ 0x64)
+					_draw_cut_oam(S, spr)
+					await GB.frame
+				# AnimCut_SwapOAMEntries: 36/37 <-> 38/39
+				spr = [spr[2], spr[3], spr[0], spr[1]]
+				_draw_cut_oam(S, spr)
+			for i in 4:
+				spr[i].y += 2
+			_draw_cut_oam(S, spr)
+	else:
+		for f in 8:
+			spr[0].x += 1
+			spr[1].x += 1
+			spr[2].x -= 1
+			spr[3].x -= 1
+			S.obp1 = _byte_pal(_pal_byte(S.obp1) ^ 0x64)
+			_draw_cut_oam(S, spr)
+			await GB.frame
+	Sound.play_sfx("SFX_CUT")
+	for i in 4:
+		S.set_sprite(36 + i, -16, -16, GBScreen.BLANK)
+	S.normal_pals()
+	ow._render()
+	return true
+
+
+static func _pal_byte(p: PackedInt32Array) -> int:
+	return p[0] | (p[1] << 2) | (p[2] << 4) | (p[3] << 6)
+
+
+static func _draw_cut_oam(S: GBScreen, spr: Array) -> void:
+	for i in 4:
+		var e: Dictionary = spr[i]
+		S.set_sprite(36 + i, int(e.x), int(e.y), int(e.v), 1, bool(e.xf), bool(e.yf))
 
 
 ## ItemUseEscapeRope (Dig uses it as a pseudo item: nothing is removed and the map view

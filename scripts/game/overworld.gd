@@ -71,6 +71,7 @@ var fly_warp := false             # wStatusFlags6 BIT_FLY_WARP
 var escape_warp := false          # wStatusFlags6 BIT_ESCAPE_WARP (Teleport, Dig, Escape Rope)
 var fly_destination := ""         # wDestinationMap (Fly)
 var map_pal_offset := 0           # wMapPalOffset (dark caves; Flash sets 0)
+var cut_blocks := {}              # blocks replaced by Cut in the loaded map (wOverworldMap edits)
 var battle_request := {}
 var do_not_wait_after_text := false
 var no_auto_text_box := false
@@ -773,6 +774,7 @@ func load_map(id: String, x: int, y: int, facing: int) -> void:
 	for by in h:
 		for bx in w:
 			_put_block(bx, by, map["blocks"][by * w + bx], tileset)
+	cut_blocks = {}
 	# objects (toggleable ones start hidden when their toggle state is OFF)
 	npcs.clear()
 	var hidden: Array = []
