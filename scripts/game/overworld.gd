@@ -53,6 +53,9 @@ class PlayerState:
 	var moving_dir := 0
 	var last_stop_dir := 0
 	var check_180 := true
+	var jumping := false        # wMovementFlags BIT_LEDGE_OR_FISHING (ledge hop)
+	var jump_index := 0         # wPlayerJumpingYScreenCoordsIndex
+	var jump_y := 0x3C          # wSpritePlayerStateData1YPixels during a hop
 var sim_queue: Array = []          # simulated joypad states (front first)
 var joy_ignore := 0
 var anim_counter1 := 0
@@ -111,6 +114,8 @@ func run(reload: bool = true) -> void:
 	while running:
 		await GB.frame
 		_tick_tile_animation()
+		if player.jumping:
+			await _handle_mid_jump()
 		if player.walk_counter > 0:
 			_advance_player()
 			_update_npcs()
@@ -358,6 +363,8 @@ func _handle_direction(held: int) -> void:
 	player.check_180 = false
 	player.facing = dir
 	player.moving_dir = dir
+	if not player.jumping and sim_queue.is_empty() and not _sprite_blocks(player.x + dx, player.y + dy):
+		_handle_ledges(held)
 	if _collision_on_land(player.x + dx, player.y + dy):
 		# collision while standing on a warp: ExtraWarpCheck -> CheckWarpsCollision
 		if _is_warp_at(player.x, player.y) and _extra_warp_check():
@@ -512,6 +519,11 @@ func _collision_on_land(x: int, y: int) -> bool:
 func _collision_check(x: int, y: int) -> bool:
 	if sim_queue.size() > 0 or (follow_script.size() > 0 and follow_script.get("fn", 0) >= 3):
 		return false
+	if _sprite_blocks(x, y):
+		return true
+	# TilePairCollisionsLand: elevation edges in caves and the forest
+	if _tile_pair_collision(_tile_id_under(player.x, player.y), _tile_id_under(x, y), TILE_PAIR_COLLISIONS_LAND):
+		return true
 	# beyond the map the tiles are the border blocks or a connected map's strip
 	if not _is_walkable(x, y):
 		return true
@@ -520,12 +532,15 @@ func _collision_check(x: int, y: int) -> bool:
 	# letting the player walk into the border blocks.
 	if _leads_to_missing_map(x, y):
 		return true
+	return false
+
+
+## A sprite on (or walking into) the tile the player is about to enter.
+func _sprite_blocks(x: int, y: int) -> bool:
 	for n in npcs:
 		if n.hidden:
 			continue
 		if scripted_npc.size() > 0 and scripted_npc.npc == n.index:
-			# an NPC walking in lockstep with the player (DoScriptedNPCMovement)
-			# only blocks the tile it is moving into
 			var d := _scripted_npc_delta()
 			if n.x + d.x == x and n.y + d.y == y:
 				return true
@@ -533,6 +548,97 @@ func _collision_check(x: int, y: int) -> bool:
 		if (n.x == x and n.y == y) or (n.walk_counter > 0 and n.x + n.step_dx == x and n.y + n.step_dy == y):
 			return true
 	return false
+
+
+## data/tilesets/pair_collision_tile_ids.asm: [tileset, tile 1, tile 2]; the player may
+## not cross between the two tiles in either direction.
+const TILE_PAIR_COLLISIONS_LAND := [
+	["CAVERN", 0x20, 0x05], ["CAVERN", 0x41, 0x05], ["FOREST", 0x30, 0x2E], ["CAVERN", 0x2A, 0x05],
+	["CAVERN", 0x05, 0x21], ["FOREST", 0x52, 0x2E], ["FOREST", 0x55, 0x2E], ["FOREST", 0x56, 0x2E],
+	["FOREST", 0x20, 0x2E], ["FOREST", 0x5E, 0x2E], ["FOREST", 0x5F, 0x2E],
+]
+const TILE_PAIR_COLLISIONS_WATER := [["FOREST", 0x14, 0x2E], ["FOREST", 0x48, 0x2E], ["CAVERN", 0x14, 0x05]]
+
+
+## CheckForTilePairCollisions: the tile the player stands on against the tile in front.
+func _tile_pair_collision(standing: int, front: int, table: Array) -> bool:
+	for e in table:
+		if e[0] != map["tileset"]:
+			continue
+		if (standing == e[1] and front == e[2]) or (standing == e[2] and front == e[1]):
+			return true
+	return false
+
+
+# --- ledges (engine/overworld/ledges.asm, _HandleMidJump) ------------------------
+
+## data/tilesets/ledge_tiles.asm: facing, tile the player stands on, ledge tile in front,
+## the direction that must be held.
+const LEDGE_TILES := [
+	[FACE_DOWN, 0x2C, 0x37, GB.DOWN], [FACE_DOWN, 0x39, 0x36, GB.DOWN], [FACE_DOWN, 0x39, 0x37, GB.DOWN],
+	[FACE_LEFT, 0x2C, 0x27, GB.LEFT], [FACE_LEFT, 0x39, 0x27, GB.LEFT],
+	[FACE_RIGHT, 0x2C, 0x0D, GB.RIGHT], [FACE_RIGHT, 0x2C, 0x1D, GB.RIGHT], [FACE_RIGHT, 0x39, 0x0D, GB.RIGHT],
+]
+# PlayerJumpingYScreenCoords
+const JUMP_Y := [0x38, 0x36, 0x34, 0x32, 0x31, 0x30, 0x30, 0x30, 0x31, 0x32, 0x33, 0x34, 0x36, 0x38, 0x3C, 0x3C]
+
+
+## HandleLedges: on the OVERWORLD tileset, facing a ledge tile from a matching tile with
+## the direction held, the player hops: two simulated presses, the shadow, SFX_LEDGE.
+func _handle_ledges(held: int) -> void:
+	if player.jumping or map["tileset"] != "OVERWORLD":
+		return
+	var d := _facing_delta()
+	var standing := _tile_id_under(player.x, player.y)
+	var front := _tile_id_under(player.x + d.x, player.y + d.y)
+	for e in LEDGE_TILES:
+		if e[0] == player.facing and e[1] == standing and e[2] == front:
+			if not (held & int(e[3])):
+				return
+			joy_ignore = GB.BUTTONS | GB.CTRL_PAD
+			player.jumping = true
+			player.jump_index = 0
+			player.jump_y = 0x3C
+			sim_queue = [int(e[3]), int(e[3])]
+			Sound.play_sfx("SFX_LEDGE")
+			if "--trace-scripts" in OS.get_cmdline_user_args():
+				print("LEDGE_HOP at (%d,%d) frame %d" % [player.x, player.y, GB.frame_count])
+			return
+
+
+## _HandleMidJump: one Y coordinate per frame; once the table is used up and the step
+## has ended, the hop ends (and so does the joypad simulation: the second simulated
+## press is never read, the player moves two blocks).
+func _handle_mid_jump() -> void:
+	var c := player.jump_index
+	if c + 1 < 0x10:
+		player.jump_index = c + 1
+		player.jump_y = JUMP_Y[c]
+		return
+	if player.walk_counter != 0:
+		return
+	_render()
+	await GB.delay3()
+	player.jump_index = 0
+	player.jumping = false
+	player.jump_y = 0x3C
+	sim_queue.clear()
+	joy_ignore = 0
+	for k in 4:
+		S.set_sprite(36 + k, -16, -16, GBScreen.BLANK)
+	_render()
+
+
+## LoadHoppingShadowOAM: OAM 36-39 at hardware (y $54, x $48): the 1bpp shadow tile
+## with the four flips (only the first entry uses OBP1).
+func _draw_ledge_shadow() -> void:
+	var t := S.tile("ledge_shadow", 0)
+	var x := 0x48 - 8
+	var y := 0x54 - 16
+	S.set_sprite(36, x, y, t, 1)
+	S.set_sprite(37, x + 8, y, t, 0, true)
+	S.set_sprite(38, x, y + 8, t, 0, false, true)
+	S.set_sprite(39, x + 8, y + 8, t, 0, true, true)
 
 
 func _leads_to_missing_map(x: int, y: int) -> bool:
@@ -885,7 +991,9 @@ func _is_map_tile(v: int) -> bool:
 
 func _draw_player() -> void:
 	var fr := _frame_for(player.facing, player.anim if player.walk_counter > 0 else 0, 6)
-	draw_sprite_frame(S, 0, "spr_red", fr[0], 64, 60, fr[1])
+	draw_sprite_frame(S, 0, "spr_red", fr[0], 64, player.jump_y if player.jumping else 60, fr[1])
+	if player.jumping:
+		_draw_ledge_shadow()
 
 
 ## [frame, xflip] for a facing direction and animation counter (0-3).
