@@ -22,10 +22,9 @@ func run_map_script(entered: bool) -> bool:
 			if entered:
 				_toggle_bill()
 		"BILLS_HOUSE":
-			if entered:
-				# Bridge the original hidden BillsHousePC coordinate through the
-				# map-local text dispatcher; no shared engine files are modified.
-				chapter.cerulean._register_hidden_text("BillsHousePC", "TEXT_BILLSHOUSE_ACTIVATE_PC")
+			# Bridge the original hidden BillsHousePC coordinate through the
+			# map-local text dispatcher; no shared engine files are modified.
+			chapter.cerulean._register_hidden_text("BillsHousePC", "TEXT_BILLSHOUSE_ACTIVATE_PC")
 			await _bills_house()
 			return true
 	return false
@@ -85,6 +84,7 @@ func _bridge_rocket(npc_index: int) -> void:
 	if not state.give_item("NUGGET", 1):
 		await ow.print_text("_Route24CooltrainerM1NoRoomText")
 		state.set_event("EVENT_NUGGET_REWARD_AVAILABLE")
+		chapter.trace("NUGGET_REJECTED bag_full")
 		return
 	state.set_event("EVENT_GOT_NUGGET")
 	await ow.print_text("_Route24CooltrainerM1ReceivedNuggetText")
@@ -152,6 +152,7 @@ func _ticket() -> void:
 		if not state.give_item("S_S_TICKET", 1):
 			await ow.print_text("_SSTicketNoRoomText")
 			return
+		Text.ram["wStringBuffer"] = GameData.item_name("S_S_TICKET")
 		await ow.print_text("_SSTicketReceivedText")
 		await Sound.text_sound("sound_get_key_item")
 		await Text.wait_scroll_button(false)
@@ -202,14 +203,15 @@ func _pokemon_list() -> void:
 	await ow.print_text("_BillsHousePokemonListText1")
 	var species := ["EEVEE", "FLAREON", "JOLTEON", "VAPOREON"]
 	var chosen := 0
+	var spacing := 2 if GameData.lang == "ko" else 1
 	while true:
 		# Original menu (0,0), inner 9x10; Korean names occupy two rows.
 		Menu.draw_box(0, 0, 9, 10)
 		for i in 4:
-			Text.place_string(2, 2 + i * 2, GameData.mon_name(species[i]))
-		Text.place_string(2, 10, "취소" if GameData.lang == "ko" else "CANCEL")
+			Text.place_string(2, 2 + i * spacing, GameData.mon_name(species[i]))
+		Text.place_string(2, 2 + 4 * spacing, "취소" if GameData.lang == "ko" else "CANCEL")
 		await ow.print_text("_BillsHousePokemonListText2")
-		var key := await Menu.handle_input(1, 2, 5, GB.A | GB.B, 2, chosen)
+		var key := await Menu.handle_input(1, 2, 5, GB.A | GB.B, spacing, chosen)
 		chosen = Menu.current
 		Menu.erase_cursor()
 		if key & GB.B or chosen == 4:

@@ -20,9 +20,10 @@ func run_map_script(entered: bool) -> bool:
 			return true
 		"CERULEAN_GYM":
 			if entered:
-				# Original hidden GymStatues dispatch lacks this gym in its table.
-				# Register the same coordinates with the existing map text dispatcher.
-				_register_hidden_text("GymStatues", "TEXT_CERULEANGYM_STATUE")
+				Text.ram["wGymCityName"] = "블루시티" if GameData.lang == "ko" else "CERULEAN CITY"
+				Text.ram["wGymLeaderName"] = "이슬" if GameData.lang == "ko" else "MISTY"
+			# Map-local bridge for the original up-facing hidden event.
+			_register_hidden_text("GymStatues", "TEXT_CERULEANGYM_STATUE")
 			await _gym()
 			return true
 		"CERULEAN_BADGE_HOUSE":
@@ -48,6 +49,7 @@ func text(text_id: String, npc_index: int) -> bool:
 		"TEXT_CERULEANCITY_POKECENTER_SIGN": await ms._far("_PokeCenterSignText")
 		"TEXT_CERULEANCITY_BIKESHOP_SIGN": await ms._far("_CeruleanCityBikeShopSign")
 		"TEXT_CERULEANCITY_GYM_SIGN": await ms._far("_CeruleanCityGymSign")
+		"TEXT_CERULEANCITY_GUARD1", "TEXT_CERULEANCITY_GUARD2": await ms._far("_CeruleanCityGuardText")
 		"TEXT_CERULEANPOKECENTER_NURSE": await Pokecenter.nurse(ow, npc_index)
 		"TEXT_CERULEANPOKECENTER_LINK_RECEPTIONIST": await ow.print_text("_CableClubNPCWelcomeText")
 		"TEXT_CERULEANMART_CLERK": await Pokemart.dialogue(ow, "CERULEAN_MART")
@@ -199,6 +201,11 @@ func _misty(npc_index: int) -> void:
 
 
 func _register_hidden_text(function_name: String, text_id: String) -> void:
+	if ow.player.facing != Overworld.FACE_UP:
+		# Hidden events check facing before opening a text box. Do not create a
+		# side-facing background event that would flash an empty message box.
+		ow.map.bg_events = ow.map.bg_events.filter(func(b: Dictionary) -> bool: return str(b.text) != text_id)
+		return
 	for e in ow.map.get("hidden_events", []):
 		if e.func != function_name:
 			continue

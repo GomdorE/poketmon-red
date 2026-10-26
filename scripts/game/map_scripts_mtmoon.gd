@@ -53,6 +53,7 @@ func text(text_id: String, npc_index: int) -> bool:
 			await ms._far("_MtMoonB2FSuperNerdThenThisIsMineText")
 			await Sound.text_sound("sound_get_key_item")
 		"TEXT_ROUTE4_POKECENTER_SIGN": await ms._far("_PokeCenterSignText")
+		"TEXT_MTMOON1F_BEWARE_ZUBAT_SIGN": await ms._far("_MtMoon1FBewareZubatSign")
 		_:
 			if await cerulean.text(text_id, npc_index):
 				return true
@@ -108,6 +109,7 @@ func _magikarp_salesman() -> void:
 			ow.reload_map_view()
 	else:
 		state.box.push_front(mon)
+		Text.ram["wBoxMonNicks"] = mon.nickname
 		Text.ram["wStringBuffer"] = str(state.current_box + 1)
 		await ow.print_text("_SentToBoxText")
 	state.money -= 500
@@ -167,11 +169,14 @@ func _fossil(dome: bool) -> void:
 	ow.do_not_wait_after_text = true
 	await ow.print_text("_MtMoonB2FDomeFossilYouWantText" if dome else "_MtMoonB2FHelixFossilYouWantText")
 	if not await Menu.yes_no():
+		trace("FOSSIL_DECLINED")
 		return
 	if not state.give_item("DOME_FOSSIL" if dome else "HELIX_FOSSIL", 1):
 		await ow.print_text("_MtMoonB2FYouHaveNoRoomText")
 		await Text.wait_scroll_button(false)
+		trace("FOSSIL_REJECTED bag_full")
 		return
+	Text.ram["wStringBuffer"] = GameData.item_name("DOME_FOSSIL" if dome else "HELIX_FOSSIL")
 	await ow.print_text("_MtMoonB2FReceivedFossilText")
 	await Sound.text_sound("sound_get_key_item")
 	await Text.wait_scroll_button(false)

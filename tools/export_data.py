@@ -179,6 +179,7 @@ TILESET_FILES = {
     "CAVERN": ("cavern", "cavern"),
     "CLUB": ("club", "club"),
     "INTERIOR": ("interior", "interior"),
+    "SHIP": ("ship", "ship"),
 }
 TILESET_COLL_LABEL = {
     "OVERWORLD": "Overworld_Coll",
@@ -196,6 +197,7 @@ TILESET_COLL_LABEL = {
     "CAVERN": "Cavern_Coll",
     "CLUB": "Club_Coll",
     "INTERIOR": "Interior_Coll",
+    "SHIP": "Ship_Coll",
 }
 TILESET_INDEX = {  # order of the Tilesets table (constants/tileset_constants.asm)
     "OVERWORLD": 0, "REDS_HOUSE_1": 1, "MART": 2, "FOREST": 3, "REDS_HOUSE_2": 4, "DOJO": 5,
@@ -203,11 +205,11 @@ TILESET_INDEX = {  # order of the Tilesets table (constants/tileset_constants.as
     "GATE": 12, "SHIP": 13, "SHIP_PORT": 14, "CEMETERY": 15, "INTERIOR": 16, "CAVERN": 17,
     "LOBBY": 18, "MANSION": 19, "LAB": 20, "CLUB": 21, "FACILITY": 22, "PLATEAU": 23,
 }
-TILESET_GRASS = {"OVERWORLD": 0x52, "FOREST": 0x20, "CAVERN": -1, "CLUB": -1, "INTERIOR": -1}
+TILESET_GRASS = {"OVERWORLD": 0x52, "FOREST": 0x20, "CAVERN": -1, "CLUB": -1, "INTERIOR": -1, "SHIP": -1}
 # tileset_headers.asm counter tiles (talking across a counter)
 TILESET_COUNTER = {"DOJO": [0x3A], "MART": [0x18, 0x19, 0x1E], "POKECENTER": [0x18, 0x19, 0x1E], "GYM": [0x3A],
                    "FOREST_GATE": [0x17, 0x32], "GATE": [0x17, 0x32], "MUSEUM": [0x17, 0x32],
-                   "CLUB": [0x07, 0x17], "CAVERN": [], "INTERIOR": []}
+                   "CLUB": [0x07, 0x17], "CAVERN": [], "INTERIOR": [], "SHIP": []}
 
 MAPS = {
     "PALLET_TOWN": "PalletTown",
@@ -460,12 +462,13 @@ WARP_LABELS = {
     "CAVERN": ".CavernWarpTileIDs",
     "CLUB": ".ClubWarpTileIDs",
     "INTERIOR": ".InteriorWarpTileIDs",
+    "SHIP": ".ShipWarpTileIDs",
 }
 DOOR_LABELS = {"OVERWORLD": ".OverworldDoorTileIDs", "HOUSE": ".HouseDoorTileIDs", "MART": ".MartDoorTileIDs",
                "POKECENTER": ".MartDoorTileIDs", "FOREST": ".ForestDoorTileIDs",
                "FOREST_GATE": ".TilesetMuseumDoorTileIDs", "MUSEUM": ".TilesetMuseumDoorTileIDs",
                "GATE": ".TilesetMuseumDoorTileIDs", "CAVERN": "__none__",
-               "CLUB": "__none__", "INTERIOR": "__none__"}
+               "CLUB": "__none__", "INTERIOR": "__none__", "SHIP": ".ShipDoorTileIDs"}
 
 
 def export_tilesets() -> None:
