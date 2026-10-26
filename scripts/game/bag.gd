@@ -56,6 +56,24 @@ static func show(state: GameState, ow) -> bool:
 	return false
 
 
+const REPEL_STEPS := {"REPEL": 100, "SUPER_REPEL": 200, "MAX_REPEL": 250}
+
+
+## PrintItemUseTextAndRemoveItem: ItemUseText00 ("<PLAYER> used <item>!"),
+## SFX_HEAL_AILMENT, a button press, then one of the item is removed.
+static func _print_item_use_text_and_remove(state: GameState, item: String) -> void:
+	Text.ram["wStringBuffer"] = GameData.item_name(item)
+	Menu.message_box()
+	await GB.delay3()
+	Text.cursor = Vector2i(1, 14)
+	await Text.run_commands(GameData.text("_ItemUseText001"))
+	Text.cursor = Vector2i(1, 16)
+	await Text.run_commands(GameData.text("_ItemUseText002"))
+	Sound.play_sfx("SFX_HEAL_AILMENT")
+	await Text.wait_scroll_button(false)
+	state.remove_item(item, 1)
+
+
 ## UseItem outside of battle for the items of the first chapters.
 static func _use(state: GameState, ow, item: String) -> bool:
 	var S: GBScreen = GB.screen
@@ -70,6 +88,11 @@ static func _use(state: GameState, ow, item: String) -> bool:
 		return false
 	if item == "TOWN_MAP":
 		await TownMap.show(state, ow)
+		return false
+	# ItemUseRepel / ItemUseRepelCommon: steps for REPEL, SUPER_REPEL, MAX_REPEL
+	if item in REPEL_STEPS:
+		state.repel_steps = int(REPEL_STEPS[item])
+		await _print_item_use_text_and_remove(state, item)
 		return false
 	if item == "OAKS_PARCEL":
 		await Text.print_text("_ItemUseNotYoursToUseText")

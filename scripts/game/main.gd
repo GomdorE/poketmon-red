@@ -200,6 +200,8 @@ func _run() -> void:
 			elif arg.begins_with("--event="):
 				for e in arg.get_slice("=", 1).split(","):
 					state.set_event(e)
+			elif arg.begins_with("--repel="):
+				state.repel_steps = int(arg.get_slice("=", 1))
 			elif arg.begins_with("--script="):
 				var spec := arg.get_slice("=", 1)
 				state.map_scripts[spec.get_slice(":", 0)] = int(spec.get_slice(":", 1))

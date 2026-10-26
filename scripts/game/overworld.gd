@@ -289,13 +289,24 @@ func _try_wild_encounter() -> void:
 		return
 	if state.encounter_cooldown > 0:
 		return
-	var wild: Dictionary = GameData.wild["maps"].get(map_id, {})
-	if wild.is_empty() or not wild.has("grass"):
+	if player.jumping:
 		return
 	if _is_warp_at(player.x, player.y):
 		var tid := _tile_id_under(player.x, player.y)
 		if tid in tileset["warp_tiles"] or tid in tileset["door_tiles"]:
 			return
+	# IsPlayerJustOutsideMap
+	if player.x < 0 or player.y < 0 or player.x >= map["width"] * 2 or player.y >= map["height"] * 2:
+		return
+	# wRepelRemainingSteps counts down on every map; the last step prints the text
+	if state.repel_steps > 0:
+		state.repel_steps -= 1
+		if state.repel_steps == 0:
+			await _show_overworld_text("_RepelWoreOffText", true)
+			return
+	var wild: Dictionary = GameData.wild["maps"].get(map_id, {})
+	if wild.is_empty() or not wild.has("grass"):
+		return
 	# the bottom-right 8x8 tile of the half-block the player stands on
 	var gx := BORDER + player.x * 2 + 1
 	var gy := BORDER + player.y * 2 + 1
@@ -317,6 +328,9 @@ func _try_wild_encounter() -> void:
 			slot = i
 			break
 	var entry: Array = slots[mini(slot, slots.size() - 1)]
+	# a repel keeps away wild mons below the level of the first party mon
+	if state.repel_steps > 0 and int(entry[0]) < state.party[0].level:
+		return
 	battle_request = {"wild": true, "species": str(entry[1]), "level": int(entry[0])}
 	if "--trace-battle" in OS.get_cmdline_user_args():
 		print("WILD_ENCOUNTER frame=%d at (%d,%d) %s" % [GB.frame_count, player.x, player.y, str(battle_request)])
@@ -443,7 +457,7 @@ func _after_step() -> void:
 			await _warp_from(player.x, player.y)
 			return
 	# NewBattle → InitBattle → TryDoWildEncounter
-	_try_wild_encounter()
+	await _try_wild_encounter()
 
 
 func _is_warp_at(x: int, y: int) -> bool:
