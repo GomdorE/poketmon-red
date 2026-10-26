@@ -129,6 +129,7 @@ func run(reload: bool = true) -> void:
 		if player.jumping:
 			await _handle_mid_jump()
 		if player.walk_counter > 0:
+			_do_bike_speedup()
 			_advance_player()
 			_update_npcs()
 			_render()
@@ -422,6 +423,18 @@ func _handle_direction(held: int) -> void:
 	player.step_dx = dx
 	player.step_dy = dy
 	player.walk_counter = 8
+	_do_bike_speedup()
+	_advance_player()
+
+
+## DoBikeSpeedup (.moveAhead2): on the bike, not while hopping a ledge or during an NPC
+## movement script, the player advances twice per frame (Cycling Road: only while
+## Down or nothing is held).
+func _do_bike_speedup() -> void:
+	if state.walk_bike_surf != 1 or player.jumping or not follow_script.is_empty():
+		return
+	if map_id == "ROUTE_17" and (GB.held & (GB.UP | GB.LEFT | GB.RIGHT)):
+		return
 	_advance_player()
 
 
@@ -800,6 +813,12 @@ func load_map(id: String, x: int, y: int, facing: int) -> void:
 		for bx in w:
 			_put_block(bx, by, map["blocks"][by * w + bx], tileset)
 	cut_blocks = {}
+	# LoadPlayerSpriteGraphics: off the bike where biking isn't allowed; surfing needs a
+	# tileset with animated water
+	if state.walk_bike_surf == 1 and not is_bike_riding_allowed():
+		set_walk_bike_surf(0)
+	elif state.walk_bike_surf == 2 and not map["tileset"] in FieldMoves.WATER_TILESETS:
+		set_walk_bike_surf(0)
 	strength_active = false   # ResetUsingStrengthOutOfBattleBit (EnterMap)
 	tried_push_boulder = false
 	boulder_dust = false
@@ -1046,6 +1065,15 @@ func _is_map_tile(v: int) -> bool:
 
 
 func _draw_player() -> void:
+	if player_anim.has("tiles"):
+		var t: Array = player_anim.tiles
+		var xf: bool = player_anim.get("xflip", false)
+		var px: int = player_anim.x
+		var py: int = player_anim.y
+		for k in 4:
+			var col := (1 - (k % 2)) if xf else (k % 2)
+			S.set_sprite(k, px + col * 8, py + (k / 2) * 8, int(t[k]), 0, xf)
+		return
 	if not player_anim.is_empty():
 		var a := player_anim
 		var afr := _frame_for(int(a.facing), int(a.frame), S.sheet(str(a.sheet)).rows)
@@ -1640,6 +1668,13 @@ func _do_boulder_dust_animation() -> void:
 	_reset_boulder_push_flags()
 	pushed_boulder = true
 	Sound.play_sfx("SFX_CUT")
+
+
+## IsBikeRidingAllowed: Route 23, Indigo Plateau, or a BikeRidingTilesets tileset.
+func is_bike_riding_allowed() -> bool:
+	if map_id in ["ROUTE_23", "INDIGO_PLATEAU"]:
+		return true
+	return map["tileset"] in ["OVERWORLD", "FOREST", "UNDERGROUND", "SHIP_PORT", "CAVERN"]
 
 
 ## CheckIfInOutsideMap: the OVERWORLD and PLATEAU tilesets.

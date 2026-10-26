@@ -245,6 +245,42 @@ static func _draw_cut_oam(S: GBScreen, spr: Array) -> void:
 const WATER_TILESETS := ["OVERWORLD", "FOREST", "DOJO", "GYM", "SHIP", "SHIP_PORT", "CAVERN", "FACILITY", "PLATEAU"]
 
 
+## IsNextTileShoreOrWater.
+static func is_next_tile_shore_or_water(ow) -> bool:
+	var d: Vector2i = ow._facing_delta()
+	var front: int = ow._tile_id_under(ow.player.x + d.x, ow.player.y + d.y)
+	var ts: String = ow.map["tileset"]
+	return ts in WATER_TILESETS and (front == 0x14 or (ts != "SHIP_PORT" and (front == 0x48 or front == 0x32)))
+
+
+## ItemUseBicycle: on or off the bike (not while surfing), the bike music, the text.
+static func use_bicycle(state: GameState, ow) -> bool:
+	if state.walk_bike_surf == 2:
+		await Text.print_text("_ItemUseNotTimeText")
+		return false
+	Text.ram["wStringBuffer"] = GameData.item_name("BICYCLE")
+	var cmds: Array
+	if state.walk_bike_surf == 1:
+		ow.reload_map_view()
+		ow.set_walk_bike_surf(0)
+		await Sound.play_default_music()
+		cmds = [["far", "_GotOffBicycleText1"], ["text_low", ""], ["far", "_GotOffBicycleText2"], ["text_end", ""]]
+	else:
+		if not ow.is_bike_riding_allowed():
+			await Text.print_text("_NoCyclingAllowedHereText")
+			return false
+		ow.reload_map_view()
+		ow.set_walk_bike_surf(1)
+		await Sound.play_default_music()
+		cmds = [["far", "_GotOnBicycleText1"], ["text_low", ""], ["far", "_GotOnBicycleText2"], ["text_end", ""]]
+	ow._render()
+	Menu.message_box()
+	await GB.delay3()
+	Text.cursor = Vector2i(1, 14)
+	await Text.run_commands(cmds)
+	return true
+
+
 ## ItemUseSurfboard: onto the water in front (one simulated step, the surf music,
 ## "<PLAYER> got on <MON>!"), or ashore when already surfing.
 static func use_surfboard(state: GameState, ow) -> bool:

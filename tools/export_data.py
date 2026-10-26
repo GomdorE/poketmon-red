@@ -101,6 +101,10 @@ RAW_SHEETS = {
     "ledge_shadow": "gfx/overworld/shadow.1bpp",
     "town_map_up_arrow": "gfx/town_map/up_arrow.1bpp",
     "boulder_smoke": "gfx/overworld/smoke.2bpp",
+    "red_fish_front": "gfx/overworld/red_fish_front.2bpp",
+    "red_fish_back": "gfx/overworld/red_fish_back.2bpp",
+    "red_fish_side": "gfx/overworld/red_fish_side.2bpp",
+    "fishing_rod": "gfx/overworld/fishing_rod.2bpp",
     "flower1": "gfx/tilesets/flower/flower1.2bpp",
     "flower2": "gfx/tilesets/flower/flower2.2bpp",
     "flower3": "gfx/tilesets/flower/flower3.2bpp",
@@ -861,7 +865,15 @@ def export_wild() -> None:
     for m in re.finditer(r"wild_chance\s+(\d+)", (MASTER / "data" / "wild" / "probabilities.asm").read_text(encoding="utf-8")):
         total += int(m.group(1))
         chances.append(total - 1)
-    (OUT_DATA / "wild.json").write_text(json.dumps({"maps": out, "slot_chances": chances}), encoding="utf-8")
+    # data/wild/good_rod.asm and super_rod.asm (map -> its fishing group)
+    good = [[int(a), b] for a, b in re.findall(r"db\s+(\d+),\s*([A-Z0-9_]+)", (MASTER / "data" / "wild" / "good_rod.asm").read_text(encoding="utf-8"))]
+    sr = (MASTER / "data" / "wild" / "super_rod.asm").read_text(encoding="utf-8")
+    groups = {}
+    for gm in re.finditer(r"^\.(Group\d+):\n\s*db\s+\d+\n((?:\s*db\s+\d+,\s*[A-Z0-9_]+\n?)+)", sr, re.M):
+        groups[gm.group(1)] = [[int(a), b] for a, b in re.findall(r"db\s+(\d+),\s*([A-Z0-9_]+)", gm.group(2))]
+    super_rod = {m.group(1): groups[m.group(2)] for m in re.finditer(r"dbw\s+([A-Z0-9_]+),\s*\.(Group\d+)", sr)}
+    (OUT_DATA / "wild.json").write_text(json.dumps({"maps": out, "slot_chances": chances,
+        "rods": {"good": good, "super": super_rod}}), encoding="utf-8")
     log(f"wild: {list(out)}")
 
 

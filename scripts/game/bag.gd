@@ -94,7 +94,11 @@ static func _use(state: GameState, ow, item: String) -> bool:
 		state.repel_steps = int(REPEL_STEPS[item])
 		await _print_item_use_text_and_remove(state, item)
 		return false
-	# UsableItems_CloseMenu: a used Escape Rope closes the start menu
+	# the Bicycle and UsableItems_CloseMenu (rods, Escape Rope) close the start menu when used
+	if item == "BICYCLE":
+		return await FieldMoves.use_bicycle(state, ow)
+	if item in ["OLD_ROD", "GOOD_ROD", "SUPER_ROD"]:
+		return await Fishing.use_rod(state, ow, item)
 	if item == "ESCAPE_ROPE":
 		return await FieldMoves.escape_rope(state, ow)
 	if item == "OAKS_PARCEL":
