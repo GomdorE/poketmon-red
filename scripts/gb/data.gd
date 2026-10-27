@@ -15,6 +15,7 @@ var wild := {}
 var battle_anims := {}   # tools/export_battle_anims.py
 var marts := {}
 var trainers := {}
+var trade := {}           # data/events/trades.asm and the trade movie tilemaps
 var _text_index := {}
 
 
@@ -53,6 +54,7 @@ func _ready() -> void:
 	battle_anims = _load("battle_anims")
 	marts = _load("marts")
 	trainers = _load("trainers")
+	trade = _load("trade")
 	for label in text_en.keys():
 		_text_index[label.to_lower().replace("_", "")] = label
 	for label in text_ko.keys():

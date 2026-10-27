@@ -1,8 +1,8 @@
 """Run chapter-four map/transaction boundaries without loading or writing user saves."""
 from pathlib import Path
-import json,subprocess,sys
+import json,os,subprocess,sys
 ROOT=Path(__file__).resolve().parents[1]
-GODOT=Path(r'X:\joy2is90\Godot_v4.7.2-stable_win64.exe\Godot_v4.7.2-stable_win64_console.exe')
+GODOT=Path(os.environ['GODOT'])  # Godot_v4.7.2-stable_win64_console.exe
 OUT=ROOT/'.tmp/chapter4';OUT.mkdir(parents=True,exist_ok=True)
 maps=json.loads((ROOT/'assets/data/maps.json').read_text(encoding='utf8'))
 chapter=['ROUTE_3','MT_MOON_POKECENTER','MT_MOON_1F','MT_MOON_B1F','MT_MOON_B2F','ROUTE_4','CERULEAN_CITY','CERULEAN_GYM','CERULEAN_MART','CERULEAN_POKECENTER','CERULEAN_TRADE_HOUSE','CERULEAN_TRASHED_HOUSE','CERULEAN_BADGE_HOUSE','BIKE_SHOP','ROUTE_24','ROUTE_25','BILLS_HOUSE']
@@ -16,6 +16,9 @@ cases += [
  ('fossil_full_bag',['--stage=map:MT_MOON_B2F,12,7','--sim=UA','--event=EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD','--give='+','.join(i+':1'for i in fullbag.split(',')),'--quit-after=600'],'FOSSIL_REJECTED bag_full'),
  ('fossil_no',['--stage=map:MT_MOON_B2F,12,7','--sim=UA','--event=EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD','--keys=every:20:b','--quit-after=600'],'FOSSIL_DECLINED'),
  ('misty_tm_retry',['--stage=map:CERULEAN_GYM,4,3','--sim=UA','--event=EVENT_BEAT_MISTY,EVENT_BEAT_CERULEAN_GYM_TRAINER_0,EVENT_BEAT_CERULEAN_GYM_TRAINER_1','--quit-after=1000'],'MISTY_VICTORY badges=2 tm11=1'),
+ ('trade_lola',['--stage=map:CERULEAN_TRADE_HOUSE,1,4','--party=POLIWHIRL:20,PIDGEY:9','--sim=UUA','--keys=every:25:a:60','--quit-after=3200'],'IN_GAME_TRADE_TEXT _Thanks2Text'),
+ ('trade_no',['--stage=map:CERULEAN_TRADE_HOUSE,1,4','--party=POLIWHIRL:20','--sim=UUA','--keys=every:25:b:60','--quit-after=500'],'IN_GAME_TRADE_TEXT _NoTrade2Text'),
+ ('trade_wrong_mon',['--stage=map:CERULEAN_TRADE_HOUSE,1,4','--party=PIDGEY:9,POLIWHIRL:20','--sim=UUA','--keys=every:25:a:60','--quit-after=700'],'IN_GAME_TRADE_TEXT _WrongMon2Text'),
  ('route4_cerulean',['--stage=map:ROUTE_4,89,10','--sim=R','--quit-after=150'],'MAP_LOAD CERULEAN_CITY'),
 ]
 if '--full' in sys.argv:

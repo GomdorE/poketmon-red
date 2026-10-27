@@ -1,4 +1,4 @@
-# 작업 인계 (2026-10-27 밤 기준)
+# 작업 인계 (2026-10-27 기준)
 
 다른 컴퓨터(노트북)에서 이어서 작업하기 위한 메모입니다. 맨 아래 "이어서 줄 프롬프트"를 Claude Code 에 그대로 붙여 넣으면 됩니다.
 
@@ -35,18 +35,13 @@ git clone https://github.com/GomdorE/poketmon-red.git pokered-godot
 
 ## 하던 일 (멈춘 지점)
 
-**게임 내 교환(블루시티 교환 집: 쥬레곤 ↔ 롤라)** 을 포팅하던 중입니다.
+**게임 내 교환(블루시티 교환 집: 슈륙챙이 ↔ 루주라 "롤라")** 포팅 완료.
 
-- 끝난 것: 교환 표·교환 화면 그래픽/타일맵 내보내기(`assets/data/trade.json`, `trade_gfx`, `cable_ball`, `trade_bubble`), `PartyMon.ot_name / ot_id`(교환받은 포켓몬의 어버이), 능력치 화면 표시.
-- 초안만 있는 것: `tools/_wip_patch_anim_trade.py` — BattleAnim 을 배틀 밖에서 쓰는 `play_trade()` 와 교환용 특수 효과(TradeHidePokemon / TradeShakePokeball / TradeJumpPokeball). 아직 적용하지 않았습니다. 경로를 확인하고 실행한 뒤 이 파일은 지웁니다.
-- 남은 것:
-  1. `scripts/game/trade_anim.gd` : `engine/movie/trade.asm` 의 InternalClockTradeAnim 포팅
-     (게임보이 그림·케이블 스크롤, 공이 케이블로 들어가는 연출, 아이콘+원 OAM 이동, 텍스트 상자 밀어내기, 창(window) 레이어와 SCX 사용).
-     원작의 자동 BG 전송 대상은 교환 중 $9C00 이므로, 우리 렌더러에서는 "글자는 bg 에, 오른쪽으로 미는 상자는 win 에" 로 옮기면 됩니다.
-  2. `scripts/game/in_game_trade.gd` : `engine/events/in_game_trades.asm` 의 DoInGameTradeDialogue
-     (교환 제안/거절/다른 포켓몬/고마워/교환 뒤 대사, 파티 메뉴 선택, 케이블 연결 대사, 받은 포켓몬 = 준 포켓몬 레벨·별명·어버이 "트레이너"·무작위 ID, 교환 완료 플래그 세이브).
-  3. `cerulean_scripts.gd` 에 `TEXT_CERULEANTRADEHOUSE_GAMBLER` → 교환(롤라) 연결.
-  4. 창 모드 스크린샷으로 교환 화면 확인 → 커밋(한글) → push → 4챕터 exe 빌드.
+- `scripts/game/trade_anim.gd`(교환 영상), `scripts/game/in_game_trade.gd`(교환 대화), `cerulean_scripts.gd` 연결, 세이브의 `completed_trades`.
+- 스모크: `trade_lola`, `trade_no`, `trade_wrong_mon` 추가 → `GODOT=<콘솔판 경로> python tools/chapter4_smoke.py --full` 36개 PASS.
+  (스모크 스크립트는 이제 Godot 경로를 환경 변수 `GODOT` 로 받습니다.)
+- 확인할 것: 교환 정보 상자의 라벨("──№." / "OT/" / "IDNo.")은 지금 영어 원작 그대로입니다. `pokered-korean` 의
+  `engine/movie/trade2.asm` 의 Trade_MonInfoText 와 비교해 한글판이 다르면 맞춥니다(어버이 "트레이너" 가 상자 폭을 넘는지도).
 
 ## 그다음
 
@@ -67,8 +62,6 @@ git clone https://github.com/GomdorE/poketmon-red.git pokered-godot
 
 ```text
 pokered-godot (포켓몬 레드 Godot 재구현) 작업을 이어서 하자. 먼저 HANDOFF.md 와 README.md 를 읽어.
-하던 일은 블루시티 교환 집의 게임 내 교환 포팅이야. HANDOFF.md 의 "하던 일" 순서대로
-tools/_wip_patch_anim_trade.py 적용 → engine/movie/trade.asm 포팅(trade_anim.gd) → in_game_trades.asm 포팅(in_game_trade.gd)
-→ 블루시티 교환 집 연결 → 창 모드 스크린샷 확인 → 한글 커밋·push → 4챕터 exe 빌드까지 해 줘.
-그다음 5챕터로 넘어가. 원작과 똑같이, 혼자 진행하고, 커밋은 한글로.
+게임 내 교환은 끝났어. HANDOFF.md 의 "확인할 것"(한글판 교환 정보 상자) 을 보고,
+4챕터 exe 가 없으면 빌드한 다음 5챕터로 넘어가. 원작과 똑같이, 혼자 진행하고, 커밋은 한글로.
 ```

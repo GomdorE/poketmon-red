@@ -82,6 +82,7 @@ var battle_request := {}
 var do_not_wait_after_text := false
 var no_auto_text_box := false
 var in_text := false
+var update_sprites := true   # wUpdateSpritesEnabled (off: the sprites are not touched)
 var start_menu_item := 0   # wBattleAndStartSavedMenuItem
 var last_battle_won := false
 var catch_demo_request := {}   # BATTLE_TYPE_OLD_MAN
@@ -1023,7 +1024,7 @@ func _render() -> void:
 ## box, a menu) is invisible. Checked every frame while a text box is open, like
 ## UpdateSprites does with the font loaded.
 func _hide_sprites_under_text_boxes() -> void:
-	if not in_text or not running:
+	if not in_text or not running or not update_sprites:
 		return
 	var vx := player.px - 64
 	var vy := player.py - 64

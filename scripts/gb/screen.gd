@@ -38,6 +38,7 @@ var bgp := PackedInt32Array([0, 1, 2, 3])   # colour index -> shade
 var obp0 := PackedInt32Array([0, 1, 2, 3])
 var obp1 := PackedInt32Array([0, 1, 2, 3])
 var row_scx := PackedInt32Array()           # optional per-screen-row SCX (18 entries)
+var swap_maps := false                      # LCDC map select: the BG layer shows `win`, the window shows `bg`
 var _mat: ShaderMaterial
 var _pal: Array = [Color.WHITE, Color("aaaaaa"), Color("555555"), Color.BLACK]
 var _blank_tex: ImageTexture   # 8x8 texture of colour index 0; every fill goes through the shader
@@ -409,6 +410,7 @@ func _draw_tile(v: int, x: int, y: int, mods: Array, flip: int = 0) -> void:
 
 func _draw_bg(transparent0: bool) -> void:
 	var mods := _mods(bgp, transparent0)
+	var map := win if swap_maps else bg
 	var use_rows := row_scx.size() >= 18
 	for j in 19:
 		var sx := row_scx[mini(j, 17)] if use_rows else scx
@@ -419,13 +421,14 @@ func _draw_bg(transparent0: bool) -> void:
 			if x >= W:
 				continue
 			var mx := ((sx >> 3) + i) & 31
-			_draw_tile(bg[my * MAP_W + mx], x, y, mods)
+			_draw_tile(map[my * MAP_W + mx], x, y, mods)
 
 
 func _draw_window(transparent0: bool) -> void:
 	if wy >= H or wx >= W + 7:
 		return
 	var mods := _mods(bgp, transparent0)
+	var map := bg if swap_maps else win
 	var ox := wx - 7
 	var j := 0
 	var y := wy
@@ -433,7 +436,7 @@ func _draw_window(transparent0: bool) -> void:
 		var x := ox
 		var i := 0
 		while x < W and i < MAP_W:
-			_draw_tile(win[j * MAP_W + i], x, y, mods)
+			_draw_tile(map[j * MAP_W + i], x, y, mods)
 			x += 8
 			i += 1
 		y += 8

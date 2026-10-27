@@ -62,6 +62,8 @@ var cur_item := "POKE_BALL"
 var is_trainer_battle := false
 var ids := {}               # anim name -> id
 var move_by_id := {}        # move id -> move key
+var force_on := false       # the trade movie clears wOptions: animations always play
+var trade: TradeAnim = null # the trade movie's wTileMap (ClearMonPicFromTileMap / ClearScreen)
 
 
 func _init(battle: Battle, turn_player: bool) -> void:
@@ -70,7 +72,7 @@ func _init(battle: Battle, turn_player: bool) -> void:
 	D = GameData.battle_anims
 	ids = D["anim_ids"]
 	player_turn = turn_player
-	is_trainer_battle = not battle.is_wild
+	is_trainer_battle = battle != null and not battle.is_wild
 	for key in GameData.moves.keys():
 		move_by_id[int(GameData.moves[key]["id"])] = key
 
@@ -86,6 +88,17 @@ static func play(battle: Battle, anim: String, type: int, turn_player: bool, mul
 	a.anim_type = type
 	a.damage_mult = mult
 	await GB.delay3()
+	await a._move_animation()
+
+
+## Trade_ShowAnimation: MoveAnimation outside a battle (wAnimationType 0, wOptions
+## cleared by TradeAnimCommon so the animation always plays).
+static func play_trade(anim: String, movie: TradeAnim) -> void:
+	var a := BattleAnim.new(null, true)
+	a.anim_id = id_of(anim)
+	a.anim_type = 0
+	a.force_on = true
+	a.trade = movie
 	await a._move_animation()
 
 
@@ -110,7 +123,7 @@ func _move_animation() -> void:
 		await Sound.wait_for_sfx()
 		_finish()
 		return
-	if not Settings.battle_animation_on():
+	if not force_on and not Settings.battle_animation_on():
 		await GB.frames(30)   # BATTLE ANIMATION OFF
 	else:
 		_share_move_animations()
@@ -126,9 +139,11 @@ func _finish() -> void:
 
 
 ## SetAnimationPalette: the animation sprites use $f0 on the SGB, $e4 otherwise; OBP1 = $6c.
+## On the SGB the trade ball animations also leave OBP0 at $f0.
 func _set_animation_palette() -> void:
 	anim_pal = 0xF0 if S.sgb_on else 0xE4
-	S.obp0 = GBScreen.pal_byte(0xE4)
+	var trade_ball := anim_id >= id_of("TRADE_BALL_DROP_ANIM") and anim_id <= id_of("TRADE_BALL_POOF_ANIM")
+	S.obp0 = GBScreen.pal_byte(0xF0 if S.sgb_on and trade_ball else 0xE4)
 	S.obp1 = GBScreen.pal_byte(0x6C)
 
 
@@ -265,6 +280,13 @@ func _write_oam(index: int, y: int, x: int, tile: int, flags: int) -> void:
 	S.set_sprite(index, x - 8, y - 16, v, 1 if flags & OAM_OBP1 else 0, (flags & OAM_XFLIP) != 0, (flags & OAM_YFLIP) != 0, (flags & OAM_BEHIND_BG) != 0)
 
 
+## Add `dy` to the Y of the first `count` OAM entries.
+func _move_oam_y(count: int, dy: int) -> void:
+	for k in mini(count, S.oam.size()):
+		if S.oam[k] != null:
+			S.oam[k].y += dy
+
+
 ## AnimationCleanOAM: one frame, then ClearSprites.
 func _clean_oam() -> void:
 	await GB.frame
@@ -331,6 +353,29 @@ func _special_effect_by_animation_id() -> void:
 		"TailWhipAnimationUnused":
 			sub_counter = 1
 			await GB.frames(20)
+		"TradeHidePokemon":
+			# ClearMonPicFromTileMap at (7, 2): the mon disappears into the ball
+			if sub_counter == 6:
+				trade.clear_area(7, 2, 7, 7)
+		"TradeShakePokeball":
+			# at the end the shaking ball jumps up (BallMoveDistances1), then SFX_TRADE_MACHINE
+			if sub_counter == 1:
+				for dy in [-12, -12, -8]:
+					_move_oam_y(4, dy)
+					await GB.delay3()
+				await _clean_oam()
+				Sound.play_sfx("SFX_TRADE_MACHINE")
+		"TradeJumpPokeball":
+			# BallMoveDistances2: the ball bounces left while the screen scrolls, SFX_SWAP on
+			# the 12-pixel rises and the last bounce; ClearScreen at the end
+			var dist := [11, 12, -12, -7, 7, 12, -8, 8]
+			for i in dist.size():
+				_move_oam_y(4, int(dist[i]))
+				if i + 1 >= dist.size() or int(dist[i + 1]) == 12:
+					Sound.play_sfx("SFX_SWAP")
+				await GB.frames(5)
+				S.scx = (S.scx - 8) & 0xFF
+			await trade.clear_screen()
 		_:
 			pass
 

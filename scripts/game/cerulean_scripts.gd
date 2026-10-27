@@ -67,6 +67,7 @@ func text(text_id: String, npc_index: int) -> bool:
 		"TEXT_BIKESHOP_YOUNGSTER":
 			await ow.print_text("_BikeShopYoungsterCoolBikeText" if state.has_event("EVENT_GOT_BICYCLE") else "_BikeShopYoungsterTheseBikesAreExpensiveText")
 		"TEXT_CERULEANBADGEHOUSE_MIDDLE_AGED_MAN": await _badge_house()
+		"TEXT_CERULEANTRADEHOUSE_GAMBLER": await InGameTrade.dialogue(ow, state, InGameTrade.TRADE_FOR_LOLA)
 		_:
 			return false
 	return true

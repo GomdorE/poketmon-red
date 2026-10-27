@@ -35,6 +35,7 @@ var box: Array:
 		boxes[current_box] = v
 var last_blackout_map := "PALLET_TOWN"   # wLastBlackoutMap: where a blackout returns the player
 var step_counter := 0     # wStepCounter: poison damage every fourth step
+var completed_trades := 0 # wCompletedInGameTradeFlags (bit = TRADE_FOR_*)
 var encounter_cooldown := 0   # wNumberOfNoRandomBattleStepsLeft (not saved)
 
 
@@ -61,6 +62,7 @@ func to_dict() -> Dictionary:
 		"pokedex_seen": pokedex_seen, "pokedex_owned": pokedex_owned, "map_scripts": map_scripts, "badges": badges, "beat_gym_flags": beat_gym_flags, "repel_steps": repel_steps, "town_visited": town_visited, "walk_bike_surf": walk_bike_surf,
 		"boxes": boxed, "current_box": current_box, "pc_items": pc_items,
 		"last_blackout_map": last_blackout_map, "step_counter": step_counter,
+		"completed_trades": completed_trades,
 	}
 
 
@@ -105,6 +107,7 @@ func from_dict(d: Dictionary) -> void:
 	pc_items = d.get("pc_items", [])
 	last_blackout_map = str(d.get("last_blackout_map", last_blackout_map))
 	step_counter = int(d.get("step_counter", 0))
+	completed_trades = int(d.get("completed_trades", 0))
 
 
 const BAG_SIZE := 20
