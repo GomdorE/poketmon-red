@@ -61,6 +61,9 @@ var joy_ignore := 0
 var anim_counter1 := 0
 var anim_counter2 := 0
 var water_shift := 0
+var water_sheet := ""             # the tileset's rotated water tile sheet (tilesets with TILEANIM_WATER*)
+var no_npc_face_player := false   # wStatusFlags3 BIT_NO_NPC_FACE_PLAYER (the seasick captain)
+var dest_warp_id := 0             # wDestinationWarpID: the warp the player arrived at (0-based)
 var flower_frame := 1
 var scripts: MapScripts
 var follow_script := {}            # the Pallet Town "follow Oak" movement script
@@ -766,6 +769,8 @@ func load_map(id: String, x: int, y: int, facing: int) -> void:
 	map = GameData.maps[id]
 	tileset = GameData.tilesets[map["tileset"]]
 	ts_sheet = tileset["gfx"]
+	water_sheet = "water_anim_" + ts_sheet.trim_prefix("tileset_") if int(tileset.get("anim", 0)) != 0 else ""
+	no_npc_face_player = false   # EnterMap: res BIT_NO_NPC_FACE_PLAYER
 	state.cur_map = id
 	Sound.set_map_music(id)   # LoadMapHeader: wMapMusicSoundID / wMapMusicROMBank
 	SGB.run("OVERWORLD", {"map": id, "last_map": state.last_map})
@@ -931,6 +936,7 @@ func _warp_from(x: int, y: int) -> void:
 		return
 	var dest_map: Dictionary = GameData.maps[dest]
 	var dw: Dictionary = dest_map["warps"][warp.warp_id - 1]
+	dest_warp_id = warp.warp_id - 1
 	if follow_script.size() > 0:
 		# PalletMovementScript_Done: Oak is hidden once the walk to the lab is over
 		state.set_event("HIDE_PALLET_TOWN_0")
@@ -972,7 +978,10 @@ func _enter_map_music(battle_over: bool) -> void:
 # --- rendering -----------------------------------------------------------------
 
 func _tick_tile_animation() -> void:
-	if map["tileset"] != "OVERWORLD" and map["tileset"] != "DOJO":
+	# UpdateMovingBgTiles: nothing for TILEANIM_NONE; the flower frame only follows the
+	# water step for TILEANIM_WATER_FLOWER tilesets
+	var anim: int = int(tileset.get("anim", 0))
+	if anim == 0:
 		return
 	anim_counter1 += 1
 	if anim_counter1 < 20:
@@ -983,7 +992,7 @@ func _tick_tile_animation() -> void:
 			water_shift = (water_shift + 1) & 7
 		else:
 			water_shift = (water_shift - 1) & 7
-		if map["tileset"] != "OVERWORLD":
+		if anim != 2:
 			anim_counter1 = 0
 		return
 	# frame 21: flowers
@@ -993,11 +1002,11 @@ func _tick_tile_animation() -> void:
 
 
 func _tile_value(id: int) -> int:
-	if map["tileset"] == "OVERWORLD":
-		if id == 0x03:
-			return S.tile("flower%d" % flower_frame, 0)
-		if id == 0x14:
-			return S.tile("water_anim", water_shift)
+	var anim: int = int(tileset.get("anim", 0))
+	if anim == 2 and id == 0x03:
+		return S.tile("flower%d" % flower_frame, 0)
+	if anim != 0 and id == 0x14:
+		return S.tile(water_sheet, water_shift)
 	return S.tile(ts_sheet, id)
 
 
@@ -1068,7 +1077,7 @@ func _is_map_tile(v: int) -> bool:
 	if v == GBScreen.BLANK:
 		return true
 	var sheet := v >> 16
-	if sheet == S.sid(ts_sheet) or sheet == S.sid("water_anim"):
+	if sheet == S.sid(ts_sheet) or (water_sheet != "" and sheet == S.sid(water_sheet)):
 		return true
 	for f in range(1, 4):
 		if sheet == S.sid("flower%d" % f):
@@ -1392,7 +1401,7 @@ func display_text_id(text_id: String, npc_index: int) -> void:
 	for n in npcs:
 		saved_facing[n.index] = n.facing
 		n.anim = 0
-	if npc_index >= 0:
+	if npc_index >= 0 and not no_npc_face_player:
 		var n: Dictionary = npcs[npc_index]
 		match player.facing:
 			FACE_UP: n.facing = FACE_DOWN

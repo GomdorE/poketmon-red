@@ -217,6 +217,8 @@ func _run() -> void:
 			elif arg.begins_with("--script="):
 				var spec := arg.get_slice("=", 1)
 				state.map_scripts[spec.get_slice(":", 0)] = int(spec.get_slice(":", 1))
+			elif arg.begins_with("--last-map="):
+				state.last_map = arg.get_slice("=", 1)   # wLastMap (the LAST_MAP warps of indoor maps)
 		state.last_map = "PALLET_TOWN" if parts[0].begins_with("VIRIDIAN") or parts[0] == "ROUTE_1" else state.last_map
 		if parts[0].begins_with("VIRIDIAN_") and parts[0] != "VIRIDIAN_CITY":
 			state.last_map = "VIRIDIAN_CITY"

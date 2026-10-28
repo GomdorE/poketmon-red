@@ -190,6 +190,7 @@ TILESET_FILES = {
     "INTERIOR": ("interior", "interior"),
     "SHIP": ("ship", "ship"),
     "UNDERGROUND": ("underground", "underground"),
+    "SHIP_PORT": ("ship_port", "ship_port"),
 }
 TILESET_COLL_LABEL = {
     "OVERWORLD": "Overworld_Coll",
@@ -209,6 +210,7 @@ TILESET_COLL_LABEL = {
     "INTERIOR": "Interior_Coll",
     "SHIP": "Ship_Coll",
     "UNDERGROUND": "Underground_Coll",
+    "SHIP_PORT": "ShipPort_Coll",
 }
 TILESET_INDEX = {  # order of the Tilesets table (constants/tileset_constants.asm)
     "OVERWORLD": 0, "REDS_HOUSE_1": 1, "MART": 2, "FOREST": 3, "REDS_HOUSE_2": 4, "DOJO": 5,
@@ -281,6 +283,26 @@ MAPS = {
     "UNDERGROUND_PATH_ROUTE_6": "UndergroundPathRoute6",
     "ROUTE_6_GATE": "Route6Gate",
     "ROUTE_6": "Route6",
+    # chapter 5: Vermilion City and the S.S. Anne
+    "VERMILION_CITY": "VermilionCity",
+    "VERMILION_POKECENTER": "VermilionPokecenter",
+    "POKEMON_FAN_CLUB": "PokemonFanClub",
+    "VERMILION_MART": "VermilionMart",
+    "VERMILION_GYM": "VermilionGym",
+    "VERMILION_PIDGEY_HOUSE": "VermilionPidgeyHouse",
+    "VERMILION_DOCK": "VermilionDock",
+    "VERMILION_TRADE_HOUSE": "VermilionTradeHouse",
+    "VERMILION_OLD_ROD_HOUSE": "VermilionOldRodHouse",
+    "SS_ANNE_1F": "SSAnne1F",
+    "SS_ANNE_2F": "SSAnne2F",
+    "SS_ANNE_3F": "SSAnne3F",
+    "SS_ANNE_B1F": "SSAnneB1F",
+    "SS_ANNE_BOW": "SSAnneBow",
+    "SS_ANNE_KITCHEN": "SSAnneKitchen",
+    "SS_ANNE_CAPTAINS_ROOM": "SSAnneCaptainsRoom",
+    "SS_ANNE_1F_ROOMS": "SSAnne1FRooms",
+    "SS_ANNE_2F_ROOMS": "SSAnne2FRooms",
+    "SS_ANNE_B1F_ROOMS": "SSAnneB1FRooms",
 }
 
 
@@ -304,12 +326,17 @@ def export_graphics() -> None:
     # TradingAnimationGraphics: game_boy.2bpp + link_cable.2bpp, loaded at BG tile $31
     trade = decode_tiles(MASTER / "gfx/trade/game_boy.2bpp") + decode_tiles(MASTER / "gfx/trade/link_cable.2bpp")
     tiles_to_image(trade).save(OUT_GB / "trade_gfx.png")
-    # water: tile $14 of the overworld tileset rotated by 0..7 pixels (UpdateMovingBgTiles)
-    water = decode_tiles(MASTER / "gfx/tilesets/overworld.2bpp")[0x14]
-    variants = []
-    for shift in range(8):
-        variants.append([water[y * 8 + ((x - shift) % 8)] for y in range(8) for x in range(8)])
-    tiles_to_image(variants, 8).save(OUT_GB / "water_anim.png")
+    # water: tile $14 of each tileset with TILEANIM_WATER* rotated by 0..7 pixels
+    # (UpdateMovingBgTiles rotates whatever is in VRAM tile $14)
+    anims = parse_tileset_anims()
+    for key, (gfx, _blk) in TILESET_FILES.items():
+        if anims.get(key, 0) == 0:
+            continue
+        water = decode_tiles(MASTER / f"gfx/tilesets/{gfx}.2bpp")[0x14]
+        variants = []
+        for shift in range(8):
+            variants.append([water[y * 8 + ((x - shift) % 8)] for y in range(8) for x in range(8)])
+        tiles_to_image(variants, 8).save(OUT_GB / f"water_anim_{gfx}.png")
     log(f"graphics: {len(RAW_SHEETS)} raw sheets, {len(GRAPHICS)} pics, {len(POKEMON_PICS)} mons, {len(SPRITES)} sprites")
 
 
@@ -494,16 +521,28 @@ WARP_LABELS = {
     "INTERIOR": ".InteriorWarpTileIDs",
     "SHIP": ".ShipWarpTileIDs",
     "UNDERGROUND": ".UndergroundWarpTileIDs",
+    "SHIP_PORT": ".ShipPortWarpTileIDs",
 }
 DOOR_LABELS = {"OVERWORLD": ".OverworldDoorTileIDs", "HOUSE": ".HouseDoorTileIDs", "MART": ".MartDoorTileIDs",
                "POKECENTER": ".MartDoorTileIDs", "FOREST": ".ForestDoorTileIDs",
                "FOREST_GATE": ".TilesetMuseumDoorTileIDs", "MUSEUM": ".TilesetMuseumDoorTileIDs",
                "GATE": ".TilesetMuseumDoorTileIDs", "CAVERN": "__none__",
-               "CLUB": "__none__", "INTERIOR": "__none__", "SHIP": ".ShipDoorTileIDs", "UNDERGROUND": "__none__"}
+               "CLUB": "__none__", "INTERIOR": "__none__", "SHIP": ".ShipDoorTileIDs", "UNDERGROUND": "__none__", "SHIP_PORT": "__none__"}
+
+
+def parse_tileset_anims() -> dict[str, int]:
+    """data/tilesets/tileset_headers.asm: tileset -> TILEANIM_NONE (0) / WATER (1) / WATER_FLOWER (2)."""
+    out = {}
+    kinds = {"TILEANIM_NONE": 0, "TILEANIM_WATER": 1, "TILEANIM_WATER_FLOWER": 2}
+    for m in re.finditer(r"^\s*tileset\s+(\w+),.*?(TILEANIM_\w+)", (MASTER / "data" / "tilesets" / "tileset_headers.asm").read_text(encoding="utf-8"), re.M):
+        key = re.sub(r"(?<=[a-z])(?=[A-Z0-9])", "_", m.group(1)).upper()
+        out[key] = kinds[m.group(2)]
+    return out
 
 
 def export_tilesets() -> None:
     out = {}
+    anims = parse_tileset_anims()
     for key, (gfx, blk) in TILESET_FILES.items():
         bst = (MASTER / "gfx" / "blocksets" / f"{blk}.bst").read_bytes()
         blocks = [list(bst[i:i + 16]) for i in range(0, len(bst), 16)]
@@ -515,6 +554,7 @@ def export_tilesets() -> None:
             "door_tiles": parse_tile_id_list(MASTER / "data/tilesets/door_tile_ids.asm", DOOR_LABELS.get(key, "__none__"), "door_tiles"),
             "grass_tile": TILESET_GRASS.get(key, -1),
             "counter_tiles": TILESET_COUNTER.get(key, []),
+            "anim": anims.get(key, 0),
         }
     (OUT_DATA / "tilesets.json").write_text(json.dumps(out), encoding="utf-8")
     log(f"tilesets: {list(out)}")

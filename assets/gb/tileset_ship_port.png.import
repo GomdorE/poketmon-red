@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnxlhi3cgb02r"
-path="res://.godot/imported/water_anim.png-1583a86da66cede24a356ac71ba885e1.ctex"
+uid="uid://bu0cybbjwjlj"
+path="res://.godot/imported/tileset_ship_port.png-f2fcecbacc4a5dd06d64eb18dbe23d78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gb/water_anim.png"
-dest_files=["res://.godot/imported/water_anim.png-1583a86da66cede24a356ac71ba885e1.ctex"]
+source_file="res://assets/gb/tileset_ship_port.png"
+dest_files=["res://.godot/imported/tileset_ship_port.png-f2fcecbacc4a5dd06d64eb18dbe23d78.ctex"]
 
 [params]
 

@@ -116,6 +116,18 @@ Godot 4에서 다시 구현한 프로젝트입니다. 화면은 160×144 게임�
     숨겨진 도구 2개, 니드런♂ ↔ 니드런♀ "스폿" 교환). 남북 통로의 .blk 는 4×23 이라 마지막 줄은 ROM 처럼 다음 .blk(동서 통로)의 첫 바이트를 읽습니다.
     육아집(`Daycare.asm`): 맡기기(한 마리뿐이면·비밀기술을 알면 거절), 걸음마다 경험치 1($500000 까지), 찾기(오른 레벨 수 +1 당 100원, 소지금 상자,
     그동안 배울 기술 습득 `WriteMonMoves` 육아집 모드, HP 회복). 육아집 포켓몬은 세이브에 들어갑니다.
+38. 갈색시티(`VermilionCity.asm`): 부두 앞 선원의 배표 검사(없으면 한 칸 밀어냄, 있으면 통과 스크립트, 출항 뒤에는 "떠났다"), 상선이 떠난 뒤 첫 입장 때
+    두 칸 걸어 올라오기, 쓰레기통 첫 자물쇠 위치 추첨(`Random & $e`), 괴력몬 울음, 숨겨진 도구. 포켓몬센터·프렌들리숍, 팬클럽(회장 이야기 → 자전거 교환권,
+    두 팬의 자랑 번갈아 하기, 피카츄·쥬쥬 울음), 낡은낚싯대 집, 구구 집, 교환 집(깨비참 ↔ 파오리 "덕스").
+    갈색체육관(`VermilionGym.asm` + `vermilion_gym_trash.asm`): 쓰레기통 15개의 두 자물쇠 퍼즐(두 번째 통은 첫 통 표에서 난수 상위 니블로 고르며,
+    마스크와 겹치는 비트가 없으면 0번이 되는 원작 버그 포함, 실패 시 초기화와 SFX_DENIED), 자물쇠가 열리면 블록 (2,2) 의 이중문이 바닥으로 바뀌고 SFX_GO_INSIDE,
+    마티스(관장 3번, 오렌지배지·기술머신24, 가방 가득 시 재수령), 체육관 안내원·동상.
+    부두(`VermilionDock.asm`): 비밀기술01 을 받은 뒤 배에서 내리면 상선 출항 연출 — 파도타기 음악, 뱃고동, 배가 있는 화면 10~15행만 SCX 로 128픽셀 왼쪽으로
+    흘러가고(`row_scx`), 드러난 오른쪽 열은 물, 굴뚝의 흰 연기(OAM 4~7, OBP1=0)가 8프레임마다 2픽셀씩 오른쪽으로, 끝나면 배 자리가 물이 되고 승선 워프가 사라지며
+    세 걸음 걸어 나감. 상선 S.S.안느(`SSAnne*.asm`): 1F·2F·3F·B1F·뱃머리·주방(요리장의 메인 요리 난수 대사)·객실 3곳(트레이너 헤더, 도구, 잠만보 도감 페이지),
+    2F 라이벌(선장실 문 앞 좌표 2곳, 서 있는 자리에 따라 내려오는 걸음 수·바라보는 방향·돌아가는 경로가 다름, 라이벌 전용 음악), 선장실(뱃멀미하는 선장은 등을
+    두드려 주기 전까지 플레이어를 돌아보지 않음(BIT_NO_NPC_FACE_PLAYER), 회복 멜로디 뒤 비밀기술01).
+    타일 애니메이션은 이제 타일셋 헤더의 TILEANIM_* 를 따릅니다(물: 숲·동굴·배·부두·체육관, 물+꽃: 바깥·도장·체육관).
 
 ### 원작과 다른 점 (의도적 단순화)
 - 저장 파일은 JSON 이며 체크섬·손상 검사는 없습니다. 타이틀의 Up+B+Select 파일 삭제는 없습니다(파일을 지우면 됩니다).
@@ -178,6 +190,10 @@ scripts/gb/text.gd         문자표·PlaceString·텍스트 명령 처리기(�
 scripts/gb/menu.gd         텍스트 상자·커서 메뉴·예/아니오
 scripts/game/trainer_engine.gd   트레이너 시선·대화·배틀 시작/종료 (home/trainers.asm)
 scripts/game/map_scripts_pewter.gd  3챕터 회색시티·박물관·센터 등 맵 스크립트 (회색체육관은 map_scripts.gd)
+scripts/game/map_scripts_mtmoon.gd  4챕터 허브(3번도로·달맞이산·4번도로) + cerulean_scripts.gd(블루시티) + cerulean_cape.gd(24·25번도로·빌의 집)
+scripts/game/map_scripts_chapter5.gd 5챕터 허브(9·10번도로) + route56_scripts.gd(5·6번도로·게이트·지하통로·육아집)
+                           + vermilion_scripts.gd(갈색시티·체육관·부두 출항) + ss_anne_scripts.gd(상선)
+tools/chapter4_smoke.py, tools/chapter5_smoke.py  챕터별 스모크(환경 변수 GODOT 에 콘솔판 경로, --full 로 배틀 포함)
 scripts/game/*.gd          splash, intro, title, oak_speech, naming, overworld, map_scripts, pokedex_page, battle, party_mon,
                            pokecenter, pokemart, party_menu, status_screen, bag, item_use, pokedex_menu, town_map, dex_rating, mon_hud
 scripts/gb/list_menu.gd    DisplayListMenuID(가방·상점 목록)·수량 선택
@@ -205,7 +221,7 @@ X:\joy2is90\Godot_v4.7.2-stable_win64.exe\Godot_v4.7.2-stable_win64.exe --path X
 - 배틀 테스트: `--stage=battle --wild=종:레벨` / `--trainer=클래스:팀번호` / `--old-man`, `--trace-battle` 로 메뉴·대사 로그, `--keys=every:N:키[:시작프레임]` 주기 입력
 - `--shot=경로\s_%d.png --shot-every=60` 주기적 스크린샷, `--quit-after=N` N프레임 후 종료, `--fast` 8배속 시작
 - `--keys=프레임:키[:유지프레임],...` 키 입력 스크립트 (a,b,start,select,up,down,left,right)
-- 맵 테스트 상태: `--badges=비트값`, `--teach=기술,...`(첫 포켓몬에게), `--visited=도시,...`(공중날기), `--repel=걸음수`
+- 맵 테스트 상태: `--badges=비트값`, `--teach=기술,...`(첫 포켓몬에게), `--visited=도시,...`(공중날기), `--repel=걸음수`, `--last-map=맵`(실내 맵의 LAST_MAP 워프 목적지)
 - `--sim=RUUU|DDLL|...` 오버월드 테스트 걷기(한 글자 = 한 칸, A = A 버튼, `|` = 다음 맵)
 - `--overlay-shot=경로.png` 설정 오버레이를 열어 창 전체를 저장, `--window-shot=경로.png` 창 전체만 저장(창 모드)
 - `--palette=gray|dmg|sgb` 이번 실행의 팔레트(설정 파일은 바꾸지 않음)
