@@ -36,6 +36,8 @@ var box: Array:
 var last_blackout_map := "PALLET_TOWN"   # wLastBlackoutMap: where a blackout returns the player
 var step_counter := 0     # wStepCounter: poison damage every fourth step
 var completed_trades := 0 # wCompletedInGameTradeFlags (bit = TRADE_FOR_*)
+var daycare_mon: PartyMon = null   # wDayCareInUse / wDayCareMon (box struct + nick + OT)
+var daycare_level := 0             # wDayCareMonBoxLevel: the level when it was left (or last seen)
 var encounter_cooldown := 0   # wNumberOfNoRandomBattleStepsLeft (not saved)
 
 
@@ -63,6 +65,7 @@ func to_dict() -> Dictionary:
 		"boxes": boxed, "current_box": current_box, "pc_items": pc_items,
 		"last_blackout_map": last_blackout_map, "step_counter": step_counter,
 		"completed_trades": completed_trades,
+		"daycare_mon": daycare_mon.to_dict() if daycare_mon != null else null, "daycare_level": daycare_level,
 	}
 
 
@@ -108,6 +111,8 @@ func from_dict(d: Dictionary) -> void:
 	last_blackout_map = str(d.get("last_blackout_map", last_blackout_map))
 	step_counter = int(d.get("step_counter", 0))
 	completed_trades = int(d.get("completed_trades", 0))
+	daycare_mon = PartyMon.from_dict(d["daycare_mon"]) if d.get("daycare_mon") != null else null
+	daycare_level = int(d.get("daycare_level", 0))
 
 
 const BAG_SIZE := 20

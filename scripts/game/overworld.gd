@@ -273,7 +273,12 @@ func _show_overworld_text(label: String, wait_for_button: bool) -> void:
 ## mon that faints is announced; the screen flashes with SFX_POISONED while any mon
 ## is still poisoned. Returns true when the player blacked out.
 func _apply_poison_step() -> bool:
-	if state.party.is_empty() or (state.step_counter & 3) != 0:
+	if state.party.is_empty():
+		return false
+	# IncrementDayCareMonExp: one experience point per step, capped at $500000
+	if state.daycare_mon != null and state.daycare_mon.exp < 0x500000:
+		state.daycare_mon.exp += 1
+	if (state.step_counter & 3) != 0:
 		return false
 	for m in state.party:
 		if not (m.status & PartyMon.PSN) or m.hp <= 0:

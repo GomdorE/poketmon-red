@@ -8,6 +8,7 @@ extends RefCounted
 var ms: MapScripts
 var ow: Overworld
 var state: GameState
+var route56: Route56Scripts   # Routes 5/6, their gates, the Underground Path, the Daycare
 var entered_map := ""
 
 
@@ -15,6 +16,7 @@ func _init(m: MapScripts) -> void:
 	ms = m
 	ow = m.ow
 	state = m.state
+	route56 = Route56Scripts.new(self)
 
 
 ## The per-frame map script of the chapter 5 maps (see MtMoonScripts.run_map_script).
@@ -22,6 +24,8 @@ func run_map_script() -> bool:
 	var entered := entered_map != ow.map_id
 	entered_map = ow.map_id
 	match ow.map_id:
+		"ROUTE_5_GATE", "ROUTE_6_GATE", "UNDERGROUND_PATH_ROUTE_5", "UNDERGROUND_PATH_ROUTE_6":
+			return await route56.run_map_script(entered)
 		_:
 			return false
 
@@ -33,7 +37,7 @@ func text(text_id: String, npc_index: int) -> bool:
 		"TEXT_ROCKTUNNELPOKECENTER_LINK_RECEPTIONIST": await ow.print_text("_CableClubNPCWelcomeText")
 		"TEXT_ROUTE10_POKECENTER_SIGN": await ms._far("_PokeCenterSignText")
 		_:
-			return false
+			return await route56.text(text_id, npc_index)
 	return true
 
 

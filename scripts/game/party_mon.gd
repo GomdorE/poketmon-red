@@ -105,6 +105,38 @@ static func _stat_exp_bonus(v: int) -> int:
 	return b / 4
 
 
+## CalcLevelFromExperience: the highest level whose experience the mon has (1..100).
+static func level_for_exp(growth: String, xp: int) -> int:
+	var lv := 1
+	while lv < 100 and xp >= exp_for_level(growth, lv + 1):
+		lv += 1
+	return lv
+
+
+## KnowsHMMove (engine/events/hidden_objects? engine/menus/...): any move of an HM.
+func knows_hm_move() -> bool:
+	for key in GameData.items:
+		if key.begins_with("HM") and has_move(str(GameData.items[key].get("move", ""))):
+			return true
+	return false
+
+
+## WriteMonMoves with wLearningMovesFromDayCare: every learnset move above the level the
+## mon was left at and up to its level now, skipping known moves; with four moves the
+## first one (and its PP) is dropped. New moves get their full PP.
+func learn_daycare_moves(start_level: int) -> void:
+	for entry in GameData.pokemon[species]["learnset"]:
+		var lv: int = int(entry[0])
+		if lv > level:
+			break
+		if lv <= start_level or has_move(str(entry[1])):
+			continue
+		if moves.size() >= 4:
+			moves.pop_front()
+		var pp: int = GameData.moves[entry[1]]["pp"]
+		moves.append({"move": entry[1], "pp": pp, "max_pp": pp})
+
+
 static func exp_for_level(growth: String, lv: int) -> int:
 	var n := lv
 	match growth:

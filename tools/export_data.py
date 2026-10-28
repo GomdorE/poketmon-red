@@ -189,6 +189,7 @@ TILESET_FILES = {
     "CLUB": ("club", "club"),
     "INTERIOR": ("interior", "interior"),
     "SHIP": ("ship", "ship"),
+    "UNDERGROUND": ("underground", "underground"),
 }
 TILESET_COLL_LABEL = {
     "OVERWORLD": "Overworld_Coll",
@@ -207,6 +208,7 @@ TILESET_COLL_LABEL = {
     "CLUB": "Club_Coll",
     "INTERIOR": "Interior_Coll",
     "SHIP": "Ship_Coll",
+    "UNDERGROUND": "Underground_Coll",
 }
 TILESET_INDEX = {  # order of the Tilesets table (constants/tileset_constants.asm)
     "OVERWORLD": 0, "REDS_HOUSE_1": 1, "MART": 2, "FOREST": 3, "REDS_HOUSE_2": 4, "DOJO": 5,
@@ -270,6 +272,15 @@ MAPS = {
     "ROUTE_9": "Route9",
     "ROUTE_10": "Route10",
     "ROCK_TUNNEL_POKECENTER": "RockTunnelPokecenter",
+    # chapter 5: Routes 5 and 6, their gates, the Underground Path and the Daycare
+    "ROUTE_5": "Route5",
+    "ROUTE_5_GATE": "Route5Gate",
+    "UNDERGROUND_PATH_ROUTE_5": "UndergroundPathRoute5",
+    "DAYCARE": "Daycare",
+    "UNDERGROUND_PATH_NORTH_SOUTH": "UndergroundPathNorthSouth",
+    "UNDERGROUND_PATH_ROUTE_6": "UndergroundPathRoute6",
+    "ROUTE_6_GATE": "Route6Gate",
+    "ROUTE_6": "Route6",
 }
 
 
@@ -482,12 +493,13 @@ WARP_LABELS = {
     "CLUB": ".ClubWarpTileIDs",
     "INTERIOR": ".InteriorWarpTileIDs",
     "SHIP": ".ShipWarpTileIDs",
+    "UNDERGROUND": ".UndergroundWarpTileIDs",
 }
 DOOR_LABELS = {"OVERWORLD": ".OverworldDoorTileIDs", "HOUSE": ".HouseDoorTileIDs", "MART": ".MartDoorTileIDs",
                "POKECENTER": ".MartDoorTileIDs", "FOREST": ".ForestDoorTileIDs",
                "FOREST_GATE": ".TilesetMuseumDoorTileIDs", "MUSEUM": ".TilesetMuseumDoorTileIDs",
                "GATE": ".TilesetMuseumDoorTileIDs", "CAVERN": "__none__",
-               "CLUB": "__none__", "INTERIOR": "__none__", "SHIP": ".ShipDoorTileIDs"}
+               "CLUB": "__none__", "INTERIOR": "__none__", "SHIP": ".ShipDoorTileIDs", "UNDERGROUND": "__none__"}
 
 
 def export_tilesets() -> None:
@@ -642,6 +654,10 @@ def export_maps() -> None:
     for const, name in MAPS.items():
         w, h = sizes[const]
         blk = (MASTER / "maps" / f"{name}.blk").read_bytes()
+        if name == "UndergroundPathNorthSouth" and len(blk) < w * h:
+            # the .blk is 4x23 for a 4x24 map: the ROM reads its last row from the data that
+            # follows it in maps.asm (the start of UndergroundPathWestEast.blk)
+            blk += (MASTER / "maps" / "UndergroundPathWestEast.blk").read_bytes()[:w * h - len(blk)]
         assert len(blk) == w * h, f"{name}.blk size {len(blk)} != {w}x{h}"
         hdr = parse_header(name)
         obj = parse_objects(name)
