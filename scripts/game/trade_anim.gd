@@ -219,10 +219,16 @@ func _show_player_mon() -> void:
 
 ## Trade_PrintPlayerMonInfoText / Trade_PrintEnemyMonInfoText at row `y`.
 func _print_mon_info(y: int, species: String, mon_name: String, ot: String, ot_id: int) -> void:
-	_place(5, y, "──№<DOT><NEXT><NEXT>OT/<NEXT><ID>№<DOT>")
+	var ko := GameData.lang == "ko"
+	if ko:
+		# the Korean ROM's Trade_MonInfoText; its OT name at x 8 covers the "/" of "어버이/"
+		# (8x16 glyphs), so the name goes one tile to the right
+		_place(5, y, "──№<DOT><NEXT><NEXT>어버이/<NEXT>번호/")
+	else:
+		_place(5, y, "──№<DOT><NEXT><NEXT>OT/<NEXT><ID>№<DOT>")
 	Text.place_string(9, y, "%03d" % int(GameData.pokemon[species]["dex"]))
 	Text.place_string(5, y + 2, mon_name)
-	Text.place_string(8, y + 4, ot)
+	Text.place_string(9 if ko else 8, y + 4, ot)
 	Text.place_string(8, y + 6, "%05d" % ot_id)
 
 
