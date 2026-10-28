@@ -266,6 +266,10 @@ MAPS = {
     "ROUTE_24": "Route24",
     "ROUTE_25": "Route25",
     "BILLS_HOUSE": "BillsHouse",
+    # chapter 5: Route 9, Route 10 (to the Rock Tunnel entrance) and its Pokémon Center
+    "ROUTE_9": "Route9",
+    "ROUTE_10": "Route10",
+    "ROCK_TUNNEL_POKECENTER": "RockTunnelPokecenter",
 }
 
 

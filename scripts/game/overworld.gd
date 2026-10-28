@@ -919,6 +919,11 @@ func _warp_from(x: int, y: int) -> void:
 	var dest: String = warp.map
 	if dest == "LAST_MAP":
 		dest = state.last_map
+	if not GameData.maps.has(dest):
+		# a map a later chapter exports (Rock Tunnel, the Power Plant...): the warp is inert
+		if "--trace-scripts" in OS.get_cmdline_user_args():
+			print("WARP_UNEXPORTED %s -> %s" % [map_id, dest])
+		return
 	var dest_map: Dictionary = GameData.maps[dest]
 	var dw: Dictionary = dest_map["warps"][warp.warp_id - 1]
 	if follow_script.size() > 0:
@@ -1374,6 +1379,8 @@ func _pick_up_item(n: Dictionary) -> void:
 ## DisplayTextID: the NPC turns to the player, the box is drawn (unless the map
 ## disables it), the text handler runs, then the box waits for A/B and closes.
 func display_text_id(text_id: String, npc_index: int) -> void:
+	if "--trace-scripts" in OS.get_cmdline_user_args():
+		print("TEXT_ID %s npc=%d frame=%d" % [text_id, npc_index, GB.frame_count])
 	in_text = true
 	do_not_wait_after_text = false
 	var saved_facing := {}

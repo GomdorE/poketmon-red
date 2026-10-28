@@ -14,6 +14,7 @@ var old_man_saved_npc := Vector2i(-1, -1)   # wSavedNPCMovementDirections2Index 
 var trainers: TrainerEngine                 # home/trainers.asm
 var pewter: PewterScripts                   # chapter 3: Pewter City and its buildings
 var mtmoon: MtMoonScripts                   # chapter 4: Route 3, Mt. Moon, Route 4
+var ch5: Chapter5Scripts                    # chapter 5: Route 9/10, Routes 5/6, Vermilion City
 
 
 func _init(o: Overworld) -> void:
@@ -22,6 +23,7 @@ func _init(o: Overworld) -> void:
 	trainers = TrainerEngine.new(self)
 	pewter = PewterScripts.new(self)
 	mtmoon = MtMoonScripts.new(self)
+	ch5 = Chapter5Scripts.new(self)
 
 
 func _script_index() -> int:
@@ -72,6 +74,8 @@ func run_map_script() -> void:
 			await pewter.run_map_script()
 			# a chapter 4 map with its own script table returns true (no generic trainer table)
 			if await mtmoon.run_map_script():
+				return
+			if await ch5.run_map_script():
 				return
 			# a map whose script table is only the trainer engine (most routes)
 			if not ow.map.get("trainer_headers", []).is_empty():
@@ -694,6 +698,8 @@ func text(text_id: String, npc_index: int) -> void:
 	if await pewter.text(text_id, npc_index):
 		return
 	if await mtmoon.text(text_id, npc_index):
+		return
+	if await ch5.text(text_id, npc_index):
 		return
 	match text_id:
 		# Pallet Town

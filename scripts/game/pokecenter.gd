@@ -25,6 +25,8 @@ static func nurse(ow: Overworld, nurse_index: int) -> void:
 		await GB.delay3()
 		Battle.heal_party(state)
 		state.last_blackout_map = state.last_map   # SetLastBlackoutMap
+		if "--trace-scripts" in OS.get_cmdline_user_args():
+			print("POKECENTER_HEALED map=%s frame=%d" % [ow.map_id, GB.frame_count])
 		await _animate_healing_machine(S, state.party.size())
 		Sound.restart_map_music()
 		await Text.print_text("_PokemonFightingFitText")
