@@ -51,7 +51,7 @@ git clone https://github.com/GomdorE/poketmon-red.git pokered-godot
 
 ## 그다음
 
-- 6챕터 exe: `--export-release "Windows Desktop" dist/PokemonRed-Godot-Chapter6.exe` (아직 안 만듦).
+- 6챕터 exe 는 만들어 둠(`dist/PokemonRed-Godot-Chapter6.exe`, 커밋 안 함). 다시 만들려면 `--export-release "Windows Desktop" dist/PokemonRed-Godot-Chapter6.exe`.
 - 7챕터 후보: 7·8번도로와 지하통로(동서), 무지개시티(백화점·게임코너·로켓단 아지트(실프스코프)·민화 체육관·맨션), 그 뒤 포켓몬타워 3F~7F(유령 배틀)·12번도로(잠만보).
 - 아직 없는 것: 알낳기(필드), 배틀의 유령(실프스코프)·교환 포켓몬 말 안 듣기·포켓몬피리·사파리존·통신 배틀·학습장치.
 - 게임 전체가 끝나면: 실행 파일 용량 최적화(축소 export 템플릿, PCK 분리), 저장소 정리(assets 제외 등).
@@ -69,7 +69,7 @@ git clone https://github.com/GomdorE/poketmon-red.git pokered-godot
 
 ```text
 pokered-godot (포켓몬 레드 Godot 재구현) 작업을 이어서 하자. 먼저 HANDOFF.md 와 README.md 를 읽어.
-6챕터(11번도로 → 디그다의 굴 → 2번도로 동쪽 → 돌산터널 → 보라타운·타워 2F)는 끝났어. 6챕터 exe 가 없으면 빌드하고,
+6챕터(11번도로 → 디그다의 굴 → 2번도로 동쪽 → 돌산터널 → 보라타운·타워 2F)는 끝났고 6챕터 exe 도 있어.
 HANDOFF.md 의 "그다음" 순서대로 7챕터(7·8번도로·지하통로 → 무지개시티)로 넘어가.
 원작과 똑같이, 혼자 진행하고, 커밋은 한글로. 구역마다 스모크(tools/chapter7_smoke.py 를 같은 방식으로) PASS 뒤 커밋.
 ```
