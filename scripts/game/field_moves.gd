@@ -70,7 +70,7 @@ static func use(state: GameState, ow, idx: int, move: String) -> String:
 		"FLASH":
 			if not badges & (1 << BOULDER):
 				return await _new_badge_required()
-			ow.map_pal_offset = 0
+			ow.set_map_pal_offset(0)
 			await Text.print_text("_FlashLightsAreaText")
 			await _white_out_delay3()
 			return "close"

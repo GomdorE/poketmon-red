@@ -219,6 +219,17 @@ func _run() -> void:
 				state.map_scripts[spec.get_slice(":", 0)] = int(spec.get_slice(":", 1))
 			elif arg.begins_with("--last-map="):
 				state.last_map = arg.get_slice("=", 1)   # wLastMap (the LAST_MAP warps of indoor maps)
+			elif arg == "--trade-mon":
+				# test: the first party mon came from a trade (another OT)
+				state.party[0].ot_name = "TRAINER"
+				state.party[0].ot_id = 12345
+			elif arg.begins_with("--owned="):
+				# test: the first N species (by dex number) count as owned (Oak's aides)
+				var n := int(arg.get_slice("=", 1))
+				for sp in GameData.pokemon:
+					if int(GameData.pokemon[sp]["dex"]) <= n:
+						state.pokedex_owned[sp] = true
+						state.pokedex_seen[sp] = true
 		state.last_map = "PALLET_TOWN" if parts[0].begins_with("VIRIDIAN") or parts[0] == "ROUTE_1" else state.last_map
 		if parts[0].begins_with("VIRIDIAN_") and parts[0] != "VIRIDIAN_CITY":
 			state.last_map = "VIRIDIAN_CITY"

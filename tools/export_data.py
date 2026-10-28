@@ -191,6 +191,7 @@ TILESET_FILES = {
     "SHIP": ("ship", "ship"),
     "UNDERGROUND": ("underground", "underground"),
     "SHIP_PORT": ("ship_port", "ship_port"),
+    "CEMETERY": ("cemetery", "cemetery"),
 }
 TILESET_COLL_LABEL = {
     "OVERWORLD": "Overworld_Coll",
@@ -211,6 +212,7 @@ TILESET_COLL_LABEL = {
     "SHIP": "Ship_Coll",
     "UNDERGROUND": "Underground_Coll",
     "SHIP_PORT": "ShipPort_Coll",
+    "CEMETERY": "Cemetery_Coll",
 }
 TILESET_INDEX = {  # order of the Tilesets table (constants/tileset_constants.asm)
     "OVERWORLD": 0, "REDS_HOUSE_1": 1, "MART": 2, "FOREST": 3, "REDS_HOUSE_2": 4, "DOJO": 5,
@@ -222,7 +224,7 @@ TILESET_GRASS = {"OVERWORLD": 0x52, "FOREST": 0x20, "CAVERN": -1, "CLUB": -1, "I
 # tileset_headers.asm counter tiles (talking across a counter)
 TILESET_COUNTER = {"DOJO": [0x3A], "MART": [0x18, 0x19, 0x1E], "POKECENTER": [0x18, 0x19, 0x1E], "GYM": [0x3A],
                    "FOREST_GATE": [0x17, 0x32], "GATE": [0x17, 0x32], "MUSEUM": [0x17, 0x32],
-                   "CLUB": [0x07, 0x17], "CAVERN": [], "INTERIOR": [], "SHIP": []}
+                   "CLUB": [0x07, 0x17], "CAVERN": [], "INTERIOR": [], "SHIP": [], "CEMETERY": [0x12]}
 
 MAPS = {
     "PALLET_TOWN": "PalletTown",
@@ -303,6 +305,26 @@ MAPS = {
     "SS_ANNE_1F_ROOMS": "SSAnne1FRooms",
     "SS_ANNE_2F_ROOMS": "SSAnne2FRooms",
     "SS_ANNE_B1F_ROOMS": "SSAnneB1FRooms",
+    # chapter 6: Route 11, Diglett's Cave, the east end of Route 2
+    "ROUTE_11": "Route11",
+    "ROUTE_11_GATE_1F": "Route11Gate1F",
+    "ROUTE_11_GATE_2F": "Route11Gate2F",
+    "DIGLETTS_CAVE_ROUTE_11": "DiglettsCaveRoute11",
+    "DIGLETTS_CAVE": "DiglettsCave",
+    "DIGLETTS_CAVE_ROUTE_2": "DiglettsCaveRoute2",
+    "ROUTE_2_TRADE_HOUSE": "Route2TradeHouse",
+    "ROUTE_2_GATE": "Route2Gate",
+    # chapter 6: Rock Tunnel and Lavender Town
+    "ROCK_TUNNEL_1F": "RockTunnel1F",
+    "ROCK_TUNNEL_B1F": "RockTunnelB1F",
+    "LAVENDER_TOWN": "LavenderTown",
+    "LAVENDER_POKECENTER": "LavenderPokecenter",
+    "LAVENDER_MART": "LavenderMart",
+    "NAME_RATERS_HOUSE": "NameRatersHouse",
+    "MR_FUJIS_HOUSE": "MrFujisHouse",
+    "LAVENDER_CUBONE_HOUSE": "LavenderCuboneHouse",
+    "POKEMON_TOWER_1F": "PokemonTower1F",
+    "POKEMON_TOWER_2F": "PokemonTower2F",
 }
 
 
@@ -522,12 +544,13 @@ WARP_LABELS = {
     "SHIP": ".ShipWarpTileIDs",
     "UNDERGROUND": ".UndergroundWarpTileIDs",
     "SHIP_PORT": ".ShipPortWarpTileIDs",
+    "CEMETERY": ".CemeteryWarpTileIDs",
 }
 DOOR_LABELS = {"OVERWORLD": ".OverworldDoorTileIDs", "HOUSE": ".HouseDoorTileIDs", "MART": ".MartDoorTileIDs",
                "POKECENTER": ".MartDoorTileIDs", "FOREST": ".ForestDoorTileIDs",
                "FOREST_GATE": ".TilesetMuseumDoorTileIDs", "MUSEUM": ".TilesetMuseumDoorTileIDs",
                "GATE": ".TilesetMuseumDoorTileIDs", "CAVERN": "__none__",
-               "CLUB": "__none__", "INTERIOR": "__none__", "SHIP": ".ShipDoorTileIDs", "UNDERGROUND": "__none__", "SHIP_PORT": "__none__"}
+               "CLUB": "__none__", "INTERIOR": "__none__", "SHIP": ".ShipDoorTileIDs", "UNDERGROUND": "__none__", "SHIP_PORT": "__none__", "CEMETERY": "__none__"}
 
 
 def parse_tileset_anims() -> dict[str, int]:

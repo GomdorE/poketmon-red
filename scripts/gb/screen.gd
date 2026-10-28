@@ -346,7 +346,17 @@ func white_out() -> void:
 	set_all_pals(PackedInt32Array([0, 0, 0, 0]))
 
 
+## wMapPalOffset (home/fade.asm LoadGBPal): 0 = FadePal4 (the normal palettes), 6 = FadePal2
+## (a dark cave before Flash: BG nearly black, sprites black silhouettes).
+var pal_offset := 0
+
+
 func normal_pals() -> void:
+	if pal_offset == 6:
+		bgp = pal(3, 3, 3, 2)
+		obp0 = pal(3, 3, 3, 2)
+		obp1 = pal(3, 3, 2, 0)
+		return
 	set_all_pals(PackedInt32Array([0, 1, 2, 3]))
 
 

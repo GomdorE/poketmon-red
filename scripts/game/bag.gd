@@ -104,12 +104,38 @@ static func _use(state: GameState, ow, item: String) -> bool:
 	if item == "OAKS_PARCEL":
 		await Text.print_text("_ItemUseNotYoursToUseText")
 		return false
+	if item == "ITEMFINDER":
+		await _use_itemfinder(state, ow)
+		return false
 	if GameData.items.has(item) and GameData.items[item].has("move"):
 		await _use_tm(state, ow, item)
 		return false
 	# Poké Balls outside of battle and the items of later chapters: ItemUseNotTime
 	await Text.print_text("_ItemUseNotTimeText")
 	return false
+
+
+## ItemUseItemfinder: HiddenItemNear looks for an unobtained hidden item within 4 tiles
+## above/below and 4 left / 5 right of the player; found, the machine beeps four times.
+static func _use_itemfinder(state: GameState, ow) -> void:
+	var found := false
+	for e in ow.map.get("hidden_events", []):
+		if str(e["func"]) != "HiddenItems":
+			continue
+		var ex := int(e["x"])
+		var ey := int(e["y"])
+		if state.has_event("HIDDEN_ITEM_%s_%d_%d" % [ow.map_id, ex, ey]):
+			continue
+		if ey > maxi(ow.player.y - 5, 0) and ey <= ow.player.y + 4 and ex > maxi(ow.player.x - 5, 0) and ex <= ow.player.x + 5:
+			found = true
+			break
+	if found:
+		for i in 4:
+			await Sound.play_sfx_wait_for_current("SFX_HEALING_MACHINE")
+			await Sound.play_sfx_wait_for_current("SFX_PURCHASE")
+	if "--trace-scripts" in OS.get_cmdline_user_args():
+		print("ITEMFINDER found=%s map=%s" % [str(found), ow.map_id])
+	await Text.print_text("_ItemfinderFoundItemText" if found else "_ItemfinderFoundNothingText")
 
 
 ## ItemUseTMHM: "Booted up a TM/HM! It contained X! Teach X to a POKéMON?", the party menu

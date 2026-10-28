@@ -74,6 +74,15 @@ var fly_warp := false             # wStatusFlags6 BIT_FLY_WARP
 var escape_warp := false          # wStatusFlags6 BIT_ESCAPE_WARP (Teleport, Dig, Escape Rope)
 var fly_destination := ""         # wDestinationMap (Fly)
 var map_pal_offset := 0           # wMapPalOffset (dark caves; Flash sets 0)
+
+
+## wMapPalOffset: 6 inside Rock Tunnel until Flash; the screen's LoadGBPal follows it
+## (the battle screen does not: InitBattleVariables clears it and the overworld restores it).
+func set_map_pal_offset(v: int) -> void:
+	map_pal_offset = v
+	S.pal_offset = v
+	if "--trace-scripts" in OS.get_cmdline_user_args():
+		print("MAP_PAL_OFFSET %d map=%s frame=%d" % [v, map_id, GB.frame_count])
 var no_battles := false           # wStatusFlags4 BIT_NO_BATTLES (NewBattle does nothing)
 var cut_blocks := {}              # blocks replaced by Cut in the loaded map (wOverworldMap edits)
 var strength_active := false      # wStatusFlags1 BIT_STRENGTH_ACTIVE
@@ -144,6 +153,7 @@ func run(reload: bool = true) -> void:
 		# a battle requested by a text script (TalkToTrainer, the old man) starts before
 		# the next JoypadOverworld / RunMapScript (OverworldLoop .displayDialogue -> .newBattle)
 		if not battle_request.is_empty():
+			S.pal_offset = 0   # InitBattleVariables: wMapPalOffset = 0 for the battle
 			running = false
 			break
 		# JoypadOverworld -> RunMapScript: TryPushingBoulder, DoBoulderDustAnimation, the map script
@@ -152,6 +162,7 @@ func run(reload: bool = true) -> void:
 			await _do_boulder_dust_animation()
 		await scripts.run_map_script()
 		if not battle_request.is_empty():
+			S.pal_offset = 0
 			running = false
 		if not running:
 			break
@@ -224,7 +235,9 @@ func after_battle(battle_result: String) -> void:
 		SGB.run("OVERWORLD", {"map": map_id, "last_map": state.last_map})
 		_render()
 		_enter_map_music(true)
-		await Intro.fade_in_from_white()
+		S.pal_offset = map_pal_offset   # InitBattleCommon restores wMapPalOffset
+		if map_pal_offset == 0:
+			await Intro.fade_in_from_white()
 		S.normal_pals()
 	running = true
 	await run(false)
@@ -254,6 +267,7 @@ func _black_out() -> void:
 	var dest: String = state.last_blackout_map
 	var pos: Vector2i = FLY_WARPS.get(dest, Vector2i(5, 6))
 	state.last_map = dest
+	set_map_pal_offset(0)
 	load_map(dest, pos.x, pos.y, FACE_DOWN)
 	_enter_map_music(false)
 	S.normal_pals()
@@ -943,12 +957,21 @@ func _warp_from(x: int, y: int) -> void:
 		state.events.erase("SHOW_PALLET_TOWN_0")
 		follow_script = {}
 	_play_map_change_sound()
-	await Intro.fade_out_to_black()
+	# a warp whose destination is ROCK_TUNNEL_1F darkens the map (wMapPalOffset = 6) and
+	# fades out; otherwise PlayMapChangeSound only fades out while the map is not dark
+	var was_dark := map_pal_offset != 0
+	if dest == "ROCK_TUNNEL_1F":
+		set_map_pal_offset(6)
+		await Intro.fade_out_to_black()
+	elif not was_dark:
+		await Intro.fade_out_to_black()
 	await GB.delay3()
 	# CheckIfInOutsideMap: the OVERWORLD and PLATEAU tilesets
 	var from_outside: bool = map["tileset"] in ["OVERWORLD", "PLATEAU"]
 	if from_outside:
 		state.last_map = map_id
+	if warp.map == "LAST_MAP":
+		set_map_pal_offset(0)   # .goBackOutside
 	load_map(dest, dw.x, dw.y, player.facing)
 	state.encounter_cooldown = 3   # EnterMap: three steps without wild battles
 	_enter_map_music(false)
@@ -1721,6 +1744,7 @@ func _handle_fly_warp() -> void:
 	state.last_map = dest
 	if "--trace-scripts" in OS.get_cmdline_user_args():
 		print("FLY_WARP %s -> %s (escape=%s) frame %d" % [map_id, dest, str(escape), GB.frame_count])
+	set_map_pal_offset(0)
 	load_map(dest, pos.x, pos.y, player.facing)
 	await anims.enter_map(not escape)
 	S.normal_pals()

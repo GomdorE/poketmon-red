@@ -37,23 +37,22 @@ git clone https://github.com/GomdorE/poketmon-red.git pokered-godot
 - 병합 뒤 정리: 달맞이산 화석 구역 배틀 금지(BIT_NO_BATTLES), 블루시티 체육관 동상·빌의 PC 를 숨겨진 사물 엔진에서 처리.
 - 게임 내 교환(블루시티 롤라, 지하통로 스폿, 갈색시티 덕스)과 교환 영상.
 - 5챕터: 9·10번도로, 5·6번도로·게이트·지하통로·육아집, 갈색시티·체육관·부두(상선 출항 연출)·상선 S.S.안느 전체(라이벌·선장 비밀기술01).
+- 6챕터: 11번도로·게이트, 디그다의 굴, 2번도로 동쪽, 돌산터널(어둠), 보라타운·포켓몬타워 1F/2F.
 
 ## 하던 일 (멈춘 지점)
 
-**5챕터 포팅 완료** (2026-10-28): 9·10번도로·돌산터널 앞 포켓몬센터 → 5·6번도로·노랑시티 게이트·지하통로·육아집 → 갈색시티·갈색체육관·부두·상선 S.S.안느.
+**6챕터 포팅 완료** (2026-10-28): 11번도로·게이트(오박사 조수 아이템파인더, 테리 교환) → 디그다의 굴 → 2번도로 동쪽(마르셀 교환, 조수 플래시)
+→ 돌산터널(어둠 + 플래시) → 보라타운(센터·숍·탑골 집·후지 노인의 집·이름평가사·포켓몬타워 1F·2F 라이벌).
 
-- 코드: `scripts/game/map_scripts_chapter5.gd`(허브) + `route56_scripts.gd` + `vermilion_scripts.gd` + `ss_anne_scripts.gd`.
-  엔진 쪽 변경: 타일 애니메이션이 타일셋 헤더의 TILEANIM_* 를 따름(`water_anim_<타일셋>.png`), 미출력 맵으로 가는 워프는 무시,
-  `no_npc_face_player`(선장), `dest_warp_id`(부두 출항 조건), 육아집 경험치(걸음마다), 세이브에 `daycare_mon`/`daycare_level`.
-- 스모크: `GODOT=<콘솔판 경로> python tools/chapter5_smoke.py --full` (아래 "그다음" 의 결과 참고). 4챕터 스모크도 그대로 PASS 해야 함.
-- 테스트 인자 추가: `--last-map=맵`(실내 맵의 LAST_MAP 워프 목적지; 상선 출항 스모크에 필요).
-- 한글 교환 정보 상자(어버이/·번호/)는 확인·수정 완료. `dist/PokemonRed-Godot-Chapter4.exe` 빌드함(커밋 안 함).
+- 코드: `scripts/game/map_scripts_chapter6.gd`. 엔진: `GBScreen.pal_offset`/`Overworld.set_map_pal_offset`(어둠), 아이템파인더(bag.gd),
+  테스트 인자 `--owned=N`(도감 N종 소유), `--trade-mon`(첫 포켓몬을 교환 포켓몬으로).
+- 스모크: `GODOT=<콘솔판 경로> python tools/chapter6_smoke.py --full`. 4·5챕터 스모크도 PASS 해야 함.
+- 아직 없는 것: 포켓몬타워 3F~7F(유령 배틀 = 실프스코프, 채널러, 마라의 유령, 후지 구출), 12번도로(잠만보·포켓몬피리 사용), 8번도로, 노랑시티 전체.
 
 ## 그다음
 
-- 5챕터 exe: `--export-release "Windows Desktop" dist/PokemonRed-Godot-Chapter5.exe` (아직 안 만듦).
-- 6챕터 후보: 11번도로(디그다의 굴 입구, 11번도로 게이트 2F 교환 "테리")·디그다의 굴 → 2번도로 동쪽(교환 집·게이트) 연결, 돌산터널(플래시)·보라타운(포켓몬타워는 실프스코프 뒤)·12번도로 북쪽,
-  또는 노랑시티 게이트를 지나기 위한 9번도로 쪽 이동 순서는 원작 진행대로 11번도로 → 디그다의 굴 → 2번도로 → 돌산터널 → 보라타운.
+- 6챕터 exe: `--export-release "Windows Desktop" dist/PokemonRed-Godot-Chapter6.exe` (아직 안 만듦).
+- 7챕터 후보: 7·8번도로와 지하통로(동서), 무지개시티(백화점·게임코너·로켓단 아지트(실프스코프)·민화 체육관·맨션), 그 뒤 포켓몬타워 3F~7F(유령 배틀)·12번도로(잠만보).
 - 아직 없는 것: 알낳기(필드), 배틀의 유령(실프스코프)·교환 포켓몬 말 안 듣기·포켓몬피리·사파리존·통신 배틀·학습장치.
 - 게임 전체가 끝나면: 실행 파일 용량 최적화(축소 export 템플릿, PCK 분리), 저장소 정리(assets 제외 등).
 
@@ -70,7 +69,7 @@ git clone https://github.com/GomdorE/poketmon-red.git pokered-godot
 
 ```text
 pokered-godot (포켓몬 레드 Godot 재구현) 작업을 이어서 하자. 먼저 HANDOFF.md 와 README.md 를 읽어.
-5챕터(9·10번도로, 5·6번도로·지하통로·육아집, 갈색시티·상선)는 끝났고 5챕터 exe 도 있어.
-HANDOFF.md 의 "그다음" 순서대로 6챕터(11번도로 → 디그다의 굴 → 2번도로 동쪽 → 돌산터널 → 보라타운)로 넘어가.
-원작과 똑같이, 혼자 진행하고, 커밋은 한글로. 구역마다 스모크(tools/chapter6_smoke.py 를 같은 방식으로) PASS 뒤 커밋.
+6챕터(11번도로 → 디그다의 굴 → 2번도로 동쪽 → 돌산터널 → 보라타운·타워 2F)는 끝났어. 6챕터 exe 가 없으면 빌드하고,
+HANDOFF.md 의 "그다음" 순서대로 7챕터(7·8번도로·지하통로 → 무지개시티)로 넘어가.
+원작과 똑같이, 혼자 진행하고, 커밋은 한글로. 구역마다 스모크(tools/chapter7_smoke.py 를 같은 방식으로) PASS 뒤 커밋.
 ```

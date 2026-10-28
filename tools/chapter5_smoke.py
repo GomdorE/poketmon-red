@@ -15,8 +15,9 @@ cases += [
  ('cerulean_route9',['--stage=map:CERULEAN_CITY,39,17','--sim=R','--quit-after=150'],'MAP_LOAD ROUTE_9'),
  ('route9_route10',['--stage=map:ROUTE_9,59,9','--sim=R','--quit-after=150'],'MAP_LOAD ROUTE_10'),
  ('route10_pokecenter',['--stage=map:ROUTE_10,11,20','--sim=U','--quit-after=200'],'MAP_LOAD ROCK_TUNNEL_POKECENTER'),
- # the Rock Tunnel entrance leads to a map a later chapter exports: no crash, no warp
- ('route10_tunnel_inert',['--stage=map:ROUTE_10,8,18','--sim=UU','--quit-after=200'],'WARP_UNEXPORTED ROUTE_10 -> ROCK_TUNNEL_1F'),
+ # the Rock Tunnel entrance (chapter 6 exports the tunnel; the Power Plant is still inert)
+ ('route10_tunnel',['--stage=map:ROUTE_10,8,18','--sim=UU','--quit-after=300'],'MAP_LOAD ROCK_TUNNEL_1F'),
+ ('route10_powerplant_inert',['--stage=map:ROUTE_10,6,40','--sim=UU','--quit-after=200'],'WARP_UNEXPORTED ROUTE_10 -> POWER_PLANT'),
  ('route9_trainer_sight',['--stage=map:ROUTE_9,22,4','--party=BLASTOISE:60','--quit-after=600'],'TRAINER_SEES'),
  ('route9_sign',['--stage=map:ROUTE_9,25,8','--sim=UA','--quit-after=300'],'TEXT_ID TEXT_ROUTE9_SIGN'),
  ('route10_powerplant_sign',['--stage=map:ROUTE_10,5,42','--sim=UA','--quit-after=300'],'TEXT_ID TEXT_ROUTE10_POWERPLANT_SIGN'),
