@@ -219,6 +219,8 @@ func _run() -> void:
 				state.map_scripts[spec.get_slice(":", 0)] = int(spec.get_slice(":", 1))
 			elif arg.begins_with("--last-map="):
 				state.last_map = arg.get_slice("=", 1)   # wLastMap (the LAST_MAP warps of indoor maps)
+			elif arg.begins_with("--coins="):
+				state.coins = int(arg.get_slice("=", 1))   # test: wPlayerCoins
 			elif arg == "--trade-mon":
 				# test: the first party mon came from a trade (another OT)
 				state.party[0].ot_name = "TRAINER"

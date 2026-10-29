@@ -64,6 +64,15 @@ var water_shift := 0
 var water_sheet := ""             # the tileset's rotated water tile sheet (tilesets with TILEANIM_WATER*)
 var no_npc_face_player := false   # wStatusFlags3 BIT_NO_NPC_FACE_PLAYER (the seasick captain)
 var dest_warp_id := 0             # wDestinationWarpID: the warp the player arrived at (0-based)
+var warped_from_warp := 0         # wWarpedFromWhichWarp: the warp (0-based) the player left the last map by
+var spinning := false             # wMovementFlags BIT_SPINNING: the arrow tiles are walking the player
+var spin_facing := 0              # the player's image while spinning (LoadSpinnerArrowTiles rotates it)
+var spinner_alt := false          # the FACILITY arrow tiles show the animation frame
+## SpinnerPlayerFacingDirections: the facing that comes next while spinning
+const SPIN_NEXT := {0: 8, 4: 12, 8: 4, 12: 0}
+## FacilitySpinnerArrows: the arrow tiles of the FACILITY tileset -> frame of spinner_arrows
+const SPINNER_TILES := {0x20: 0, 0x21: 1, 0x30: 2, 0x31: 3}
+var warped_from_map := ""         # wWarpedFromWhichMap
 var flower_frame := 1
 var scripts: MapScripts
 var follow_script := {}            # the Pallet Town "follow Oak" movement script
@@ -140,6 +149,10 @@ func run(reload: bool = true) -> void:
 	while running:
 		await GB.frame
 		_tick_tile_animation()
+		# LoadSpinnerArrowTiles: every frame of a step (.moveAhead) and every frame the
+		# spinning map script runs with presses left
+		if spinning and (player.walk_counter > 0 or not sim_queue.is_empty()):
+			_load_spinner_arrow_tiles()
 		if player.jumping:
 			await _handle_mid_jump()
 		if player.walk_counter > 0:
@@ -785,6 +798,8 @@ func load_map(id: String, x: int, y: int, facing: int) -> void:
 	ts_sheet = tileset["gfx"]
 	water_sheet = "water_anim_" + ts_sheet.trim_prefix("tileset_") if int(tileset.get("anim", 0)) != 0 else ""
 	no_npc_face_player = false   # EnterMap: res BIT_NO_NPC_FACE_PLAYER
+	spinning = false
+	spinner_alt = false          # ReloadTilesetTilePatterns
 	state.cur_map = id
 	Sound.set_map_music(id)   # LoadMapHeader: wMapMusicSoundID / wMapMusicROMBank
 	SGB.run("OVERWORLD", {"map": id, "last_map": state.last_map})
@@ -972,6 +987,8 @@ func _warp_from(x: int, y: int) -> void:
 		state.last_map = map_id
 	if warp.map == "LAST_MAP":
 		set_map_pal_offset(0)   # .goBackOutside
+	warped_from_warp = idx
+	warped_from_map = map_id
 	load_map(dest, dw.x, dw.y, player.facing)
 	state.encounter_cooldown = 3   # EnterMap: three steps without wild battles
 	_enter_map_music(false)
@@ -1030,18 +1047,21 @@ func _tile_value(id: int) -> int:
 		return S.tile("flower%d" % flower_frame, 0)
 	if anim != 0 and id == 0x14:
 		return S.tile(water_sheet, water_shift)
+	if spinner_alt and ts_sheet == "tileset_facility" and SPINNER_TILES.has(id):
+		return S.tile("spinner_arrows", SPINNER_TILES[id])
 	return S.tile(ts_sheet, id)
 
 
-func _render() -> void:
+func _render(extra_rows: bool = false) -> void:
 	var vx := player.px - 64
 	var vy := player.py - 64
 	var tx0 := vx >> 3
 	var ty0 := vy >> 3
 	S.scx = vx & 7
 	S.scy = vy & 7
-	for j in 19:
-		var gy := ty0 + j
+	# ShakeElevatorRedrawRow: the rows just above and below the screen are drawn as well
+	for j in (range(-1, 20) if extra_rows else range(19)):
+		var gy: int = ty0 + j
 		for i in 21:
 			var gx := tx0 + i
 			var v := GBScreen.BLANK
@@ -1123,7 +1143,8 @@ func _draw_player() -> void:
 		var afr := _frame_for(int(a.facing), int(a.frame), S.sheet(str(a.sheet)).rows)
 		draw_sprite_frame(S, 0, str(a.sheet), afr[0], int(a.x), int(a.y), afr[1])
 		return
-	var fr := _frame_for(player.facing, player.anim if player.walk_counter > 0 else 0, 6)
+	# while spinning the walk animation is skipped and the image is the rotating spin facing
+	var fr := _frame_for(spin_facing if spinning else player.facing, player.anim if player.walk_counter > 0 and not spinning else 0, 6)
 	draw_sprite_frame(S, 0, player_sheet(), fr[0], 64, player.jump_y if player.jumping else 60, fr[1])
 	if player.jumping:
 		_draw_ledge_shadow()
@@ -1373,6 +1394,11 @@ func _interact() -> void:
 	var d := _facing_delta()
 	var tx := player.x + d.x
 	var ty := player.y + d.y
+	# IsSpriteOrSignInFrontOfPlayer: the signs (bg events) on the tile in front come first
+	for b in map["bg_events"]:
+		if b.x == tx and b.y == ty:
+			await display_text_id(b.text, -1)
+			return
 	# talking across a counter (tileset counter tiles): the NPC is one tile further
 	if _tile_id_under(tx, ty) in tileset.get("counter_tiles", []):
 		tx += d.x
@@ -1385,10 +1411,6 @@ func _interact() -> void:
 				await _pick_up_item(n)
 				return
 			await display_text_id(n.text, n.index)
-			return
-	for b in map["bg_events"]:
-		if b.x == tx and b.y == ty:
-			await display_text_id(b.text, -1)
 			return
 	await HiddenEvents.check(self)
 
@@ -1469,6 +1491,20 @@ func emotion_bubble(sprite_index: int, which: String) -> void:
 	for i in 4:
 		S.set_sprite(base + i, -16, -16, GBScreen.BLANK)
 	await GB.frame
+
+
+## The arrow tiles start spinning the player (set BIT_SPINNING): the image starts from the
+## current facing.
+func start_spinning() -> void:
+	spinning = true
+	spin_facing = player.facing
+
+
+## LoadSpinnerArrowTiles: the player's image turns (down, left, up, right...) and the arrow
+## tiles alternate with their animation frame on the parity of the presses left.
+func _load_spinner_arrow_tiles() -> void:
+	spin_facing = SPIN_NEXT.get(spin_facing, 0)
+	spinner_alt = sim_queue.size() & 1 == 1
 
 
 ## Simulate joypad presses for the player (StartSimulatingJoypadStates).

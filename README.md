@@ -143,6 +143,24 @@ Godot 4에서 다시 구현한 프로젝트입니다. 화면은 160×144 게임�
     끝 바이트가 $0F 인 원작 버그는 두 좌표만 쓰는 것으로 둠). 타워 3F 이상·12번도로·8번도로는 아직 없습니다(워프·연결 막힘).
     스모크: `GODOT=<콘솔판> python tools/chapter6_smoke.py --full`.
 
+## 구현 범위 (7챕터: 7·8번도로 ~ 지하통로(동서) ~ 무지개시티 ~ 로켓단 아지트)
+
+42. 7번도로, 8번도로(트레이너 9명), 노랑시티 쪽 게이트 2개(`Route7Gate.asm`/`Route8Gate.asm`: 5·6번도로 게이트와 같은 경비원 음료 검사, 7번은 왼쪽·8번은 오른쪽으로
+    밀어냄), 7·8번도로 지하통로 입구(wLastMap 고정)와 지하통로(동서).
+43. 무지개시티(`CeladonCity.asm`: 기술머신41 노인, 강챙이 울음, 표지판), 포켓몬센터, 무지개백화점 1F~5F·옥상(2F·4F·5F 점원 상점, 3F 점원의 기술머신18,
+    옥상 소녀에게 음료를 주면 기술머신13/48/49 — 가방의 음료 목록 메뉴, 자판기 `VendingMachineMenu`: 소지금 상자·메뉴·배달음 60번, 원작대로 어느 음료든 ¥200 만 확인),
+    엘리베이터(`CeladonMartElevator.asm`/`RocketHideoutElevator.asm`: 들어온 워프를 출구에 기억, 층 선택은 SPECIALLISTMENU, 고른 뒤 `ShakeElevator` 흔들림과 효과음),
+    무지개맨션 1F~옥상(울음 3종, 게임 디자이너: 도감 150종이면 `DisplayDiploma` 도감완성증서, 옥상 집의 이브이 `_GivePokemon` — 파티가 차면 박스로), 식당(코인케이스),
+    서장 집·호텔, 무지개체육관(민화: 트레이너 7명, 레인보우배지·기술머신21).
+44. 게임코너(`GameCorner.asm`, `engine/slots/*`): 코인 구입(¥1000 → 50코인)·코인 주는 손님 3명(신사는 원작 버그대로 정확히 9990 코인일 때만 "가득"), 숨겨진 코인
+    12곳(`HiddenCoins`: 40코인은 원작 오타대로 20), 코인케이스 사용(코인 수 표시), 포스터 뒤 스위치(아지트 계단 블록), 포스터 앞 로켓단원(배틀 뒤 걸어 나감),
+    슬롯머신 36대(`SlotMachine`: 원작의 바퀴 바이트열·오프셋·미끄러짐 카운터·"이길 수 있음" 플래그와 재굴림, 행운의 기계는 7/BAR 모드 확률 250, 고장·식사중·열쇠 기계,
+    당첨 시 화면 깜박임·코인 하나씩 가산·음악 일시정지 `wMuteAudioAndPauseMusic`), 경품 교환소(`CeladonPrizeMenu`: 포켓몬 2창·기술머신 1창, 코인 상자).
+45. 로켓단 아지트 B1F~B4F·엘리베이터(`RocketHideoutB1F.asm`~): B1F 문(다섯 번째 단원을 이기면 열림, 원작 버그대로 들어올 때마다 문 소리), B2F·B3F 화살표 타일
+    (`DecodeArrowMovementRLE`: 좌표별 이동 목록을 뒤에서부터 시뮬레이션, 걷는 동안 플레이어가 빙글빙글 돌고 화살표 타일이 번갈아 애니메이션 `LoadSpinnerArrowTiles`),
+    B4F 문(두 단원을 이기면 열림), 비주기(이기면 암전 뒤 사라지고 실프스코프가 놓임), 세 번째 단원을 이기고 말을 걸면 리프트키, 리프트키가 있어야 움직이는 엘리베이터.
+    테스트 인자 `--coins=N`. 스모크: `GODOT=<콘솔판> python tools/chapter7_smoke.py --full`.
+
 ### 원작과 다른 점 (의도적 단순화)
 - 저장 파일은 JSON 이며 체크섬·손상 검사는 없습니다. 타이틀의 Up+B+Select 파일 삭제는 없습니다(파일을 지우면 됩니다).
 - SGB 속성은 화면 8×8 셀 단위라 스크롤 중 셀에 걸친 타일은 타일 왼쪽 위 기준 셀의 팔레트를 씁니다(1챕터에서 영역이 나뉘는 화면은 스크롤하지 않음).
@@ -155,6 +173,7 @@ Godot 4에서 다시 구현한 프로젝트입니다. 화면은 160×144 게임�
   옮겨지며 HP 숫자는 생략(능력치 화면에서 확인); 능력치 화면 1페이지의 타입1·타입2·번호·어버이 라벨은 값과 같은 줄에(값은 오른쪽 정렬), 능력치 상자 라벨은 한 줄 아래,
   2페이지의 경험치/다음레벨은 2·5행에 두고 다음 레벨 줄은 7행; 타운맵·서식지 머리글은 1행. 영어는 모두 원작 좌표 그대로입니다.
   교환 영상의 정보 상자는 한글판 라벨("어버이/", "번호/")을 쓰되 어버이 이름을 한 칸 오른쪽(x9)에 둡니다(한글 ROM 은 "/" 를 이름이 덮음).
+  게임코너 점원의 소지금·코인 상자는 한글일 때 한 줄 더 높고 "코인" 라벨을 금액 아래 줄에 둡니다(원작 좌표면 라벨 윗 반쪽이 금액을 덮음).
 - 필드 기술(풀베기 등)은 아직 없습니다. 2번도로 동쪽(풀베기 필요: 디그다굴 입구·교환 집·게이트)은 들어갈 수 없습니다.
 - 배틀: 유령(실프스코프)·교환 포켓몬 말 안 듣기·포켓몬피리·사파리존·통신 배틀·학습장치는 아직 없습니다. 방어 0 으로 나누는 경우(원작은 멈춤)는 막아 두었습니다.
 - 알낳기(필드)는 아직 없습니다. 낚싯대 OAM 은 느낌표 말풍선과 겹치지 않게 39번 대신 35번 슬롯을 씁니다(화면은 같음).
@@ -207,8 +226,10 @@ scripts/game/map_scripts_pewter.gd  3챕터 회색시티·박물관·센터 등 
 scripts/game/map_scripts_mtmoon.gd  4챕터 허브(3번도로·달맞이산·4번도로) + cerulean_scripts.gd(블루시티) + cerulean_cape.gd(24·25번도로·빌의 집)
 scripts/game/map_scripts_chapter5.gd 5챕터 허브(9·10번도로) + route56_scripts.gd(5·6번도로·게이트·지하통로·육아집)
 scripts/game/map_scripts_chapter6.gd 6챕터(11번도로·게이트·디그다의 굴·2번도로 동쪽·보라타운·포켓몬타워 2F)
+scripts/game/map_scripts_chapter7.gd 7챕터 허브(7·8번도로 게이트·지하통로) + celadon_scripts.gd(무지개시티·백화점·맨션·체육관) + game_corner_scripts.gd(게임코너·경품)
+                           + rocket_hideout_scripts.gd(아지트·화살표 타일) + slot_machine.gd + elevator.gd + vending_machine.gd + diploma.gd + give_pokemon.gd
                            + vermilion_scripts.gd(갈색시티·체육관·부두 출항) + ss_anne_scripts.gd(상선)
-tools/chapter4_smoke.py, chapter5_smoke.py, chapter6_smoke.py  챕터별 스모크(환경 변수 GODOT 에 콘솔판 경로, --full 로 배틀 포함)
+tools/chapter4_smoke.py, chapter5_smoke.py, chapter6_smoke.py, chapter7_smoke.py  챕터별 스모크(환경 변수 GODOT 에 콘솔판 경로, --full 로 배틀 포함)
 scripts/game/*.gd          splash, intro, title, oak_speech, naming, overworld, map_scripts, pokedex_page, battle, party_mon,
                            pokecenter, pokemart, party_menu, status_screen, bag, item_use, pokedex_menu, town_map, dex_rating, mon_hud
 scripts/gb/list_menu.gd    DisplayListMenuID(가방·상점 목록)·수량 선택
@@ -236,7 +257,7 @@ X:\joy2is90\Godot_v4.7.2-stable_win64.exe\Godot_v4.7.2-stable_win64.exe --path X
 - 배틀 테스트: `--stage=battle --wild=종:레벨` / `--trainer=클래스:팀번호` / `--old-man`, `--trace-battle` 로 메뉴·대사 로그, `--keys=every:N:키[:시작프레임]` 주기 입력
 - `--shot=경로\s_%d.png --shot-every=60` 주기적 스크린샷, `--quit-after=N` N프레임 후 종료, `--fast` 8배속 시작
 - `--keys=프레임:키[:유지프레임],...` 키 입력 스크립트 (a,b,start,select,up,down,left,right)
-- 맵 테스트 상태: `--badges=비트값`, `--teach=기술,...`(첫 포켓몬에게), `--visited=도시,...`(공중날기), `--repel=걸음수`, `--last-map=맵`(실내 맵의 LAST_MAP 워프 목적지)
+- 맵 테스트 상태: `--badges=비트값`, `--teach=기술,...`(첫 포켓몬에게), `--visited=도시,...`(공중날기), `--repel=걸음수`, `--last-map=맵`(실내 맵의 LAST_MAP 워프 목적지), `--coins=N`(코인)
 - `--sim=RUUU|DDLL|...` 오버월드 테스트 걷기(한 글자 = 한 칸, A = A 버튼, `|` = 다음 맵)
 - `--overlay-shot=경로.png` 설정 오버레이를 열어 창 전체를 저장, `--window-shot=경로.png` 창 전체만 저장(창 모드)
 - `--palette=gray|dmg|sgb` 이번 실행의 팔레트(설정 파일은 바꾸지 않음)

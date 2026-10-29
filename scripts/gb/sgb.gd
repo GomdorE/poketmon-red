@@ -80,6 +80,9 @@ func run(cmd: String, ctx: Dictionary = {}) -> void:
 		"TRAINER_CARD":
 			_pals = pal_packets["PalPacket_TrainerCard"].duplicate()
 			_blk = "BlkPacket_TrainerCard"
+		"SLOTS":
+			_pals = pal_packets["PalPacket_Slots"].duplicate()
+			_blk = "BlkPacket_Slots"
 		"NIDORINO_INTRO":
 			_pals = pal_packets["PalPacket_NidorinoIntro"].duplicate()
 			_blk = "BlkPacket_NidorinoIntro"

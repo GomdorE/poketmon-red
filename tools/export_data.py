@@ -116,6 +116,11 @@ RAW_SHEETS = {
     "badge_numbers": "gfx/trainer_card/badge_numbers.2bpp",
     "blank_leader_names": "gfx/trainer_card/blank_leader_names.2bpp",
     "circle_tile": "gfx/trainer_card/circle_tile.2bpp",
+    # the Game Corner slot machines (engine/slots/slot_machine.asm) and the Rocket Hideout
+    # spinner arrows (engine/overworld/spinners.asm)
+    "slots_1": "gfx/slots/red_slots_1.2bpp",
+    "slots_2": "gfx/slots/red_slots_2.2bpp",
+    "spinner_arrows": "gfx/overworld/spinners.2bpp",
 }
 GRAPHICS = {
     # pics (drawn whole; row-major 8x8 tiles, 7 per row)
@@ -192,6 +197,9 @@ TILESET_FILES = {
     "UNDERGROUND": ("underground", "underground"),
     "SHIP_PORT": ("ship_port", "ship_port"),
     "CEMETERY": ("cemetery", "cemetery"),
+    "LOBBY": ("lobby", "lobby"),
+    "MANSION": ("mansion", "mansion"),
+    "FACILITY": ("facility", "facility"),
 }
 TILESET_COLL_LABEL = {
     "OVERWORLD": "Overworld_Coll",
@@ -213,6 +221,9 @@ TILESET_COLL_LABEL = {
     "UNDERGROUND": "Underground_Coll",
     "SHIP_PORT": "ShipPort_Coll",
     "CEMETERY": "Cemetery_Coll",
+    "LOBBY": "Lobby_Coll",
+    "MANSION": "Mansion_Coll",
+    "FACILITY": "Facility_Coll",
 }
 TILESET_INDEX = {  # order of the Tilesets table (constants/tileset_constants.asm)
     "OVERWORLD": 0, "REDS_HOUSE_1": 1, "MART": 2, "FOREST": 3, "REDS_HOUSE_2": 4, "DOJO": 5,
@@ -224,7 +235,8 @@ TILESET_GRASS = {"OVERWORLD": 0x52, "FOREST": 0x20, "CAVERN": -1, "CLUB": -1, "I
 # tileset_headers.asm counter tiles (talking across a counter)
 TILESET_COUNTER = {"DOJO": [0x3A], "MART": [0x18, 0x19, 0x1E], "POKECENTER": [0x18, 0x19, 0x1E], "GYM": [0x3A],
                    "FOREST_GATE": [0x17, 0x32], "GATE": [0x17, 0x32], "MUSEUM": [0x17, 0x32],
-                   "CLUB": [0x07, 0x17], "CAVERN": [], "INTERIOR": [], "SHIP": [], "CEMETERY": [0x12]}
+                   "CLUB": [0x07, 0x17], "CAVERN": [], "INTERIOR": [], "SHIP": [], "CEMETERY": [0x12],
+                   "LOBBY": [0x15, 0x36], "MANSION": [], "FACILITY": [0x12]}
 
 MAPS = {
     "PALLET_TOWN": "PalletTown",
@@ -325,6 +337,40 @@ MAPS = {
     "LAVENDER_CUBONE_HOUSE": "LavenderCuboneHouse",
     "POKEMON_TOWER_1F": "PokemonTower1F",
     "POKEMON_TOWER_2F": "PokemonTower2F",
+    # chapter 7: Routes 7 and 8, their Saffron gates, the Underground Path (west-east)
+    "ROUTE_7": "Route7",
+    "ROUTE_7_GATE": "Route7Gate",
+    "UNDERGROUND_PATH_ROUTE_7": "UndergroundPathRoute7",
+    "UNDERGROUND_PATH_WEST_EAST": "UndergroundPathWestEast",
+    "UNDERGROUND_PATH_ROUTE_8": "UndergroundPathRoute8",
+    "ROUTE_8_GATE": "Route8Gate",
+    "ROUTE_8": "Route8",
+    # chapter 7: Celadon City
+    "CELADON_CITY": "CeladonCity",
+    "CELADON_MART_1F": "CeladonMart1F",
+    "CELADON_MART_2F": "CeladonMart2F",
+    "CELADON_MART_3F": "CeladonMart3F",
+    "CELADON_MART_4F": "CeladonMart4F",
+    "CELADON_MART_5F": "CeladonMart5F",
+    "CELADON_MART_ELEVATOR": "CeladonMartElevator",
+    "CELADON_MART_ROOF": "CeladonMartRoof",
+    "CELADON_MANSION_1F": "CeladonMansion1F",
+    "CELADON_MANSION_2F": "CeladonMansion2F",
+    "CELADON_MANSION_3F": "CeladonMansion3F",
+    "CELADON_MANSION_ROOF": "CeladonMansionRoof",
+    "CELADON_MANSION_ROOF_HOUSE": "CeladonMansionRoofHouse",
+    "CELADON_POKECENTER": "CeladonPokecenter",
+    "CELADON_GYM": "CeladonGym",
+    "GAME_CORNER": "GameCorner",
+    "GAME_CORNER_PRIZE_ROOM": "GameCornerPrizeRoom",
+    "CELADON_DINER": "CeladonDiner",
+    "CELADON_CHIEF_HOUSE": "CeladonChiefHouse",
+    "CELADON_HOTEL": "CeladonHotel",
+    "ROCKET_HIDEOUT_B1F": "RocketHideoutB1F",
+    "ROCKET_HIDEOUT_B2F": "RocketHideoutB2F",
+    "ROCKET_HIDEOUT_B3F": "RocketHideoutB3F",
+    "ROCKET_HIDEOUT_B4F": "RocketHideoutB4F",
+    "ROCKET_HIDEOUT_ELEVATOR": "RocketHideoutElevator",
 }
 
 
@@ -520,16 +566,32 @@ def parse_coll_list(label: str) -> list[int]:
 
 
 def parse_tile_id_list(path: Path, label: str, macro: str) -> list[int]:
+    """The tile ids under `label`: `macro`/`db` lines, continuing past a "; fallthrough" into
+    the next label (FacilityWarpTileIDs -> CemeteryWarpTileIDs -> UndergroundWarpTileIDs)."""
     text = path.read_text(encoding="utf-8")
     anchor = f"{label}:"
     if anchor not in text:
         return []
-    rest = text[text.index(anchor):]
-    m = re.search(rf"^\s*{macro}\s*([^\n]*)", rest, re.M)
-    if not m:
-        return []
-    args = m.group(1).split(";")[0].strip()
-    return [int(x.strip().replace("$", ""), 16) for x in args.split(",") if x.strip()]
+    out: list[int] = []
+    fallthrough = False
+    stacked = True   # labels right after a label share its list (.ForestGateWarpTileIDs: .GateWarpTileIDs:)
+    for line in text[text.index(anchor):].splitlines()[1:]:
+        if re.match(r"^\s*;\s*fallthrough", line):
+            fallthrough = True
+            continue
+        if re.match(r"^\.?\w+:", line):
+            if not fallthrough and not stacked:
+                break
+            fallthrough = False
+            stacked = True
+            continue
+        if line.strip():
+            stacked = False
+        m = re.match(rf"^\s*(?:{macro}|db)\s+([^\n]*)", line)
+        if m:
+            args = m.group(1).split(";")[0].strip()
+            out += [int(x.strip().replace("$", ""), 16) for x in args.split(",") if x.strip()]
+    return out
 
 
 WARP_LABELS = {
@@ -545,12 +607,16 @@ WARP_LABELS = {
     "UNDERGROUND": ".UndergroundWarpTileIDs",
     "SHIP_PORT": ".ShipPortWarpTileIDs",
     "CEMETERY": ".CemeteryWarpTileIDs",
+    "LOBBY": ".LobbyWarpTileIDs",
+    "MANSION": ".MansionWarpTileIDs",
+    "FACILITY": ".FacilityWarpTileIDs",
 }
 DOOR_LABELS = {"OVERWORLD": ".OverworldDoorTileIDs", "HOUSE": ".HouseDoorTileIDs", "MART": ".MartDoorTileIDs",
                "POKECENTER": ".MartDoorTileIDs", "FOREST": ".ForestDoorTileIDs",
                "FOREST_GATE": ".TilesetMuseumDoorTileIDs", "MUSEUM": ".TilesetMuseumDoorTileIDs",
                "GATE": ".TilesetMuseumDoorTileIDs", "CAVERN": "__none__",
-               "CLUB": "__none__", "INTERIOR": "__none__", "SHIP": ".ShipDoorTileIDs", "UNDERGROUND": "__none__", "SHIP_PORT": "__none__", "CEMETERY": "__none__"}
+               "CLUB": "__none__", "INTERIOR": "__none__", "SHIP": ".ShipDoorTileIDs", "UNDERGROUND": "__none__", "SHIP_PORT": "__none__", "CEMETERY": "__none__",
+               "LOBBY": ".LobbyDoorTileIDs", "MANSION": ".MansionDoorTileIDs", "FACILITY": ".FacilityDoorTileIDs"}
 
 
 def parse_tileset_anims() -> dict[str, int]:
@@ -659,9 +725,10 @@ def parse_hidden_events() -> dict[str, list]:
             continue
         if cur is None:
             continue
-        m = re.match(r"hidden_(event|text_predef)\s+(\d+),\s*(\d+),\s*([A-Za-z0-9_]+),\s*([A-Za-z0-9_]+)", code)
+        m = re.match(r"hidden_(event|text_predef)\s+(\d+),\s*(\d+),\s*([A-Za-z0-9_]+),\s*([A-Za-z0-9_+ ]+)", code)
         if m:
-            out[cur].append({"x": int(m.group(2)), "y": int(m.group(3)), "func": m.group(4), "arg": m.group(5)})
+            # the argument is a facing, a text id, an item, or "COIN + n" (kept as "COIN+n")
+            out[cur].append({"x": int(m.group(2)), "y": int(m.group(3)), "func": m.group(4), "arg": re.sub(r"\s+", "", m.group(5))})
         elif code.startswith("db -1"):
             cur = None
     return out
@@ -1053,9 +1120,11 @@ def export_trades() -> None:
 def export_marts() -> None:
     by_name = {v: k for k, v in MAPS.items()}
     out = {}
-    for m in re.finditer(r"^(\w+)ClerkText::\s*\n\s*script_mart\s+([A-Z0-9_, ]+)", (MASTER / "data" / "items" / "marts.asm").read_text(encoding="utf-8"), re.M):
+    for m in re.finditer(r"^(\w+?)Clerk(\d?)Text::\s*\n\s*script_mart\s+([A-Z0-9_, ]+)", (MASTER / "data" / "items" / "marts.asm").read_text(encoding="utf-8"), re.M):
         if m.group(1) in by_name:
-            out[by_name[m.group(1)]] = [x.strip() for x in m.group(2).split(",") if x.strip()]
+            # a map with several clerks (Celadon Mart 2F/5F) gets one list per clerk: MAP_CLERK1, MAP_CLERK2
+            key = by_name[m.group(1)] + (("_CLERK" + m.group(2)) if m.group(2) else "")
+            out[key] = [x.strip() for x in m.group(3).split(",") if x.strip()]
     (OUT_DATA / "marts.json").write_text(json.dumps(out), encoding="utf-8")
     log(f"marts: {out}")
 

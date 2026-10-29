@@ -10,6 +10,7 @@ var rival_starter := ""
 var party: Array = []     # Array of PartyMon
 var items: Array = [{"item": "POTION", "qty": 1}]  # AddItemToInventory in OakSpeech
 var money := 3000
+var coins := 0            # wPlayerCoins (0-9999, the COIN CASE)
 var cur_map := "REDS_HOUSE_2F"
 var x := 3
 var y := 6
@@ -59,7 +60,7 @@ func to_dict() -> Dictionary:
 		boxed.append(one)
 	return {
 		"player_name": player_name, "rival_name": rival_name, "player_id": player_id, "events": events,
-		"starter": starter, "rival_starter": rival_starter, "party": mons, "items": items, "money": money,
+		"starter": starter, "rival_starter": rival_starter, "party": mons, "items": items, "money": money, "coins": coins,
 		"cur_map": cur_map, "x": x, "y": y, "facing": facing, "last_map": last_map,
 		"pokedex_seen": pokedex_seen, "pokedex_owned": pokedex_owned, "map_scripts": map_scripts, "badges": badges, "beat_gym_flags": beat_gym_flags, "repel_steps": repel_steps, "town_visited": town_visited, "walk_bike_surf": walk_bike_surf,
 		"boxes": boxed, "current_box": current_box, "pc_items": pc_items,
@@ -81,6 +82,7 @@ func from_dict(d: Dictionary) -> void:
 		party.append(PartyMon.from_dict(md))
 	items = d.get("items", items)
 	money = int(d.get("money", money))
+	coins = int(d.get("coins", 0))
 	cur_map = str(d.get("cur_map", cur_map))
 	x = int(d.get("x", x))
 	y = int(d.get("y", y))

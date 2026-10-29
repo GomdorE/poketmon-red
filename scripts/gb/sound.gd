@@ -585,10 +585,30 @@ func _push_audio() -> void:
 
 # --- Audio1_UpdateMusic / ApplyMusicAffects ------------------------------------------------------
 
+## wMuteAudioAndPauseMusic (the slot machine payout): the music channels stop updating and
+## every channel output is cut (the sound effects re-enable theirs as they play).
+var mute_audio_and_pause_music := false
+var _music_muted := false   # BIT_MUTE_AUDIO
+
+
+func set_mute_music(on: bool) -> void:
+	mute_audio_and_pause_music = on
+	if not on:
+		_music_muted = false
+
+
 func _update_music() -> void:
 	for c in NUM_CHANNELS:
-		if ch_id[c] != 0:
-			_apply_music_affects(c)
+		if ch_id[c] == 0:
+			continue
+		if c < CHAN5 and mute_audio_and_pause_music:
+			if not _music_muted:
+				_music_muted = true
+				apu.write(0xFF25, 0)      # rAUDTERM: no channel output
+				apu.write(0xFF1A, 0)      # rAUD3ENA off, then on again
+				apu.write(0xFF1A, 0x80)
+			continue
+		_apply_music_affects(c)
 
 
 func _apply_music_affects(c: int) -> void:

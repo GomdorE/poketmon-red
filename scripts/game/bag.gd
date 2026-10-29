@@ -107,6 +107,12 @@ static func _use(state: GameState, ow, item: String) -> bool:
 	if item == "ITEMFINDER":
 		await _use_itemfinder(state, ow)
 		return false
+	if item == "COIN_CASE":   # ItemUseCoinCase
+		Text.ram["wPlayerCoins"] = str(state.coins)
+		if "--trace-scripts" in OS.get_cmdline_user_args():
+			print("COIN_CASE coins=%d" % state.coins)
+		await Text.print_text("_CoinCaseNumCoinsText")
+		return false
 	if GameData.items.has(item) and GameData.items[item].has("move"):
 		await _use_tm(state, ow, item)
 		return false

@@ -15,6 +15,8 @@ const BOOKSHELVES := {
 	"GATE": {0x22: "_PokemonBooksText"},
 	"MART": {0x54: "_PokemonStuffText", 0x55: "_PokemonStuffText"},
 	"POKECENTER": {0x54: "_PokemonStuffText", 0x55: "_PokemonStuffText"},
+	"LOBBY": {0x16: "_ElevatorText", 0x50: "_PokemonStuffText", 0x52: "_PokemonStuffText"},
+	"MANSION": {0x32: "_PokemonBooksText"},
 }
 
 const FACINGS := {"SPRITE_FACING_UP": 4, "SPRITE_FACING_DOWN": 0, "SPRITE_FACING_LEFT": 8, "SPRITE_FACING_RIGHT": 12}
@@ -40,6 +42,7 @@ const GYMS := {
 	"PEWTER_GYM": {"bit": 0, "city_en": "PEWTER CITY", "leader_en": "BROCK", "city_ko": "회색시티", "leader_ko": "웅"},
 	"CERULEAN_GYM": {"bit": 1, "city_en": "CERULEAN CITY", "leader_en": "MISTY", "city_ko": "블루시티", "leader_ko": "이슬"},
 	"VERMILION_GYM": {"bit": 2, "city_en": "VERMILION CITY", "leader_en": "LT.SURGE", "city_ko": "갈색시티", "leader_ko": "마티스"},
+	"CELADON_GYM": {"bit": 3, "city_en": "CELADON CITY", "leader_en": "ERIKA", "city_ko": "무지개시티", "leader_ko": "민화"},
 }
 
 static var TRACE := "--trace-pc" in OS.get_cmdline_user_args()   # test log
@@ -54,11 +57,13 @@ static func check(ow) -> bool:
 	var d: Vector2i = ow._facing_delta()
 	var tx: int = ow.player.x + d.x
 	var ty: int = ow.player.y + d.y
-	for e in ow.map.get("hidden_events", []):
+	var events: Array = ow.map.get("hidden_events", [])
+	for i in events.size():
+		var e: Dictionary = events[i]
 		if int(e["x"]) == tx and int(e["y"]) == ty:
 			if TRACE:
 				print("HIDDEN_EVENT frame=%d %s %s facing=%d" % [GB.frame_count, e["func"], e["arg"], ow.player.facing])
-			await _run(ow, str(e["func"]), str(e["arg"]))
+			await _run(ow, str(e["func"]), str(e["arg"]), i)
 			return true
 	# PrintBookshelfText: facing up, the tile in front against the tileset's bookshelf tiles
 	if ow.player.facing != Overworld.FACE_UP:
@@ -77,10 +82,14 @@ static func check(ow) -> bool:
 	return true
 
 
-static func _run(ow, func_name: String, arg: String) -> void:
+static func _run(ow, func_name: String, arg: String, index: int = -1) -> void:
 	var state: GameState = ow.state
 	var facing: int = ow.player.facing
 	match func_name:
+		"StartSlotMachine":
+			await ow.scripts.ch7.game_corner.start_slot_machine(arg, index)
+		"HiddenCoins":
+			await _hidden_coins(ow, arg)
 		"PrintBenchGuyText":
 			if facing == int(FACINGS.get(arg, -1)) and BENCH_GUYS.has(ow.map_id):
 				await ow._show_overworld_text(BENCH_GUYS[ow.map_id], true)
@@ -163,6 +172,42 @@ static func _hidden_item(ow, item: String) -> void:
 		await Text.wait_scroll_button(false)
 		await Text.print_text("_HiddenItemBagFullText")
 		await Text.wait_scroll_button(false)
+	await Text.hold_text_display_open()
+	ow.in_text = false
+	ow._render()
+	await GB.frame
+
+
+## HiddenCoins (engine/events/hidden_items.asm): coins for the COIN CASE, once per spot
+## (wObtainedHiddenCoinsFlags, kept as a per-coordinate event). 40 coins give 20 (the
+## original's typo), 100 give 100; a case at 9999 "drops" them.
+static func _hidden_coins(ow, arg: String) -> void:
+	var state: GameState = ow.state
+	if state.item_count("COIN_CASE") == 0:
+		return
+	var d: Vector2i = ow._facing_delta()
+	var flag := "HIDDEN_COIN_%s_%d_%d" % [ow.map_id, ow.player.x + d.x, ow.player.y + d.y]
+	if state.has_event(flag):
+		return
+	var n := int(arg.get_slice("+", 1))
+	var amount := n
+	if n == 40:
+		amount = 20
+	elif n != 10 and n != 20:
+		amount = 100
+	state.coins = mini(state.coins + amount, 9999)
+	state.set_event(flag)
+	Text.ram["hCoins"] = str(amount)
+	var dropped := state.coins == 9999
+	if TRACE:
+		print("HiddenCoins %d coins=%d dropped=%s" % [amount, state.coins, str(dropped)])
+	ow.in_text = true
+	Menu.message_box()
+	await GB.delay3()
+	await Text.print_text_no_box("_DroppedHiddenCoinsText" if dropped else "_FoundHiddenCoinsText")
+	if not dropped:
+		await Sound.text_sound("sound_get_item_2")
+	await Text.wait_scroll_button(false)
 	await Text.hold_text_display_open()
 	ow.in_text = false
 	ow._render()

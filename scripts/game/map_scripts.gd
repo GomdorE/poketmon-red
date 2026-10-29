@@ -16,6 +16,7 @@ var pewter: PewterScripts                   # chapter 3: Pewter City and its bui
 var mtmoon: MtMoonScripts                   # chapter 4: Route 3, Mt. Moon, Route 4
 var ch5: Chapter5Scripts                    # chapter 5: Route 9/10, Routes 5/6, Vermilion City
 var ch6: Chapter6Scripts                    # chapter 6: Route 11, Diglett's Cave, Route 2 east
+var ch7: Chapter7Scripts                    # chapter 7: Routes 7/8, Celadon City
 
 
 func _init(o: Overworld) -> void:
@@ -26,6 +27,7 @@ func _init(o: Overworld) -> void:
 	mtmoon = MtMoonScripts.new(self)
 	ch5 = Chapter5Scripts.new(self)
 	ch6 = Chapter6Scripts.new(self)
+	ch7 = Chapter7Scripts.new(self)
 
 
 func _script_index() -> int:
@@ -80,6 +82,8 @@ func run_map_script() -> void:
 			if await ch5.run_map_script():
 				return
 			if await ch6.run_map_script():
+				return
+			if await ch7.run_map_script():
 				return
 			# a map whose script table is only the trainer engine (most routes)
 			if not ow.map.get("trainer_headers", []).is_empty():
@@ -697,6 +701,8 @@ func _rival_face_up_oak_face_down() -> void:
 # --- text handlers -------------------------------------------------------------------
 
 func text(text_id: String, npc_index: int) -> void:
+	if await ch7.hideout.trainer_text(text_id, npc_index):   # a trainer's after-battle script
+		return
 	if await trainers.handle_text(npc_index):
 		return
 	if await pewter.text(text_id, npc_index):
@@ -706,6 +712,8 @@ func text(text_id: String, npc_index: int) -> void:
 	if await ch5.text(text_id, npc_index):
 		return
 	if await ch6.text(text_id, npc_index):
+		return
+	if await ch7.text(text_id, npc_index):
 		return
 	match text_id:
 		# Pallet Town

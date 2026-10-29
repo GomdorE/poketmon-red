@@ -1,4 +1,4 @@
-# 작업 인계 (2026-10-28 기준)
+# 작업 인계 (2026-10-29 기준)
 
 다른 컴퓨터(노트북)에서 이어서 작업하기 위한 메모입니다. 맨 아래 "이어서 줄 프롬프트"를 Claude Code 에 그대로 붙여 넣으면 됩니다.
 
@@ -38,21 +38,26 @@ git clone https://github.com/GomdorE/poketmon-red.git pokered-godot
 - 게임 내 교환(블루시티 롤라, 지하통로 스폿, 갈색시티 덕스)과 교환 영상.
 - 5챕터: 9·10번도로, 5·6번도로·게이트·지하통로·육아집, 갈색시티·체육관·부두(상선 출항 연출)·상선 S.S.안느 전체(라이벌·선장 비밀기술01).
 - 6챕터: 11번도로·게이트, 디그다의 굴, 2번도로 동쪽, 돌산터널(어둠), 보라타운·포켓몬타워 1F/2F.
+- 7챕터: 7·8번도로·게이트·지하통로(동서), 무지개시티(백화점·엘리베이터·자판기·맨션·증서·식당·체육관), 게임코너(슬롯머신·코인·경품), 로켓단 아지트(화살표 타일·비주기·리프트키).
 
 ## 하던 일 (멈춘 지점)
 
-**6챕터 포팅 완료** (2026-10-28): 11번도로·게이트(오박사 조수 아이템파인더, 테리 교환) → 디그다의 굴 → 2번도로 동쪽(마르셀 교환, 조수 플래시)
-→ 돌산터널(어둠 + 플래시) → 보라타운(센터·숍·탑골 집·후지 노인의 집·이름평가사·포켓몬타워 1F·2F 라이벌).
+**7챕터 포팅 완료** (2026-10-29): 7·8번도로와 노랑시티 쪽 게이트(음료 검사) → 지하통로(동서) → 무지개시티(센터·백화점 1F~옥상·엘리베이터·자판기·맨션·식당·서장 집·호텔·체육관 민화)
+→ 게임코너(슬롯머신 36대·코인 구입·숨겨진 코인·포스터 스위치·로켓단원) → 경품 교환소 → 로켓단 아지트 B1F~B4F·엘리베이터(비주기·실프스코프·리프트키).
 
-- 코드: `scripts/game/map_scripts_chapter6.gd`. 엔진: `GBScreen.pal_offset`/`Overworld.set_map_pal_offset`(어둠), 아이템파인더(bag.gd),
-  테스트 인자 `--owned=N`(도감 N종 소유), `--trade-mon`(첫 포켓몬을 교환 포켓몬으로).
-- 스모크: `GODOT=<콘솔판 경로> python tools/chapter6_smoke.py --full`. 4·5챕터 스모크도 PASS 해야 함.
-- 아직 없는 것: 포켓몬타워 3F~7F(유령 배틀 = 실프스코프, 채널러, 마라의 유령, 후지 구출), 12번도로(잠만보·포켓몬피리 사용), 8번도로, 노랑시티 전체.
+- 코드: `scripts/game/map_scripts_chapter7.gd` 허브 + `celadon_scripts.gd`, `game_corner_scripts.gd`, `rocket_hideout_scripts.gd`, `slot_machine.gd`, `elevator.gd`,
+  `vending_machine.gd`, `diploma.gd`, `give_pokemon.gd`. 엔진: 코인(`GameState.coins`), 회전판(`Overworld.spinning`/`_load_spinner_arrow_tiles`), 워프 출발 기록
+  (`warped_from_warp/map`), 음악 일시정지(`Sound.set_mute_music`), 표지판을 카운터 NPC 보다 먼저 보는 `_interact` 순서(원작 IsSpriteOrSignInFrontOfPlayer),
+  타일셋 LOBBY·MANSION·FACILITY, 상점 점원별 목록(`CELADON_MART_2F_CLERK1` 등). 테스트 인자 `--coins=N`.
+- 스모크: `GODOT=<콘솔판 경로> python tools/chapter7_smoke.py --full` (개발 중엔 `--no-stop` 으로 실패 목록만). 4·5·6챕터 스모크도 PASS 해야 함.
+- 아직 없는 것: 포켓몬타워 3F~7F(유령 배틀 = 실프스코프, 채널러, 마라의 유령, 후지 구출), 12번도로(잠만보·포켓몬피리 사용), 노랑시티 전체(게이트는 음료를 주면 통과하지만
+  노랑시티 맵이 없어 막힘), 16번도로(무지개시티 서쪽 연결 막힘).
 
 ## 그다음
 
-- 6챕터 exe 는 만들어 둠(`dist/PokemonRed-Godot-Chapter6.exe`, 커밋 안 함). 다시 만들려면 `--export-release "Windows Desktop" dist/PokemonRed-Godot-Chapter6.exe`.
-- 7챕터 후보: 7·8번도로와 지하통로(동서), 무지개시티(백화점·게임코너·로켓단 아지트(실프스코프)·민화 체육관·맨션), 그 뒤 포켓몬타워 3F~7F(유령 배틀)·12번도로(잠만보).
+- 7챕터 exe 는 만들어 둠(`dist/PokemonRed-Godot-Chapter7.exe`, 커밋 안 함). 다시 만들려면 `--export-release "Windows Desktop" dist/PokemonRed-Godot-Chapter7.exe`.
+- 8챕터 후보: 포켓몬타워 3F~7F(실프스코프로 유령 정체 확인, 채널러 배틀, 마라의 유령, 후지 구출 → 포켓몬피리), 12번도로(잠만보에게 포켓몬피리),
+  그 뒤 노랑시티 전체(실프컴퍼니·사천왕 도장·체육관)와 16번도로·자전거 도로.
 - 아직 없는 것: 알낳기(필드), 배틀의 유령(실프스코프)·교환 포켓몬 말 안 듣기·포켓몬피리·사파리존·통신 배틀·학습장치.
 - 게임 전체가 끝나면: 실행 파일 용량 최적화(축소 export 템플릿, PCK 분리), 저장소 정리(assets 제외 등).
 
@@ -69,7 +74,7 @@ git clone https://github.com/GomdorE/poketmon-red.git pokered-godot
 
 ```text
 pokered-godot (포켓몬 레드 Godot 재구현) 작업을 이어서 하자. 먼저 HANDOFF.md 와 README.md 를 읽어.
-6챕터(11번도로 → 디그다의 굴 → 2번도로 동쪽 → 돌산터널 → 보라타운·타워 2F)는 끝났고 6챕터 exe 도 있어.
-HANDOFF.md 의 "그다음" 순서대로 7챕터(7·8번도로·지하통로 → 무지개시티)로 넘어가.
-원작과 똑같이, 혼자 진행하고, 커밋은 한글로. 구역마다 스모크(tools/chapter7_smoke.py 를 같은 방식으로) PASS 뒤 커밋.
+7챕터(7·8번도로 → 무지개시티 → 게임코너 → 로켓단 아지트)는 끝났고 7챕터 exe 도 있어.
+HANDOFF.md 의 "그다음" 순서대로 8챕터(포켓몬타워 3F~7F → 12번도로 → 노랑시티)로 넘어가.
+원작과 똑같이, 혼자 진행하고, 커밋은 한글로. 구역마다 스모크(tools/chapter8_smoke.py 를 같은 방식으로) PASS 뒤 커밋.
 ```
