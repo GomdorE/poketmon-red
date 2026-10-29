@@ -52,6 +52,7 @@ var anim_pal := 0xE4        # wAnimPalette
 var damage_mult := 10       # wDamageMultipliers (tenths)
 var sub_transform := NORMAL
 var sub_counter := 0        # wSubAnimCounter
+var toss_anim_data := 0     # wPokeBallAnimData ($10: the ghost dodges the ball)
 var sub_index := 0          # wSubAnimSubEntryAddr as an entry index
 var sub_entries: Array = []
 var sub_delay := 0          # wSubAnimFrameDelay
@@ -335,6 +336,11 @@ func _special_effect_by_animation_id() -> void:
 				S.obp0 = GBScreen.pal_byte(_pal_to_byte(S.obp0) ^ 0x3C)
 			if sub_counter == 11:
 				Sound.play_sfx("SFX_BALL_TOSS")
+			# the ghost MAROWAK (and the unidentified ghost) dodges during the last three frames
+			if not is_trainer_battle and toss_anim_data == 0x10 and sub_counter >= 1 and sub_counter <= 3:
+				for row in 7:   # AnimCopyRowRight: the picture's rows move one tile left
+					for x in range(11, 18):
+						S.set_bg(x, row, S.get_bg(x + 1, row))
 			if is_trainer_battle and sub_counter == 3:
 				sub_counter = 2   # the blocked throw is one frame block shorter
 		"DoBallShakeSpecialEffects":
@@ -933,6 +939,7 @@ func _toss_ball_animation(anim_data: int) -> void:
 		anim_id = id_of("BLOCKBALL_ANIM")
 		await _play_animation(anim_id)
 		return
+	toss_anim_data = anim_data
 	var count := anim_data >> 4
 	num_shakes = anim_data & 0xF
 	var first := "TOSS_ANIM"

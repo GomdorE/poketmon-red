@@ -104,9 +104,21 @@ static func _use(state: GameState, ow, item: String) -> bool:
 	if item == "OAKS_PARCEL":
 		await Text.print_text("_ItemUseNotYoursToUseText")
 		return false
-	if item == "ITEMFINDER":
+	if item == "ITEMFINDER":   # UsableItems_CloseMenu: the ITEMFINDER and the POKé FLUTE close the menu
 		await _use_itemfinder(state, ow)
-		return false
+		return true
+	if item == "POKE_FLUTE":   # ItemUsePokeFlute outside battle: only next to Route 12's SNORLAX
+		var spots := [Vector2i(9, 62), Vector2i(10, 61), Vector2i(10, 63), Vector2i(11, 62)]   # Route12SnorlaxFluteCoords
+		var effect: bool = ow.map_id == "ROUTE_12" and not state.has_event("EVENT_BEAT_ROUTE12_SNORLAX") \
+				and Vector2i(ow.player.x, ow.player.y) in spots
+		if "--trace-scripts" in OS.get_cmdline_user_args():
+			print("POKE_FLUTE effect=%s" % str(effect))
+		if effect:
+			await Text.print_text("_PlayedFluteHadEffectText")
+			state.set_event("EVENT_FIGHT_ROUTE12_SNORLAX")
+		else:
+			await Text.print_text("_PlayedFluteNoEffectText")
+		return true
 	if item == "COIN_CASE":   # ItemUseCoinCase
 		Text.ram["wPlayerCoins"] = str(state.coins)
 		if "--trace-scripts" in OS.get_cmdline_user_args():

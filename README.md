@@ -161,6 +161,19 @@ Godot 4에서 다시 구현한 프로젝트입니다. 화면은 160×144 게임�
     B4F 문(두 단원을 이기면 열림), 비주기(이기면 암전 뒤 사라지고 실프스코프가 놓임), 세 번째 단원을 이기고 말을 걸면 리프트키, 리프트키가 있어야 움직이는 엘리베이터.
     테스트 인자 `--coins=N`. 스모크: `GODOT=<콘솔판> python tools/chapter7_smoke.py --full`.
 
+## 구현 범위 (8챕터: 포켓몬타워 3F~7F ~ 12번도로)
+
+46. 포켓몬타워 3F~7F(`PokemonTower3F.asm`~`7F.asm`): 채널러 트레이너 14명·도구, 5F 정화 구역(들어서면 파티 회복·흰 페이드·"정화된 구역" 텍스트, 안에서는 야생 배틀 없음),
+    6F 마라의 유령(그 자리에 서면 "사라져라…" 뒤 RESTLESS_SOUL = 마라 Lv30 배틀; 이기면 영혼이 진정되는 텍스트와 울음, 도망치면 오른쪽으로 한 칸),
+    7F 로켓단원 3명(이기면 대사 뒤 플레이어 위치에 따른 길로 걸어 나가 사라짐)과 후지 노인(구출 이벤트·노랑시티 로켓단 토글 → 후지 집 두 번째 문으로 스크립트 워프).
+    유령 배틀(`IsGhostBattle`: 타워 안 야생 배틀 + 실프스코프 없음): 상대는 "고스트"(GhostPic), 내 포켓몬은 "무서워서 움직일 수 없다", 상대 턴은 "나가라…",
+    도망은 항상 성공, 볼은 피함(`ItemUseBallText00`, 던지는 애니메이션 마지막 3프레임에 그림이 왼쪽으로 비킴). 실프스코프가 있으면 마라의 유령은
+    "실프스코프가 정체를 밝혔다" 뒤 `MarowakAnim`(유령 그림이 OBP1 스프라이트로 8번 깜박이며 사라지고 마라가 서서히 나타남, 트레이너 등장음).
+47. 12번도로(트레이너 7명, 도구, 표지판), 게이트 1F/2F(2층은 자동 텍스트 상자 없음, 소녀의 기술머신39, 망원경), 슈퍼낚싯대 집, 잠만보: 포켓몬피리를
+    잠만보 옆 4칸에서 쓰면(`ItemUsePokeFlute`) "잠만보가 일어났다!" 뒤 Lv30 야생 배틀, 이기면 "잠만보가 진정했다", 잡거나 도망치면 텍스트 없이 사라짐.
+    배틀 중 포켓몬피리는 양쪽의 잠든 포켓몬을 깨우고(잠든 포켓몬이 있을 때만 피리 연주 뒤 "모두 깨어났다") 턴을 씁니다.
+    스모크: `GODOT=<콘솔판> python tools/chapter8_smoke.py --full`.
+
 ### 원작과 다른 점 (의도적 단순화)
 - 저장 파일은 JSON 이며 체크섬·손상 검사는 없습니다. 타이틀의 Up+B+Select 파일 삭제는 없습니다(파일을 지우면 됩니다).
 - SGB 속성은 화면 8×8 셀 단위라 스크롤 중 셀에 걸친 타일은 타일 왼쪽 위 기준 셀의 팔레트를 씁니다(1챕터에서 영역이 나뉘는 화면은 스크롤하지 않음).
@@ -175,7 +188,7 @@ Godot 4에서 다시 구현한 프로젝트입니다. 화면은 160×144 게임�
   교환 영상의 정보 상자는 한글판 라벨("어버이/", "번호/")을 쓰되 어버이 이름을 한 칸 오른쪽(x9)에 둡니다(한글 ROM 은 "/" 를 이름이 덮음).
   게임코너 점원의 소지금·코인 상자는 한글일 때 한 줄 더 높고 "코인" 라벨을 금액 아래 줄에 둡니다(원작 좌표면 라벨 윗 반쪽이 금액을 덮음).
 - 필드 기술(풀베기 등)은 아직 없습니다. 2번도로 동쪽(풀베기 필요: 디그다굴 입구·교환 집·게이트)은 들어갈 수 없습니다.
-- 배틀: 유령(실프스코프)·교환 포켓몬 말 안 듣기·포켓몬피리·사파리존·통신 배틀·학습장치는 아직 없습니다. 방어 0 으로 나누는 경우(원작은 멈춤)는 막아 두었습니다.
+- 배틀: 교환 포켓몬 말 안 듣기·사파리존·통신 배틀·학습장치는 아직 없습니다. 방어 0 으로 나누는 경우(원작은 멈춤)는 막아 두었습니다.
 - 알낳기(필드)는 아직 없습니다. 낚싯대 OAM 은 느낌표 말풍선과 겹치지 않게 39번 대신 35번 슬롯을 씁니다(화면은 같음).
 - 아직 내보내지 않은 맵으로 이어지는 연결(보라타운 남쪽·서쪽, 11번도로 동쪽 등)은 벽처럼 막히고, 그런 맵으로 가는 워프(발전소 입구·포켓몬타워 3F)는
   아무 일도 하지 않습니다(다음 챕터에서 열림).
@@ -228,8 +241,9 @@ scripts/game/map_scripts_chapter5.gd 5챕터 허브(9·10번도로) + route56_sc
 scripts/game/map_scripts_chapter6.gd 6챕터(11번도로·게이트·디그다의 굴·2번도로 동쪽·보라타운·포켓몬타워 2F)
 scripts/game/map_scripts_chapter7.gd 7챕터 허브(7·8번도로 게이트·지하통로) + celadon_scripts.gd(무지개시티·백화점·맨션·체육관) + game_corner_scripts.gd(게임코너·경품)
                            + rocket_hideout_scripts.gd(아지트·화살표 타일) + slot_machine.gd + elevator.gd + vending_machine.gd + diploma.gd + give_pokemon.gd
+scripts/game/map_scripts_chapter8.gd 8챕터(포켓몬타워 3F~7F·12번도로·게이트·슈퍼낚싯대 집); 유령 배틀·마라 연출·포켓몬피리는 battle.gd
                            + vermilion_scripts.gd(갈색시티·체육관·부두 출항) + ss_anne_scripts.gd(상선)
-tools/chapter4_smoke.py, chapter5_smoke.py, chapter6_smoke.py, chapter7_smoke.py  챕터별 스모크(환경 변수 GODOT 에 콘솔판 경로, --full 로 배틀 포함)
+tools/chapter4_smoke.py ... chapter8_smoke.py  챕터별 스모크(환경 변수 GODOT 에 콘솔판 경로, --full 로 배틀 포함)
 scripts/game/*.gd          splash, intro, title, oak_speech, naming, overworld, map_scripts, pokedex_page, battle, party_mon,
                            pokecenter, pokemart, party_menu, status_screen, bag, item_use, pokedex_menu, town_map, dex_rating, mon_hud
 scripts/gb/list_menu.gd    DisplayListMenuID(가방·상점 목록)·수량 선택

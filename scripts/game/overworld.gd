@@ -66,6 +66,7 @@ var no_npc_face_player := false   # wStatusFlags3 BIT_NO_NPC_FACE_PLAYER (the se
 var dest_warp_id := 0             # wDestinationWarpID: the warp the player arrived at (0-based)
 var warped_from_warp := 0         # wWarpedFromWhichWarp: the warp (0-based) the player left the last map by
 var spinning := false             # wMovementFlags BIT_SPINNING: the arrow tiles are walking the player
+var last_battle_result := ""      # wBattleResult as a word: won, lost, ran, caught, blackout
 var spin_facing := 0              # the player's image while spinning (LoadSpinnerArrowTiles rotates it)
 var spinner_alt := false          # the FACILITY arrow tiles show the animation frame
 ## SpinnerPlayerFacingDirections: the facing that comes next while spinning
@@ -236,6 +237,7 @@ func _next_debug_segment() -> void:
 ## a blackout returns the player to the last Pokémon Center instead (HandleBlackOut).
 func after_battle(battle_result: String) -> void:
 	last_battle_won = battle_result == "won"
+	last_battle_result = battle_result   # wBattleResult for the map scripts (won / lost / ran / caught)
 	state.encounter_cooldown = 3   # EnterMap: three steps without wild battles
 	if battle_result == "blackout":
 		# AllPokemonFainted: the map script runs once with wIsInBattle = LOST_BATTLE
@@ -991,6 +993,28 @@ func _warp_from(x: int, y: int) -> void:
 	warped_from_map = map_id
 	load_map(dest, dw.x, dw.y, player.facing)
 	state.encounter_cooldown = 3   # EnterMap: three steps without wild battles
+	_enter_map_music(false)
+	_next_debug_segment()
+	S.normal_pals()
+	await GB.frame
+
+
+## WarpFound2 for a warp a script set up (BIT_WARP_FROM_CUR_SCRIPT): warp `warp_index`
+## (0-based) of `dest`, like walking into a warp.
+func warp_to(dest: String, warp_index: int) -> void:
+	var dest_map: Dictionary = GameData.maps[dest]
+	var dw: Dictionary = dest_map["warps"][warp_index]
+	dest_warp_id = warp_index
+	_play_map_change_sound()
+	if map_pal_offset == 0:
+		await Intro.fade_out_to_black()
+	await GB.delay3()
+	if map["tileset"] in ["OVERWORLD", "PLATEAU"]:
+		state.last_map = map_id
+	warped_from_warp = 0
+	warped_from_map = map_id
+	load_map(dest, dw.x, dw.y, player.facing)
+	state.encounter_cooldown = 3
 	_enter_map_music(false)
 	_next_debug_segment()
 	S.normal_pals()

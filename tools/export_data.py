@@ -130,6 +130,7 @@ GRAPHICS = {
     "pic_red_back": "gfx/player/redb.png",
     "pic_shrink1": "gfx/player/shrink1.png",
     "pic_shrink2": "gfx/player/shrink2.png",
+    "pic_ghost": "gfx/battle/ghost.png",   # the unidentified ghost of Pokémon Tower
 }
 
 
@@ -371,6 +372,16 @@ MAPS = {
     "ROCKET_HIDEOUT_B3F": "RocketHideoutB3F",
     "ROCKET_HIDEOUT_B4F": "RocketHideoutB4F",
     "ROCKET_HIDEOUT_ELEVATOR": "RocketHideoutElevator",
+    # chapter 8: Pokémon Tower 3F-7F, Route 12
+    "POKEMON_TOWER_3F": "PokemonTower3F",
+    "POKEMON_TOWER_4F": "PokemonTower4F",
+    "POKEMON_TOWER_5F": "PokemonTower5F",
+    "POKEMON_TOWER_6F": "PokemonTower6F",
+    "POKEMON_TOWER_7F": "PokemonTower7F",
+    "ROUTE_12": "Route12",
+    "ROUTE_12_GATE_1F": "Route12Gate1F",
+    "ROUTE_12_GATE_2F": "Route12Gate2F",
+    "ROUTE_12_SUPER_ROD_HOUSE": "Route12SuperRodHouse",
 }
 
 

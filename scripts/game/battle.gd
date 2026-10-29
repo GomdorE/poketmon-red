@@ -28,6 +28,10 @@ var request: Dictionary
 var S: GBScreen
 var rng := RandomNumberGenerator.new()
 var is_wild := false
+var is_ghost := false         # IsGhostBattle: a wild battle in Pokémon Tower without the SILPH SCOPE
+var restless_soul := false    # wCurOpponent = RESTLESS_SOUL (the ghost of Cubone's mother, a MAROWAK)
+var ghost_pic := false        # the enemy is drawn as the GhostPic and called "GHOST"
+var pic_dodged := false       # the enemy picture was shifted by the dodge (restored at the next menu)
 var is_old_man := false       # BATTLE_TYPE_OLD_MAN
 var trainer_class := ""
 var trainer_pic := "pic_trainer_rival1"
@@ -110,6 +114,11 @@ func run() -> String:
 		enemy_party.append(PartyMon.create(sp, int(request["level"]), true))
 		_write_mon_moves(enemy_party[0])
 		state.pokedex_seen[sp] = true   # LoadEnemyMonData sets the seen flag
+		restless_soul = bool(request.get("restless_soul", false))
+		is_ghost = str(state.cur_map).begins_with("POKEMON_TOWER_") and state.item_count("SILPH_SCOPE") == 0
+		ghost_pic = is_ghost or restless_soul
+		if ghost_pic:
+			enemy_party[0].nickname = "고스트" if GameData.lang == "ko" else "GHOST"
 	else:
 		trainer_class = str(request["trainer"])
 		var tdata: Dictionary = GameData.trainers.get(trainer_class, {})
@@ -293,7 +302,7 @@ func _transition() -> void:
 # --- pictures -------------------------------------------------------------------
 
 func _prepare_pics() -> void:
-	enemy_sheet = GameData.pokemon[enemy_mon.species]["pic"]
+	enemy_sheet = _enemy_pic()
 	if player_mon != null:
 		_prepare_player_back()
 
@@ -401,7 +410,9 @@ func _intro() -> void:
 	if is_wild:
 		_draw_enemy_hud()
 	# PrintBeginningBattleText
-	if is_wild:
+	if is_wild and ghost_pic:
+		await _tower_battle_text()
+	elif is_wild:
 		Sound.play_cry(enemy_mon.species)
 		await Sound.wait_for_sfx()
 		_draw_all_pokeballs()
@@ -721,6 +732,9 @@ func _draw_battle_menu_box() -> void:
 
 ## DisplayBattleMenu. Returns "fight", "pkmn", "item" or "run".
 func _battle_menu() -> String:
+	if pic_dodged:   # DisplayBattleMenu's LoadScreenTilesFromBuffer1 puts the picture back
+		pic_dodged = false
+		_draw_sheet(enemy_sheet, 12, 0)
 	_draw_huds()
 	_print_empty()
 	menu_saved = S.snapshot_bg()
@@ -1053,7 +1067,7 @@ func _load_enemy_mon_data(index: int) -> void:
 	state.pokedex_seen[enemy_mon.species] = true
 	last_switch_in_enemy_hp = enemy_mon.hp
 	Text.ram["wEnemyMonNick"] = enemy_mon.nickname
-	enemy_sheet = GameData.pokemon[enemy_mon.species]["pic"]
+	enemy_sheet = _enemy_pic()
 
 
 ## SendOutMon's resets of the player's battle variables.
@@ -1270,6 +1284,11 @@ func _display_battle_menu() -> void:
 		state.give_item(it, 1)
 		_draw_huds()
 		menu_saved = S.snapshot_bg()
+		if ItemUse.is_ball(it):   # test: a ball (the ghost dodges it)
+			await _use_ball(it)
+			if took_turn and not battle_over:
+				_after_bag_item_used()
+			return
 		if await _use_battle_item(it):
 			_after_bag_item_used()
 			return
@@ -1425,6 +1444,15 @@ func _execute_move(player: bool) -> bool:
 	damage_mult = EFFECTIVE
 	if player and took_turn:
 		return _execute_move_done(player)
+	if is_ghost:   # PrintGhostText
+		if player:
+			if player_mon.status & (PartyMon.FRZ | PartyMon.SLP_MASK) == 0:
+				Text.ram["wBattleMonNick"] = player_mon.nickname
+				await _text("_ScaredText")
+				return _execute_move_done(player)
+		else:
+			await _text("_GetOutText")
+			return _execute_move_done(player)
 	var label := await _check_status_conditions(player)
 	if label == "done":
 		return _execute_move_done(player)
@@ -2219,7 +2247,7 @@ func _restore_mon_pic_sheet(player: bool) -> void:
 	if player:
 		_prepare_player_back(s.species)
 	else:
-		enemy_sheet = GameData.pokemon[s.species]["pic"]
+		enemy_sheet = _enemy_pic(s.species)
 
 
 ## AnimationSubstitute's picture: the doll (MonsterSprite) inside a blank 7x7 pic.
@@ -3588,7 +3616,7 @@ func _enemy_send_out(first: bool) -> void:
 	SGB.run("BATTLE", _battle_ctx())
 	S.normal_pals()
 	await _text("_TrainerSentOutText")
-	enemy_sheet = GameData.pokemon[enemy_mon.species]["pic"]
+	enemy_sheet = _enemy_pic()
 	await _animate_sending_out(enemy_sheet, 12, 0, 15, 6)
 	Sound.play_cry(enemy_mon.species)
 	await Sound.wait_for_sfx()
@@ -3673,7 +3701,9 @@ func _try_run(player_speed: int) -> bool:
 	var enemy_speed: int = es.stats.spd
 	run_attempts += 1
 	var escaped := false
-	if player_speed > enemy_speed:
+	if is_ghost:
+		escaped = true
+	elif player_speed > enemy_speed:
 		escaped = true
 	else:
 		var divisor := (enemy_speed / 4) % 256
@@ -3728,6 +3758,10 @@ func _bag() -> void:
 			if took_turn and not battle_over:
 				_after_bag_item_used()
 			return
+		if item == "POKE_FLUTE":
+			await _use_poke_flute()
+			_after_bag_item_used()
+			return
 		if ItemUse.is_medicine(item):
 			if await _use_medicine(item):
 				_after_bag_item_used()
@@ -3740,6 +3774,112 @@ func _bag() -> void:
 			continue
 		# TOWN MAP, OAK's PARCEL, TMs...: ItemUseNotTime
 		await _text("_ItemUseNotTimeText")
+
+
+## The enemy's picture: the GhostPic while the enemy is an unidentified ghost.
+func _enemy_pic(species: String = "") -> String:
+	if ghost_pic:
+		return "pic_ghost"
+	return GameData.pokemon[species if species != "" else enemy_mon.species]["pic"]
+
+
+## PrintBeginningBattleText in Pokémon Tower: without the SILPH SCOPE "The GHOST can't be
+## ID'd"; the ghost MAROWAK is unveiled (LoadEnemyMonData, MarowakAnim) with the trainer
+## jingle after "Wild MAROWAK appeared!".
+func _tower_battle_text() -> void:
+	Text.ram["wEnemyMonNick"] = enemy_mon.nickname
+	await _text("_EnemyAppearedText")
+	if is_ghost:
+		await _text("_GhostCantBeIDdText")
+		return
+	await _text("_UnveiledGhostText")
+	ghost_pic = false
+	enemy_mon.nickname = GameData.mon_name(enemy_mon.species)
+	Text.ram["wEnemyMonNick"] = enemy_mon.nickname
+	await _marowak_anim()
+	await _text("_WildMonAppearedText")
+	Sound.play_sfx_modified("SFX_TRAINER_APPEARED", 0, 0x80)
+	await Sound.wait_for_sfx()
+
+
+## MarowakAnim (engine/battle/ghost_marowak_anim.asm): the ghost picture becomes sprites
+## (OBP1), flashes eight times and fades out; the MAROWAK fades in as sprites and then is
+## drawn in the background.
+func _marowak_anim() -> void:
+	var obp := 0xE4
+	S.obp1 = GBScreen.pal_byte(obp)
+	_copy_pic_to_sprites("pic_ghost")
+	for row in 7:   # ClearScreenArea (12, 0) 7x7
+		for col in 7:
+			S.set_bg(12 + col, row, Text.code_tile(Text.SPACE))
+	await GB.delay3()
+	enemy_sheet = _enemy_pic()   # ChangeMonPic (not shown yet: hAutoBGTransferEnabled = 0)
+	for i in 8:   # FlashSprite8Times (d = $80)
+		obp ^= 0x80
+		S.obp1 = GBScreen.pal_byte(obp)
+		await GB.frames(10)
+	while true:   # .fadeOutGhostLoop
+		await GB.frames(10)
+		obp = (obp << 2) & 0xFF
+		S.obp1 = GBScreen.pal_byte(obp)
+		if obp == 0:
+			break
+	S.clear_sprites()
+	_copy_pic_to_sprites(enemy_sheet)
+	var b := 0xE4
+	obp = 0
+	while true:   # .fadeInMarowakLoop: two bits of $e4 shifted in every ten frames
+		await GB.frames(10)
+		for k in 2:
+			var c := b & 1
+			b >>= 1
+			obp = (obp >> 1) | (c << 7)
+		S.obp1 = GBScreen.pal_byte(obp)
+		if b == 0:
+			break
+	_draw_sheet(enemy_sheet, 12, 0)   # hAutoBGTransferEnabled = 1
+	await GB.delay3()
+	S.clear_sprites()
+
+
+## CopyMonPicFromBGToSpriteVRAM: the inner 6x6 tiles of the enemy picture as OBP1 sprites.
+func _copy_pic_to_sprites(sheet_name: String) -> void:
+	var n := 0
+	for col in 6:
+		for row in 6:
+			S.set_sprite(n, 104 + col * 8, 8 + row * 8, S.pic_tile(sheet_name, col + 1, row + 1), 1)
+			n += 1
+
+
+## ItemUsePokeFlute in battle: every sleeping Pokémon of both sides wakes up; with any
+## asleep the flute plays (unless the low HP alarm sounds) before "All sleeping POKéMON
+## woke up".
+func _use_poke_flute() -> void:
+	var any_asleep := false
+	var mons: Array = state.party.duplicate()
+	if not is_wild:
+		mons += enemy_party
+	mons += [player_mon, enemy_mon]
+	for m in mons:
+		if m == null:
+			continue
+		if m.status & PartyMon.SLP_MASK:
+			any_asleep = true
+		m.status &= ~PartyMon.SLP_MASK
+	_draw_huds()
+	if not any_asleep:
+		await _text("_PlayedFluteNoEffectText")
+		took_turn = true
+		return
+	await _text("_PlayedFluteHadEffectText")
+	if Sound.low_health_alarm & 0x80 == 0:
+		await Sound.wait_for_sfx()
+		Sound.play_sfx("SFX_POKEFLUTE")   # Music_PokeFluteInBattle
+		await GB.frame
+		while Sound.ch_id[Sound.CHAN7] != 0:
+			await GB.frame
+	await _text("_FluteWokeUpText")
+	took_turn = true
 
 
 ## UseBagItem: a used item also spends a turn of the player's trapping move.
@@ -3878,6 +4018,15 @@ func _use_ball(item: String) -> void:
 		await _toss_ball_animation(item, 0)
 		await _text("_ThrowBallAtTrainerMonText1")
 		await _text("_ThrowBallAtTrainerMonText2")
+		state.remove_item(item, 1)
+		took_turn = true
+		return
+	if is_ghost or restless_soul:
+		# an unidentified ghost or the ghost MAROWAK can't be caught: the ball is dodged ($10)
+		await GB.frames(20)
+		await _toss_ball_animation(item, 0x10)
+		pic_dodged = true
+		await _text("_ItemUseBallText00")
 		state.remove_item(item, 1)
 		took_turn = true
 		return
