@@ -382,6 +382,28 @@ MAPS = {
     "ROUTE_12_GATE_1F": "Route12Gate1F",
     "ROUTE_12_GATE_2F": "Route12Gate2F",
     "ROUTE_12_SUPER_ROD_HOUSE": "Route12SuperRodHouse",
+    # chapter 9: Saffron City, the Fighting Dojo, Sabrina's gym, Silph Co.
+    "SAFFRON_CITY": "SaffronCity",
+    "SAFFRON_POKECENTER": "SaffronPokecenter",
+    "SAFFRON_MART": "SaffronMart",
+    "SAFFRON_PIDGEY_HOUSE": "SaffronPidgeyHouse",
+    "MR_PSYCHICS_HOUSE": "MrPsychicsHouse",
+    "COPYCATS_HOUSE_1F": "CopycatsHouse1F",
+    "COPYCATS_HOUSE_2F": "CopycatsHouse2F",
+    "FIGHTING_DOJO": "FightingDojo",
+    "SAFFRON_GYM": "SaffronGym",
+    "SILPH_CO_1F": "SilphCo1F",
+    "SILPH_CO_2F": "SilphCo2F",
+    "SILPH_CO_3F": "SilphCo3F",
+    "SILPH_CO_4F": "SilphCo4F",
+    "SILPH_CO_5F": "SilphCo5F",
+    "SILPH_CO_6F": "SilphCo6F",
+    "SILPH_CO_7F": "SilphCo7F",
+    "SILPH_CO_8F": "SilphCo8F",
+    "SILPH_CO_9F": "SilphCo9F",
+    "SILPH_CO_10F": "SilphCo10F",
+    "SILPH_CO_11F": "SilphCo11F",
+    "SILPH_CO_ELEVATOR": "SilphCoElevator",
 }
 
 
@@ -1163,8 +1185,10 @@ def export_trainers() -> None:
     team_moves = {a: b for a, b in re.findall(r"^\s*db\s+([A-Z_]+),\s*(\w+)", team_part, re.M)}
     out = {}
     for i, cls in enumerate(classes[1:], start=1):
-        label = f"{cls.title().replace('_', '')}Data:"
-        idx = txt.find(label)
+        # PSYCHIC_TR is PsychicData; a whole-line match keeps JugglerData apart from UnusedJugglerData
+        label = f"{ {'PSYCHIC_TR': 'Psychic'}.get(cls, cls.title().replace('_', '')) }Data:"
+        found = re.search(rf"^{label}", txt, re.M)
+        idx = found.start() if found else -1
         teams = []
         special = []
         if idx >= 0:

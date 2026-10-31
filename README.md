@@ -174,6 +174,23 @@ Godot 4에서 다시 구현한 프로젝트입니다. 화면은 160×144 게임�
     배틀 중 포켓몬피리는 양쪽의 잠든 포켓몬을 깨우고(잠든 포켓몬이 있을 때만 피리 연주 뒤 "모두 깨어났다") 턴을 씁니다.
     스모크: `GODOT=<콘솔판> python tools/chapter8_smoke.py --full`.
 
+## 구현 범위 (9챕터: 노랑시티 ~ 실프컴퍼니)
+
+48. 노랑시티(`SaffronCity.asm`): 로켓단원 9명이 집·체육관·실프컴퍼니 앞을 막고 있고(후지 노인을 구출하면 실프컴퍼니 앞 단원이 옆으로 비킴),
+    비주기를 이기면 로켓단이 사라지고 주민 6명이 나타남(`SilphCo11FTeamRocketLeavesScript`, 센터 벤치 남자의 대사도 바뀜). 포켓몬센터·상점·구구 집(구구 울음)·
+    초능력 아저씨(기술머신29)·흉내쟁이 집(1층 럭키 울음, 2층 흉내쟁이: 포켓몬인형을 가지고 있으면 기술머신31 과 교환, PC 는 위를 볼 때만 "비밀", 숨겨진 금덩이).
+49. 사천왕 도장(`FightingDojo.asm`): 블랙벨트 4명, 관장 앞(4,3)에 서면 관장이 돌아보며 말을 걸고 배틀, 이기면 도장 트레이너가 모두 물러나고 "포켓몬을 주겠다",
+    몬스터볼 두 개 중 하나(시라소몬/홍수몬: 도감 페이지 → 예/아니오 → Lv30, 나머지는 "욕심내지 마라"), 바닥 표지판·"사방이 적" 포스터(숨겨진 이벤트).
+    노랑체육관(`SaffronGym.asm`): 순간이동 패드 32개(FACILITY 타일셋의 워프 타일 $20, 같은 맵 안 워프), 채널러·초능력자 7명, 초련(마슈배지·기술머신46),
+    체육관 안내원, 동상(`GymStatues`: 노랑시티/초련).
+50. 실프컴퍼니 1F~11F·엘리베이터(`SilphCo1F.asm`~`SilphCo11F.asm`, `SilphCoElevator.asm`, `engine/events/card_key.asm`): 로켓단·과학자 트레이너 26명, 도구,
+    순간이동 패드, 카드키 문(맵 데이터는 문이 열린 상태이고 맵을 불러올 때 아직 안 연 문을 문 블록 $54/$5F(11층 $20)로 닫음; 문 앞에서 A 를 누르면
+    카드키가 있을 때 "빙고!" 뒤 바닥 블록 $0E(11층 $03)로 바뀌고 다음 프레임의 콜백이 그 문을 "연 문" 이벤트로 기록, 없으면 "카드키가 필요하다"),
+    5층 카드키, 7층 라이벌(두 칸 중 어디서 만났는지에 따라 걸어오는 걸음 수와 떠나는 길이 다름, RIVAL2 7~9번 팀), 라프라스 주는 사원(상자로 가면 버튼 대기),
+    9층 간호사(비주기를 이기기 전까지 흰 페이드 회복), 11층 사장(마스터볼)·비주기(두 칸 중 하나에 서면 세 걸음 내려와 마주 보고 배틀, 이기면 "계획을 망쳤다" 뒤
+    암전 중에 로켓단 전원이 사라짐), 1층 접수원(비주기를 이긴 뒤 복귀), 사원들의 대사는 비주기 전후로 다름, 엘리베이터 11층(Delay3 뒤 흔들림).
+    스모크: `GODOT=<콘솔판> python tools/chapter9_smoke.py --full`.
+
 ### 원작과 다른 점 (의도적 단순화)
 - 저장 파일은 JSON 이며 체크섬·손상 검사는 없습니다. 타이틀의 Up+B+Select 파일 삭제는 없습니다(파일을 지우면 됩니다).
 - SGB 속성은 화면 8×8 셀 단위라 스크롤 중 셀에 걸친 타일은 타일 왼쪽 위 기준 셀의 팔레트를 씁니다(1챕터에서 영역이 나뉘는 화면은 스크롤하지 않음).
@@ -242,8 +259,9 @@ scripts/game/map_scripts_chapter6.gd 6챕터(11번도로·게이트·디그다�
 scripts/game/map_scripts_chapter7.gd 7챕터 허브(7·8번도로 게이트·지하통로) + celadon_scripts.gd(무지개시티·백화점·맨션·체육관) + game_corner_scripts.gd(게임코너·경품)
                            + rocket_hideout_scripts.gd(아지트·화살표 타일) + slot_machine.gd + elevator.gd + vending_machine.gd + diploma.gd + give_pokemon.gd
 scripts/game/map_scripts_chapter8.gd 8챕터(포켓몬타워 3F~7F·12번도로·게이트·슈퍼낚싯대 집); 유령 배틀·마라 연출·포켓몬피리는 battle.gd
+scripts/game/map_scripts_chapter9.gd 9챕터(노랑시티·집들·사천왕 도장·노랑체육관) + silph_co_scripts.gd(실프컴퍼니 1F~11F·카드키 문·라이벌·비주기·엘리베이터)
                            + vermilion_scripts.gd(갈색시티·체육관·부두 출항) + ss_anne_scripts.gd(상선)
-tools/chapter4_smoke.py ... chapter8_smoke.py  챕터별 스모크(환경 변수 GODOT 에 콘솔판 경로, --full 로 배틀 포함)
+tools/chapter4_smoke.py ... chapter9_smoke.py  챕터별 스모크(환경 변수 GODOT 에 콘솔판 경로, --full 로 배틀 포함)
 scripts/game/*.gd          splash, intro, title, oak_speech, naming, overworld, map_scripts, pokedex_page, battle, party_mon,
                            pokecenter, pokemart, party_menu, status_screen, bag, item_use, pokedex_menu, town_map, dex_rating, mon_hud
 scripts/gb/list_menu.gd    DisplayListMenuID(가방·상점 목록)·수량 선택

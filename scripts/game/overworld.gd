@@ -95,6 +95,7 @@ func set_map_pal_offset(v: int) -> void:
 		print("MAP_PAL_OFFSET %d map=%s frame=%d" % [v, map_id, GB.frame_count])
 var no_battles := false           # wStatusFlags4 BIT_NO_BATTLES (NewBattle does nothing)
 var cut_blocks := {}              # blocks replaced by Cut in the loaded map (wOverworldMap edits)
+var load_count := 0               # one more per load_map (the BIT_CUR_MAP_LOADED callbacks)
 var strength_active := false      # wStatusFlags1 BIT_STRENGTH_ACTIVE
 var tried_push_boulder := false   # wMiscFlags BIT_TRIED_PUSH_BOULDER
 var boulder_dust := false         # wMiscFlags BIT_BOULDER_DUST
@@ -130,6 +131,9 @@ func run(reload: bool = true) -> void:
 	Text.vars["RIVAL"] = state.rival_name
 	if reload:
 		rng.randomize()
+		for arg in OS.get_cmdline_user_args():
+			if arg.begins_with("--seed="):
+				rng.seed = int(arg.get_slice("=", 1))   # test: deterministic NPC walks
 		scripts = MapScripts.new(self)
 		load_map(state.cur_map, state.x, state.y, state.facing)
 		_enter_map_music(false)
@@ -856,6 +860,7 @@ func load_map(id: String, x: int, y: int, facing: int) -> void:
 		for bx in w:
 			_put_block(bx, by, map["blocks"][by * w + bx], tileset)
 	cut_blocks = {}
+	load_count += 1
 	# LoadPlayerSpriteGraphics: off the bike where biking isn't allowed; surfing needs a
 	# tileset with animated water
 	if state.walk_bike_surf == 1 and not is_bike_riding_allowed():
@@ -1447,6 +1452,8 @@ func _pick_up_item(n: Dictionary) -> void:
 	if state.give_item(n.item, 1):
 		hide_object(n.index)
 		state.set_event("HIDE_%s_%d" % [map_id, n.index])
+		if "--trace-scripts" in OS.get_cmdline_user_args():
+			print("GOT_ITEM %s frame=%d" % [n.item, GB.frame_count])
 		Text.ram["wStringBuffer"] = GameData.item_name(n.item)
 		await Text.print_text_no_box("_FoundItemText")
 		await Sound.text_sound("sound_get_item_1")

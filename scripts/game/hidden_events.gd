@@ -33,6 +33,7 @@ const BENCH_GUYS := {
 	"CINNABAR_POKECENTER": "_CinnabarPokecenterGuyText",
 	"MT_MOON_POKECENTER": "_MtMoonPokecenterBenchGuyText",
 	"ROCK_TUNNEL_POKECENTER": "_RockTunnelPokecenterGuyText",
+	"SAFFRON_POKECENTER": "_SaffronCityPokecenterGuyText1",   # Text2 once Giovanni is beaten
 }
 
 ## MapBadgeFlags (data/maps/badge_maps.asm) and the gym names the gym scripts put in
@@ -43,6 +44,7 @@ const GYMS := {
 	"CERULEAN_GYM": {"bit": 1, "city_en": "CERULEAN CITY", "leader_en": "MISTY", "city_ko": "블루시티", "leader_ko": "이슬"},
 	"VERMILION_GYM": {"bit": 2, "city_en": "VERMILION CITY", "leader_en": "LT.SURGE", "city_ko": "갈색시티", "leader_ko": "마티스"},
 	"CELADON_GYM": {"bit": 3, "city_en": "CELADON CITY", "leader_en": "ERIKA", "city_ko": "무지개시티", "leader_ko": "민화"},
+	"SAFFRON_GYM": {"bit": 5, "city_en": "SAFFRON CITY", "leader_en": "SABRINA", "city_ko": "노랑시티", "leader_ko": "초련"},
 }
 
 static var TRACE := "--trace-pc" in OS.get_cmdline_user_args()   # test log
@@ -66,20 +68,20 @@ static func check(ow) -> bool:
 			await _run(ow, str(e["func"]), str(e["arg"]), i)
 			return true
 	# PrintBookshelfText: facing up, the tile in front against the tileset's bookshelf tiles
-	if ow.player.facing != Overworld.FACE_UP:
-		return false
-	var table: Dictionary = BOOKSHELVES.get(str(ow.map["tileset"]), {})
-	var tile: int = ow._tile_id_under(tx, ty)
-	if not table.has(tile):
-		return false
-	var label: String = table[tile]
-	if TRACE:
-		print("BOOKSHELF frame=%d tile=%02x %s" % [GB.frame_count, tile, label])
-	if label == "TOWN_MAP":
-		await _town_map_text(ow)
-	else:
-		await ow._show_overworld_text(label, true)
-	return true
+	if ow.player.facing == Overworld.FACE_UP:
+		var table: Dictionary = BOOKSHELVES.get(str(ow.map["tileset"]), {})
+		var tile: int = ow._tile_id_under(tx, ty)
+		if table.has(tile):
+			var label: String = table[tile]
+			if TRACE:
+				print("BOOKSHELF frame=%d tile=%02x %s" % [GB.frame_count, tile, label])
+			if label == "TOWN_MAP":
+				await _town_map_text(ow)
+			else:
+				await ow._show_overworld_text(label, true)
+			return true
+	# .noMatch: PrintCardKeyText (the Silph Co. doors)
+	return await ow.scripts.ch9.silph.card_key()
 
 
 static func _run(ow, func_name: String, arg: String, index: int = -1) -> void:
@@ -92,7 +94,16 @@ static func _run(ow, func_name: String, arg: String, index: int = -1) -> void:
 			await _hidden_coins(ow, arg)
 		"PrintBenchGuyText":
 			if facing == int(FACINGS.get(arg, -1)) and BENCH_GUYS.has(ow.map_id):
-				await ow._show_overworld_text(BENCH_GUYS[ow.map_id], true)
+				var label: String = BENCH_GUYS[ow.map_id]
+				if ow.map_id == "SAFFRON_POKECENTER" and state.has_event("EVENT_BEAT_SILPH_CO_GIOVANNI"):
+					label = "_SaffronCityPokecenterGuyText2"   # SaffronCityPokecenterBenchGuyText
+				await ow._show_overworld_text(label, true)
+		"PrintFightingDojoText":
+			await ow._show_overworld_text("_FightingDojoText", true)
+		"PrintFightingDojoText2":
+			await ow._show_overworld_text("_EnemiesOnEverySideText", true)
+		"PrintFightingDojoText3":
+			await ow._show_overworld_text("_WhatGoesAroundComesAroundText", true)
 		"PrintBookcaseText":
 			await ow._show_overworld_text("_BookcaseText", true)
 		"PrintRedSNESText":

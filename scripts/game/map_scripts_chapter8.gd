@@ -205,8 +205,8 @@ func _mr_fuji() -> void:
 	state.set_event("EVENT_RESCUED_MR_FUJI")
 	state.set_event("EVENT_RESCUED_MR_FUJI_2")
 	_show("MR_FUJIS_HOUSE", 4, true)    # TOGGLE_MR_FUJIS_HOUSE_MR_FUJI
-	_show("SAFFRON_CITY", 4, false)     # TOGGLE_SAFFRON_CITY_E (Rocket 5)
-	_show("SAFFRON_CITY", 5, true)      # TOGGLE_SAFFRON_CITY_F (Rocket 6)
+	_show("SAFFRON_CITY", 13, false)    # TOGGLE_SAFFRON_CITY_E (Rocket 8, in front of Silph Co.)
+	_show("SAFFRON_CITY", 14, true)     # TOGGLE_SAFFRON_CITY_F (Rocket 9, beside the door)
 	ms._set_script(4)
 
 
