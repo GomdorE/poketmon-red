@@ -159,7 +159,7 @@ Godot 4에서 다시 구현한 프로젝트입니다. 화면은 160×144 게임�
 45. 로켓단 아지트 B1F~B4F·엘리베이터(`RocketHideoutB1F.asm`~): B1F 문(다섯 번째 단원을 이기면 열림, 원작 버그대로 들어올 때마다 문 소리), B2F·B3F 화살표 타일
     (`DecodeArrowMovementRLE`: 좌표별 이동 목록을 뒤에서부터 시뮬레이션, 걷는 동안 플레이어가 빙글빙글 돌고 화살표 타일이 번갈아 애니메이션 `LoadSpinnerArrowTiles`),
     B4F 문(두 단원을 이기면 열림), 비주기(이기면 암전 뒤 사라지고 실프스코프가 놓임), 세 번째 단원을 이기고 말을 걸면 리프트키, 리프트키가 있어야 움직이는 엘리베이터.
-    테스트 인자 `--coins=N`. 스모크: `GODOT=<콘솔판> python tools/chapter7_smoke.py --full`.
+    테스트 인자 `--coins=N`, `--safari=볼:걸음`(사파리 게임 중), `--battle-map=맵`(배틀 스테이지의 현재 맵). 스모크: `GODOT=<콘솔판> python tools/chapter7_smoke.py --full`.
 
 ## 구현 범위 (8챕터: 포켓몬타워 3F~7F ~ 12번도로)
 
@@ -201,6 +201,21 @@ Godot 4에서 다시 구현한 프로젝트입니다. 화면은 160×144 게임�
     가방에서 자전거를 내릴 수 없고 "여기서는 내릴 수 없다", 파도타기는 "자전거가 즐겁다"), 버튼을 안 누르면 아래로 계속 내려감(`JoypadOverworld`,
     트레이너가 플레이어를 본 동안은 제외), 위·옆을 누르면 자전거 가속 없음. 게이트에 들어가거나 기절·공중날기를 하면 풀림. 18번도로(트레이너 3명).
     스모크: `GODOT=<콘솔판> python tools/chapter10_smoke.py --full`.
+
+## 구현 범위 (11챕터: 연분홍시티 · 사파리존)
+
+54. 연분홍시티(`FuchsiaCity.asm`: 포켓몬 우리 표지판은 텍스트 뒤 도감 페이지, 화석 표지판은 고르지 않은 화석의 포켓몬), 포켓몬센터·상점, 원장 집
+    (`WardensHouse.asm`, LAB 타일셋: 금틀니가 없으면 알아들을 수 없는 말과 예/아니오, 있으면 금틀니를 받고 비전머신04), 좋은낚싯대 집, 빌 할아버지 집, 회의실.
+    독수 체육관(`FuchsiaGym.asm`: 트레이너 6명, 독수 → 핑크배지·기술머신06, 동상).
+55. 사파리존(`SafariZoneGate.asm`, 4구역·쉼터 4곳·비밀의 집): 카운터 앞에 서면 직원이 말을 걸고(왼쪽 칸이면 한 칸 오른쪽으로 걸린 뒤) ¥500 에 사파리볼 30개·502걸음,
+    세 칸 위로 걸어 입장. 걸음마다 1씩 줄고(버튼 입력이 시뮬레이션 중이어도) 0 에서 한 걸음 더 가거나 사파리볼이 0 이 되면 방송 차임·"시간이 다 됐다"·
+    "게임 종료" 뒤 게이트 북문으로 워프되어 직원이 배웅. 도중에 게이트로 돌아오면 "그만둘래?"(예: 볼 반납 후 퇴장, 아니오: 다시 위로 한 칸).
+    스타트 메뉴에는 왼쪽 위에 "nnn/500"·"볼××n" 상자(`PrintSafariZoneSteps`). 비밀의 집 비전머신03, 서쪽 구역 금틀니.
+56. 사파리 배틀(`BATTLE_TYPE_SAFARI`, 4구역의 야생 배틀): 포켓몬을 내보내지 않고 메뉴가 "볼×nn 미끼 / 돌 던지기 도망". 사파리볼은 하이퍼볼과 같은 포획식에
+    던질 때마다 1개 소모, 미끼는 포획률 절반·먹는 턴 1~5, 돌은 포획률 2배(최대 255)·화난 턴 1~5(끝나면 포획률 원래대로), 매 턴 "먹고 있다/화가 났다" 뒤
+    (스피드 % 256)×2(미끼면 ÷4, 돌이면 ×2)의 확률로 도망(`WildRanText`, 슬라이드 아웃). 볼이 떨어지면 "사파리볼이 다 떨어졌다" 로 배틀 끝.
+    포획 계산의 난수는 원작처럼 범위를 넘으면 다시 뽑음(전에는 나머지 연산이었음).
+    스모크: `GODOT=<콘솔판> python tools/chapter11_smoke.py --full`.
 
 ### 원작과 다른 점 (의도적 단순화)
 - 저장 파일은 JSON 이며 체크섬·손상 검사는 없습니다. 타이틀의 Up+B+Select 파일 삭제는 없습니다(파일을 지우면 됩니다).
@@ -270,10 +285,11 @@ scripts/game/map_scripts_chapter6.gd 6챕터(11번도로·게이트·디그다�
 scripts/game/map_scripts_chapter7.gd 7챕터 허브(7·8번도로 게이트·지하통로) + celadon_scripts.gd(무지개시티·백화점·맨션·체육관) + game_corner_scripts.gd(게임코너·경품)
                            + rocket_hideout_scripts.gd(아지트·화살표 타일) + slot_machine.gd + elevator.gd + vending_machine.gd + diploma.gd + give_pokemon.gd
 scripts/game/map_scripts_chapter8.gd 8챕터(포켓몬타워 3F~7F·12번도로·게이트·슈퍼낚싯대 집); 유령 배틀·마라 연출·포켓몬피리는 battle.gd
+scripts/game/map_scripts_chapter11.gd 11챕터(연분홍시티·건물·독수 체육관·사파리존 게이트); 걸음 수·게임 종료는 overworld.gd, 사파리 배틀은 battle.gd
 scripts/game/map_scripts_chapter10.gd 10챕터(16·18번도로 게이트 자전거 검사·16번도로 잠만보·비전머신02 집·15번도로 게이트 박사 조수); 자전거 도로는 overworld.gd
 scripts/game/map_scripts_chapter9.gd 9챕터(노랑시티·집들·사천왕 도장·노랑체육관) + silph_co_scripts.gd(실프컴퍼니 1F~11F·카드키 문·라이벌·비주기·엘리베이터)
                            + vermilion_scripts.gd(갈색시티·체육관·부두 출항) + ss_anne_scripts.gd(상선)
-tools/chapter4_smoke.py ... chapter10_smoke.py  챕터별 스모크(환경 변수 GODOT 에 콘솔판 경로, --full 로 배틀 포함)
+tools/chapter4_smoke.py ... chapter11_smoke.py  챕터별 스모크(환경 변수 GODOT 에 콘솔판 경로, --full 로 배틀 포함)
 scripts/game/*.gd          splash, intro, title, oak_speech, naming, overworld, map_scripts, pokedex_page, battle, party_mon,
                            pokecenter, pokemart, party_menu, status_screen, bag, item_use, pokedex_menu, town_map, dex_rating, mon_hud
 scripts/gb/list_menu.gd    DisplayListMenuID(가방·상점 목록)·수량 선택

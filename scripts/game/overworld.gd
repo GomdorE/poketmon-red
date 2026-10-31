@@ -192,6 +192,10 @@ func run(reload: bool = true) -> void:
 			continue
 		var simulating := sim_queue.size() > 0
 		var held := _joypad()
+		# SafariZoneCheck: out of SAFARI BALLs in the Safari Zone ends the game
+		if state.has_event("EVENT_IN_SAFARI_ZONE") and state.safari_balls == 0:
+			await _safari_zone_game_over()
+			continue
 		# JoypadOverworld: on the Cycling Road, with no trainer battle coming and no button held,
 		# Down is held (before the simulated presses, which replace it)
 		if map_id == "ROUTE_17" and not trainer_battle and not simulating and (held & (GB.CTRL_PAD | GB.A | GB.B)) == 0:
@@ -543,6 +547,13 @@ func _after_step() -> void:
 		state.step_counter = (state.step_counter - 1) & 0xFF
 		if state.encounter_cooldown > 0:
 			state.encounter_cooldown -= 1
+	# SafariZoneCheckSteps (also while presses are simulated)
+	if state.has_event("EVENT_IN_SAFARI_ZONE"):
+		if state.safari_steps == 0:
+			await _safari_zone_game_over()
+			return
+		state.safari_steps -= 1
+	if sim_queue.is_empty() and follow_script.is_empty():
 		if await _apply_poison_step():
 			return
 	# CheckWarpsNoCollision
@@ -1584,6 +1595,7 @@ func _start_menu() -> void:
 		Menu.draw_box(10, 0, 8, 14 if has_dex else 12)
 		for i in items.size():
 			Text.place_string(12, 2 + i * 2, items[i])
+		_print_safari_zone_steps()
 		var keys := await Menu.handle_input(11, 2, items.size(), GB.A | GB.B | GB.START, 2, cur)
 		cur = Menu.current
 		start_menu_item = cur
@@ -1791,6 +1803,48 @@ func _do_boulder_dust_animation() -> void:
 	_reset_boulder_push_flags()
 	pushed_boulder = true
 	Sound.play_sfx("SFX_CUT")
+
+
+## SafariZoneGameOver: the PA chime (as music on channel 5), "time's up" (with balls left)
+## and "game over", then a warp to the gate's north door where the gate script sees the
+## player out (SCRIPT_SAFARIZONEGATE_LEAVING_SAFARI with EVENT_SAFARI_GAME_OVER).
+func _safari_zone_game_over() -> void:
+	Sound.fade_out_control = 0
+	Sound.stop_all_music()
+	Sound.play_sfx("SFX_SAFARI_ZONE_PA")
+	if "--trace-scripts" in OS.get_cmdline_user_args():
+		print("SAFARI_GAME_OVER balls=%d steps=%d frame=%d" % [state.safari_balls, state.safari_steps, GB.frame_count])
+	await display_text_id("TEXT_SAFARI_GAME_OVER", -1)
+	player.facing = FACE_DOWN   # wPlayerMovingDirection = 0
+	state.map_scripts["SAFARI_ZONE_GATE"] = 5   # SCRIPT_SAFARIZONEGATE_LEAVING_SAFARI
+	state.set_event("EVENT_SAFARI_GAME_OVER")
+	await warp_to("SAFARI_ZONE_GATE", 3)
+
+
+## PrintSafariZoneSteps (the start menu in the Safari Zone): "nnn/500" and "BALL×nn" in a
+## box at the top left; the leading digits are not written (PrintNumber).
+const SAFARI_STEP_MAPS := ["SAFARI_ZONE_EAST", "SAFARI_ZONE_NORTH", "SAFARI_ZONE_WEST", "SAFARI_ZONE_CENTER",
+	"SAFARI_ZONE_CENTER_REST_HOUSE", "SAFARI_ZONE_SECRET_HOUSE", "SAFARI_ZONE_WEST_REST_HOUSE",
+	"SAFARI_ZONE_EAST_REST_HOUSE", "SAFARI_ZONE_NORTH_REST_HOUSE"]
+
+
+func _print_safari_zone_steps() -> void:
+	if not map_id in SAFARI_STEP_MAPS:
+		return
+	Menu.draw_box(0, 0, 7, 3)
+	_print_number(1, 1, state.safari_steps, 3)
+	Text.place_string(4, 1, "/500")
+	Text.place_string(1, 3, "볼×× " if GameData.lang == "ko" else "BALL×× ")
+	if state.safari_balls < 10:
+		Text.put(5, 3, Text.SPACE)
+	_print_number(6, 3, state.safari_balls, 2)
+
+
+## PrintNumber without leading zeros: the leading digit places are skipped, not cleared.
+func _print_number(x: int, y: int, value: int, digits: int) -> void:
+	var s := str(value)
+	for i in s.length():
+		Text.place_string(x + digits - s.length() + i, y, s[i])
 
 
 ## CheckForceBikeOrSurf (EnterMap): the tiles beside the Cycling Road gates put the player

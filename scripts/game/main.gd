@@ -221,6 +221,12 @@ func _run() -> void:
 				state.last_map = arg.get_slice("=", 1)   # wLastMap (the LAST_MAP warps of indoor maps)
 			elif arg.begins_with("--coins="):
 				state.coins = int(arg.get_slice("=", 1))   # test: wPlayerCoins
+			elif arg.begins_with("--safari="):
+				# test: in the Safari Game with BALLS:STEPS left (EVENT_IN_SAFARI_ZONE)
+				var sf := arg.get_slice("=", 1)
+				state.safari_balls = int(sf.get_slice(":", 0))
+				state.safari_steps = int(sf.get_slice(":", 1))
+				state.set_event("EVENT_IN_SAFARI_ZONE")
 			elif arg == "--trade-mon":
 				# test: the first party mon came from a trade (another OT)
 				state.party[0].ot_name = "TRAINER"
@@ -269,6 +275,13 @@ func _run() -> void:
 					"name": state.rival_name, "win_text": "_Route22Rival1DefeatedText"}
 			elif arg == "--old-man":
 				req = {"type": "old_man", "species": "WEEDLE", "level": 5}
+			elif arg.begins_with("--battle-map="):
+				state.cur_map = arg.get_slice("=", 1)   # test: the map the battle happens on (wCurMap)
+			elif arg.begins_with("--safari="):
+				var sf := arg.get_slice("=", 1)
+				state.safari_balls = int(sf.get_slice(":", 0))
+				state.safari_steps = int(sf.get_slice(":", 1))
+				state.set_event("EVENT_IN_SAFARI_ZONE")
 		state.party = _parse_party(party_spec)
 		state.pokedex_owned[state.party[0].species] = true
 		state.pokedex_seen[state.party[0].species] = true

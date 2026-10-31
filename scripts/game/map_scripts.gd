@@ -17,6 +17,7 @@ var mtmoon: MtMoonScripts                   # chapter 4: Route 3, Mt. Moon, Rout
 var ch5: Chapter5Scripts                    # chapter 5: Route 9/10, Routes 5/6, Vermilion City
 var ch6: Chapter6Scripts                    # chapter 6: Route 11, Diglett's Cave, Route 2 east
 var ch7: Chapter7Scripts                    # chapter 7: Routes 7/8, Celadon City
+var ch11: Chapter11Scripts                  # chapter 11: Fuchsia City, the Safari Zone
 var ch10: Chapter10Scripts                  # chapter 10: Routes 13-18, the Cycling Road
 var ch9: Chapter9Scripts                    # chapter 9: Saffron City, Silph Co.
 var ch8: Chapter8Scripts                   # chapter 8: Pokémon Tower 3F-7F, Route 12
@@ -34,6 +35,7 @@ func _init(o: Overworld) -> void:
 	ch8 = Chapter8Scripts.new(self)
 	ch9 = Chapter9Scripts.new(self)
 	ch10 = Chapter10Scripts.new(self)
+	ch11 = Chapter11Scripts.new(self)
 
 
 func _script_index() -> int:
@@ -96,6 +98,8 @@ func run_map_script() -> void:
 			if await ch9.run_map_script():
 				return
 			if await ch10.run_map_script():
+				return
+			if await ch11.run_map_script():
 				return
 			# a map whose script table is only the trainer engine (most routes)
 			if not ow.map.get("trainer_headers", []).is_empty():
@@ -732,6 +736,8 @@ func text(text_id: String, npc_index: int) -> void:
 	if await ch9.text(text_id, npc_index):
 		return
 	if await ch10.text(text_id, npc_index):
+		return
+	if await ch11.text(text_id, npc_index):
 		return
 	match text_id:
 		# Pallet Town

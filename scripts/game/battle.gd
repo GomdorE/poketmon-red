@@ -33,6 +33,10 @@ var restless_soul := false    # wCurOpponent = RESTLESS_SOUL (the ghost of Cubon
 var ghost_pic := false        # the enemy is drawn as the GhostPic and called "GHOST"
 var pic_dodged := false       # the enemy picture was shifted by the dodge (restored at the next menu)
 var is_old_man := false       # BATTLE_TYPE_OLD_MAN
+var is_safari := false        # BATTLE_TYPE_SAFARI (a wild battle in the Safari Zone's four areas)
+var actual_catch_rate := 0    # wEnemyMonActualCatchRate (halved by BAIT, doubled by a ROCK)
+var safari_bait := 0          # wSafariBaitFactor
+var safari_escape := 0        # wSafariEscapeFactor
 var trainer_class := ""
 var trainer_pic := "pic_trainer_rival1"
 var player_mon: PartyMon
@@ -119,6 +123,9 @@ func run() -> String:
 		ghost_pic = is_ghost or restless_soul
 		if ghost_pic:
 			enemy_party[0].nickname = "고스트" if GameData.lang == "ko" else "GHOST"
+		# InitBattleVariables: SAFARI_ZONE_EAST <= wCurMap < SAFARI_ZONE_CENTER_REST_HOUSE
+		is_safari = not is_old_man and str(state.cur_map) in SAFARI_AREAS
+		actual_catch_rate = int(GameData.pokemon[sp]["catch_rate"])
 	else:
 		trainer_class = str(request["trainer"])
 		var tdata: Dictionary = GameData.trainers.get(trainer_class, {})
@@ -426,11 +433,14 @@ func _intro() -> void:
 		await _enemy_send_out(true)
 
 
-## StartBattle: the player's first mon (or the old man's scripted menu).
+## StartBattle: the player's first mon (or the old man's scripted menu, or the Safari menu).
 func _start_battle() -> void:
 	await GB.frames(40)
 	if is_old_man:
 		await _old_man_battle()
+		return
+	if is_safari:
+		await _safari_battle()
 		return
 	await _slide_pic(1, 5, 9, -1)
 	gain_exp_flags[player_index] = true
@@ -3701,7 +3711,7 @@ func _try_run(player_speed: int) -> bool:
 	var enemy_speed: int = es.stats.spd
 	run_attempts += 1
 	var escaped := false
-	if is_ghost:
+	if is_ghost or is_safari:   # TryRunningFromBattle .canEscape
 		escaped = true
 	elif player_speed > enemy_speed:
 		escaped = true
@@ -4004,6 +4014,8 @@ func _use_ball(item: String) -> void:
 	if is_wild and not is_old_man and state.party.size() >= 6 and state.box.size() >= 20:
 		await _text("_BoxFullCannotThrowBallText")
 		return
+	if is_safari:
+		state.safari_balls -= 1   # .safariZone: a SAFARI BALL is used up whatever happens
 	# ItemUseText00: "<PLAYER> used <item>!"
 	Text.ram["wStringBuffer"] = GameData.item_name(item)
 	Menu.message_box()
@@ -4037,11 +4049,12 @@ func _use_ball(item: String) -> void:
 		caught = true
 		shakes = 3
 	else:
+		# Rand1: rerolled until <= 200 (GREAT) / <= 150 (ULTRA, SAFARI)
 		var rand1 := rng.randi_range(0, 255)
-		if item == "GREAT_BALL":
-			rand1 = rand1 % 201
-		elif item == "ULTRA_BALL":
-			rand1 = rand1 % 151
+		while item != "POKE_BALL" and rand1 > 200:
+			rand1 = rng.randi_range(0, 255)
+		while item in ["ULTRA_BALL", "SAFARI_BALL"] and rand1 > 150:
+			rand1 = rng.randi_range(0, 255)
 		var status_value := 0
 		if enemy_mon.status & (PartyMon.FRZ | PartyMon.SLP_MASK):
 			status_value = 25
@@ -4054,7 +4067,7 @@ func _use_ball(item: String) -> void:
 			var ball_factor := 8 if item == "GREAT_BALL" else 12
 			var x: int = (enemy_mon.max_hp * 255 / ball_factor) / maxi(enemy_mon.hp / 4, 1)
 			x = mini(x, 255)
-			var catch_rate: int = GameData.pokemon[enemy_mon.species]["catch_rate"]
+			var catch_rate: int = actual_catch_rate   # wEnemyMonActualCatchRate
 			if rand1 > catch_rate:
 				caught = false
 			else:
@@ -4062,11 +4075,11 @@ func _use_ball(item: String) -> void:
 				caught = rand2 <= x
 			if not caught:
 				# the number of shakes
-				var factor2 := 255
-				if item == "GREAT_BALL":
+				var factor2 := 150   # ULTRA_BALL / SAFARI_BALL (BallFactor2)
+				if item == "POKE_BALL":
+					factor2 = 255
+				elif item == "GREAT_BALL":
 					factor2 = 200
-				elif item == "ULTRA_BALL":
-					factor2 = 150
 				var y: int = catch_rate * 100 / factor2
 				var z: int = x * y / 255
 				if enemy_mon.status & (PartyMon.FRZ | PartyMon.SLP_MASK):
@@ -4092,7 +4105,8 @@ func _use_ball(item: String) -> void:
 			await _text("_ItemUseBallText01")
 		else:
 			await _text(["_ItemUseBallText02", "_ItemUseBallText02", "_ItemUseBallText03", "_ItemUseBallText04"][shakes])
-		state.remove_item(item, 1)
+		if not is_safari:
+			state.remove_item(item, 1)
 		took_turn = true
 		return
 	# caught
@@ -4132,9 +4146,12 @@ func _use_ball(item: String) -> void:
 		state.box.append(enemy_mon)
 		Text.ram["wBoxMonNicks"] = enemy_mon.nickname
 		await _text("_ItemUseBallText07" if state.has_event("EVENT_MET_BILL") else "_ItemUseBallText08")
-	state.remove_item(item, 1)
+	if not is_safari:
+		state.remove_item(item, 1)
 	result = "caught"
 	battle_over = true
+	if trace:
+		print("BATTLE_CAUGHT %s ball=%s" % [sp, item])
 
 
 ## AskName (engine/menus/naming_screen.asm): "Do you want to give a nickname to X?"
@@ -4155,6 +4172,156 @@ func _ask_nickname(mon: PartyMon) -> void:
 ## TossBallAnimation through the animation engine with wPokeBallAnimData.
 func _toss_ball_animation(item: String, anim_data: int) -> void:
 	await BattleAnim.toss_ball(self, anim_data, item)
+
+
+# --- the Safari Game ---------------------------------------------------------------------
+
+const SAFARI_AREAS := ["SAFARI_ZONE_EAST", "SAFARI_ZONE_NORTH", "SAFARI_ZONE_WEST", "SAFARI_ZONE_CENTER"]
+
+
+## StartBattle .displaySafariZoneBattleMenu: no mon is sent out; each turn is a SAFARI BALL,
+## BAIT, a ROCK or RUN, then (with balls left) the eating/angry text and the chance that the
+## mon runs: (speed % 256) * 2, quartered after BAIT, doubled after a ROCK; 256+ always runs.
+func _safari_battle() -> void:
+	var saved := S.snapshot_bg()   # SaveScreenTilesToBuffer1
+	while true:
+		took_turn = false
+		S.restore_bg(saved)
+		var action := await _safari_menu()
+		if trace:
+			print("BATTLE_ACTION frame=%d %s balls=%d" % [GB.frame_count, action, state.safari_balls])
+		match action:
+			"ball": await _use_ball("SAFARI_BALL")
+			"bait": await _throw_bait_or_rock(true, saved)
+			"rock": await _throw_bait_or_rock(false, saved)
+			"run":
+				await _try_run(0)
+				return
+		if battle_over:
+			return
+		if not took_turn:
+			continue
+		if state.safari_balls == 0:
+			S.restore_bg(saved)
+			await _text("_OutOfSafariBallsText")
+			result = "ran"
+			battle_over = true
+			return
+		await _safari_battle_text(saved)
+		var b: int = (es.stats.spd % 256) * 2
+		if b > 255:
+			await _enemy_ran(saved)
+			return
+		if safari_bait > 0:
+			b >>= 2
+		if safari_escape > 0:
+			b = mini(b << 1, 255)
+		if rng.randi_range(0, 255) < b:
+			await _enemy_ran(saved)
+			return
+
+
+## DisplayBattleMenu with SAFARI_BATTLE_MENU_TEMPLATE: "BALL×nn  BAIT / THROW ROCK  RUN";
+## the cursor sits at x 1 (left) or 13 (right). Returns "ball", "bait", "rock" or "run".
+func _safari_menu() -> String:
+	Menu.draw_box(0, 12, 18, 4)
+	if GameData.lang == "ko":
+		Text.place_string(2, 14, "볼×       미끼")
+		Text.place_string(2, 16, "돌 던지기  도망")
+	else:
+		Text.place_string(2, 14, "BALL×       BAIT")
+		Text.place_string(2, 16, "THROW ROCK  RUN")
+	var n := str(state.safari_balls)   # PrintNumber 1 byte, 2 digits
+	for i in n.length():
+		Text.place_string(7 + 2 - n.length() + i, 14, n[i])
+	if trace:
+		print("BATTLE_MENU frame=%d safari balls=%d enemy=%s %d/%d" % [GB.frame_count, state.safari_balls, enemy_mon.nickname, enemy_mon.hp, enemy_mon.max_hp])
+	var positions := [Vector2i(1, 14), Vector2i(13, 14), Vector2i(1, 16), Vector2i(13, 16)]
+	var cur := saved_menu
+	Menu.place_cursor(positions[cur].x, positions[cur].y)
+	while true:
+		await GB.frame
+		var keys := GB.joy5
+		if keys == 0:
+			continue
+		var next := cur
+		if keys & GB.RIGHT and (cur % 2) == 0:
+			next = cur + 1
+		elif keys & GB.LEFT and (cur % 2) == 1:
+			next = cur - 1
+		elif keys & GB.DOWN and cur < 2:
+			next = cur + 2
+		elif keys & GB.UP and cur >= 2:
+			next = cur - 2
+		if next != cur:
+			Menu.erase_cursor()
+			cur = next
+			Menu.place_cursor(positions[cur].x, positions[cur].y)
+		if keys & GB.A:
+			break
+	Text.put(positions[cur].x, positions[cur].y, UNFILLED_CURSOR)   # PlaceUnfilledArrowMenuCursor
+	saved_menu = cur
+	return ["ball", "bait", "rock", "run"][cur]
+
+
+## ItemUseBait / ItemUseRock + BaitRockCommon: the text, the catch rate halved (BAIT) or
+## doubled (ROCK, at most 255), the other factor cleared and this one raised by 1-5, the
+## animation, 70 frames.
+func _throw_bait_or_rock(bait: bool, saved: PackedInt32Array) -> void:
+	S.restore_bg(saved)
+	await _text("_ThrewBaitText" if bait else "_ThrewRockText")
+	if bait:
+		actual_catch_rate >>= 1
+		safari_escape = 0
+	else:
+		actual_catch_rate = mini(actual_catch_rate * 2, 255)
+		safari_bait = 0
+	var r := rng.randi_range(0, 7)
+	while r >= 5:
+		r = rng.randi_range(0, 7)
+	if bait:
+		safari_bait = mini(safari_bait + r + 1, 255)
+	else:
+		safari_escape = mini(safari_escape + r + 1, 255)
+	var a := BattleAnim.new(self, true)   # hWhoseTurn = 0, wAnimationType = 0
+	a.anim_id = BattleAnim.id_of("BAIT_ANIM" if bait else "ROCK_ANIM")
+	a.anim_type = 0
+	await a._move_animation()
+	await GB.frames(70)
+	took_turn = true
+	if trace:
+		print("SAFARI_%s catch_rate=%d bait=%d escape=%d" % ["BAIT" if bait else "ROCK", actual_catch_rate, safari_bait, safari_escape])
+
+
+## PrintSafariZoneBattleText: "eating" while the bait lasts, else "angry" while the rock
+## does; when the anger wears off the catch rate is the species' again.
+func _safari_battle_text(saved: PackedInt32Array) -> void:
+	var label := ""
+	if safari_bait > 0:
+		safari_bait -= 1
+		label = "_SafariZoneEatingText"
+	elif safari_escape > 0:
+		safari_escape -= 1
+		label = "_SafariZoneAngryText"
+		if safari_escape == 0:
+			actual_catch_rate = int(GameData.pokemon[enemy_mon.species]["catch_rate"])
+	else:
+		return
+	Text.ram["wEnemyMonNick"] = enemy_mon.nickname
+	S.restore_bg(saved)
+	await _text(label)
+
+
+## EnemyRan: "Wild X ran!", SFX_RUN, the mon slides off.
+func _enemy_ran(saved: PackedInt32Array) -> void:
+	S.restore_bg(saved)
+	Text.ram["wEnemyMonNick"] = enemy_mon.nickname
+	await _text("_WildRanText")
+	await Sound.play_sfx_wait_for_current("SFX_RUN")
+	var a := BattleAnim.new(self, true)
+	await a._slide_mon_off(false, 8, 3)
+	result = "ran"
+	battle_over = true
 
 
 ## The old man's catch demonstration (DisplayBattleMenu .oldManBattle,

@@ -201,6 +201,7 @@ TILESET_FILES = {
     "LOBBY": ("lobby", "lobby"),
     "MANSION": ("mansion", "mansion"),
     "FACILITY": ("facility", "facility"),
+    "LAB": ("lab", "lab"),
 }
 TILESET_COLL_LABEL = {
     "OVERWORLD": "Overworld_Coll",
@@ -225,6 +226,7 @@ TILESET_COLL_LABEL = {
     "LOBBY": "Lobby_Coll",
     "MANSION": "Mansion_Coll",
     "FACILITY": "Facility_Coll",
+    "LAB": "Lab_Coll",
 }
 TILESET_INDEX = {  # order of the Tilesets table (constants/tileset_constants.asm)
     "OVERWORLD": 0, "REDS_HOUSE_1": 1, "MART": 2, "FOREST": 3, "REDS_HOUSE_2": 4, "DOJO": 5,
@@ -237,7 +239,7 @@ TILESET_GRASS = {"OVERWORLD": 0x52, "FOREST": 0x20, "CAVERN": -1, "CLUB": -1, "I
 TILESET_COUNTER = {"DOJO": [0x3A], "MART": [0x18, 0x19, 0x1E], "POKECENTER": [0x18, 0x19, 0x1E], "GYM": [0x3A],
                    "FOREST_GATE": [0x17, 0x32], "GATE": [0x17, 0x32], "MUSEUM": [0x17, 0x32],
                    "CLUB": [0x07, 0x17], "CAVERN": [], "INTERIOR": [], "SHIP": [], "CEMETERY": [0x12],
-                   "LOBBY": [0x15, 0x36], "MANSION": [], "FACILITY": [0x12]}
+                   "LOBBY": [0x15, 0x36], "MANSION": [], "FACILITY": [0x12], "LAB": []}
 
 MAPS = {
     "PALLET_TOWN": "PalletTown",
@@ -418,6 +420,25 @@ MAPS = {
     "ROUTE_18": "Route18",
     "ROUTE_18_GATE_1F": "Route18Gate1F",
     "ROUTE_18_GATE_2F": "Route18Gate2F",
+    # chapter 11: Fuchsia City and the Safari Zone
+    "FUCHSIA_CITY": "FuchsiaCity",
+    "FUCHSIA_MART": "FuchsiaMart",
+    "FUCHSIA_BILLS_GRANDPAS_HOUSE": "FuchsiaBillsGrandpasHouse",
+    "FUCHSIA_POKECENTER": "FuchsiaPokecenter",
+    "WARDENS_HOUSE": "WardensHouse",
+    "SAFARI_ZONE_GATE": "SafariZoneGate",
+    "FUCHSIA_GYM": "FuchsiaGym",
+    "FUCHSIA_MEETING_ROOM": "FuchsiaMeetingRoom",
+    "FUCHSIA_GOOD_ROD_HOUSE": "FuchsiaGoodRodHouse",
+    "SAFARI_ZONE_EAST": "SafariZoneEast",
+    "SAFARI_ZONE_NORTH": "SafariZoneNorth",
+    "SAFARI_ZONE_WEST": "SafariZoneWest",
+    "SAFARI_ZONE_CENTER": "SafariZoneCenter",
+    "SAFARI_ZONE_CENTER_REST_HOUSE": "SafariZoneCenterRestHouse",
+    "SAFARI_ZONE_SECRET_HOUSE": "SafariZoneSecretHouse",
+    "SAFARI_ZONE_WEST_REST_HOUSE": "SafariZoneWestRestHouse",
+    "SAFARI_ZONE_EAST_REST_HOUSE": "SafariZoneEastRestHouse",
+    "SAFARI_ZONE_NORTH_REST_HOUSE": "SafariZoneNorthRestHouse",
 }
 
 
@@ -657,13 +678,14 @@ WARP_LABELS = {
     "LOBBY": ".LobbyWarpTileIDs",
     "MANSION": ".MansionWarpTileIDs",
     "FACILITY": ".FacilityWarpTileIDs",
+    "LAB": ".LabWarpTileIDs",
 }
 DOOR_LABELS = {"OVERWORLD": ".OverworldDoorTileIDs", "HOUSE": ".HouseDoorTileIDs", "MART": ".MartDoorTileIDs",
                "POKECENTER": ".MartDoorTileIDs", "FOREST": ".ForestDoorTileIDs",
                "FOREST_GATE": ".TilesetMuseumDoorTileIDs", "MUSEUM": ".TilesetMuseumDoorTileIDs",
                "GATE": ".TilesetMuseumDoorTileIDs", "CAVERN": "__none__",
                "CLUB": "__none__", "INTERIOR": "__none__", "SHIP": ".ShipDoorTileIDs", "UNDERGROUND": "__none__", "SHIP_PORT": "__none__", "CEMETERY": "__none__",
-               "LOBBY": ".LobbyDoorTileIDs", "MANSION": ".MansionDoorTileIDs", "FACILITY": ".FacilityDoorTileIDs"}
+               "LOBBY": ".LobbyDoorTileIDs", "MANSION": ".MansionDoorTileIDs", "FACILITY": ".FacilityDoorTileIDs", "LAB": ".LabDoorTileIDs"}
 
 
 def parse_tileset_anims() -> dict[str, int]:

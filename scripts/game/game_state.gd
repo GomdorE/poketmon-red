@@ -25,6 +25,8 @@ var repel_steps := 0        # wRepelRemainingSteps
 var town_visited: Array = []   # wTownVisitedFlag (city map ids, for Fly)
 var walk_bike_surf := 0        # wWalkBikeSurfState: 0 walking, 1 biking, 2 surfing
 var always_on_bike := false    # wStatusFlags6 BIT_ALWAYS_ON_BIKE (the Cycling Road)
+var safari_balls := 0          # wNumSafariBalls
+var safari_steps := 0          # wSafariSteps
 var player_id := 0        # wPlayerID: random per new game, identifies the save file
 var boxes: Array = []     # sBox1..sBox12: 12 boxes of PartyMon (MONS_PER_BOX = 20 each)
 var current_box := 0      # wCurrentBoxNum
@@ -63,7 +65,7 @@ func to_dict() -> Dictionary:
 		"player_name": player_name, "rival_name": rival_name, "player_id": player_id, "events": events,
 		"starter": starter, "rival_starter": rival_starter, "party": mons, "items": items, "money": money, "coins": coins,
 		"cur_map": cur_map, "x": x, "y": y, "facing": facing, "last_map": last_map,
-		"pokedex_seen": pokedex_seen, "pokedex_owned": pokedex_owned, "map_scripts": map_scripts, "badges": badges, "beat_gym_flags": beat_gym_flags, "repel_steps": repel_steps, "town_visited": town_visited, "walk_bike_surf": walk_bike_surf, "always_on_bike": always_on_bike,
+		"pokedex_seen": pokedex_seen, "pokedex_owned": pokedex_owned, "map_scripts": map_scripts, "badges": badges, "beat_gym_flags": beat_gym_flags, "repel_steps": repel_steps, "town_visited": town_visited, "walk_bike_surf": walk_bike_surf, "always_on_bike": always_on_bike, "safari_balls": safari_balls, "safari_steps": safari_steps,
 		"boxes": boxed, "current_box": current_box, "pc_items": pc_items,
 		"last_blackout_map": last_blackout_map, "step_counter": step_counter,
 		"completed_trades": completed_trades,
@@ -98,6 +100,8 @@ func from_dict(d: Dictionary) -> void:
 	town_visited = d.get("town_visited", [])
 	walk_bike_surf = int(d.get("walk_bike_surf", 0))
 	always_on_bike = bool(d.get("always_on_bike", false))
+	safari_balls = int(d.get("safari_balls", 0))
+	safari_steps = int(d.get("safari_steps", 0))
 	boxes = []
 	for i in 12:
 		boxes.append([])

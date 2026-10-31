@@ -17,6 +17,8 @@ const BOOKSHELVES := {
 	"POKECENTER": {0x54: "_PokemonStuffText", 0x55: "_PokemonStuffText"},
 	"LOBBY": {0x16: "_ElevatorText", 0x50: "_PokemonStuffText", 0x52: "_PokemonStuffText"},
 	"MANSION": {0x32: "_PokemonBooksText"},
+	"LAB": {0x28: "_PokemonBooksText"},
+	"SHIP": {0x36: "_PokemonBooksText"},
 }
 
 const FACINGS := {"SPRITE_FACING_UP": 4, "SPRITE_FACING_DOWN": 0, "SPRITE_FACING_LEFT": 8, "SPRITE_FACING_RIGHT": 12}
@@ -34,6 +36,7 @@ const BENCH_GUYS := {
 	"MT_MOON_POKECENTER": "_MtMoonPokecenterBenchGuyText",
 	"ROCK_TUNNEL_POKECENTER": "_RockTunnelPokecenterGuyText",
 	"SAFFRON_POKECENTER": "_SaffronCityPokecenterGuyText1",   # Text2 once Giovanni is beaten
+	"CELADON_HOTEL": "_CeladonCityHotelText",
 }
 
 ## MapBadgeFlags (data/maps/badge_maps.asm) and the gym names the gym scripts put in
@@ -44,6 +47,7 @@ const GYMS := {
 	"CERULEAN_GYM": {"bit": 1, "city_en": "CERULEAN CITY", "leader_en": "MISTY", "city_ko": "블루시티", "leader_ko": "이슬"},
 	"VERMILION_GYM": {"bit": 2, "city_en": "VERMILION CITY", "leader_en": "LT.SURGE", "city_ko": "갈색시티", "leader_ko": "마티스"},
 	"CELADON_GYM": {"bit": 3, "city_en": "CELADON CITY", "leader_en": "ERIKA", "city_ko": "무지개시티", "leader_ko": "민화"},
+	"FUCHSIA_GYM": {"bit": 4, "city_en": "FUCHSIA CITY", "leader_en": "KOGA", "city_ko": "연분홍시티", "leader_ko": "독수"},
 	"SAFFRON_GYM": {"bit": 5, "city_en": "SAFFRON CITY", "leader_en": "SABRINA", "city_ko": "노랑시티", "leader_ko": "초련"},
 }
 
@@ -93,7 +97,9 @@ static func _run(ow, func_name: String, arg: String, index: int = -1) -> void:
 		"HiddenCoins":
 			await _hidden_coins(ow, arg)
 		"PrintBenchGuyText":
-			if facing == int(FACINGS.get(arg, -1)) and BENCH_GUYS.has(ow.map_id):
+			# BenchGuyTextPointers: every entry wants the player facing left (the event's own
+			# facing argument is not read)
+			if facing == Overworld.FACE_LEFT and BENCH_GUYS.has(ow.map_id):
 				var label: String = BENCH_GUYS[ow.map_id]
 				if ow.map_id == "SAFFRON_POKECENTER" and state.has_event("EVENT_BEAT_SILPH_CO_GIOVANNI"):
 					label = "_SaffronCityPokecenterGuyText2"   # SaffronCityPokecenterBenchGuyText

@@ -42,22 +42,24 @@ git clone https://github.com/GomdorE/poketmon-red.git pokered-godot
 - 8챕터: 포켓몬타워 3F~7F(유령 배틀·정화 구역·마라의 유령·후지 구출), 12번도로(게이트·슈퍼낚싯대·잠만보·포켓몬피리).
 - 9챕터: 노랑시티 전체(집들·사천왕 도장·노랑체육관 순간이동 패드·초련), 실프컴퍼니 1F~11F(카드키 문·라이벌·라프라스·마스터볼·비주기·엘리베이터).
 - 10챕터: 13~18번도로·게이트(자전거 검사·경험치나눔이·교환), 자전거 도로(강제 자전거·내리막), 16번도로 잠만보·비전머신02.
+- 11챕터: 연분홍시티(원장 비전머신04·좋은낚싯대·독수 체육관), 사파리존(게이트·걸음 수·게임 종료·4구역·비전머신03), 사파리 배틀(볼·미끼·돌·도망).
 
 ## 하던 일 (멈춘 지점)
 
-**10챕터 포팅 완료** (2026-10-31): 13·14·15번도로, 15번도로 게이트(박사 조수 경험치나눔이·프리져 망원경), 16번도로(잠만보·비전머신02 집),
-16·18번도로 게이트(자전거 검사), 자전거 도로(17번), 18번도로.
+**11챕터 포팅 완료** (2026-11-01): 연분홍시티(센터·상점·원장 집·좋은낚싯대 집·빌 할아버지 집·회의실·독수 체육관), 사파리존(게이트·동서남북 구역·쉼터·비밀의 집),
+사파리 게임(¥500·볼 30개·502걸음·게임 종료 워프)과 사파리 배틀.
 
-- 코드: `scripts/game/map_scripts_chapter10.gd`. 엔진: `GameState.always_on_bike`(BIT_ALWAYS_ON_BIKE, 저장됨), `Overworld.check_force_bike()`(워프로 맵에 들어올 때·게임 시작),
-  `Overworld.trainer_battle`(BIT_TRAINER_BATTLE, 17번도로 내리막 예외), 가방 자전거·파도타기 제한, 포켓몬피리 16번도로 좌표, `HiddenEvents._mon_popup`.
-  버그 수정: `tools/export_data.py` 의 도구 공·상점 TM 이름(`TM_RAGE` → `TM20`; 4챕터부터 TM 공 16개를 주우면 이름 없는 도구가 생겼고 무지개 백화점 2층 TM 이 깨졌음).
-- 스모크: `GODOT=<콘솔판 경로> python tools/chapter10_smoke.py --full`. 4~9챕터 스모크도 PASS 해야 함(동시에 여러 Godot 를 돌리면 타이밍이 흔들리니 순서대로).
-- 아직 없는 것: 분홍시티(15·18번도로 서쪽, 19번수로 북쪽 연결 막힘), 사파리존.
+- 코드: `scripts/game/map_scripts_chapter11.gd`. 엔진: `GameState.safari_balls/safari_steps`(저장), `Overworld._safari_zone_game_over()`·`_print_safari_zone_steps()`,
+  `Battle.is_safari`(`_safari_battle`·`_safari_menu`·`_throw_bait_or_rock`·`_enemy_ran`, `actual_catch_rate`), LAB 타일셋, 벤치 남자는 표의 방향(왼쪽)만 봄.
+  테스트 인자 `--safari=볼:걸음`, `--battle-map=맵`.
+- 회귀는 작업 트리를 건드리지 않게 스크래치 폴더의 스냅샷 복사본(`dist`·`.tmp`·`.git` 제외, 약 10 MB)에서 돌림.
+- 스모크: `GODOT=<콘솔판 경로> python tools/chapter11_smoke.py --full`. 4~10챕터 스모크도 PASS 해야 함(여러 Godot 를 동시에 돌리면 8챕터 유령 케이스가 흔들림).
+- 아직 없는 것: 19·20번수로·쌍둥이섬(연분홍시티 남쪽 연결 막힘), 홍련섬.
 
 ## 그다음
 
-- 10챕터 exe 는 만들어 둠(`dist/PokemonRed-Godot-Chapter10.exe`, 커밋 안 함). 다시 만들려면 `--export-release "Windows Desktop" dist/PokemonRed-Godot-Chapter10.exe`.
-- 11챕터 후보: 분홍시티 전체(독수 체육관·핑크배지, 사파리존 입구·사파리존 4구역과 쉼터·비밀의 집 비전머신03·금틀니, 원장 집 낚싯대, 빌 할아버지, 상점·센터) + 사파리 배틀(돌·미끼·사파리볼, 걸음 수 제한).
+- 11챕터 exe 는 만들어 둠(`dist/PokemonRed-Godot-Chapter11.exe`, 커밋 안 함). 다시 만들려면 `--export-release "Windows Desktop" dist/PokemonRed-Godot-Chapter11.exe`.
+- 12챕터 후보: 19·20번수로(파도타기 트레이너)·쌍둥이섬(B1F~B4F 괴력 바위·해류·프리져, `force_bike_surf` 의 해류 강제 파도타기), 21번수로, 홍련섬(포켓몬 저택 1F~B1F 스위치·연구소 화석 복원·강연 체육관 퀴즈 문).
 - 아직 없는 것: 알낳기(필드), 교환 포켓몬 말 안 듣기, 통신 배틀, 학습장치.
 - 게임 전체가 끝나면: 실행 파일 용량 최적화(축소 export 템플릿, PCK 분리), 저장소 정리(assets 제외 등).
 
@@ -74,7 +76,7 @@ git clone https://github.com/GomdorE/poketmon-red.git pokered-godot
 
 ```text
 pokered-godot (포켓몬 레드 Godot 재구현) 작업을 이어서 하자. 먼저 HANDOFF.md 와 README.md 를 읽어.
-10챕터(13~18번도로·자전거 도로)는 끝났고 10챕터 exe 도 있어.
-HANDOFF.md 의 "그다음" 순서대로 11챕터(분홍시티·사파리존)로 넘어가.
-원작과 똑같이, 혼자 진행하고, 커밋은 한글로. 구역마다 스모크(tools/chapter11_smoke.py 를 같은 방식으로) PASS 뒤 커밋.
+11챕터(연분홍시티·사파리존)는 끝났고 11챕터 exe 도 있어.
+HANDOFF.md 의 "그다음" 순서대로 12챕터(19·20번수로·쌍둥이섬 → 홍련섬)로 넘어가.
+원작과 똑같이, 혼자 진행하고, 커밋은 한글로. 구역마다 스모크(tools/chapter12_smoke.py 를 같은 방식으로) PASS 뒤 커밋.
 ```
