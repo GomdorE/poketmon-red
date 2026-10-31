@@ -191,6 +191,17 @@ Godot 4에서 다시 구현한 프로젝트입니다. 화면은 160×144 게임�
     암전 중에 로켓단 전원이 사라짐), 1층 접수원(비주기를 이긴 뒤 복귀), 사원들의 대사는 비주기 전후로 다름, 엘리베이터 11층(Delay3 뒤 흔들림).
     스모크: `GODOT=<콘솔판> python tools/chapter9_smoke.py --full`.
 
+## 구현 범위 (10챕터: 13~18번도로 · 자전거 도로)
+
+51. 13·14·15번도로(트레이너 30명, 숨겨진 도구, 기술머신20), 15번도로 게이트(2층 박사 조수: 도감 50종이면 경험치나눔이, 왼쪽 망원경은 위를 볼 때
+    텍스트 뒤 프리져 울음과 그림 팝업 `Route15GateLeftBinoculars`).
+52. 16번도로(바이커 6명, 비전머신02 집, 두 번째 잠만보: 옆 2칸에서 포켓몬피리 → Lv30 배틀, 이기면 "산으로 돌아갔다"), 16·18번도로 게이트
+    (자전거가 없으면 경비원이 카운터 앞 칸에서 멈춰 세우고 카운터까지 걸어 올린 뒤 오른쪽으로 한 칸 밀어냄, 2층 망원경, 18번 2층은 덩쿠리 교환).
+53. 자전거 도로(17번도로, 바이커 10명, 숨겨진 도구 5개): 게이트 바깥 칸으로 나오면 강제로 자전거(`CheckForceBikeOrSurf`, BIT_ALWAYS_ON_BIKE:
+    가방에서 자전거를 내릴 수 없고 "여기서는 내릴 수 없다", 파도타기는 "자전거가 즐겁다"), 버튼을 안 누르면 아래로 계속 내려감(`JoypadOverworld`,
+    트레이너가 플레이어를 본 동안은 제외), 위·옆을 누르면 자전거 가속 없음. 게이트에 들어가거나 기절·공중날기를 하면 풀림. 18번도로(트레이너 3명).
+    스모크: `GODOT=<콘솔판> python tools/chapter10_smoke.py --full`.
+
 ### 원작과 다른 점 (의도적 단순화)
 - 저장 파일은 JSON 이며 체크섬·손상 검사는 없습니다. 타이틀의 Up+B+Select 파일 삭제는 없습니다(파일을 지우면 됩니다).
 - SGB 속성은 화면 8×8 셀 단위라 스크롤 중 셀에 걸친 타일은 타일 왼쪽 위 기준 셀의 팔레트를 씁니다(1챕터에서 영역이 나뉘는 화면은 스크롤하지 않음).
@@ -259,9 +270,10 @@ scripts/game/map_scripts_chapter6.gd 6챕터(11번도로·게이트·디그다�
 scripts/game/map_scripts_chapter7.gd 7챕터 허브(7·8번도로 게이트·지하통로) + celadon_scripts.gd(무지개시티·백화점·맨션·체육관) + game_corner_scripts.gd(게임코너·경품)
                            + rocket_hideout_scripts.gd(아지트·화살표 타일) + slot_machine.gd + elevator.gd + vending_machine.gd + diploma.gd + give_pokemon.gd
 scripts/game/map_scripts_chapter8.gd 8챕터(포켓몬타워 3F~7F·12번도로·게이트·슈퍼낚싯대 집); 유령 배틀·마라 연출·포켓몬피리는 battle.gd
+scripts/game/map_scripts_chapter10.gd 10챕터(16·18번도로 게이트 자전거 검사·16번도로 잠만보·비전머신02 집·15번도로 게이트 박사 조수); 자전거 도로는 overworld.gd
 scripts/game/map_scripts_chapter9.gd 9챕터(노랑시티·집들·사천왕 도장·노랑체육관) + silph_co_scripts.gd(실프컴퍼니 1F~11F·카드키 문·라이벌·비주기·엘리베이터)
                            + vermilion_scripts.gd(갈색시티·체육관·부두 출항) + ss_anne_scripts.gd(상선)
-tools/chapter4_smoke.py ... chapter9_smoke.py  챕터별 스모크(환경 변수 GODOT 에 콘솔판 경로, --full 로 배틀 포함)
+tools/chapter4_smoke.py ... chapter10_smoke.py  챕터별 스모크(환경 변수 GODOT 에 콘솔판 경로, --full 로 배틀 포함)
 scripts/game/*.gd          splash, intro, title, oak_speech, naming, overworld, map_scripts, pokedex_page, battle, party_mon,
                            pokecenter, pokemart, party_menu, status_screen, bag, item_use, pokedex_menu, town_map, dex_rating, mon_hud
 scripts/gb/list_menu.gd    DisplayListMenuID(가방·상점 목록)·수량 선택

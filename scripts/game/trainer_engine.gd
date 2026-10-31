@@ -85,6 +85,7 @@ func check_fighting_map_trainers() -> void:
 	if h.is_empty():
 		return
 	header = h
+	ow.trainer_battle = true   # set BIT_TRAINER_BATTLE
 	var sprite: int = h.sprite
 	if "--trace-scripts" in OS.get_cmdline_user_args() or "--trace-battle" in OS.get_cmdline_user_args():
 		print("TRAINER_SEES sprite=%d %s frame=%d player=(%d,%d)" % [sprite, engaged_class, GB.frame_count, ow.player.x, ow.player.y])

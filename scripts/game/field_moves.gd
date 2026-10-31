@@ -112,7 +112,10 @@ static func use(state: GameState, ow, idx: int, move: String) -> String:
 		"SURF":
 			if not badges & (1 << SOUL):
 				return await _new_badge_required()
-			# IsSurfingAllowed (the Cycling Road and Seafoam's current: later chapters), UseItem SURFBOARD
+			# IsSurfingAllowed: not while forced to ride the bike (Seafoam's current: a later chapter)
+			if state.always_on_bike:
+				await Text.print_text("_CyclingIsFunText")
+				return "loop"
 			if not await use_surfboard(state, ow):
 				return "loop"
 			await _white_out_delay3()

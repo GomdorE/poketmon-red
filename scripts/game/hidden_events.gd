@@ -156,6 +156,13 @@ static func _run(ow, func_name: String, arg: String, index: int = -1) -> void:
 			await _fossil(ow, "mon_fossilaerodactyl", "_AerodactylFossilText")
 		"KabutopsFossil":
 			await _fossil(ow, "mon_fossilkabutops", "_KabutopsFossilText")
+		"Route15GateLeftBinoculars":
+			# facing up: the text (auto text box), ARTICUNO's cry, its picture in the pop-up box
+			if facing == Overworld.FACE_UP:
+				await ow._show_overworld_text("_Route15UpstairsBinocularsText", true)
+				Sound.play_cry("ARTICUNO")
+				await Sound.wait_for_sfx()
+				await _mon_popup(ow, "mon_articuno")
 		_:
 			pass
 
@@ -229,6 +236,13 @@ static func _hidden_coins(ow, arg: String) -> void:
 ## box (6,4)-(14,13), the 7x7 pic at (7,5), a button press, the screen restored),
 ## then the fossil text with the auto text box.
 static func _fossil(ow, pic: String, label: String) -> void:
+	await _mon_popup(ow, pic)
+	await GB.delay3()
+	await ow._show_overworld_text(label, true)
+
+
+## DisplayMonFrontSpriteInBox.
+static func _mon_popup(ow, pic: String) -> void:
 	var S: GBScreen = GB.screen
 	ow.in_text = true
 	await GB.delay3()
@@ -239,8 +253,6 @@ static func _fossil(ow, pic: String, label: String) -> void:
 	S.restore_bg(saved)
 	ow.in_text = false
 	ow._render()   # the player sprite comes back once (8, 9) is a map tile again
-	await GB.delay3()
-	await ow._show_overworld_text(label, true)
 
 
 ## TextScript_PokemonCenterPC: no auto text box; ActivatePC, then HoldTextDisplayOpen / CloseTextDisplay.

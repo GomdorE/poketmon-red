@@ -95,6 +95,7 @@ func set_map_pal_offset(v: int) -> void:
 		print("MAP_PAL_OFFSET %d map=%s frame=%d" % [v, map_id, GB.frame_count])
 var no_battles := false           # wStatusFlags4 BIT_NO_BATTLES (NewBattle does nothing)
 var cut_blocks := {}              # blocks replaced by Cut in the loaded map (wOverworldMap edits)
+var trainer_battle := false      # wStatusFlags7 BIT_TRAINER_BATTLE (a trainer saw the player)
 var load_count := 0               # one more per load_map (the BIT_CUR_MAP_LOADED callbacks)
 var strength_active := false      # wStatusFlags1 BIT_STRENGTH_ACTIVE
 var tried_push_boulder := false   # wMiscFlags BIT_TRIED_PUSH_BOULDER
@@ -138,6 +139,7 @@ func run(reload: bool = true) -> void:
 		load_map(state.cur_map, state.x, state.y, state.facing)
 		_enter_map_music(false)
 		S.normal_pals()
+		check_force_bike()
 	GB.play_time_counting = true
 	if not GB.frame.is_connected(_hide_sprites_under_text_boxes):
 		GB.frame.connect(_hide_sprites_under_text_boxes)
@@ -190,6 +192,10 @@ func run(reload: bool = true) -> void:
 			continue
 		var simulating := sim_queue.size() > 0
 		var held := _joypad()
+		# JoypadOverworld: on the Cycling Road, with no trainer battle coming and no button held,
+		# Down is held (before the simulated presses, which replace it)
+		if map_id == "ROUTE_17" and not trainer_battle and not simulating and (held & (GB.CTRL_PAD | GB.A | GB.B)) == 0:
+			held = GB.DOWN
 		var pressed := GB.pressed & ~joy_ignore
 		if simulating or follow_script.size() > 0:
 			pressed = held
@@ -242,6 +248,7 @@ func _next_debug_segment() -> void:
 func after_battle(battle_result: String) -> void:
 	last_battle_won = battle_result == "won"
 	last_battle_result = battle_result   # wBattleResult for the map scripts (won / lost / ran / caught)
+	trainer_battle = false   # OverworldLoop .battleOccurred
 	state.encounter_cooldown = 3   # EnterMap: three steps without wild battles
 	if battle_result == "blackout":
 		# AllPokemonFainted: the map script runs once with wIsInBattle = LOST_BATTLE
@@ -282,6 +289,7 @@ func _black_out() -> void:
 	Sound.stop_all_sound()
 	state.money = state.money / 2
 	set_walk_bike_surf(0)   # ResetStatusAndHalveMoneyOnBlackout
+	state.always_on_bike = false   # DisplayPlayerBlackedOutText
 	Battle.heal_party(state)
 	var dest: String = state.last_blackout_map
 	var pos: Vector2i = FLY_WARPS.get(dest, Vector2i(5, 6))
@@ -1001,6 +1009,7 @@ func _warp_from(x: int, y: int) -> void:
 	_enter_map_music(false)
 	_next_debug_segment()
 	S.normal_pals()
+	check_force_bike()
 	await GB.frame
 
 
@@ -1023,6 +1032,7 @@ func warp_to(dest: String, warp_index: int) -> void:
 	_enter_map_music(false)
 	_next_debug_segment()
 	S.normal_pals()
+	check_force_bike()
 	await GB.frame
 
 
@@ -1783,6 +1793,25 @@ func _do_boulder_dust_animation() -> void:
 	Sound.play_sfx("SFX_CUT")
 
 
+## CheckForceBikeOrSurf (EnterMap): the tiles beside the Cycling Road gates put the player
+## on the bike for good (BIT_ALWAYS_ON_BIKE) until a gate clears it; ForceBikeOrSurf reloads
+## the player sprite and plays the map music (the bike music).
+const FORCED_BIKE := {"ROUTE_16": [Vector2i(17, 10), Vector2i(17, 11)], "ROUTE_18": [Vector2i(33, 8), Vector2i(33, 9)]}
+
+
+func check_force_bike() -> void:
+	if state.always_on_bike:
+		return
+	if not Vector2i(player.x, player.y) in FORCED_BIKE.get(map_id, []):
+		return
+	state.always_on_bike = true
+	set_walk_bike_surf(1)
+	_render()
+	Sound.play_default_music()
+	if "--trace-scripts" in OS.get_cmdline_user_args():
+		print("FORCED_BIKE %s (%d,%d) frame=%d" % [map_id, player.x, player.y, GB.frame_count])
+
+
 ## IsBikeRidingAllowed: Route 23, Indigo Plateau, or a BikeRidingTilesets tileset.
 func is_bike_riding_allowed() -> bool:
 	if map_id in ["ROUTE_23", "INDIGO_PLATEAU"]:
@@ -1801,6 +1830,7 @@ func _handle_fly_warp() -> void:
 	_render()
 	await GB.delay3()
 	set_walk_bike_surf(0)   # HandleFlyWarpOrDungeonWarp: wWalkBikeSurfState = 0
+	state.always_on_bike = false   # res BIT_ALWAYS_ON_BIKE
 	var anims := PlayerAnims.new(self)
 	var escape := escape_warp
 	await anims.leave_map(escape)

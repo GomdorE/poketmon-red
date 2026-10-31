@@ -96,6 +96,11 @@ static func _use(state: GameState, ow, item: String) -> bool:
 		return false
 	# the Bicycle and UsableItems_CloseMenu (rods, Escape Rope) close the start menu when used
 	if item == "BICYCLE":
+		if state.always_on_bike:   # StartMenu_Item: CannotGetOffHereText, back to the item list
+			if "--trace-scripts" in OS.get_cmdline_user_args():
+				print("BICYCLE cannot_get_off")
+			await Text.print_text("_CannotGetOffHereText")
+			return false
 		return await FieldMoves.use_bicycle(state, ow)
 	if item in ["OLD_ROD", "GOOD_ROD", "SUPER_ROD"]:
 		return await Fishing.use_rod(state, ow, item)
@@ -107,15 +112,17 @@ static func _use(state: GameState, ow, item: String) -> bool:
 	if item == "ITEMFINDER":   # UsableItems_CloseMenu: the ITEMFINDER and the POKé FLUTE close the menu
 		await _use_itemfinder(state, ow)
 		return true
-	if item == "POKE_FLUTE":   # ItemUsePokeFlute outside battle: only next to Route 12's SNORLAX
-		var spots := [Vector2i(9, 62), Vector2i(10, 61), Vector2i(10, 63), Vector2i(11, 62)]   # Route12SnorlaxFluteCoords
-		var effect: bool = ow.map_id == "ROUTE_12" and not state.has_event("EVENT_BEAT_ROUTE12_SNORLAX") \
-				and Vector2i(ow.player.x, ow.player.y) in spots
+	if item == "POKE_FLUTE":   # ItemUsePokeFlute outside battle: only next to a sleeping SNORLAX
+		# Route12SnorlaxFluteCoords / Route16SnorlaxFluteCoords
+		var spots: Array = {"ROUTE_12": [Vector2i(9, 62), Vector2i(10, 61), Vector2i(10, 63), Vector2i(11, 62)],
+			"ROUTE_16": [Vector2i(27, 10), Vector2i(25, 10)]}.get(ow.map_id, [])
+		var route := "ROUTE12" if ow.map_id == "ROUTE_12" else "ROUTE16"
+		var effect: bool = not state.has_event("EVENT_BEAT_%s_SNORLAX" % route) and Vector2i(ow.player.x, ow.player.y) in spots
 		if "--trace-scripts" in OS.get_cmdline_user_args():
 			print("POKE_FLUTE effect=%s" % str(effect))
 		if effect:
 			await Text.print_text("_PlayedFluteHadEffectText")
-			state.set_event("EVENT_FIGHT_ROUTE12_SNORLAX")
+			state.set_event("EVENT_FIGHT_%s_SNORLAX" % route)
 		else:
 			await Text.print_text("_PlayedFluteNoEffectText")
 		return true

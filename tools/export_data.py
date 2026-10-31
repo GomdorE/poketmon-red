@@ -404,6 +404,20 @@ MAPS = {
     "SILPH_CO_10F": "SilphCo10F",
     "SILPH_CO_11F": "SilphCo11F",
     "SILPH_CO_ELEVATOR": "SilphCoElevator",
+    # chapter 10: Routes 13-18 around Fuchsia City, the Cycling Road and its gates
+    "ROUTE_13": "Route13",
+    "ROUTE_14": "Route14",
+    "ROUTE_15": "Route15",
+    "ROUTE_15_GATE_1F": "Route15Gate1F",
+    "ROUTE_15_GATE_2F": "Route15Gate2F",
+    "ROUTE_16": "Route16",
+    "ROUTE_16_GATE_1F": "Route16Gate1F",
+    "ROUTE_16_GATE_2F": "Route16Gate2F",
+    "ROUTE_16_FLY_HOUSE": "Route16FlyHouse",
+    "ROUTE_17": "Route17",
+    "ROUTE_18": "Route18",
+    "ROUTE_18_GATE_1F": "Route18Gate1F",
+    "ROUTE_18_GATE_2F": "Route18Gate2F",
 }
 
 
@@ -709,7 +723,7 @@ def parse_objects(name: str) -> dict:
         if m:
             res["objects"].append({
                 "x": int(m.group(1)), "y": int(m.group(2)), "sprite": m.group(3), "movement": m.group(4),
-                "direction": m.group(5), "text": m.group(6), "trainer": m.group(7) or "", "trainer_no": int(m.group(8) or 0),
+                "direction": m.group(5), "text": m.group(6), "trainer": machine_item(m.group(7) or ""), "trainer_no": int(m.group(8) or 0),
             })
     return res
 
@@ -1150,6 +1164,17 @@ def export_trades() -> None:
     log(f"trades: {len(trades)}")
 
 
+def machine_item(name: str) -> str:
+    """TM_<MOVE> / HM_<MOVE> (the item constants used by item balls and marts) -> TMnn / HMnn."""
+    if not name.startswith(("TM_", "HM_")):
+        return name
+    machines = re.findall(r"^\s*add_(tm|hm)\s+([A-Z0-9_]+)", (MASTER / "constants" / "item_constants.asm").read_text(encoding="utf-8"), re.M)
+    kind = name[:2].lower()
+    moves = [mv for k, mv in machines if k == kind]
+    mv = name[3:]
+    return "%s%02d" % (name[:2], moves.index(mv) + 1) if mv in moves else name
+
+
 def export_marts() -> None:
     by_name = {v: k for k, v in MAPS.items()}
     out = {}
@@ -1157,7 +1182,7 @@ def export_marts() -> None:
         if m.group(1) in by_name:
             # a map with several clerks (Celadon Mart 2F/5F) gets one list per clerk: MAP_CLERK1, MAP_CLERK2
             key = by_name[m.group(1)] + (("_CLERK" + m.group(2)) if m.group(2) else "")
-            out[key] = [x.strip() for x in m.group(3).split(",") if x.strip()]
+            out[key] = [machine_item(x.strip()) for x in m.group(3).split(",") if x.strip()]
     (OUT_DATA / "marts.json").write_text(json.dumps(out), encoding="utf-8")
     log(f"marts: {out}")
 
